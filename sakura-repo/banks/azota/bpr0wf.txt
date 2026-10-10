@@ -1,0 +1,13 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+[ĐS] AI mạnh là loại AI có thể suy luận, lập kế hoạch và giải quyết các vấn đề phức tạp như con người. ||| Đúng
+[ĐS] AI mạnh là loại AI có thể tự động học hỏi và giải quyết bất kỳ vấn đề nào mà không cần sự can thiệp của con người. ||| Đúng
+[ĐS] AI tạo sinh có thể được coi là một phần của xử lí ngôn ngữ tự nhiên vì nó tạo ra văn bản dựa trên ngôn ngữ tự nhiên. ||| Sai
+[ĐS] AI yếu chủ yếu được sử dụng trong các hệ thống tự học và không cần sự tham gia của con người. ||| Sai
+[ĐS] AlphaGo là một ví dụ của AI mạnh vì nó có khả năng đánh bại nhà vô địch cờ vây mà không cần sự trợ giúp từ con người. ||| Sai
+[ĐS] Học máy giúp máy tính tự học hỏi từ dữ liệu và tự cải thiện mà không cần sự hỗ trợ từ con người. ||| Đúng
+[ĐS] Học máy là lĩnh vực nghiên cứu làm cho máy tính có khả năng học từ dữ liệu. ||| Đúng
+[ĐS] MYCIN là một ví dụ của AI mạnh vì nó có khả năng chẩn đoán bệnh mà không cần sự hỗ trợ từ con người. ||| Sai
+[ĐS] Thị giác máy tính là một phần của học máy vì nó giúp máy tính nhận dạng và phân tích hình ảnh. ||| Sai
+[ĐS] Trí tuệ nhân tạo là khả năng của máy tính thực hiện các công việc cần trí tuệ như của con người. ||| Đúng
+[ĐS] Xoxe là một ví dụ của AI yếu vì nó cần sự hỗ trợ của con người để học và hiểu ngôn ngữ tự nhiên. ||| Sai
+[ĐS] Xử lí ngôn ngữ tự nhiên giúp máy tính giao tiếp với con người bằng ngôn ngữ tự nhiên, cả ngôn ngữ viết và tiếng nói. ||| Đúng
