@@ -1,13 +1,13 @@
 <a id="top"></a>
 <div align="center">
 
-<img src="assets/hero.svg" alt="Sakura Helper · Galaxy Edition v3.0" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:ff7fb8&height=250&section=header&text=Sakura%20Helper&fontSize=62&fontColor=ffe0ee&fontAlignY=38&desc=Galaxy%20Edition%20v3.0&descSize=20&descAlignY=60&animation=fadeIn" alt="Sakura Helper · Galaxy Edition v3.0" width="100%">
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=21&duration=2600&pause=700&color=FF9CCD&center=true&vCenter=true&width=700&height=50&lines=%E2%9C%A6%20Qu%C3%A9t%20%22%C4%90%C3%A1p%20%C3%A1n%20%C4%91%C3%BAng%22%20%E1%BB%9F%20trang%20xem%20%C4%91%C3%A1p%20%C3%A1n%20%E2%9C%A6;%E2%9C%A6%20Nh%E1%BB%9B%20%C4%91%C3%A1p%20%C3%A1n%20%C2%B7%20t%E1%BB%B1%20ch%E1%BB%8Dn%20l%E1%BA%A1i%20%E1%BB%9F%20l%E1%BA%A7n%20l%C3%A0m%20sau%20%E2%9C%A6;%E2%9C%A6%20S%E1%BB%95%20%C4%91%C3%A1p%20%C3%A1n%20c%C3%B3%20t%C3%ACm%20ki%E1%BA%BFm%20%C2%B7%20xu%E1%BA%A5t%20/%20nh%E1%BA%ADp%20.txt%20%E2%9C%A6;%E2%9C%A6%20Kh%C3%B4ng%20t%E1%BB%B1%20n%E1%BB%99p%20b%C3%A0i%20%C2%B7%20ch%E1%BB%89%20%C4%91%E1%BB%83%20h%E1%BB%8Dc%20t%E1%BA%ADp%20%E2%9C%A6" alt="tagline">
 
 ![phiên bản](https://img.shields.io/badge/phi%C3%AAn%20b%E1%BA%A3n-3.0-ff7fb8?style=for-the-badge&labelColor=302b63) ![loại](https://img.shields.io/badge/lo%E1%BA%A1i-userscript-c19bff?style=for-the-badge&labelColor=0f0c29) ![giao diện](https://img.shields.io/badge/giao%20di%E1%BB%87n-sakura-ff6fb0?style=for-the-badge&labelColor=302b63) ![mục đích](https://img.shields.io/badge/m%E1%BB%A5c%20%C4%91%C3%ADch-h%E1%BB%8Dc%20t%E1%BA%ADp%20%26%20nghi%C3%AAn%20c%E1%BB%A9u-7fc8ff?style=for-the-badge&labelColor=302b63) ![tự nộp bài](https://img.shields.io/badge/t%E1%BB%B1%20n%E1%BB%99p%20b%C3%A0i-kh%C3%B4ng-ffb3d4?style=for-the-badge&labelColor=0f0c29) ![dữ liệu](https://img.shields.io/badge/d%E1%BB%AF%20li%E1%BB%87u-%E1%BB%9F%20tr%C3%ACnh%20duy%E1%BB%87t%20c%E1%BB%A7a%20b%E1%BA%A1n-e6d6ff?style=for-the-badge&labelColor=0f0c29) ![js](https://img.shields.io/badge/JavaScript-userscript-ff7fb8?style=for-the-badge&logo=javascript&logoColor=white&labelColor=0f0c29) ![gh](https://img.shields.io/badge/GitHub-REST%20API-c19bff?style=for-the-badge&logo=github&logoColor=white&labelColor=0f0c29) ![mm](https://img.shields.io/badge/Mermaid-s%C6%A1%20%C4%91%E1%BB%93-7fc8ff?style=for-the-badge&logo=mermaid&logoColor=white&labelColor=0f0c29)
 
-<img src="assets/divider.svg" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=3" alt="" width="100%">
 
 [![🌷 Giới thiệu](https://img.shields.io/badge/%F0%9F%8C%B7_Gi%E1%BB%9Bi_thi%E1%BB%87u-302b63?style=flat-square&labelColor=0f0c29)](#-giới-thiệu) [![🔭 Đài quan sát](https://img.shields.io/badge/%F0%9F%94%AD_%C4%90%C3%A0i_quan_s%C3%A1t-302b63?style=flat-square&labelColor=0f0c29)](#-đài-quan-sát-repo) [![🏯 Kiến trúc](https://img.shields.io/badge/%F0%9F%8F%AF_Ki%E1%BA%BFn_tr%C3%BAc-302b63?style=flat-square&labelColor=0f0c29)](#-kiến-trúc-tổng-quan) [![🚀 Cài đặt](https://img.shields.io/badge/%F0%9F%9A%80_C%C3%A0i_%C4%91%E1%BA%B7t-302b63?style=flat-square&labelColor=0f0c29)](#-cài-đặt) [![🛠️ Sự cố](https://img.shields.io/badge/%F0%9F%9B%A0%EF%B8%8F_S%E1%BB%B1_c%E1%BB%91-302b63?style=flat-square&labelColor=0f0c29)](#️-xử-lý-sự-cố) [![❓ FAQ](https://img.shields.io/badge/%E2%9D%93_FAQ-302b63?style=flat-square&labelColor=0f0c29)](#-faq)
 
@@ -32,7 +32,7 @@
 
 </div>
 
-<img src="assets/banners/introduction.svg" alt="Giới thiệu (introduction)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Introduction&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Giới thiệu (introduction)" width="100%">
 
 > 🌸 **Sakura-chan:** 「ようこそ！」 Chào mừng đến với dự án nè~ Cùng đọc từ từ nhé (๑•̀ㅂ•́)و✧
 
@@ -70,7 +70,7 @@ làm bài  ->  nộp bài  ->  mở trang xem đáp án  ->  script tự quét v
 </tr>
 </table>
 
-<img src="assets/banners/observatory.svg" alt="Đài quan sát (observatory)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Observatory&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Đài quan sát (observatory)" width="100%">
 
 > 🌸 **Sakura-chan:** 「観測開始！」 Quay kính thiên văn về repo School xem trên quỹ đạo có những gì nào (๑•̀ㅂ•́)و✧
 
@@ -78,7 +78,13 @@ làm bài  ->  nộp bài  ->  mở trang xem đáp án  ->  script tự quét v
 
 <div align="center">
 
-<img src="assets/stats.svg" alt="9 module, 3 dạng câu hỏi, 8 tính năng, 0 máy chủ trung gian, 0 lần tự nộp bài" width="100%">
+<table align="center"><tr>
+<td align="center" width="20%"><h2>9</h2><sub>module</sub></td>
+<td align="center" width="20%"><h2>3</h2><sub>dạng câu hỏi</sub></td>
+<td align="center" width="20%"><h2>8</h2><sub>tính năng</sub></td>
+<td align="center" width="20%"><h2>0</h2><sub>máy chủ trung gian</sub></td>
+<td align="center" width="20%"><h2>0</h2><sub>lần tự nộp bài</sub></td>
+</tr></table>
 
 [![stars](https://img.shields.io/github/stars/Huy7684/School?style=flat-square&color=ff7fb8&labelColor=0f0c29&logo=github)](https://github.com/Huy7684/School/stargazers) [![forks](https://img.shields.io/github/forks/Huy7684/School?style=flat-square&color=c19bff&labelColor=0f0c29)](https://github.com/Huy7684/School/forks) [![last commit](https://img.shields.io/github/last-commit/Huy7684/School?style=flat-square&color=7fc8ff&labelColor=0f0c29)](https://github.com/Huy7684/School/commits/main) [![commits](https://img.shields.io/github/commit-activity/t/Huy7684/School?style=flat-square&color=ff9ccd&labelColor=0f0c29&label=commits)](https://github.com/Huy7684/School/commits/main) [![repo size](https://img.shields.io/github/repo-size/Huy7684/School?style=flat-square&color=c19bff&labelColor=0f0c29)](https://github.com/Huy7684/School) [![top language](https://img.shields.io/github/languages/top/Huy7684/School?style=flat-square&color=7fc8ff&labelColor=0f0c29)](https://github.com/Huy7684/School) [![created](https://img.shields.io/github/created-at/Huy7684/School?style=flat-square&color=ff7fb8&labelColor=0f0c29)](https://github.com/Huy7684/School) [![issues](https://img.shields.io/github/issues/Huy7684/School?style=flat-square&color=c19bff&labelColor=0f0c29)](https://github.com/Huy7684/School/issues)
 
@@ -92,7 +98,7 @@ làm bài  ->  nộp bài  ->  mở trang xem đáp án  ->  script tự quét v
 | **Kho** | [Huy7684/School](https://github.com/Huy7684/School), công khai |
 | **Nhánh chính** | `main` |
 | **Thành phần** | 2 userscript (**Sakura Helper** và **Sakura Loader**), thư mục sổ `banks/`, gói nén `sakura-repo.zip` |
-| **Ngôn ngữ** | JavaScript cho userscript, CSS thuần cho giao diện, SVG cho hình động trong README |
+| **Ngôn ngữ** | JavaScript cho userscript, CSS thuần cho giao diện, banner động của README dựng bằng capsule-render |
 | **Cài bằng** | Tampermonkey hoặc Violentmonkey |
 | **Dữ liệu** | `localStorage` của trình duyệt, cộng thêm repo GitHub của bạn nếu bạn bấm lưu |
 | **Phiên bản hiện tại** | 3.0 |
@@ -101,7 +107,7 @@ làm bài  ->  nộp bài  ->  mở trang xem đáp án  ->  script tự quét v
 
 <div align="center">
 
-![JavaScript](https://img.shields.io/badge/JavaScript-userscript-ff7fb8?style=flat-square&labelColor=0f0c29&logo=javascript&logoColor=white) ![Tampermonkey](https://img.shields.io/badge/Tampermonkey-h%E1%BB%97%20tr%E1%BB%A3-c19bff?style=flat-square&labelColor=0f0c29) ![Violentmonkey](https://img.shields.io/badge/Violentmonkey-h%E1%BB%97%20tr%E1%BB%A3-c19bff?style=flat-square&labelColor=0f0c29) ![GitHub](https://img.shields.io/badge/GitHub-Contents%20API-7fc8ff?style=flat-square&labelColor=0f0c29&logo=github&logoColor=white) ![Web Storage](https://img.shields.io/badge/Web%20Storage-localStorage-ff9ccd?style=flat-square&labelColor=0f0c29) ![CSS](https://img.shields.io/badge/CSS-keyframes-c19bff?style=flat-square&labelColor=0f0c29) ![SVG](https://img.shields.io/badge/SVG-h%C3%ACnh%20%C4%91%E1%BB%99ng-7fc8ff?style=flat-square&labelColor=0f0c29) ![Mermaid](https://img.shields.io/badge/Mermaid-s%C6%A1%20%C4%91%E1%BB%93-ff7fb8?style=flat-square&labelColor=0f0c29&logo=mermaid&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-userscript-ff7fb8?style=flat-square&labelColor=0f0c29&logo=javascript&logoColor=white) ![Tampermonkey](https://img.shields.io/badge/Tampermonkey-h%E1%BB%97%20tr%E1%BB%A3-c19bff?style=flat-square&labelColor=0f0c29) ![Violentmonkey](https://img.shields.io/badge/Violentmonkey-h%E1%BB%97%20tr%E1%BB%A3-c19bff?style=flat-square&labelColor=0f0c29) ![GitHub](https://img.shields.io/badge/GitHub-Contents%20API-7fc8ff?style=flat-square&labelColor=0f0c29&logo=github&logoColor=white) ![Web Storage](https://img.shields.io/badge/Web%20Storage-localStorage-ff9ccd?style=flat-square&labelColor=0f0c29) ![CSS](https://img.shields.io/badge/CSS-keyframes-c19bff?style=flat-square&labelColor=0f0c29) ![Mermaid](https://img.shields.io/badge/Mermaid-s%C6%A1%20%C4%91%E1%BB%93-ff7fb8?style=flat-square&labelColor=0f0c29&logo=mermaid&logoColor=white)
 
 </div>
 
@@ -114,7 +120,7 @@ làm bài  ->  nộp bài  ->  mở trang xem đáp án  ->  script tự quét v
 | Người lo về **quyền riêng tư** | [🎓 Mục đích và phạm vi](#-mục-đích-và-phạm-vi) → [🔐 Riêng tư](#-bảo-mật-và-riêng-tư) → [❓ FAQ](#-faq) |
 | Người muốn **góp tay** | [🗂️ Cấu trúc repo](#️-cấu-trúc-repo) → [🛸 Đóng góp](#-đóng-góp-và-liên-hệ) |
 
-<img src="assets/banners/gallery.svg" alt="Phòng tranh (gallery)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Gallery&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Phòng tranh (gallery)" width="100%">
 
 > 🌸 **Sakura-chan:** 「きれいでしょ？」 Vài bức fanart xinh xinh để trang trí nè (◍•ᴗ•◍)
 
@@ -124,7 +130,7 @@ làm bài  ->  nộp bài  ->  mở trang xem đáp án  ->  script tự quét v
 
 <table align="center"><tr><td align="center" width="25%"><a href="https://www.pixiv.net/en/artworks/94774845"><img src="https://nekos.best/api/v2/waifu/fcd360d6-7b22-41d9-9a6f-c4f4268d0f00.png" width="210" alt="fanart"></a><br><sub>🎨 無糖。</sub></td><td align="center" width="25%"><a href="https://www.pixiv.net/en/artworks/96029553"><img src="https://nekos.best/api/v2/waifu/742716ab-8ea1-4625-bb95-63a4bf456d06.png" width="210" alt="fanart"></a><br><sub>🎨 Lancheu</sub></td><td align="center" width="25%"><a href="https://www.pixiv.net/en/artworks/89724774"><img src="https://nekos.best/api/v2/waifu/783d2a8e-37af-4867-af98-6aedcc847b7c.png" width="210" alt="fanart"></a><br><sub>🎨 炭酸きつね</sub></td><td align="center" width="25%"><a href="https://www.pixiv.net/en/artworks/95271497"><img src="https://nekos.best/api/v2/waifu/2d706fbe-c8fd-40bc-a041-30c9d435f118.png" width="210" alt="fanart"></a><br><sub>🎨 amanai</sub></td></tr></table>
 
-<img src="assets/banners/map.svg" alt="Bản đồ vũ trụ (map)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Map&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Bản đồ vũ trụ (map)" width="100%">
 
 > 🌸 **Sakura-chan:** 「全体を見よう！」 Nhìn dự án từ trên cao một lượt nào ♪(๑ᴖ◡ᴖ๑)♪
 
@@ -140,11 +146,27 @@ làm bài  ->  nộp bài  ->  mở trang xem đáp án  ->  script tự quét v
 
 <div align="center">
 
-<img src="assets/constellation.svg" alt="Chòm sao Sakura: luồng dữ liệu giữa các thành phần" width="100%">
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#302b63','primaryTextColor':'#ffe0ee','primaryBorderColor':'#ff9ccd','lineColor':'#c19bff','secondaryColor':'#6a2c91','tertiaryColor':'#0f0c29','fontFamily':'Segoe UI'}}}%%
+flowchart LR
+    P["🌐 Trang luyện đề"] -->|"bạn nộp bài"| A["🔍 Trang xem đáp án"]
+    A -->|"quét Đáp án đúng"| H["🌸 Sakura Helper"]
+    H -->|"lưu"| L[("📖 Sổ đáp án<br/>localStorage")]
+    L -->|"gợi ý khi làm lại"| P
+    H -.->|"bạn bấm lưu"| G[("🐙 Repo GitHub<br/>banks/")]
+    G -.->|"tải về"| H
+    R["🛰️ Sakura Loader"] -.->|"tải script"| H
+    classDef sakura fill:#ff7fb8,stroke:#ffe0ee,color:#0f0c29
+    classDef sky fill:#7fc8ff,stroke:#ffe0ee,color:#0f0c29
+    classDef lav fill:#c19bff,stroke:#ffe0ee,color:#0f0c29
+    class H,P sakura
+    class L,G sky
+    class A,R lav
+```
 
 </div>
 
-> Mỗi hành tinh là một thành phần. Xung sáng chạy dọc đường nối là dữ liệu đang đi. Nét đứt là sự kiện, đồng bộ hoặc quyết định của **bạn**.
+> Mỗi ô là một thành phần. Nét liền là dữ liệu đang đi. Nét đứt là sự kiện, đồng bộ hoặc quyết định của **bạn**.
 
 ### 🧠 Sơ đồ tư duy
 
@@ -177,7 +199,7 @@ mindmap
       Tôn trọng giảm chuyển động
 ```
 
-<img src="assets/banners/purpose.svg" alt="Mục đích (purpose)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Purpose&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Mục đích (purpose)" width="100%">
 
 > 🌸 **Sakura-chan:** 「大事だよ！」 Phần này quan trọng nhất: dự án chỉ để **học tập và nghiên cứu** thôi nha (｡•́︿•̀｡)
 
@@ -218,7 +240,7 @@ mindmap
 | Lưu trữ | Lưu cục bộ và đồng bộ | `localStorage`, GitHub Contents API, `sha`, xử lý xung đột 409 |
 | Giao diện | Bảng điều khiển đẹp, nhẹ | CSS thuần: gradient động, keyframes, `prefers-reduced-motion` |
 
-<img src="assets/banners/architecture.svg" alt="Kiến trúc (architecture)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Architecture&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Kiến trúc (architecture)" width="100%">
 
 > 🌸 **Sakura-chan:** 「見てみよう！」 Nhìn tổng thể trước, chi tiết tính sau (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
 
@@ -338,7 +360,7 @@ flowchart LR
 
 Ba hàm `flat`, `norm`, `norm2` được mô tả ở phần [Mô hình dữ liệu](#-mô-hình-dữ-liệu).
 
-<img src="assets/banners/deep-dive.svg" alt="Lặn sâu vào từng module (deep dive)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Deep%20Dive&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Lặn sâu vào từng module (deep dive)" width="100%">
 
 > 🌸 **Sakura-chan:** 「深掘りしよう！」 Bấm từng mục để lặn sâu vào bên trong script nào ٩(◕‿◕｡)۶
 
@@ -500,7 +522,7 @@ Trang web là ứng dụng một trang (SPA), nội dung thay đổi mà không 
 
 </details>
 
-<img src="assets/banners/data-model.svg" alt="Mô hình dữ liệu (data model)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Data%20Model&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Mô hình dữ liệu (data model)" width="100%">
 
 > 🌸 **Sakura-chan:** 「データだよ〜」 Dữ liệu gọn nhẹ, đọc là hiểu liền (◍•ᴗ•◍)
 
@@ -545,7 +567,7 @@ Mạch logic thực hiện phép toán AND có kí hiệu là : ||| ⟦img:ten-f
 - `⟦img:...⟧`: đáp án là ảnh, định danh bằng tên file ảnh.
 - Dấu tách là `|||`. Khi đọc, dùng **lần xuất hiện cuối cùng** của `|||`, nên câu hỏi có chứa `|||` vẫn an toàn.
 
-<img src="assets/banners/features.svg" alt="Tính năng (features)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Features&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Tính năng (features)" width="100%">
 
 > 🌸 **Sakura-chan:** 「すごいでしょ？」 Nhiều tính năng nhưng không có cái nào tự nộp bài đâu nhé (≧▽≦)
 
@@ -568,7 +590,7 @@ Mạch logic thực hiện phép toán AND có kí hiệu là : ||| ⟦img:ten-f
 | 🏵️ | Bảng điều khiển **kéo thả, thu gọn**, nhớ vị trí | Giao diện Sakura nhiều hiệu ứng |
 | 🪷 | **Đồng bộ GitHub** theo từng đề | Token dùng một lần, không lưu |
 
-<img src="assets/banners/structure.svg" alt="Cấu trúc repo (structure)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Structure&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Cấu trúc repo (structure)" width="100%">
 
 > 🌸 **Sakura-chan:** 「整理整頓！」 Gọn gàng ngăn nắp, đúng chất wibu (*´▽`*)
 
@@ -584,16 +606,6 @@ Mạch logic thực hiện phép toán AND có kí hiệu là : ||| ⟦img:ten-f
 School/
 ├─ README.md                    ← bạn đang đọc
 ├─ sakura-repo.zip              ← gói nén của sakura-repo/, tải một lần là đủ
-├─ assets/                      ← hình động cho README (SVG thuần, không JavaScript)
-│  ├─ hero.svg                  ← banner đầu trang
-│  ├─ footer.svg                ← banner cuối trang
-│  ├─ divider.svg               ← đường phân cách có sao băng
-│  ├─ constellation.svg         ← chòm sao: luồng dữ liệu giữa các thành phần
-│  ├─ stats.svg                 ← năm thẻ số liệu
-│  ├─ palette.svg               ← bảng màu
-│  └─ banners/                  ← 22 banner đề mục (introduction.svg, faq.svg, ...)
-├─ tools/
-│  └─ generate_assets.py        ← sinh lại toàn bộ SVG, đổi màu ở đầu file
 └─ sakura-repo/
    ├─ sakura-helper.user.js     ← userscript chính
    ├─ sakura-loader.user.js     ← loader: tải script từ GitHub, chuyển tiếp request khi trang chặn CSP
@@ -608,8 +620,6 @@ School/
 | 📁 Đường dẫn | 🎯 Vai trò | 🔧 Khi nào bạn cần đến |
 |---|---|---|
 | `README.md` | Tài liệu của dự án | Muốn hiểu dự án |
-| `assets/` | Hình động của README | Muốn đổi giao diện README |
-| `tools/generate_assets.py` | Sinh lại mọi SVG, đổi màu ở đầu file | Muốn đổi màu hoặc thêm banner |
 | `sakura-repo/sakura-helper.user.js` | Userscript chính: quét, lưu, gợi ý, giao diện | Cài đặt hoặc nâng cấp phiên bản |
 | `sakura-repo/sakura-loader.user.js` | Tải script từ GitHub, làm cầu nối khi trang chặn kết nối ngoài | Khi báo "không kết nối được GitHub" |
 | `sakura-repo/banks/` | Sổ chung `<tên-trang>.txt` và sổ riêng `<tên-trang>/<mã-đề>.txt` | Sao lưu, chia sẻ, hoặc xoá sạch dữ liệu |
@@ -617,7 +627,7 @@ School/
 
 > Tên file có thể khác một chút so với thực tế trong repo, hãy chỉnh lại cho khớp.
 
-<img src="assets/banners/install.svg" alt="Cài đặt (install)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Install&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Cài đặt (install)" width="100%">
 
 > 🌸 **Sakura-chan:** 「インストール！」 Cài xong là dùng được liền, dễ lắm ヽ(>∀<☆)ノ
 
@@ -638,7 +648,7 @@ School/
 
 Nâng cấp lên bản mới: dán đè nội dung lên script cũ, lưu lại, rồi **F5** trang. Sổ đáp án trong trình duyệt được giữ nguyên.
 
-<img src="assets/banners/control-panel.svg" alt="Bảng điều khiển (control panel)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Control%20Panel&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Bảng điều khiển (control panel)" width="100%">
 
 > 🌸 **Sakura-chan:** 「操作パネル！」 Mỗi nút một việc, không rối đâu (๑˃ᴗ˂)ﻭ
 
@@ -690,7 +700,7 @@ Nâng cấp lên bản mới: dán đè nội dung lên script cũ, lưu lại, 
 | `min` | `false` | Bảng đang thu gọn |
 | `x`, `y` | `null` | Vị trí bảng sau khi kéo thả |
 
-<img src="assets/banners/privacy.svg" alt="Bảo mật và riêng tư (privacy)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Privacy&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Bảo mật và riêng tư (privacy)" width="100%">
 
 > 🌸 **Sakura-chan:** 「安心してね」 Token chỉ dùng một lần, dữ liệu của bạn là của bạn (｡･ω･｡)ﾉ♡
 
@@ -708,7 +718,7 @@ Nâng cấp lên bản mới: dán đè nội dung lên script cũ, lưu lại, 
 - 🌐 Repo công khai nghĩa là sổ đáp án **ai cũng đọc được**. Nếu không muốn, hãy để repo riêng tư (khi đó cần token cho cả việc tải).
 - 🧹 Muốn xoá sạch: bấm **Xoá sổ đã nhớ** và xoá các file `banks/` trong repo.
 
-<img src="assets/banners/troubleshoot.svg" alt="Xử lý sự cố (troubleshoot)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Troubleshoot&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Xử lý sự cố (troubleshoot)" width="100%">
 
 > 🌸 **Sakura-chan:** 「大丈夫！」 Lỗi nào cũng có cách xử lý, đừng hoảng (๑•́ ₃ •̀๑)
 
@@ -737,7 +747,7 @@ Nâng cấp lên bản mới: dán đè nội dung lên script cũ, lưu lại, 
 
 > 💡 Mẹo: mở **Console** (F12) và tìm các dòng bắt đầu bằng `[Sakura Helper]`. Mỗi dòng đều nêu **lý do** cụ thể.
 
-<img src="assets/banners/faq.svg" alt="Hỏi đáp (faq)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Faq&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Hỏi đáp (faq)" width="100%">
 
 > 🌸 **Sakura-chan:** 「質問タイム！」 Có gì thắc mắc cứ xem ở đây nha ✧(ﾉ´∀`)ﾉ
 
@@ -791,7 +801,7 @@ Script có thể ngừng khớp. Mở Console xem lý do, rồi sửa lại các
 
 </details>
 
-<img src="assets/banners/roadmap.svg" alt="Lộ trình (roadmap)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Roadmap&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Lộ trình (roadmap)" width="100%">
 
 > 🌸 **Sakura-chan:** 「未来へ！」 Còn nhiều ý tưởng hay đang chờ phía trước (๑•̀ㅂ•́)و✧
 
@@ -821,7 +831,7 @@ Script có thể ngừng khớp. Mở Console xem lý do, rồi sửa lại các
 - [ ] Giao diện sáng và tối
 - [ ] Đa ngôn ngữ
 
-<img src="assets/banners/design.svg" alt="Bảng màu và thiết kế (design)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Design&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Bảng màu và thiết kế (design)" width="100%">
 
 > 🌸 **Sakura-chan:** 「色がきれい！」 Bảy màu này làm nên cả bầu trời của trang nè (◍•ᴗ•◍)
 
@@ -829,7 +839,7 @@ Script có thể ngừng khớp. Mở Console xem lý do, rồi sửa lại các
 
 <div align="center">
 
-<img src="assets/palette.svg" alt="Bảng màu: Midnight, Indigo, Orchid, Sakura, Lavender, Sky, Petal" width="100%">
+![Midnight](https://img.shields.io/badge/%20%20Midnight%20%20-0f0c29?style=for-the-badge) ![Indigo](https://img.shields.io/badge/%20%20Indigo%20%20-302b63?style=for-the-badge) ![Orchid](https://img.shields.io/badge/%20%20Orchid%20%20-8e2c8f?style=for-the-badge) ![Sakura](https://img.shields.io/badge/%20%20Sakura%20%20-ff7fb8?style=for-the-badge) ![Lavender](https://img.shields.io/badge/%20%20Lavender%20%20-c19bff?style=for-the-badge) ![Sky](https://img.shields.io/badge/%20%20Sky%20%20-7fc8ff?style=for-the-badge) ![Petal](https://img.shields.io/badge/%20%20Petal%20%20-ffe0ee?style=for-the-badge)
 
 </div>
 
@@ -845,22 +855,19 @@ Script có thể ngừng khớp. Mở Console xem lý do, rồi sửa lại các
 | Sky | `#7fc8ff` | Dữ liệu, liên kết, nhóm thu thập |
 | Petal | `#ffe0ee` | Chữ sáng trên nền tối |
 
-### Hình động trong README hoạt động thế nào
+### Hiệu ứng trong README hoạt động thế nào
 
-- **SVG thuần và CSS `@keyframes`**, không có JavaScript. GitHub hiển thị được vì mỗi hình nằm trong thẻ `<img>`.
-- Banner đầu trang xếp lớp từ xa đến gần: tinh vân trôi chậm, dải ngân hà, sao nhấp nháy, quỹ đạo nét đứt có hạt chạy, hành tinh có vành đai và vệ tinh, sao băng, cánh hoa rơi, rồi tới chữ phát sáng có vệt sáng quét qua.
-- Tôn trọng `prefers-reduced-motion`: nếu hệ điều hành bật giảm chuyển động thì mọi hình đứng yên, giống giao diện của script.
-- Hình nằm ngay trong repo (`assets/`). Chỉ badge (shields.io), chữ gõ tự động (readme-typing-svg) và ảnh động anime (nekos.best) được tải từ dịch vụ ngoài.
+- **Banner đầu và cuối trang** dùng [capsule-render](https://github.com/kyechan99/capsule-render): sóng gradient từ Midnight sang Indigo rồi Sakura, chữ mờ dần hiện ra.
+- **Banner đề mục** là thanh bo tròn gradient, chữ nhấp nháy như sao.
+- **Chữ gõ tự động** dùng `readme-typing-svg`, **badge** dùng `shields.io`, **ảnh động anime** lấy từ `nekos.best`.
+- **Sơ đồ** vẽ bằng Mermaid, GitHub tự hiển thị, không cần file hình nào trong repo.
+- Tất cả tải từ dịch vụ ngoài qua đường dẫn, nên repo không chứa file hình nào và cần có mạng mới thấy đủ.
 
 ### Tuỳ biến
 
-```bash
-python tools/generate_assets.py
-```
+Muốn đổi màu banner, sửa phần `color=0:...,50:...,100:...` trong đường dẫn ảnh (mã hex không có dấu `#`). Muốn đổi chữ trên banner thì sửa tham số `text=`.
 
-Sửa `PALETTE` ở đầu file `tools/generate_assets.py` để đổi màu, hoặc thêm một dòng vào `BANNER_SPECS` để có banner đề mục mới. Chỉ cần Python 3, không cần cài thêm thư viện.
-
-<img src="assets/banners/japanese.svg" alt="Tiếng Nhật mini (japanese)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Japanese&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Tiếng Nhật mini (japanese)" width="100%">
 
 > 🌸 **Sakura-chan:** 「日本語を勉強しよう！」 Học vài từ Nhật cùng nhau nào (◕‿◕)♡
 
@@ -883,7 +890,7 @@ Sửa `PALETTE` ở đầu file `tools/generate_assets.py` để đổi màu, ho
 | 花見 | hanami | ngắm hoa | Cảm hứng cho cánh hoa rơi |
 | ありがとう | arigatou | cảm ơn | Dành cho bạn đã đọc đến đây |
 
-<img src="assets/banners/glossary.svg" alt="Thuật ngữ (glossary)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Glossary&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Thuật ngữ (glossary)" width="100%">
 
 > 🌸 **Sakura-chan:** 「用語集！」 Mấy từ kỹ thuật giải thích gọn ở đây (*´▽`*)
 
@@ -908,7 +915,7 @@ Sửa `PALETTE` ở đầu file `tools/generate_assets.py` để đổi màu, ho
 | **`⟦img:...⟧`** | "Chữ giả" đại diện cho một ảnh, dựa vào tên file |
 | **`[ĐS]`** | Tiền tố đánh dấu một ý của câu đúng/sai |
 
-<img src="assets/banners/changelog.svg" alt="Lịch sử phiên bản (changelog)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Changelog&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Lịch sử phiên bản (changelog)" width="100%">
 
 > 🌸 **Sakura-chan:** 「進化中！」 Mỗi phiên bản là một bước tiến nhỏ (◕‿◕)♡
 
@@ -939,7 +946,7 @@ timeline
         Ngôn ngữ : Đa ngôn ngữ
 ```
 
-<img src="assets/banners/notes.svg" alt="Lưu ý (notes)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Notes&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Lưu ý (notes)" width="100%">
 
 > 🌸 **Sakura-chan:** 「最後に…」 Nhớ dùng đúng cách và tôn trọng quy định nhé (｡•̀ᴗ-)✧
 
@@ -956,7 +963,7 @@ timeline
 - 🌸 Trang web có thể thay đổi cấu trúc bất cứ lúc nào, script có thể ngừng hoạt động mà không báo trước.
 - 🌸 Nếu chủ sở hữu trang hoặc nhà trường yêu cầu, mình sẽ gỡ nội dung liên quan.
 
-<img src="assets/banners/contact.svg" alt="Đóng góp và liên hệ (contribute)" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rounded&color=0:302b63,50:8e2c8f,100:302b63&height=70&text=Contribute&fontSize=30&fontColor=ffe0ee&animation=twinkling" alt="Đóng góp và liên hệ (contribute)" width="100%">
 
 > 🌸 **Sakura-chan:** 「一緒にやろう！」 Có ý tưởng hay gặp lỗi gì cứ nói mình nhé (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
 
@@ -981,7 +988,6 @@ Mở một [Issue](https://github.com/Huy7684/School/issues) và cho mình biế
 - Ý tưởng mới: mở Issue, mô tả bạn muốn làm gì và vì sao.
 - Pull request: tách từ `main`, mỗi PR một việc nhỏ, ghi rõ đã thử ở trang nào.
 - Giữ nguyên nguyên tắc của dự án: **không tự nộp bài**, **không gửi dữ liệu ra ngoài** trừ kênh GitHub do người dùng chủ động bấm, không vượt qua đăng nhập.
-- Muốn sửa hình động của README: chỉnh `tools/generate_assets.py` rồi chạy lại, đừng sửa tay file `.svg`.
 
 ### 📬 Liên hệ
 
@@ -1004,11 +1010,11 @@ Chủ repo: [@Huy7684](https://github.com/Huy7684)
 
 - Ảnh động anime và fanart lấy từ API công khai của **[nekos.best](https://nekos.best)**, mỗi ảnh động ghi tên anime gốc ở dưới.
 - Fanart thuộc về các hoạ sĩ ghi trên ảnh (liên kết sang trang Pixiv của họ). Hình ảnh nhân vật thuộc về studio, tác giả gốc.
-- Banner, sơ đồ và hình động: SVG tự vẽ trong `assets/` (sinh bằng `tools/generate_assets.py`). Chữ gõ tự động: `readme-typing-svg`. Badge: `shields.io`.
+- Banner: `capsule-render`. Sơ đồ: Mermaid. Chữ gõ tự động: `readme-typing-svg`. Badge: `shields.io`.
 - Dự án này không sở hữu các hình ảnh trên và chỉ dùng để trang trí. Nếu chủ sở hữu muốn gỡ, mình sẽ gỡ ngay.
 
 </details>
 
-<img src="assets/footer.svg" alt="ganbatte ne~" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff7fb8,50:302b63,100:0f0c29&height=170&section=footer&text=ganbatte%20ne~&fontSize=34&fontColor=ffe0ee&fontAlignY=70&animation=twinkling" alt="ganbatte ne~" width="100%">
 
 </div>
