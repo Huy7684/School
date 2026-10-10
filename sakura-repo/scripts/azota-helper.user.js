@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      2.6
-// @description  桜 Sakura Edition: quét "Đáp án đúng" ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
+// @version      2.7
+// @description  桜 Sakura Edition: quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
 // @run-at       document-idle
@@ -67,7 +67,7 @@
 
   // ---------- Học từ trang xem đáp án ----------
   // Mỗi câu có chữ "Đáp án đúng: X" và các phương án "A. ...": quét từng thẻ câu, lưu nội dung phương án đúng.
-  const ANS_RE = /^Đáp án đúng\s*:\s*([A-F])(?![\p{L}\p{N}])/iu;   // không đòi hết dòng: có thể có nút "Tìm Giáo Án" chèn thêm phía sau
+  const ANS_RE = /^Đáp án đúng\s*:\s*([A-F])(?![\p{L}\p{N}\)])/iu;   // không đòi hết dòng: có thể có nút "Tìm Giáo Án" chèn thêm phía sau
   // Đọc phương án theo thứ tự A, B, C, D... kể cả khi cả 4 phương án nằm cùng 1 dòng
   function parseOpts(body) {
     const opts = {}, hits = [];
@@ -121,6 +121,35 @@
     }
     return null;
   }
+  // Câu ĐÚNG/SAI: "a) ... b) ... c) ... d) ..." + "Đáp án đúng: a) Đúng b) Sai ..." -> mỗi ý lưu thành 1 bản ghi "[ĐS] nội dung ý" -> Đúng/Sai
+  const DS = '[ĐS] ';
+  const DS_ANS = /Đáp án đúng\s*:?\s*[a-d]\s*\)\s*(?:Đúng|Sai)/i;
+  function readDS(texts) {
+    for (const tx of texts) {
+      const am = tx.match(/Đáp án đúng\s*:?([\s\S]*?)(?=Thí sinh|Câu làm sai|$)/i);
+      if (!am) continue;
+      const ans = {};
+      am[1].replace(/(?:^|\s)([a-d])\s*\)\s*(Đúng|Sai|đúng|sai)/g, (m, l, v) => { ans[l] = /^đ/i.test(v) ? 'Đúng' : 'Sai'; return m; });
+      if (!Object.keys(ans).length) continue;
+      const head = tx.slice(0, tx.search(/Đáp án đúng/i));
+      const at = head.search(/(^|\s)a\s*\)\s*\.?\s*\S/i);
+      if (at < 0) continue;
+      const body = head.slice(at), hits = [];
+      let pos = 0;
+      for (const L of 'abcd') {
+        const re = new RegExp('(?<=^|\\s)' + L + '\\s*\\)\\s*\\.?\\s*', 'gi');
+        re.lastIndex = pos;
+        const m = re.exec(body);
+        if (!m) break;
+        hits.push({ L, end: m.index + m[0].length, start: m.index });
+        pos = m.index + m[0].length;
+      }
+      const items = [];
+      hits.forEach((h, i) => { const t = flat(body.slice(h.end, i + 1 < hits.length ? hits[i + 1].start : body.length)); if (t && ans[h.L]) items.push({ q: DS + t, correct: ans[h.L] }); });
+      if (items.length) return items;
+    }
+    return null;
+  }
   // đọc 1 câu từ nhãn "Câu N": leo lên thẻ nhỏ nhất có "Đáp án đúng"; nếu thẻ gộp nhiều câu thì cắt đoạn từ "Câu N" tới "Câu kế tiếp"
   function readByLabel(labelEl, num) {
     for (let card = labelEl, i = 0; card && i < 12; card = card.parentElement, i++) {
@@ -142,6 +171,7 @@
         seg = s1 || s2;
         texts = (card.querySelector('img') ? [s2, s1] : [s1, s2]).filter(Boolean);
       }
+      if (DS_ANS.test(seg)) { const items = readDS(texts); return items ? { ds: items } : { why: 'không đọc được các ý đúng/sai', sample: seg }; }
       const lm = seg.match(/Đáp án đúng\s*:?\s*([A-F])/i);
       if (!lm) return { why: 'không thấy chữ cái đáp án', sample: seg };
       const L = lm[1].toUpperCase();
@@ -153,9 +183,9 @@
   const warnedFail = new Set();
   function learnNow() {
     let n = 0, seen = 0, tagged = 0;
-    const code = examCode(), okNums = new Set();
-    const store = (q, correct) => {
-      seen++;
+    const code = examCode(), okNums = new Set(), okCards = [];
+    const store = (q, correct, noSeen) => {
+      if (!noSeen) seen++;
       const k = norm(q);
       if (bank[k] && norm(bank[k].correct) === norm(correct)) { if (code && bank[k].t !== code) { bank[k].t = code; tagged++; } return; }
       bank[k] = { q, correct, t: code || undefined };
@@ -184,28 +214,32 @@
       if (!r) return;
       const num = (text.match(/Câu\s*(\d+)/i) || [])[1];
       if (num) okNums.add(num);
+      okCards.push(card);
       store(r.q, r.correct);
     });
     // 2) theo nhãn "Câu N": đếm số câu trên trang và đọc lại những câu bước 1 bỏ sót
-    const labels = {};
+    const labelEls = [];
     const tw2 = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     for (let node; (node = tw2.nextNode());) {
       const m = node.nodeValue.match(/^\s*Câu\s*(\d+)\s*$/i);
-      if (m && node.parentElement && !node.parentElement.closest('#' + panelId) && !labels[m[1]]) labels[m[1]] = node.parentElement;
+      if (m && node.parentElement && !node.parentElement.closest('#' + panelId)) labelEls.push({ num: m[1], el: node.parentElement });
     }
-    const nums = Object.keys(labels), why = {};
-    nums.forEach(num => {
-      if (okNums.has(num)) return;
-      const r = readByLabel(labels[num], num);
-      if (r.q === undefined && r.why) {
-        why[num] = r.why;
-        const wk = num + '|' + r.why;
-        if (!warnedFail.has(wk)) { warnedFail.add(wk); console.warn('[Azota Helper] Câu ' + num + ': ' + r.why, JSON.stringify(String(r.sample || '').slice(0, 500))); }
-      } else { okNums.add(num); store(r.q, r.correct); }
+    const okIdx = new Set(), why = {}, skip = new Set();
+    labelEls.forEach((lb, i) => {
+      if (okCards.some(c => c.contains(lb.el))) { okIdx.add(i); return; }
+      const r = readByLabel(lb.el, lb.num);
+      if (r.ds) { okIdx.add(i); seen++; r.ds.forEach(x => store(x.q, x.correct, true)); }
+      else if (r.q === undefined && r.why) {
+        // nhãn "Câu N" trùng số ở chỗ không phải thẻ câu (không có đáp án đi kèm): bỏ qua, không tính là câu thiếu
+        if (r.why === 'không tìm thấy thẻ câu' && labelEls.some((o, k) => k !== i && o.num === lb.num && (okIdx.has(k) || k < i))) { skip.add(i); return; }
+        why[i] = r.why;
+        const wk = lb.num + '|' + r.why;
+        if (!warnedFail.has(wk)) { warnedFail.add(wk); console.warn('[Azota Helper] Câu ' + lb.num + ': ' + r.why, JSON.stringify(String(r.sample || '').slice(0, 500))); }
+      } else { okIdx.add(i); store(r.q, r.correct); }
     });
     if (n || tagged) saveBank();
-    const missing = nums.filter(x => !okNums.has(x)).sort((a, b) => a - b).map(x => x + (why[x] ? ' (' + why[x] + ')' : ''));
-    return { n, seen, total: nums.length, missing };
+    const missing = labelEls.map((lb, i) => ({ lb, i })).filter(x => !okIdx.has(x.i) && !skip.has(x.i)).sort((a, b) => a.lb.num - b.lb.num).map(x => x.lb.num + (why[x.i] ? ' (' + why[x.i] + ')' : ''));
+    return { n, seen, total: labelEls.length - skip.size, missing };
   }
 
   // ---------- Chọn đáp án đã nhớ ----------
@@ -247,6 +281,20 @@
     }
     return { qEl };
   }
+  // Câu đúng/sai: tìm dòng chứa nội dung ý, rồi bấm nút "Đúng" / "Sai" trong dòng đó (nếu dòng chứa nhiều ý thì không đoán bừa)
+  function locateDS(rec, all) {
+    const k = norm2(rec.q.slice(DS.length));
+    if (!k) return null;
+    const stEl = deepest(all.filter(a => { const t = norm2(a.t); return t.length >= k.length && t.length <= k.length + 6 && t.includes(k); }))[0];
+    if (!stEl) return null;
+    for (let card = stEl.el.parentElement, i = 0; card && i < 6; card = card.parentElement, i++) {
+      const hits = deepest(all.filter(a => card.contains(a.el) && !a.el.contains(stEl.el) && a.el !== stEl.el && sameText(a.t, rec.correct)));
+      if (!hits.length) continue;
+      if (hits.length > 1) return { qEl: stEl, noFallback: true };
+      return { qEl: stEl, card, target: hits[0].el, noFallback: true };
+    }
+    return { qEl: stEl, noFallback: true };
+  }
   const clearHl = () => { hl.forEach(el => { el.style.outline = ''; el.style.outlineOffset = ''; }); hl.clear(); };
 
   function selectNow() {
@@ -258,11 +306,12 @@
     if (!recs.length) return { found: 0, done: 0, page: pageQ.size, bankN: 0 };
     const active = cfg.run && cfg.select;
     if (active) clearHl();
-    let found = 0;
+    let found = 0, dsFound = 0;
     for (const rec of recs) {
-      const loc = locate(rec, all);
+      const isDS = rec.q.startsWith(DS);
+      const loc = isDS ? locateDS(rec, all) : locate(rec, all);
       if (!loc) continue;
-      found++;
+      if (isDS) dsFound++; else found++;
       if (!loc.target) continue;
       const key = norm(rec.q);
       if (clickedQ.has(key)) continue;               // mỗi câu chỉ chọn 1 lần, không đè lên lựa chọn của bạn
@@ -277,14 +326,14 @@
       press(target);
       // nếu trang chưa đổi gì thì thử bấm vòng tròn chữ cái / cả hàng
       setTimeout(() => {
-        if (card.outerHTML !== before) return;
+        if (loc.noFallback || card.outerHTML !== before) return;
         const row = target.parentElement;
         if (row && row.children[0] && row.children[0] !== target) press(row.children[0]);
         setTimeout(() => { if (card.outerHTML === before && row) press(row); }, 400);
       }, 500);
       if (cfg.delay > 0) break;                      // có độ trễ: mỗi nhịp chỉ chọn 1 câu
     }
-    return { found, done: clickedQ.size, page: pageQ.size, bankN: recs.length };
+    return { found: found + Math.floor(dsFound / 4), ds: dsFound, done: clickedQ.size, page: pageQ.size, bankN: recs.length };
   }
 
   // ---------- UI Sakura ----------
@@ -446,7 +495,7 @@
     <div id="azh-head">
       <div class="azh-logo">
         <div class="azh-mascot"><div class="azh-flower">${flower}</div></div>
-        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.6 · 桜 SAKURA</div></div>
+        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.7 · 桜 SAKURA</div></div>
       </div>
       <div class="azh-hbtns">
         <button id="azh-run" class="azh-runbtn"></button>
@@ -793,7 +842,7 @@
       if (!r.bankN) return ts('chưa có đáp án cho đề này');
       if (!cfg.run) return ts('đã tạm dừng' + (r.found ? `, tô viền ${r.found} câu đã nhớ` : ''));
       if (!cfg.select) return ts(`tự chọn đang tắt, tô viền gợi ý ${r.found} câu`);
-      return ts(`khớp ${r.found}/${r.page || r.bankN} câu, đã chọn ${r.done}`);
+      return ts(`khớp ${r.found}/${r.page || r.bankN} câu` + (r.ds ? ` (${r.ds} ý đúng/sai)` : '') + `, đã chọn ${r.done}`);
     }
     prog(0, 0);
     if (!cfg.run) return ts('đã tạm dừng, không quét đáp án');
