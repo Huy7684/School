@@ -22,7 +22,26 @@
   const panelId = 'azh';
 
   let bank = load(BANK_KEY) || {};
-  const cfg = Object.assign({ run: true, select: true, learn: true, delay: 300, min: false, x: null, y: null }, load(CFG_KEY) || {});
+  const cfg = Object.assign({ run: true, select: true, learn: true, delay: 300, min: false, x: null, y: null, code: '' }, load(CFG_KEY) || {});
+
+  // ---------- Mã đề (từ link) ----------
+  function extractCode(v) {
+    v = String(v || '').trim();
+    if (!v) return '';
+    const clean = s => s.toLowerCase().replace(/[^a-z0-9_-]/g, '');
+    let path = v;
+    try { path = new URL(v).pathname; } catch (e) {}
+    const segs = path.split('/').map(s => s.trim()).filter(Boolean);
+    if (segs.length > 1 || /^https?:/i.test(v)) {
+      const num = segs.find(s => /^\d{5,}$/.test(s));
+      if (num) return num;
+      const c = segs.filter(s => !/^(vi|en|test|take|take-test|answer-test|exam|result|submit-test|do|view)$/i.test(s)).pop();
+      return c ? clean(c) : '';
+    }
+    return clean(v);
+  }
+  const autoCode = () => extractCode(location.href);
+  const examCode = () => extractCode(cfg.code) || autoCode();
   const saveBank = () => { try { localStorage.setItem(BANK_KEY, JSON.stringify(bank)); } catch (e) {} };
   const saveCfg = () => { try { localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); } catch (e) {} };
 
@@ -38,7 +57,7 @@
   // Mỗi câu có chữ "Đáp án đúng: X" và các phương án "A. ...": quét từng thẻ câu, lưu nội dung phương án đúng.
   const ANS_RE = /^Đáp án đúng\s*:\s*([A-F])$/i;
   function learnNow() {
-    let n = 0, seen = 0;
+    let n = 0, seen = 0, tagged = 0;
     const marks = [];
     document.querySelectorAll('div, span, p, b, strong, label').forEach(el => {
       if (el.children.length || el.closest('#' + panelId)) return;
@@ -62,11 +81,12 @@
       if (q.length < 3 || !opts[letter]) return;
       seen++;
       const k = norm(q);
-      if (bank[k] && norm(bank[k].correct) === norm(opts[letter])) return;
-      bank[k] = { q, correct: opts[letter] };
+      const code = examCode();
+      if (bank[k] && norm(bank[k].correct) === norm(opts[letter])) { if (code && bank[k].t !== code) { bank[k].t = code; tagged++; } return; }
+      bank[k] = { q, correct: opts[letter], t: code || undefined };
       n++;
     });
-    if (n) saveBank();
+    if (n || tagged) saveBank();
     return { n, seen };
   }
 
@@ -333,6 +353,7 @@
         </div>
 
         <div class="azh-acts">
+          <input id="azh-code" type="text" spellcheck="false" style="grid-column:1/-1;width:100%;padding:8px 12px;border-radius:999px;border:1.5px solid #e3b6e8;background:rgba(255,255,255,.85);font:12px 'Segoe UI',sans-serif;color:#4a3b5c;outline:0">
           <button id="azh-gpull" class="azh-act wide" style="grid-column:1/-1">Tải đáp án từ GitHub</button>
           <button id="azh-gpush" class="azh-act wide alt" style="grid-column:1/-1">Lưu sổ lên GitHub</button>
           <button id="azh-book" class="azh-act wide">Xem sổ đáp án</button>
@@ -483,7 +504,7 @@
   $('azh-book').onclick = () => showBook(true);
 
   // ---------- Lưu lên GitHub (token nhập mỗi lần, dùng xong bỏ, không lưu) ----------
-  const GHC = { user: 'Huy7684', repo: 'School', branch: 'main', dir: 'sakura-repo/', file: 'banks/azota.txt' };
+  const GHC = { user: 'Huy7684', repo: 'School', branch: 'main', dir: 'sakura-repo/', site: 'azota' };
   const ghEnc = str => { const u = new TextEncoder().encode(str); let s = ''; for (let i = 0; i < u.length; i += 8192) s += String.fromCharCode.apply(null, u.subarray(i, i + 8192)); return btoa(s); };
   const ghDec = b64 => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\s/g, '')), c => c.charCodeAt(0)));
   const ghParse = txt => {
@@ -509,8 +530,8 @@
       document.dispatchEvent(new CustomEvent('sakura-http', { detail: JSON.stringify({ id, method, url, headers, data }) }));
     });
   }
-  function ghReq(method, tok, body) {
-    const url = `https://api.github.com/repos/${GHC.user}/${GHC.repo}/contents/${GHC.dir}${GHC.file}` + (method === 'GET' ? '?ref=' + GHC.branch : '');
+  function ghReq(method, tok, file, body) {
+    const url = `https://api.github.com/repos/${GHC.user}/${GHC.repo}/contents/${GHC.dir}${file}` + (method === 'GET' ? '?ref=' + GHC.branch : '');
     const headers = { Authorization: 'Bearer ' + tok, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' };
     const data = body ? JSON.stringify(body) : undefined;
     return fetch(url, { method, headers, body: data })
@@ -520,36 +541,52 @@
   const ghErr = s => s === 0 ? 'không kết nối được GitHub (mạng hoặc trang chặn, cần cài Sakura Loader)'
     : (s === 401 || s === 403) ? 'token sai/hết hạn/thiếu quyền Contents: Read and write (HTTP ' + s + ')'
     : s === 404 ? 'token không thấy repo ' + GHC.repo + ' (HTTP 404)' : 'lỗi GitHub HTTP ' + s;
+  // gộp items vào 1 file trên GitHub; trả {n} (số câu mới/đổi) hoặc {err}
+  async function ghPushFile(tok, file, items) {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const cur = await ghReq('GET', tok, file);
+      if (cur.s !== 200 && cur.s !== 404) return { err: ghErr(cur.s) };
+      const map = {};
+      if (cur.s === 200) ghParse(ghDec(cur.j.content)).forEach(([q, c]) => { map[norm(q)] = [q, c]; });
+      let n = 0;
+      items.forEach(([q, c]) => { const k = norm(q); if (!map[k] || norm(map[k][1]) !== norm(c)) n++; map[k] = [q, c]; });
+      if (!n) return { n: 0 };
+      const text = '# Mỗi dòng: câu hỏi ||| đáp án đúng\n' + Object.values(map).sort((a, b) => a[0].toLowerCase() < b[0].toLowerCase() ? -1 : 1).map(([q, c]) => `${q} ||| ${c}`).join('\n') + '\n';
+      const put = await ghReq('PUT', tok, file, { message: `bank ${file}: +${n}`, content: ghEnc(text), branch: GHC.branch, sha: cur.s === 200 ? cur.j.sha : undefined });
+      if (put.s === 200 || put.s === 201) return { n };
+      if (put.s !== 409 && put.s !== 422) return { err: ghErr(put.s) };
+    }
+    return { err: 'xung đột phiên bản, bấm lưu lại nhé' };
+  }
   async function pushGithub() {
-    const items = Object.values(bank).filter(r => r && r.q && r.correct).map(r => [flat(r.q), flat(r.correct)]);
-    if (!items.length) return stat('sổ đang trống, chưa có gì để lưu');
-    let tok = prompt('Dán GitHub token để lưu ' + items.length + ' câu (dùng 1 lần, không được lưu lại):', '');
+    const code = examCode();
+    const all = Object.values(bank).filter(r => r && r.q && r.correct);
+    const mine = code ? all.filter(r => r.t === code) : [];
+    const pair = r => [flat(r.q), flat(r.correct)];
+    if (!all.length) return stat('sổ đang trống, chưa có gì để lưu');
+    let tok = prompt('Dán GitHub token để lưu (dùng 1 lần, không được lưu lại)\nSổ chung: ' + all.length + ' câu' + (code ? '\nĐề ' + code + ': ' + mine.length + ' câu' : '\n(chưa nhận ra mã đề)'), '');
     if (!tok || !tok.trim()) return stat('đã huỷ, chưa lưu');
     tok = tok.trim();
     stat('đang lưu lên GitHub...');
     try {
-      for (let attempt = 0; attempt < 2; attempt++) {
-        const cur = await ghReq('GET', tok);
-        if (cur.s !== 200 && cur.s !== 404) return stat(ghErr(cur.s));
-        const map = {};
-        if (cur.s === 200) ghParse(ghDec(cur.j.content)).forEach(([q, c]) => { map[norm(q)] = [q, c]; });
-        let n = 0;
-        items.forEach(([q, c]) => { const k = norm(q); if (!map[k] || norm(map[k][1]) !== norm(c)) n++; map[k] = [q, c]; });
-        if (!n) return stat('sổ đã khớp GitHub, không có gì mới');
-        const text = '# Mỗi dòng: câu hỏi ||| đáp án đúng\n' + Object.values(map).sort((a, b) => a[0].toLowerCase() < b[0].toLowerCase() ? -1 : 1).map(([q, c]) => `${q} ||| ${c}`).join('\n') + '\n';
-        const put = await ghReq('PUT', tok, { message: `bank azota: +${n}`, content: ghEnc(text), branch: GHC.branch, sha: cur.s === 200 ? cur.j.sha : undefined });
-        if (put.s === 200 || put.s === 201) return stat(`đã lưu +${n} câu lên GitHub`);
-        if (put.s !== 409 && put.s !== 422) return stat(ghErr(put.s));
-      }
-      stat('xung đột phiên bản, bấm lưu lại nhé');
+      const r1 = await ghPushFile(tok, `banks/${GHC.site}.txt`, all.map(pair));
+      if (r1.err) return stat(r1.err);
+      let r2 = { n: 0 };
+      if (code && mine.length) { r2 = await ghPushFile(tok, `banks/${GHC.site}/${code}.txt`, mine.map(pair)); if (r2.err) return stat(r2.err); }
+      stat(r1.n || r2.n ? `đã lưu: sổ chung +${r1.n}` + (code && mine.length ? `, đề ${code} +${r2.n}` : '') : 'sổ đã khớp GitHub, không có gì mới');
     } finally { tok = null; }
   }
 
   // ---------- Nút tải từ GitHub (cần Sakura Loader) ----------
   let gAck = 0;
-  const gAsk = (ev, msg) => { gAck = 0; stat(msg); document.dispatchEvent(new CustomEvent(ev)); setTimeout(() => { if (!gAck) stat('chưa thấy Sakura Loader, cài loader trước nhé'); }, 3000); };
+  const gAsk = (ev, msg) => { gAck = 0; stat(msg); document.dispatchEvent(new CustomEvent(ev, { detail: examCode() })); setTimeout(() => { if (!gAck) stat('chưa thấy Sakura Loader, cài loader trước nhé'); }, 3000); };
   $('azh-gpull').onclick = () => gAsk('sakura-pull', 'đang tải đáp án từ GitHub...');
   $('azh-gpush').onclick = pushGithub;
+  const codeEl = $('azh-code');
+  codeEl.value = cfg.code || '';
+  codeEl.onchange = () => { cfg.code = extractCode(codeEl.value); codeEl.value = cfg.code; saveCfg(); stat(cfg.code ? 'mã đề: ' + cfg.code : 'dùng mã tự nhận từ trang: ' + (autoCode() || 'không có')); };
+  setInterval(() => { const h = 'Link / mã đề (tự nhận: ' + (autoCode() || 'không có') + ')'; if (codeEl.placeholder !== h) codeEl.placeholder = h; }, 1000);
+
   document.addEventListener('sakura-status', e => { gAck = 1; bank = load(BANK_KEY) || {}; stat(String(e.detail || '')); });
   $('azh-back').onclick = () => showBook(false);
   $('azh-q').oninput = renderBook;
@@ -601,7 +638,7 @@
       return stat(`khớp ${r.found}/${r.page || r.bankN} câu, đã chọn ${r.done}`);
     }
     prog(0, 0);
-    if (!cfg.run || !cfg.learn) return;
+    if (!cfg.learn) return;
     const r = learnNow();
     learnedNow += r.n;
     if (r.seen) stat(`đã quét ${r.seen} câu, học thêm ${learnedNow} câu mới`);
