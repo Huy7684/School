@@ -78,10 +78,11 @@
     try { path = new URL(v).pathname; } catch (e) {}
     const segs = path.split('/').map(s => s.trim()).filter(Boolean);
     if (segs.length > 1 || /^https?:/i.test(v)) {
-      const num = segs.find(s => /^\d{5,}$/.test(s));
-      if (num) return num;
-      const c = segs.filter(s => !/^(vi|en|test|take|take-test|answer-test|exam|result|submit-test|do|view)$/i.test(s)).pop();
-      return c ? clean(c) : '';
+      // azota.vn/de-thi/xmq2mr, .../answer-test/23611069/0/xmq2mr/544206132 -> xmq2mr (bỏ các đoạn toàn số và từ khoá đường dẫn)
+      const skip = /^(vi|en|test|take|take-test|answer-test|exam|result|submit-test|do|view|de-thi|share)$/i;
+      const cand = segs.filter(s => !skip.test(s) && !/^\d+$/.test(s));
+      if (cand.length) return clean(cand[0]);
+      return segs.find(s => /^\d{5,}$/.test(s)) || '';
     }
     return clean(v);
   }
