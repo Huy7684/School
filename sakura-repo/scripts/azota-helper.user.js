@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      2.4
+// @version      2.5
 // @description  桜 Sakura Edition: quét "Đáp án đúng" ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -56,7 +56,7 @@
 
   // ---------- Học từ trang xem đáp án ----------
   // Mỗi câu có chữ "Đáp án đúng: X" và các phương án "A. ...": quét từng thẻ câu, lưu nội dung phương án đúng.
-  const ANS_RE = /^Đáp án đúng\s*:\s*([A-F])$/i;
+  const ANS_RE = /^Đáp án đúng\s*:\s*([A-F])(?![\p{L}\p{N}])/iu;   // không đòi hết dòng: có thể có nút "Tìm Giáo Án" chèn thêm phía sau
   // Đọc phương án theo thứ tự A, B, C, D... kể cả khi cả 4 phương án nằm cùng 1 dòng
   function parseOpts(body) {
     const opts = {}, hits = [];
@@ -407,7 +407,7 @@
     <div id="azh-head">
       <div class="azh-logo">
         <div class="azh-mascot"><div class="azh-flower">${flower}</div></div>
-        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.4 · 桜 SAKURA</div></div>
+        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.5 · 桜 SAKURA</div></div>
       </div>
       <div class="azh-hbtns">
         <button id="azh-run" class="azh-runbtn"></button>
