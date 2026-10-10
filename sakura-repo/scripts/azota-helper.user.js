@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      2.9
+// @version      3.0
 // @description  桜 Sakura Edition: quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -28,7 +28,8 @@
   let ghNote = '', holdUntil = 0;        // ghi chú GitHub hiện cạnh trạng thái; giữ thông báo thao tác vài giây
   // dọn bản ghi hỏng cũ (đáp án chỉ là "B. C. D." do không đọc được ảnh)
   const labelOnly = c => /^(?:[A-F]\s*\.\s*)+$/i.test(flat(c));
-  { let dirty = 0; Object.keys(bank).forEach(k => { const r = bank[k]; if (!r || !r.q || !r.correct || labelOnly(r.correct)) { delete bank[k]; dirty = 1; } }); if (dirty) { try { localStorage.setItem(BANK_KEY, JSON.stringify(bank)); } catch (e) {} } }
+  const cleanAns = s => flat(s).replace(/\s*(Giải thích|Tìm (Giáo Án|Tài Liệu)).*$/i, '');   // bỏ chữ nút dính vào đáp án
+  { let dirty = 0; Object.keys(bank).forEach(k => { const r = bank[k]; if (r && r.correct) { const cc = cleanAns(r.correct); if (cc !== r.correct) { r.correct = cc; dirty = 1; } } if (!r || !r.q || !r.correct || labelOnly(r.correct)) { delete bank[k]; dirty = 1; } }); if (dirty) { try { localStorage.setItem(BANK_KEY, JSON.stringify(bank)); } catch (e) {} } }
 
   // ---------- Mã đề (từ link) ----------
   function extractCode(v) {
@@ -95,7 +96,7 @@
   }
   function imgTok(im) {
     const r = im.getBoundingClientRect();
-    if (r.width < 20 || r.height < 20) return '';     // bỏ icon nhỏ / ảnh ẩn
+    if (r.width < 20 || (r.height > 0 && r.height < 20)) return '';     // bỏ icon nhỏ; giữ ảnh chưa có chiều cao (cao 0)
     const k = imgKey(im);
     return k ? '⟦img:' + k + '⟧' : '';
   }
@@ -117,7 +118,7 @@
       if (at < 0) continue;
       const q = flat(tx.slice(0, at).replace(/Câu\s*\d+/i, '').replace(/ID\s*:\s*\d+/gi, ''));
       const opts = parseOpts(tx.slice(at).replace(/Đáp án đúng[\s\S]*$/i, ''));
-      if (q.length >= 3 && opts[letter]) return { q, correct: opts[letter] };
+      if (q.length >= 3 && opts[letter]) return { q, correct: cleanAns(opts[letter]) };
     }
     return null;
   }
@@ -276,7 +277,7 @@
     if (!qEl) return null;
     for (let card = qEl.el.parentElement, i = 0; card && i < 8; card = card.parentElement, i++) {
       if (((card.innerText || '').match(/(^|\n)\s*Câu\s*\d+/gi) || []).length > 1) return { qEl, why: 'thẻ gộp nhiều câu' };   // leo quá cao
-      const hits = deepest(all.filter(a => card.contains(a.el) && !a.el.contains(qEl.el) && a.el !== qEl.el && sameText(a.t, rec.correct)));
+      const hits = deepest(all.filter(a => card.contains(a.el) && !a.el.contains(qEl.el) && a.el !== qEl.el && sameText(a.t, cleanAns(rec.correct))));
       if (!hits.length) continue;
       if (hits.length > 1) return { qEl, why: hits.length + ' ô trùng nhau' };           // hai phương án trùng chữ: không đoán bừa
       return { qEl, card, target: hits[0].el };
@@ -290,7 +291,7 @@
     const stEl = deepest(all.filter(a => { const t = norm2(a.t); return t.length >= k.length && t.length <= k.length + 6 && t.includes(k); }))[0];
     if (!stEl) return null;
     for (let card = stEl.el.parentElement, i = 0; card && i < 6; card = card.parentElement, i++) {
-      const hits = deepest(all.filter(a => card.contains(a.el) && !a.el.contains(stEl.el) && a.el !== stEl.el && sameText(a.t, rec.correct)));
+      const hits = deepest(all.filter(a => card.contains(a.el) && !a.el.contains(stEl.el) && a.el !== stEl.el && sameText(a.t, cleanAns(rec.correct))));
       if (!hits.length) continue;
       if (hits.length > 1) return { qEl: stEl, noFallback: true };
       return { qEl: stEl, card, target: hits[0].el, noFallback: true };
@@ -509,7 +510,7 @@
     <div id="azh-head">
       <div class="azh-logo">
         <div class="azh-mascot"><div class="azh-flower">${flower}</div></div>
-        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.9 · 桜 SAKURA</div></div>
+        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v3.0 · 桜 SAKURA</div></div>
       </div>
       <div class="azh-hbtns">
         <button id="azh-run" class="azh-runbtn"></button>
@@ -780,7 +781,7 @@
     if (code !== examCode()) return;                 // đã sang link khác, bỏ kết quả cũ
     if (r.s === 200 && r.j && r.j.content) {
       const items = ghParse(ghDec(r.j.content)).filter(([q, c]) => !labelOnly(c));
-      items.forEach(([q, c]) => { bank[norm(q)] = { q, correct: c, t: code }; });
+      items.forEach(([q, c]) => { bank[norm(q)] = { q, correct: cleanAns(c), t: code }; });
       saveBank();
       ghNote = `đề ${code}: đã tải ${items.length} câu từ GitHub`;
     } else if (r.s === 404) ghNote = `đề ${code} không có trên GitHub`;
