@@ -88,6 +88,7 @@ Bộ giao tiếp mạng (NIC) có chức năng gì? ||| Truyền và nhận dữ
 Bộ nhớ chính (bộ nhớ trong - memory) bao gồm: ||| ROM và RAM
 Chuẩn kết nối nào dưới đây thường được sử dụng để kết nối các thiết bị âm nhạc với điện thoại di động? ||| Bluetooth.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên Internet.
+CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lí ảo? ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
 Commercial soflware còn được gọi là: ||| Phần mềm thương mại
 Các bộ phận chính trong cấu trúc chung của máy tính bao gồm: ||| Bộ xử lí trung tâm, bộ nhớ trong, bộ nhớ ngoài, thiết bị vào/ra
 Các lệnh và dữ liệu trong khi các chương trình đang thực hiện được lưu trên thiết bị: ||| RAM
