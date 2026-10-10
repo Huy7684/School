@@ -1,5 +1,16 @@
 # Mỗi dòng: câu hỏi ||| đáp án đúng
 "Turing Test" là gì? ||| Một bài kiểm tra trí tuệ của máy tính.
+(B) Hệ điều hành có chức năng nào sau đây? ||| Quản lí thiết bị, tệp và thư mục.
+(B) LINUX được phát triển dựa trên nguồn gốc từ hệ điều hành nào? ||| UNIX.
+(B) Phiên bản Windows nào được sách nêu là bắt đầu tích hợp các tính năng cơ bản của hệ điều hành trực tiếp vào Windows? ||| Windows 95.
+(B) Phần mềm thương mại là phần mềm như thế nào? ||| Được bán và người dùng phải mua quyền sử dụng.
+(B) Thao tác nào thường làm xuất hiện bảng chọn chứa các lệnh có thể thực hiện với một đối tượng? ||| Nháy nút phải chuột.
+(B) Trong Windows, tiện ích thường dùng để quản lí tệp và thư mục là gì? ||| File Explorer.
+(H) Phần mềm nguồn mở khác phần mềm tự do ở điểm nổi bật nào? ||| Được cung cấp mã nguồn để người dùng có thể sửa đổi, cải tiến và phân phối theo giấy phép.
+(H) Tiện ích nào trên thiết bị di động phù hợp nhất để đặt lịch hẹn và nhắc việc? ||| Đồng hồ/Lịch.
+(H) Tiện ích Optimize (Defragment) trên ổ đĩa cứng được dùng chủ yếu để làm gì? ||| Hợp nhất các liên cung của tệp để tăng tốc truy cập.
+(H) Vai trò đúng của hệ điều hành trong quan hệ với phần cứng và phần mềm ứng dụng là gì? ||| Là môi trường trung gian để phần mềm ứng dụng khai thác phần cứng.
+(H) Đặc điểm nào thể hiện rõ tính thân thiện của hệ điều hành máy tính cá nhân? ||| Giao diện đồ hoạ trực quan và cơ chế cắm vào là chạy.
 [ĐS] AI mạnh là loại AI có thể suy luận, lập kế hoạch và giải quyết các vấn đề phức tạp như con người. ||| Đúng
 [ĐS] AI mạnh là loại AI có thể tự động học hỏi và giải quyết bất kỳ vấn đề nào mà không cần sự can thiệp của con người. ||| Đúng
 [ĐS] AI tạo sinh có thể được coi là một phần của xử lí ngôn ngữ tự nhiên vì nó tạo ra văn bản dựa trên ngôn ngữ tự nhiên. ||| Sai
