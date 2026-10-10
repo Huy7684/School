@@ -127,7 +127,7 @@ Phương án nào dưới đây KHÔNG phù hợp để minh họa cho hệ th�
 Phương án nào dưới đây liệt kê hai phân loại chính của Trí tuệ nhân tạo (AI)? ||| AI Hẹp (ANI) và AI Tổng quát (AGI).
 Phương án nào dưới đây liệt kê hai phân loại chính của trí tuệ nhân tạo? ||| AI Hẹp (ANI) và AI Tổng quát (AGI).
 Phương án nào dưới đây nêu đúng về khả năng học của AI? ||| Trích xuất thông tin từ dữ liệu để học và tích lũy tri thức.
-Phương án nào dưới đây nêu đúng về khả năng nhận thức của AI? ||| Cảm nhận và hiểu biết môi trường thông qua các cảm biến và thiết bị đầu vào.
+Phương án nào dưới đây nêu đúng về khả năng nhận thức của AI? ||| Cảm cảm nhận và hiểu biết môi trường thông qua các cảm biến và thiết bị đầu vào.
 Phương án nào dưới đây nêu đúng về khả năng suy luận của AI? ||| Vận dụng logic và tri thức để đưa ra quyết định hoặc kết luận.
 Phương án nào sau đây nêu đúng về Trí tuệ nhân tạo (AI)? ||| Một lĩnh vực khoa học và kĩ thuật nhằm chế tạo các máy móc thông minh.
 Phương án nào sau đây nêu đúng về trí tuệ nhân tạo? ||| Một lĩnh vực khoa học và kỹ thuật nhằm chế tạo các máy móc thông minh.
@@ -154,7 +154,7 @@ Trong mạng LAN, thiết bị nào được sử dụng để kết nối và c
 Trong những tính năng sau tính năng nào KHÔNG phải là của Trợ lý ảo. ||| Tự động cải thiện hiệu suất máy tính.
 Trong những tính năng sau, tính năng nào KHÔNG phải là của Trợ lí ảo? ||| Tự động cải thiện hiệu suất máy tính.
 Trí tuệ nhân tạo còn nhiều hạn chế ở khả năng nào sau đây? ||| Cảm nhận cảm xúc.
-Trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh bằng cách nào sau đây? ||| Nhận diện các bệnh lí qua hình ảnh y khoa.
+Trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh bằng cách nào sau đây? ||| Nhận diện các bệnh lý qua hình ảnh y khoa.
 Vai trò chính của Router là gì? ||| Kết nối các mạng LAN với nhau và chuyển tiếp dữ liệu giữa chúng
 Ví dụ nào sau đây là một ứng dụng của AI yếu? ||| MYCIN – hệ chuyên gia trong lĩnh vực y tế.
 Youtube được trang bị hệ thống trí tuệ nhân tạo để gợi ý cho người dùng. Hãy cho biết hệ thống này làm nhiệm vụ gì dưới đây? ||| Đề xuất các video dựa trên sở thích của người dùng.
