@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      11.4
+// @version      11.5
 // @description  Sakura Edition: học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -57,9 +57,10 @@
   } catch (e) {}
   function findRec(q) {
     const r = bank[norm(q)];
-    if (r) return r;
+    if (r) return usable(r) ? r : null;
     if (!idx2) { idx2 = {}; Object.values(bank).forEach(v => { idx2[norm2(stripNo(v.q))] = v; }); }
-    return idx2[norm2(stripNo(q))] || null;
+    const v = idx2[norm2(stripNo(q))];
+    return v && usable(v) ? v : null;
   }
   function matchLetter(texts, correct) {
     const L = Object.keys(texts);
@@ -67,7 +68,10 @@
   }
 
   // ---------- Cấu hình (lưu lại) ----------
-  const cfg = Object.assign({ run: true, sel: true, chk: true, next: true, delay: 300, unk: 'wait', code: '' }, loadKey(CFG_KEY) || {});
+  const cfg = Object.assign({ run: true, sel: true, chk: true, next: true, delay: 300, unk: 'wait' }, loadKey(CFG_KEY) || {});
+  delete cfg.code;                       // không còn nhớ mã đề giữa các link
+  let manualCode = '';                   // mã gõ tay: chỉ sống trong 1 link
+  let ghNote = '';                       // ghi chú GitHub hiện cạnh trạng thái
 
   // ---------- Mã đề (từ link) ----------
   function extractCode(v) {
@@ -86,8 +90,13 @@
     }
     return clean(v);
   }
-  const autoCode = () => extractCode(location.href);
-  const examCode = () => extractCode(cfg.code) || autoCode();
+  const isExam = () => /\/exam\//i.test(location.pathname);
+  const autoCode = () => isExam() ? extractCode(location.href) : '';
+  const examCode = () => extractCode(manualCode) || autoCode();
+  // chỉ dùng đáp án của đề đang mở (đã gắn mã đề). Đổi false nếu muốn dùng chung cả sổ.
+  const STRICT_EXAM = true;
+  const usable = r => r && r.q && r.correct && (!STRICT_EXAM || !examCode() || r.t === examCode());
+  const usableRecs = () => Object.values(bank).filter(usable);
   const saveCfg = () => { try { localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); } catch (e) {} };
 
   // ---------- Trạng thái tự động ----------
@@ -303,13 +312,13 @@
   let lastMsg = '', lastShown = '', lastN = -1;
   function stat(msg) {
     if (msg !== undefined) lastMsg = msg;
-    const n = Object.keys(bank).length;
-    const m = lastMsg || 'sẵn sàng nè ~';
+    const n = usableRecs().length;
+    const m = (lastMsg || 'sẵn sàng nè ~') + (ghNote ? ' · ' + ghNote : '');
     const sig = n + '|' + m;
     if (sig === lastShown) return;   // chỉ cập nhật DOM khi có thay đổi
     lastShown = sig;
     $('dts11-cnt').textContent = n;
-    $('dts11-face').textContent = faceFor(m);
+    $('dts11-face').textContent = faceFor(lastMsg || '');
     $('dts11-st').textContent = m.replace(/⚠️\s*/g, '');
     const bub = panel.querySelector('.dts11-bubble');
     bub.classList.remove('pop'); void bub.offsetWidth; bub.classList.add('pop');
@@ -406,7 +415,7 @@
       const q = flat(line.slice(0, i)), c = flat(line.slice(i + 3));
       if (!q || !c) { skipped++; return; }
       if (!bank[norm(q)]) added++;
-      bank[norm(q)] = { q, correct: c };
+      bank[norm(q)] = { q, correct: c, t: examCode() || undefined };
     });
     saveBank();
     st = { key: null };
@@ -490,13 +499,50 @@
 
   // ---------- Nút tải từ GitHub (cần Sakura Loader) ----------
   let gAck = 0;
-  const gAsk = (ev, msg) => { gAck = 0; stat(msg); document.dispatchEvent(new CustomEvent(ev, { detail: examCode() })); setTimeout(() => { if (!gAck) stat('chưa thấy Sakura Loader, cài loader trước nhé'); }, 3000); };
-  $('dts11-gpull').onclick = () => gAsk('sakura-pull', 'đang tải đáp án từ GitHub...');
   $('dts11-gpush').onclick = pushGithub;
   const codeEl = $('dts11-code');
-  codeEl.value = cfg.code || '';
-  codeEl.onchange = () => { cfg.code = extractCode(codeEl.value); codeEl.value = cfg.code; saveCfg(); stat(cfg.code ? 'mã đề: ' + cfg.code : 'dùng mã tự nhận từ trang: ' + (autoCode() || 'không có')); };
+  codeEl.value = '';
+  const labelOnly = c => /^(?:[A-F]\s*\.\s*)+$/i.test(flat(c));
+
+  // tải file đề trên GitHub (repo public, không cần token); bị trang chặn thì đi qua Sakura Loader
+  function ghGetPublic(file) {
+    const url = `https://api.github.com/repos/${GHC.user}/${GHC.repo}/contents/${GHC.dir}${file}?ref=${GHC.branch}`;
+    const headers = { Accept: 'application/vnd.github+json' };
+    return fetch(url, { headers, cache: 'no-store' }).then(async r => ({ s: r.status, j: await r.json().catch(() => null) })).catch(() => ghViaLoader('GET', url, headers));
+  }
+  async function pullExam(code) {
+    if (!code) { ghNote = ''; return stat(); }
+    ghNote = 'đang tải đề ' + code + ' từ GitHub…'; stat();
+    const r = await ghGetPublic(`banks/${GHC.site}/${code}.txt`);
+    if (code !== examCode()) return;                 // đã sang link khác, bỏ kết quả cũ
+    if (r.s === 200 && r.j && r.j.content) {
+      const items = ghParse(ghDec(r.j.content)).filter(([q, c]) => !labelOnly(c));
+      items.forEach(([q, c]) => { bank[norm(q)] = { q, correct: c, t: code }; });
+      saveBank(); st = { key: null }; stN = { sig: null };
+      ghNote = `đề ${code}: đã tải ${items.length} câu từ GitHub`;
+    } else if (r.s === 404) ghNote = `đề ${code} không có trên GitHub`;
+    else if (r.s === 0) ghNote = 'không kết nối được GitHub';
+    else if (r.s === 403) ghNote = 'GitHub đang giới hạn lượt gọi, thử lại sau';
+    else ghNote = 'lỗi GitHub HTTP ' + r.s;
+    stat();
+  }
+  $('dts11-gpull').onclick = () => { stat('tải lại từ GitHub...'); pullExam(examCode()); };
+  codeEl.onchange = () => {
+    manualCode = extractCode(codeEl.value); codeEl.value = manualCode;
+    stat(manualCode ? 'mã đề: ' + manualCode : 'dùng mã tự nhận từ trang: ' + (autoCode() || 'không có'));
+    pullExam(examCode());
+  };
   setInterval(() => { const h = 'Link / mã đề (tự nhận: ' + (autoCode() || 'không có') + ')'; if (codeEl.placeholder !== h) codeEl.placeholder = h; }, 1000);
+
+  // vào link nào tự nhận mã đề link đó và tự tải file từ GitHub; sang link khác thì bỏ mã cũ
+  let lastAuto = null;
+  function watchUrl() {
+    const c = autoCode();
+    if (c === lastAuto) return;
+    lastAuto = c; manualCode = ''; codeEl.value = ''; ghNote = '';
+    if (c) pullExam(c); else stat();
+  }
+  setInterval(watchUrl, 700); watchUrl();
 
   document.addEventListener('sakura-status', e => { gAck = 1; bank = loadKey(BANK_KEY) || {}; idx2 = null; st = { key: null }; stN = { sig: null }; stat(String(e.detail || '')); });
   $('dts11-imp').onclick = () => $('dts11-file').click();
