@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      2.5
+// @version      2.6
 // @description  桜 Sakura Edition: quét "Đáp án đúng" ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -22,7 +22,13 @@
   const panelId = 'azh';
 
   let bank = load(BANK_KEY) || {};
-  const cfg = Object.assign({ run: true, select: true, learn: true, delay: 300, min: false, x: null, y: null, code: '' }, load(CFG_KEY) || {});
+  const cfg = Object.assign({ run: true, select: true, learn: true, delay: 300, min: false, x: null, y: null }, load(CFG_KEY) || {});
+  delete cfg.code;                       // không còn nhớ mã đề giữa các link
+  let manualCode = '';                   // mã gõ tay: chỉ sống trong 1 link, sang link khác là bỏ
+  let ghNote = '', holdUntil = 0;        // ghi chú GitHub hiện cạnh trạng thái; giữ thông báo thao tác vài giây
+  // dọn bản ghi hỏng cũ (đáp án chỉ là "B. C. D." do không đọc được ảnh)
+  const labelOnly = c => /^(?:[A-F]\s*\.\s*)+$/i.test(flat(c));
+  { let dirty = 0; Object.keys(bank).forEach(k => { const r = bank[k]; if (!r || !r.q || !r.correct || labelOnly(r.correct)) { delete bank[k]; dirty = 1; } }); if (dirty) { try { localStorage.setItem(BANK_KEY, JSON.stringify(bank)); } catch (e) {} } }
 
   // ---------- Mã đề (từ link) ----------
   function extractCode(v) {
@@ -41,8 +47,13 @@
     }
     return clean(v);
   }
-  const autoCode = () => extractCode(location.href);
-  const examCode = () => extractCode(cfg.code) || autoCode();
+  const isExam = () => /\/(test|de-thi|exam)(\/|$)/i.test(location.pathname);
+  const autoCode = () => isExam() ? extractCode(location.href) : '';
+  const examCode = () => extractCode(manualCode) || autoCode();
+  // chỉ dùng đáp án của đề đang mở (đã gắn mã đề). Đổi false nếu muốn dùng chung cả sổ.
+  const STRICT_EXAM = true;
+  const usable = r => r && r.q && r.correct && (!STRICT_EXAM || !examCode() || r.t === examCode());
+  const usableRecs = () => Object.values(bank).filter(usable);
   const saveBank = () => { try { localStorage.setItem(BANK_KEY, JSON.stringify(bank)); } catch (e) {} };
   const saveCfg = () => { try { localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); } catch (e) {} };
 
@@ -62,7 +73,7 @@
     const opts = {}, hits = [];
     let pos = 0;
     for (const L of 'ABCDEF') {
-      const re = new RegExp('(^|\\s)' + L + '\\s*\\.\\s*', 'g');
+      const re = new RegExp('(?<=^|\\s)' + L + '\\s*\\.\\s*', 'g');
       re.lastIndex = pos;
       const m = re.exec(body);
       if (!m) break;
@@ -73,12 +84,32 @@
     return opts;
   }
   const A_START = /(^|\s)A\s*\.\s*\S/;
-  // gom chữ của 1 thẻ theo text node (không phụ thuộc xuống dòng / CSS)
+  // Phương án / câu hỏi là ẢNH: dùng tên file ảnh làm "chữ" định danh, dạng ⟦img:ten-file.png⟧
+  const hashStr = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36); };
+  function imgKey(im) {
+    const raw = im.getAttribute('data-src') || im.getAttribute('data-original') || im.currentSrc || im.getAttribute('src') || '';
+    if (!raw) return '';
+    if (/^data:/i.test(raw)) return 'd' + hashStr(raw);
+    try { const segs = new URL(raw, location.href).pathname.split('/').filter(Boolean); return decodeURIComponent(segs[segs.length - 1] || '').toLowerCase(); }
+    catch (e) { return raw.split('?')[0].split('/').pop().toLowerCase(); }
+  }
+  function imgTok(im) {
+    const r = im.getBoundingClientRect();
+    if (r.width < 20 || r.height < 20) return '';     // bỏ icon nhỏ / ảnh ẩn
+    const k = imgKey(im);
+    return k ? '⟦img:' + k + '⟧' : '';
+  }
+  // gom chữ + ảnh của 1 thẻ theo thứ tự DOM (không phụ thuộc xuống dòng / CSS)
   function nodesText(root) {
-    const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), parts = [];
-    for (let nd; (nd = tw.nextNode());) { const t = flat(nd.nodeValue); if (t) parts.push(t); }
+    const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT), parts = [];
+    for (let nd; (nd = tw.nextNode());) {
+      if (nd.nodeType === 1) { if (nd.tagName === 'IMG') { const t = imgTok(nd); if (t) parts.push(t); } continue; }
+      const t = flat(nd.nodeValue); if (t) parts.push(t);
+    }
     return parts.join(' ');
   }
+  // thẻ có ảnh thì ưu tiên bản có token ảnh (innerText không thấy ảnh)
+  const cardTexts = (card, inner) => card.querySelector('img') ? [nodesText(card), inner] : [inner, nodesText(card)];
   // thử lần lượt các bản văn bản của thẻ; trả {q, correct} hoặc null
   function readTexts(texts, letter) {
     for (const tx of texts) {
@@ -96,14 +127,20 @@
       const tx = card.innerText || '';
       const c = (tx.match(/Đáp án đúng/gi) || []).length;
       if (!c) continue;
-      let texts = [tx, nodesText(card)], seg = tx;
+      let texts = cardTexts(card, tx), seg = tx;
       if (c > 1) {
-        const m = new RegExp('(^|\\n)\\s*Câu\\s*' + num + '(?!\\d)').exec(tx);
-        if (!m) return { why: 'thẻ gộp nhiều câu', sample: tx };
-        const rest = tx.slice(m.index);
-        const nx = rest.slice(5).search(/(^|\n)\s*Câu\s*\d+(?!\d)/);
-        seg = nx < 0 ? rest : rest.slice(0, nx + 5);
-        texts = [seg];
+        const segOf = (t, nl) => {
+          const pre = nl ? '(^|\\n)\\s*' : '(^|\\s)';
+          const m = new RegExp(pre + 'Câu\\s*' + num + '(?!\\d)').exec(t);
+          if (!m) return '';
+          const rest = t.slice(m.index);
+          const nx = rest.slice(5).search(new RegExp(pre + 'Câu\\s*\\d+(?!\\d)'));
+          return nx < 0 ? rest : rest.slice(0, nx + 5);
+        };
+        const s1 = segOf(tx, true), s2 = segOf(nodesText(card), false);
+        if (!s1 && !s2) return { why: 'thẻ gộp nhiều câu', sample: tx };
+        seg = s1 || s2;
+        texts = (card.querySelector('img') ? [s2, s1] : [s1, s2]).filter(Boolean);
       }
       const lm = seg.match(/Đáp án đúng\s*:?\s*([A-F])/i);
       if (!lm) return { why: 'không thấy chữ cái đáp án', sample: seg };
@@ -143,7 +180,7 @@
         if (/Câu\s*\d+/i.test(text) && A_START.test(text)) break;
       }
       if (!card || (text.match(/Đáp án đúng\s*:/gi) || []).length !== 1) return;   // thẻ gộp nhiều câu: để bước 2 xử lý
-      const r = readTexts([text, nodesText(card)], letter);
+      const r = readTexts(cardTexts(card, text), letter);
       if (!r) return;
       const num = (text.match(/Câu\s*(\d+)/i) || [])[1];
       if (num) okNums.add(num);
@@ -178,12 +215,14 @@
   const hl = new Set();   // các ô đang được tô viền gợi ý
 
   function pageEls() {
-    const all = [];
-    document.querySelectorAll('div, span, p, label, li, b, strong, button').forEach(el => {
+    const all = [], withImg = new Set();
+    document.querySelectorAll('img').forEach(im => { for (let p = im; p && !withImg.has(p); p = p.parentElement) withImg.add(p); });
+    document.querySelectorAll('div, span, p, label, li, b, strong, button, img').forEach(el => {
       if (el.closest('#' + panelId) || !el.getClientRects().length) return;
+      if (el.tagName === 'IMG') { const t = imgTok(el); if (t) all.push({ el, t }); return; }
       const raw = el.textContent;
-      if (!raw || raw.length > 800) return;
-      all.push({ el, t: flat(raw) });
+      if ((!raw && !withImg.has(el)) || (raw && raw.length > 800)) return;
+      all.push({ el, t: withImg.has(el) ? nodesText(el) : flat(raw) });
     });
     return all;
   }
@@ -212,7 +251,7 @@
 
   function selectNow() {
     if (clickedUrl !== location.href) { clickedUrl = location.href; clickedQ = new Set(); clearHl(); }
-    const recs = Object.values(bank);
+    const recs = usableRecs();
     const all = pageEls();
     const pageQ = new Set();
     all.forEach(a => { const m = a.t.match(/^Câu\s*(\d+)$/i); if (m) pageQ.add(m[1]); });
@@ -407,7 +446,7 @@
     <div id="azh-head">
       <div class="azh-logo">
         <div class="azh-mascot"><div class="azh-flower">${flower}</div></div>
-        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.5 · 桜 SAKURA</div></div>
+        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.6 · 桜 SAKURA</div></div>
       </div>
       <div class="azh-hbtns">
         <button id="azh-run" class="azh-runbtn"></button>
@@ -469,15 +508,16 @@
   const faceFor = m => { const f = FACES.find(x => x[0].test(m)); return f ? f[1] : '(◕‿◕)'; };
 
   let lastMsg = '', lastShown = '', lastN = -1;
-  function stat(msg) {
+  function stat(msg, fromTick) {
     if (msg !== undefined) lastMsg = msg;
-    const n = Object.keys(bank).length;
-    const m = lastMsg || 'sẵn sàng nè ~';
+    if (msg && !fromTick) holdUntil = Date.now() + 5000;
+    const n = usableRecs().length;
+    const m = (lastMsg || 'sẵn sàng nè ~') + (ghNote ? ' · ' + ghNote : '');
     const sig = n + '|' + m;
     if (sig === lastShown) return;
     lastShown = sig;
     $('azh-cnt').textContent = n;
-    $('azh-face').textContent = faceFor(m);
+    $('azh-face').textContent = faceFor(lastMsg || '');
     $('azh-st').textContent = m;
     const bub = panel.querySelector('.azh-bubble');
     bub.classList.remove('pop'); void bub.offsetWidth; bub.classList.add('pop');
@@ -501,7 +541,7 @@
   const applyMin = () => { $('azh-body').style.display = cfg.min ? 'none' : 'block'; $('azh-min').textContent = cfg.min ? '+' : '–'; };
 
   $('azh-sel').checked = cfg.select; $('azh-sel').onchange = e => { cfg.select = e.target.checked; saveCfg(); stat(cfg.select ? 'tự chọn đã bật' : 'tự chọn đã tắt, chỉ tô viền gợi ý'); };
-  $('azh-lrn').checked = cfg.learn;  $('azh-lrn').onchange = e => { cfg.learn = e.target.checked; saveCfg(); };
+  $('azh-lrn').checked = cfg.learn;  $('azh-lrn').onchange = e => { cfg.learn = e.target.checked; saveCfg(); stat(cfg.learn ? 'tự học đã bật' : 'tự học đã tắt, không quét đáp án nữa'); };
   $('azh-spd').value = cfg.delay; $('azh-ms').textContent = cfg.delay; fillSpd();
   $('azh-spd').oninput = e => { cfg.delay = +e.target.value; $('azh-ms').textContent = cfg.delay; fillSpd(); saveCfg(); };
   $('azh-run').onclick = () => { cfg.run = !cfg.run; runLabel(); saveCfg(); stat(cfg.run ? 'đang chạy, cố lên!' : 'đã tạm dừng'); };
@@ -558,13 +598,13 @@
   // ---------- Sổ đáp án: xem, tìm, xoá từng câu ----------
   function renderBook() {
     const f = norm($('azh-q').value);
-    const entries = Object.entries(bank).filter(([, v]) => !f || norm(v.q).includes(f) || norm(v.correct).includes(f));
+    const entries = Object.entries(bank).filter(([, v]) => usable(v)).filter(([, v]) => !f || norm(v.q).includes(f) || norm(v.correct).includes(f));
     const box = $('azh-list');
     box.textContent = '';
     if (!entries.length) {
       const d = document.createElement('div');
       d.className = 'azh-empty';
-      d.textContent = Object.keys(bank).length ? 'không có câu nào khớp ~' : 'sổ đang trống, hãy mở trang xem đáp án';
+      d.textContent = usableRecs().length ? 'không có câu nào khớp ~' : 'đề này chưa có đáp án, hãy mở trang xem đáp án';
       box.appendChild(d);
       return;
     }
@@ -660,13 +700,49 @@
 
   // ---------- Nút tải từ GitHub (cần Sakura Loader) ----------
   let gAck = 0;
-  const gAsk = (ev, msg) => { gAck = 0; stat(msg); document.dispatchEvent(new CustomEvent(ev, { detail: examCode() })); setTimeout(() => { if (!gAck) stat('chưa thấy Sakura Loader, cài loader trước nhé'); }, 3000); };
-  $('azh-gpull').onclick = () => gAsk('sakura-pull', 'đang tải đáp án từ GitHub...');
   $('azh-gpush').onclick = pushGithub;
   const codeEl = $('azh-code');
-  codeEl.value = cfg.code || '';
-  codeEl.onchange = () => { cfg.code = extractCode(codeEl.value); codeEl.value = cfg.code; saveCfg(); stat(cfg.code ? 'mã đề: ' + cfg.code : 'dùng mã tự nhận từ trang: ' + (autoCode() || 'không có')); };
+  codeEl.value = '';
+
+  // tải file đề trên GitHub (repo public, không cần token); bị trang chặn thì đi qua Sakura Loader
+  function ghGetPublic(file) {
+    const url = `https://api.github.com/repos/${GHC.user}/${GHC.repo}/contents/${GHC.dir}${file}?ref=${GHC.branch}`;
+    const headers = { Accept: 'application/vnd.github+json' };
+    return fetch(url, { headers, cache: 'no-store' }).then(async r => ({ s: r.status, j: await r.json().catch(() => null) })).catch(() => ghViaLoader('GET', url, headers));
+  }
+  async function pullExam(code) {
+    if (!code) { ghNote = ''; return stat(); }
+    ghNote = 'đang tải đề ' + code + ' từ GitHub…'; stat();
+    const r = await ghGetPublic(`banks/${GHC.site}/${code}.txt`);
+    if (code !== examCode()) return;                 // đã sang link khác, bỏ kết quả cũ
+    if (r.s === 200 && r.j && r.j.content) {
+      const items = ghParse(ghDec(r.j.content)).filter(([q, c]) => !labelOnly(c));
+      items.forEach(([q, c]) => { bank[norm(q)] = { q, correct: c, t: code }; });
+      saveBank();
+      ghNote = `đề ${code}: đã tải ${items.length} câu từ GitHub`;
+    } else if (r.s === 404) ghNote = `đề ${code} không có trên GitHub`;
+    else if (r.s === 0) ghNote = 'không kết nối được GitHub';
+    else if (r.s === 403) ghNote = 'GitHub đang giới hạn lượt gọi, thử lại sau';
+    else ghNote = 'lỗi GitHub HTTP ' + r.s;
+    stat();
+  }
+  $('azh-gpull').onclick = () => { stat('tải lại từ GitHub...'); pullExam(examCode()); };
+  codeEl.onchange = () => {
+    manualCode = extractCode(codeEl.value); codeEl.value = manualCode;
+    stat(manualCode ? 'mã đề: ' + manualCode : 'dùng mã tự nhận từ trang: ' + (autoCode() || 'không có'));
+    pullExam(examCode());
+  };
   setInterval(() => { const h = 'Link / mã đề (tự nhận: ' + (autoCode() ? 'azota.vn/de-thi/' + autoCode() : 'không có') + ')'; if (codeEl.placeholder !== h) codeEl.placeholder = h; }, 1000);
+
+  // vào link nào tự nhận mã đề link đó và tự tải file từ GitHub; sang link khác thì bỏ mã cũ
+  let lastAuto = null;
+  function watchUrl() {
+    const c = autoCode();
+    if (c === lastAuto) return;
+    lastAuto = c; manualCode = ''; codeEl.value = ''; ghNote = ''; clearHl();
+    if (c) pullExam(c); else stat();
+  }
+  setInterval(watchUrl, 700); watchUrl();
 
   document.addEventListener('sakura-status', e => { gAck = 1; bank = load(BANK_KEY) || {}; stat(String(e.detail || '')); });
   $('azh-back').onclick = () => showBook(false);
@@ -694,7 +770,7 @@
         const q = i < 0 ? '' : flat(line.slice(0, i)), c = i < 0 ? '' : flat(line.slice(i + 3));
         if (!q || !c) { bad++; return; }
         if (!bank[norm(q)]) add++;
-        bank[norm(q)] = { q, correct: c };
+        bank[norm(q)] = { q, correct: c, t: examCode() || undefined };
       });
       saveBank(); stat(`nhập +${add} câu mới` + (bad ? `, bỏ ${bad} dòng lỗi` : ''));
     };
@@ -709,21 +785,23 @@
   };
 
   // ---------- Vòng lặp (trang là SPA nên quét định kỳ) ----------
+  const ts = m => { if (Date.now() >= holdUntil) stat(m, true); };
   function tick() {
     if (inTake()) {
       const r = selectNow();
       prog(r.found, r.page);
-      if (!r.bankN) return stat('sổ đang trống: hãy mở trang xem đáp án để học trước');
-      if (!cfg.run) return stat('đã tạm dừng' + (r.found ? `, tô viền ${r.found} câu đã nhớ` : ''));
-      if (!cfg.select) return stat(`tự chọn đang tắt, tô viền gợi ý ${r.found} câu`);
-      return stat(`khớp ${r.found}/${r.page || r.bankN} câu, đã chọn ${r.done}`);
+      if (!r.bankN) return ts('chưa có đáp án cho đề này');
+      if (!cfg.run) return ts('đã tạm dừng' + (r.found ? `, tô viền ${r.found} câu đã nhớ` : ''));
+      if (!cfg.select) return ts(`tự chọn đang tắt, tô viền gợi ý ${r.found} câu`);
+      return ts(`khớp ${r.found}/${r.page || r.bankN} câu, đã chọn ${r.done}`);
     }
     prog(0, 0);
-    if (!cfg.learn) return;
+    if (!cfg.run) return ts('đã tạm dừng, không quét đáp án');
+    if (!cfg.learn) return ts('tự học đang tắt, không quét đáp án');
     const r = learnNow();
     learnedNow += r.n;
-    if (r.seen) stat(`đã quét ${r.seen}${r.total ? '/' + r.total : ''} câu, học thêm ${learnedNow} câu mới` + (r.missing.length ? ` — chưa đọc được: Câu ${r.missing.join('; Câu ')}` : ''));
-    else stat('chờ trang xem đáp án để quét…');
+    if (r.seen) ts(`đã quét ${r.seen}${r.total ? '/' + r.total : ''} câu, học thêm ${learnedNow} câu mới` + (r.missing.length ? ` — chưa đọc được: Câu ${r.missing.join('; Câu ')}` : ''));
+    else ts('chờ trang xem đáp án để quét…');
   }
   function loop() {
     try { tick(); } catch (e) { console.error('Azota Helper:', e); }
