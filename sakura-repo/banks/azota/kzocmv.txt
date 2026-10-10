@@ -1,0 +1,21 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+Bộ giao tiếp mạng (NIC) có chức năng gì? ||| Truyền và nhận dữ liệu qua cáp mạng hoặc sóng vô tuyến
+Giao thức FTP được sử dụng để làm gì? ||| Truyền tải các tệp giữa các máy tính
+Giao thức HTTP được sử dụng cho mục đích gì? ||| Truyền tải các trang web
+Giao thức nào sau đây không thuộc bộ giao thức TCP/IP? ||| SMTP
+Giao thức TCP đảm bảo điều gì trong quá trình truyền dữ liệu? ||| Truyền dữ liệu đáng tin cậy và đúng thứ tự
+Hệ thống tên miền (DNS) phân tên miền thành các cấp theo thứ tự nào? ||| Cấp cao nhất, cấp hai, cấp ba
+Mạng máy tính là gì? ||| Một hệ thống các thiết bị số được kết nối với nhau để truyền dữ liệu và trao đổi thông tin.
+Mạng WLAN còn được gọi là gì? ||| Mạng cục bộ không dây
+Mục đích của hệ thống tên miền DNS là gì? ||| Để định danh các máy tính trong mạng bằng những chữ gợi nhớ
+Thiết bị nào dùng để kết nối mạng không dây cho các thiết bị trong một mạng cục bộ? ||| Access Point
+Thiết bị nào dưới đây dùng để kết nối các thiết bị sử dụng Internet tới nhà cung cấp dịch vụ Internet? ||| Modem
+Thiết bị nào dưới đây không phải là thiết bị đầu cuối? ||| Access Point
+Thiết bị nào sau đây thường có chức năng phát sóng Wi-Fi và kết nối có dây? ||| Access Point
+Trong mạng LAN, thiết bị nào được sử dụng để kết nối và chuyển tiếp dữ liệu giữa các thiết bị? ||| Switch
+Vai trò chính của Router là gì? ||| Kết nối các mạng LAN với nhau và chuyển tiếp dữ liệu giữa chúng
+Điểm nào sau đây là sai khi nói về giao thức TCP? ||| Không có cơ chế kiểm tra lỗi
+Địa chỉ IP là gì? ||| Địa chỉ số được gán cho mỗi thiết bị khi kết nối vào mạng
+Địa chỉ IPv4 được biểu diễn dưới dạng nào? ||| Một chuỗi số 32 bit được chia thành 4 cụm 8 bit
+Địa chỉ IPv6 có bao nhiêu bit? ||| 128 bit
+Địa chỉ MAC là gì? ||| Địa chỉ định danh duy nhất của mỗi thiết bị trong mạng
