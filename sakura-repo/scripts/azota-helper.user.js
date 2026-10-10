@@ -8,24 +8,24 @@
 // @run-at       document-idle
 // @grant        none
 // ==/UserScript==
-
+ 
 (function () {
   'use strict';
   if (window.__azh) return;
   window.__azh = true;
-
+ 
   const BANK_KEY = 'azh-bank', CFG_KEY = 'azh-cfg', SEP = ' ||| ';
   const flat = s => String(s || '').replace(/\s+/g, ' ').trim();
   const norm = s => flat(s).toLowerCase();
   const norm2 = s => String(s || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
   const load = k => { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } };
   const panelId = 'azh';
-
+ 
   let bank = load(BANK_KEY) || {};
   const cfg = Object.assign({ run: true, select: true, learn: true, delay: 300, min: false, x: null, y: null }, load(CFG_KEY) || {});
   const saveBank = () => { try { localStorage.setItem(BANK_KEY, JSON.stringify(bank)); } catch (e) {} };
   const saveCfg = () => { try { localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); } catch (e) {} };
-
+ 
   // ---------- Tra sổ ----------
   const findRec = q => {
     const r = bank[norm(q)];
@@ -33,7 +33,7 @@
     const k = norm2(q);
     return Object.values(bank).find(v => norm2(v.q) === k) || null;
   };
-
+ 
   // ---------- Học từ trang xem đáp án ----------
   // Mỗi câu có chữ "Đáp án đúng: X" và các phương án "A. ...": quét từng thẻ câu, lưu nội dung phương án đúng.
   const ANS_RE = /^Đáp án đúng\s*:\s*([A-F])$/i;
@@ -69,13 +69,13 @@
     if (n) saveBank();
     return { n, seen };
   }
-
+ 
   // ---------- Chọn đáp án đã nhớ ----------
   // Với mỗi câu trong sổ: tìm đoạn chữ câu hỏi trên trang, rồi bấm vào ô có nội dung = đáp án đúng.
   const inTake = () => /take-test/.test(location.pathname);
   let clickedQ = new Set(), clickedUrl = location.href, learnedNow = 0, lastAct = 0;
   const hl = new Set();   // các ô đang được tô viền gợi ý
-
+ 
   function pageEls() {
     const all = [];
     document.querySelectorAll('div, span, p, label, li, b, strong, button').forEach(el => {
@@ -108,7 +108,7 @@
     return { qEl };
   }
   const clearHl = () => { hl.forEach(el => { el.style.outline = ''; el.style.outlineOffset = ''; }); hl.clear(); };
-
+ 
   function selectNow() {
     if (clickedUrl !== location.href) { clickedUrl = location.href; clickedQ = new Set(); clearHl(); }
     const recs = Object.values(bank);
@@ -146,7 +146,7 @@
     }
     return { found, done: clickedQ.size, page: pageQ.size, bankN: recs.length };
   }
-
+ 
   // ---------- UI Sakura ----------
   const REDUCED = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   const css = document.createElement('style');
@@ -160,7 +160,7 @@
     animation:azh-in .7s cubic-bezier(.2,1.5,.4,1) both,azh-border 5s linear infinite,azh-glow 3.2s ease-in-out infinite}
   #azh *{box-sizing:border-box}
   #azh button{font:inherit;cursor:pointer;border:0;position:relative;overflow:hidden}
-
+ 
   #azh-head{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 12px 13px;overflow:hidden;
     background:linear-gradient(120deg,#ff7fb8,#c19bff 55%,#7fc8ff,#ff7fb8);background-size:240% 100%;animation:azh-flow 7s linear infinite;
     color:#fff;cursor:move;user-select:none}
@@ -173,7 +173,7 @@
   .azh-title{font-weight:800;font-size:14px;letter-spacing:.3px;text-shadow:0 1px 5px rgba(150,40,120,.6);white-space:nowrap}
   .azh-sub{font-size:10px;letter-spacing:.8px;opacity:.95;text-shadow:0 1px 3px rgba(150,40,120,.55);white-space:nowrap}
   .azh-hbtns{position:relative;z-index:1;display:flex;gap:6px;align-items:center;flex:none}
-
+ 
   .azh-mascot{position:relative;width:38px;height:38px;flex:none;border-radius:50%;background:rgba(255,255,255,.92);
     box-shadow:0 0 0 3px rgba(255,255,255,.35),0 3px 10px rgba(150,40,120,.4);animation:azh-bob 2.6s ease-in-out infinite}
   .azh-flower{position:absolute;inset:0;animation:azh-spin 14s linear infinite}
@@ -181,7 +181,7 @@
     border-radius:50% 50% 50% 50%/75% 75% 25% 25%;background:linear-gradient(180deg,#ffe0ee,#ff7fb8)}
   .azh-flower::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px;border-radius:50%;
     background:radial-gradient(circle,#fff6a8,#ffc55c);box-shadow:0 0 6px #ffd37a}
-
+ 
   .azh-runbtn{padding:6px 12px;border-radius:999px;font-weight:800;font-size:11.5px;transition:transform .15s}
   .azh-runbtn:hover{transform:translateY(-1px) scale(1.06)}
   .azh-runbtn:active{transform:scale(.95)}
@@ -189,7 +189,7 @@
   .azh-runbtn.off{background:#fff3a0;color:#a65a00;animation:azh-pulse 1.3s ease-in-out infinite}
   .azh-minbtn{width:27px;height:27px;border-radius:50%;background:rgba(255,255,255,.35);color:#fff;font-size:16px;font-weight:800;line-height:1;padding:0;transition:transform .2s,background .2s}
   .azh-minbtn:hover{background:rgba(255,255,255,.65);transform:rotate(90deg)}
-
+ 
   #azh-body{position:relative;z-index:1;padding:13px;max-height:calc(100vh - 170px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ffb3d4 transparent}
   .azh-fx{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
   .azh-fx .pt{position:absolute;top:-18px;border-radius:150% 0 150% 0;opacity:.8;animation:azh-fall linear infinite;background:linear-gradient(135deg,#ffd0e5,#ff8fc2)}
@@ -198,19 +198,19 @@
   .azh-fx .sp.v{background:#d9c8ff;filter:drop-shadow(0 0 3px #a98bff)}
   .azh-fx .sp.b{background:#cdeaff;filter:drop-shadow(0 0 3px #6fc0ff)}
   .azh-main{position:relative;z-index:1}
-
+ 
   .azh-chip{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;margin-bottom:10px;border-radius:999px;font-weight:700;font-size:11.5px;
     color:#fff;letter-spacing:.4px;background:linear-gradient(90deg,#ff7fb8,#b69bff,#7fc8ff);background-size:200% 100%;animation:azh-flow 5s linear infinite;
     box-shadow:0 3px 12px rgba(180,90,170,.35)}
   .azh-chip b{font-size:15px;display:inline-block;text-shadow:0 1px 4px rgba(120,40,110,.5)}
   .azh-chip b.bump{animation:azh-bump .5s cubic-bezier(.3,1.8,.5,1)}
-
+ 
   .azh-prog{margin:0 2px 12px}
   .azh-prog-t{display:flex;justify-content:space-between;font-size:11px;color:#8b7aa3;margin-bottom:4px}
   .azh-bar{height:10px;border-radius:999px;background:#eadcf6;overflow:hidden;box-shadow:inset 0 1px 3px rgba(80,40,100,.2)}
   .azh-bar i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#ff7fb8,#b69bff,#7fc8ff);background-size:200% 100%;
     animation:azh-flow 3s linear infinite;transition:width .5s cubic-bezier(.3,1.4,.5,1)}
-
+ 
   .azh-bubble{position:relative;display:flex;align-items:center;gap:9px;padding:9px 11px;margin-bottom:12px;border-radius:18px;
     background:#fff;border:2px dashed #ffb3d4;box-shadow:0 3px 12px rgba(200,110,170,.2)}
   .azh-bubble.pop{animation:azh-pop .45s cubic-bezier(.3,1.7,.5,1)}
@@ -218,7 +218,7 @@
     border-left:2px dashed #ffb3d4;border-top:2px dashed #ffb3d4;transform:rotate(45deg)}
   #azh-face{font-weight:800;color:#e0559b;white-space:nowrap;font-size:12.5px;animation:azh-wob 1.8s ease-in-out infinite}
   #azh-st{color:#6b5a85;font-size:12px;word-break:break-word}
-
+ 
   .azh-sw{display:flex;align-items:center;gap:10px;padding:6px 6px;cursor:pointer;border-radius:12px;transition:background .2s,transform .2s}
   .azh-sw:hover{background:linear-gradient(90deg,rgba(255,160,205,.22),transparent);transform:translateX(3px)}
   .azh-sw input{position:absolute;opacity:0;pointer-events:none}
@@ -229,7 +229,7 @@
   .azh-sw input:checked + i::after{transform:translateX(17px)}
   .azh-sw input:focus-visible + i{outline:2px solid #b69bff;outline-offset:2px}
   .azh-sw span{font-weight:600}
-
+ 
   .azh-box{margin:10px 0;padding:10px 11px;border-radius:16px;background:rgba(255,255,255,.75);border:1px solid rgba(255,170,210,.5);
     border-left:4px solid #ff8fc2;transition:box-shadow .25s,transform .25s}
   .azh-box:hover{box-shadow:0 5px 16px rgba(200,110,170,.25);transform:translateY(-1px)}
@@ -242,7 +242,7 @@
   #azh-spd::-webkit-slider-thumb:hover{transform:scale(1.2)}
   #azh-spd::-webkit-slider-thumb:active{transform:scale(1.35);cursor:grabbing}
   #azh-spd::-moz-range-thumb{width:16px;height:16px;border-radius:50%;border:3px solid #fff;background:#ff6fb0;box-shadow:0 2px 10px rgba(200,70,140,.6);cursor:grab}
-
+ 
   .azh-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
   .azh-act{padding:8px 10px;border-radius:999px;font-weight:700;font-size:12px;color:#fff;
     background:linear-gradient(90deg,#ff7fb8,#b69bff);box-shadow:0 4px 12px rgba(180,90,170,.35);transition:transform .2s,box-shadow .2s}
@@ -256,7 +256,7 @@
   .azh-rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.65);transform:scale(0);animation:azh-rip .6s ease-out forwards;pointer-events:none}
   .azh-foot{text-align:center;margin-top:11px;font-size:10.5px;letter-spacing:1px;color:#a58cc0}
   .azh-trail{position:absolute;width:9px;height:9px;margin:-4px;border-radius:150% 0 150% 0;pointer-events:none;z-index:5;animation:azh-trail .8s ease-out forwards}
-
+ 
   /* sổ đáp án */
   #azh-bookv{display:none;position:relative;z-index:1}
   #azh-q{width:100%;padding:8px 12px;border-radius:999px;border:2px solid #ffc2dc;background:#fff;color:#4a3b5c;font:inherit;outline:0;transition:border-color .2s,box-shadow .2s}
@@ -268,7 +268,7 @@
   #azh .azh-item .x{position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:50%;background:#ffe0ec;color:#e0559b;font-weight:800;font-size:12px;line-height:1;padding:0}
   #azh .azh-item .x:hover{background:#ff8fc2;color:#fff}
   .azh-empty{text-align:center;color:#a58cc0;padding:14px 0}
-
+ 
   @keyframes azh-in{from{opacity:0;transform:translateY(-24px) scale(.82) rotate(-2deg)}to{opacity:1;transform:none}}
   @keyframes azh-border{from{background-position:0 0,0 0}to{background-position:0 0,600px 0}}
   @keyframes azh-glow{0%,100%{box-shadow:0 18px 50px rgba(190,100,170,.35),0 0 18px rgba(255,143,194,.3)}50%{box-shadow:0 18px 56px rgba(150,120,230,.45),0 0 34px rgba(182,155,255,.55)}}
@@ -288,7 +288,7 @@
   @media (prefers-reduced-motion:reduce){#azh,#azh *{animation:none!important;transition:none!important}}
   `;
   document.head.appendChild(css);
-
+ 
   const rnd = (a, b) => a + Math.random() * (b - a);
   const petals = Array.from({ length: 18 }, () => {
     const s = rnd(7, 15).toFixed(1);
@@ -299,7 +299,7 @@
     return `<span class="sp ${['', 'v', 'b'][i % 3]}" style="left:${rnd(2, 94).toFixed(0)}%;top:${rnd(2, 94).toFixed(0)}%;width:${s}px;height:${s}px;animation-duration:${rnd(2.2, 4.5).toFixed(1)}s;animation-delay:${(-rnd(0, 4)).toFixed(1)}s"></span>`;
   }).join('');
   const flower = [0, 1, 2, 3, 4].map(i => `<i style="transform:rotate(${i * 72}deg)"></i>`).join('');
-
+ 
   const panel = document.createElement('div');
   panel.id = panelId;
   panel.innerHTML = `
@@ -315,7 +315,7 @@
     </div>
     <div id="azh-body">
       <div class="azh-fx">${petals}${sparks}</div>
-
+ 
       <div class="azh-main" id="azh-mainv">
         <div class="azh-chip"><span>SỔ ĐÁP ÁN</span><span><b id="azh-cnt">0</b> câu</span></div>
         <div class="azh-prog">
@@ -323,16 +323,18 @@
           <div class="azh-bar"><i id="azh-pb"></i></div>
         </div>
         <div class="azh-bubble"><span id="azh-face">(◕‿◕)</span><span id="azh-st"></span></div>
-
+ 
         <label class="azh-sw"><input type="checkbox" id="azh-sel"><i></i><span>Tự chọn đáp án đã nhớ</span></label>
         <label class="azh-sw"><input type="checkbox" id="azh-lrn"><i></i><span>Tự học ở trang xem đáp án</span></label>
-
+ 
         <div class="azh-box">
           Độ trễ giữa các câu: <b id="azh-ms"></b> ms <small>(0 = nhanh nhất)</small>
           <input type="range" id="azh-spd" min="0" max="2000" step="50">
         </div>
-
+ 
         <div class="azh-acts">
+          <button id="azh-gpull" class="azh-act wide" style="grid-column:1/-1">Tải đáp án từ GitHub</button>
+          <button id="azh-gpush" class="azh-act wide alt" style="grid-column:1/-1">Lưu sổ lên GitHub</button>
           <button id="azh-book" class="azh-act wide">Xem sổ đáp án</button>
           <button id="azh-exp" class="azh-act">Xuất .txt</button>
           <button id="azh-imp" class="azh-act alt">Nhập .txt</button>
@@ -341,7 +343,7 @@
         <input type="file" id="azh-file" accept=".txt,text/plain" style="display:none">
         <div class="azh-foot">ganbatte ne~ · 頑張って</div>
       </div>
-
+ 
       <div id="azh-bookv">
         <input id="azh-q" type="search" placeholder="Tìm câu hỏi hoặc đáp án…" autocomplete="off">
         <div id="azh-list"></div>
@@ -350,20 +352,20 @@
     </div>`;
   document.body.appendChild(panel);
   const $ = id => document.getElementById(id);
-
+ 
   if (cfg.x !== null && cfg.y !== null) {
     panel.style.left = Math.max(0, Math.min(cfg.x, innerWidth - 120)) + 'px';
     panel.style.top = Math.max(0, Math.min(cfg.y, innerHeight - 60)) + 'px';
     panel.style.right = 'auto';
   }
-
+ 
   const FACES = [
     [/trống/, '(・ω・)'], [/học thêm|vừa học/, '(≧▽≦)'], [/đã chọn|khớp/, '(๑•̀ㅂ•́)و✧'],
     [/tạm dừng/, '(－ω－) zzZ'], [/đang chạy/, '(＾▽＾)'], [/xuất|nhập/, '(๑˃ᴗ˂)ﻭ'],
     [/xoá/, '(・ω・)'], [/chờ|quét/, '(・・?)']
   ];
   const faceFor = m => { const f = FACES.find(x => x[0].test(m)); return f ? f[1] : '(◕‿◕)'; };
-
+ 
   let lastMsg = '', lastShown = '', lastN = -1;
   function stat(msg) {
     if (msg !== undefined) lastMsg = msg;
@@ -395,7 +397,7 @@
   };
   const fillSpd = () => $('azh-spd').style.setProperty('--p', (cfg.delay / 20) + '%');
   const applyMin = () => { $('azh-body').style.display = cfg.min ? 'none' : 'block'; $('azh-min').textContent = cfg.min ? '+' : '–'; };
-
+ 
   $('azh-sel').checked = cfg.select; $('azh-sel').onchange = e => { cfg.select = e.target.checked; saveCfg(); stat(cfg.select ? 'tự chọn đã bật' : 'tự chọn đã tắt, chỉ tô viền gợi ý'); };
   $('azh-lrn').checked = cfg.learn;  $('azh-lrn').onchange = e => { cfg.learn = e.target.checked; saveCfg(); };
   $('azh-spd').value = cfg.delay; $('azh-ms').textContent = cfg.delay; fillSpd();
@@ -403,7 +405,7 @@
   $('azh-run').onclick = () => { cfg.run = !cfg.run; runLabel(); saveCfg(); stat(cfg.run ? 'đang chạy, cố lên!' : 'đã tạm dừng'); };
   $('azh-min').onclick = () => { cfg.min = !cfg.min; applyMin(); saveCfg(); };
   runLabel(); applyMin(); stat('');
-
+ 
   // gợn sóng khi bấm nút
   panel.addEventListener('click', e => {
     if (REDUCED) return;
@@ -416,7 +418,7 @@
     btn.appendChild(s);
     setTimeout(() => s.remove(), 650);
   });
-
+ 
   // vệt cánh hoa theo con trỏ
   let lastTrail = 0;
   if (!REDUCED) panel.addEventListener('mousemove', e => {
@@ -435,7 +437,7 @@
     b.addEventListener('animationend', () => b.remove());
     panel.appendChild(b);
   });
-
+ 
   // kéo panel bằng thanh tiêu đề (nhớ vị trí)
   let drag = null;
   $('azh-head').addEventListener('mousedown', e => {
@@ -450,7 +452,7 @@
     if (!drag) return;
     drag = null; cfg.x = panel.offsetLeft; cfg.y = panel.offsetTop; saveCfg();
   });
-
+ 
   // ---------- Sổ đáp án: xem, tìm, xoá từng câu ----------
   function renderBook() {
     const f = norm($('azh-q').value);
@@ -479,9 +481,16 @@
   }
   const showBook = on => { $('azh-mainv').style.display = on ? 'none' : 'block'; $('azh-bookv').style.display = on ? 'block' : 'none'; if (on) { renderBook(); $('azh-q').focus(); } };
   $('azh-book').onclick = () => showBook(true);
+ 
+  // ---------- GitHub (cần cài Sakura Loader) ----------
+  let gAck = 0;
+  const gAsk = (ev, msg) => { gAck = 0; stat(msg); document.dispatchEvent(new CustomEvent(ev)); setTimeout(() => { if (!gAck) stat('chưa thấy Sakura Loader, cài loader trước nhé'); }, 3000); };
+  $('azh-gpull').onclick = () => gAsk('sakura-pull', 'đang tải đáp án từ GitHub...');
+  $('azh-gpush').onclick = () => gAsk('sakura-push', 'đang lưu lên GitHub...');
+  document.addEventListener('sakura-status', e => { gAck = 1; bank = load(BANK_KEY) || {}; stat(String(e.detail || '')); });
   $('azh-back').onclick = () => showBook(false);
   $('azh-q').oninput = renderBook;
-
+ 
   // ---------- Xuất / nhập .txt ----------
   $('azh-exp').onclick = () => {
     const lines = Object.values(bank).map(r => flat(r.q) + SEP + flat(r.correct));
@@ -517,7 +526,7 @@
       bank = {}; saveBank(); clickedQ = new Set(); clearHl(); stat(`đã xoá ${n} câu`);
     }
   };
-
+ 
   // ---------- Vòng lặp (trang là SPA nên quét định kỳ) ----------
   function tick() {
     if (inTake()) {
@@ -541,3 +550,4 @@
   }
   loop();
 })();
+ 
