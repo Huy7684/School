@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      2.0
+// @version      2.3
 // @description  桜 Sakura Edition: quét "Đáp án đúng" ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -355,7 +355,7 @@
     <div id="azh-head">
       <div class="azh-logo">
         <div class="azh-mascot"><div class="azh-flower">${flower}</div></div>
-        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.0 · 桜 SAKURA</div></div>
+        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.3 · 桜 SAKURA</div></div>
       </div>
       <div class="azh-hbtns">
         <button id="azh-run" class="azh-runbtn"></button>
