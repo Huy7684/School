@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      2.3
+// @version      2.4
 // @description  桜 Sakura Edition: quét "Đáp án đúng" ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -73,9 +73,58 @@
     return opts;
   }
   const A_START = /(^|\s)A\s*\.\s*\S/;
+  // gom chữ của 1 thẻ theo text node (không phụ thuộc xuống dòng / CSS)
+  function nodesText(root) {
+    const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), parts = [];
+    for (let nd; (nd = tw.nextNode());) { const t = flat(nd.nodeValue); if (t) parts.push(t); }
+    return parts.join(' ');
+  }
+  // thử lần lượt các bản văn bản của thẻ; trả {q, correct} hoặc null
+  function readTexts(texts, letter) {
+    for (const tx of texts) {
+      const at = tx.search(A_START);
+      if (at < 0) continue;
+      const q = flat(tx.slice(0, at).replace(/Câu\s*\d+/i, '').replace(/ID\s*:\s*\d+/gi, ''));
+      const opts = parseOpts(tx.slice(at).replace(/Đáp án đúng[\s\S]*$/i, ''));
+      if (q.length >= 3 && opts[letter]) return { q, correct: opts[letter] };
+    }
+    return null;
+  }
+  // đọc 1 câu từ nhãn "Câu N": leo lên thẻ nhỏ nhất có "Đáp án đúng"; nếu thẻ gộp nhiều câu thì cắt đoạn từ "Câu N" tới "Câu kế tiếp"
+  function readByLabel(labelEl, num) {
+    for (let card = labelEl, i = 0; card && i < 12; card = card.parentElement, i++) {
+      const tx = card.innerText || '';
+      const c = (tx.match(/Đáp án đúng/gi) || []).length;
+      if (!c) continue;
+      let texts = [tx, nodesText(card)], seg = tx;
+      if (c > 1) {
+        const m = new RegExp('(^|\\n)\\s*Câu\\s*' + num + '(?!\\d)').exec(tx);
+        if (!m) return { why: 'thẻ gộp nhiều câu', sample: tx };
+        const rest = tx.slice(m.index);
+        const nx = rest.slice(5).search(/(^|\n)\s*Câu\s*\d+(?!\d)/);
+        seg = nx < 0 ? rest : rest.slice(0, nx + 5);
+        texts = [seg];
+      }
+      const lm = seg.match(/Đáp án đúng\s*:?\s*([A-F])/i);
+      if (!lm) return { why: 'không thấy chữ cái đáp án', sample: seg };
+      const L = lm[1].toUpperCase();
+      const r = readTexts(texts, L);
+      return r || { why: 'thiếu phương án ' + L, sample: seg };
+    }
+    return { why: 'không tìm thấy thẻ câu', sample: '' };
+  }
+  const warnedFail = new Set();
   function learnNow() {
     let n = 0, seen = 0, tagged = 0;
-    // tìm các chữ "Đáp án đúng: X" qua text node (nhanh hơn quét mọi thẻ)
+    const code = examCode(), okNums = new Set();
+    const store = (q, correct) => {
+      seen++;
+      const k = norm(q);
+      if (bank[k] && norm(bank[k].correct) === norm(correct)) { if (code && bank[k].t !== code) { bank[k].t = code; tagged++; } return; }
+      bank[k] = { q, correct, t: code || undefined };
+      n++;
+    };
+    // 1) theo chữ "Đáp án đúng: X" (qua text node)
     const marks = [], used = new Set();
     const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     for (let node; (node = tw.nextNode());) {
@@ -87,36 +136,39 @@
         if (m) { if (!used.has(el)) { used.add(el); marks.push({ el, letter: m[1].toUpperCase() }); } break; }
       }
     }
-    const okNums = new Set(), code = examCode();
     marks.forEach(({ el, letter }) => {
       let card = el.parentElement, text = '';
       for (let i = 0; i < 8 && card; i++, card = card.parentElement) {
         text = card.innerText || '';
         if (/Câu\s*\d+/i.test(text) && A_START.test(text)) break;
       }
-      if (!card || (text.match(/Đáp án đúng\s*:/gi) || []).length !== 1) return;   // thẻ chứa nhiều câu: bỏ qua cho an toàn
-      const at = text.search(A_START);
+      if (!card || (text.match(/Đáp án đúng\s*:/gi) || []).length !== 1) return;   // thẻ gộp nhiều câu: để bước 2 xử lý
+      const r = readTexts([text, nodesText(card)], letter);
+      if (!r) return;
       const num = (text.match(/Câu\s*(\d+)/i) || [])[1];
-      const q = flat(text.slice(0, at).replace(/Câu\s*\d+/i, '').replace(/ID\s*:\s*\d+/gi, ''));
-      const body = text.slice(at).replace(/Đáp án đúng[\s\S]*$/i, '');
-      const opts = parseOpts(body);
-      if (q.length < 3 || !opts[letter]) { console.warn('[Azota Helper] không đọc được câu', num, JSON.stringify(text.slice(0, 400))); return; }
-      seen++;
       if (num) okNums.add(num);
-      const k = norm(q);
-      if (bank[k] && norm(bank[k].correct) === norm(opts[letter])) { if (code && bank[k].t !== code) { bank[k].t = code; tagged++; } return; }
-      bank[k] = { q, correct: opts[letter], t: code || undefined };
-      n++;
+      store(r.q, r.correct);
+    });
+    // 2) theo nhãn "Câu N": đếm số câu trên trang và đọc lại những câu bước 1 bỏ sót
+    const labels = {};
+    const tw2 = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    for (let node; (node = tw2.nextNode());) {
+      const m = node.nodeValue.match(/^\s*Câu\s*(\d+)\s*$/i);
+      if (m && node.parentElement && !node.parentElement.closest('#' + panelId) && !labels[m[1]]) labels[m[1]] = node.parentElement;
+    }
+    const nums = Object.keys(labels), why = {};
+    nums.forEach(num => {
+      if (okNums.has(num)) return;
+      const r = readByLabel(labels[num], num);
+      if (r.q === undefined && r.why) {
+        why[num] = r.why;
+        const wk = num + '|' + r.why;
+        if (!warnedFail.has(wk)) { warnedFail.add(wk); console.warn('[Azota Helper] Câu ' + num + ': ' + r.why, JSON.stringify(String(r.sample || '').slice(0, 500))); }
+      } else { okNums.add(num); store(r.q, r.correct); }
     });
     if (n || tagged) saveBank();
-    // đếm số câu trên trang để báo câu nào chưa đọc được
-    const pageNums = new Set();
-    document.querySelectorAll('div, span, p, b, strong').forEach(el => {
-      if (el.children.length || el.closest('#' + panelId)) return;
-      const m = flat(el.textContent).match(/^Câu\s*(\d+)$/i);
-      if (m) pageNums.add(m[1]);
-    });
-    return { n, seen, total: pageNums.size, missing: [...pageNums].filter(x => !okNums.has(x)).sort((a, b) => a - b) };
+    const missing = nums.filter(x => !okNums.has(x)).sort((a, b) => a - b).map(x => x + (why[x] ? ' (' + why[x] + ')' : ''));
+    return { n, seen, total: nums.length, missing };
   }
 
   // ---------- Chọn đáp án đã nhớ ----------
@@ -355,7 +407,7 @@
     <div id="azh-head">
       <div class="azh-logo">
         <div class="azh-mascot"><div class="azh-flower">${flower}</div></div>
-        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.3 · 桜 SAKURA</div></div>
+        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.4 · 桜 SAKURA</div></div>
       </div>
       <div class="azh-hbtns">
         <button id="azh-run" class="azh-runbtn"></button>
@@ -670,7 +722,7 @@
     if (!cfg.learn) return;
     const r = learnNow();
     learnedNow += r.n;
-    if (r.seen) stat(`đã quét ${r.seen}${r.total ? '/' + r.total : ''} câu, học thêm ${learnedNow} câu mới` + (r.missing.length && r.total ? ` — chưa đọc được Câu ${r.missing.join(', ')}` : ''));
+    if (r.seen) stat(`đã quét ${r.seen}${r.total ? '/' + r.total : ''} câu, học thêm ${learnedNow} câu mới` + (r.missing.length ? ` — chưa đọc được: Câu ${r.missing.join('; Câu ')}` : ''));
     else stat('chờ trang xem đáp án để quét…');
   }
   function loop() {
