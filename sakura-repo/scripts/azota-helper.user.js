@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      2.8
+// @version      2.9
 // @description  桜 Sakura Edition: quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -275,13 +275,13 @@
     const qEl = deepest(all.filter(a => sameText(a.t, rec.q)))[0];
     if (!qEl) return null;
     for (let card = qEl.el.parentElement, i = 0; card && i < 8; card = card.parentElement, i++) {
-      if (((card.innerText || '').match(/(^|\n)\s*Câu\s*\d+/gi) || []).length > 1) return { qEl };   // leo quá cao
+      if (((card.innerText || '').match(/(^|\n)\s*Câu\s*\d+/gi) || []).length > 1) return { qEl, why: 'thẻ gộp nhiều câu' };   // leo quá cao
       const hits = deepest(all.filter(a => card.contains(a.el) && !a.el.contains(qEl.el) && a.el !== qEl.el && sameText(a.t, rec.correct)));
       if (!hits.length) continue;
-      if (hits.length > 1) return { qEl };           // hai phương án trùng chữ: không đoán bừa
+      if (hits.length > 1) return { qEl, why: hits.length + ' ô trùng nhau' };           // hai phương án trùng chữ: không đoán bừa
       return { qEl, card, target: hits[0].el };
     }
-    return { qEl };
+    return { qEl, why: 'không thấy ảnh đáp án' };
   }
   // Câu đúng/sai: tìm dòng chứa nội dung ý, rồi bấm nút "Đúng" / "Sai" trong dòng đó (nếu dòng chứa nhiều ý thì không đoán bừa)
   function locateDS(rec, all) {
@@ -297,6 +297,7 @@
     }
     return { qEl: stEl, noFallback: true };
   }
+  const numOf = qEl => { for (let c = qEl.el.parentElement, i = 0; c && i < 6; c = c.parentElement, i++) { const m = (c.innerText || '').match(/(^|\n)\s*Câu\s*(\d+)/i); if (m) return m[2]; } return '?'; };
   const warnedImg = new Set();
   function dbgImg(rec, loc) {
     const key = norm(rec.q);
@@ -305,7 +306,7 @@
     let card = loc.qEl.el.parentElement;
     for (let i = 0; i < 8 && card; i++, card = card.parentElement) if (card.querySelectorAll('img').length >= 2) break;
     const imgs = card ? [...card.querySelectorAll('img')].map(im => { const r = im.getBoundingClientRect(); return (imgTok(im) || '(bị bỏ qua)') + ' ' + Math.round(r.width) + 'x' + Math.round(r.height) + ' src=' + String(im.currentSrc || im.src || im.getAttribute('data-src') || '').slice(-70); }) : [];
-    console.warn('[Azota Helper] không khớp ảnh đáp án cho: ' + rec.q.slice(0, 60) + '\n  cần: ' + rec.correct + '\n  ảnh tìm thấy trong câu này:\n  ' + (imgs.join('\n  ') || '(không thấy thẻ <img> nào)'));
+    console.warn('[Azota Helper] không khớp ảnh đáp án (' + (loc.why || '?') + ') cho: ' + rec.q.slice(0, 60) + '\n  cần: ' + rec.correct + '\n  ảnh tìm thấy trong câu này:\n  ' + (imgs.join('\n  ') || '(không thấy thẻ <img> nào)'));
   }
   const clearHl = () => { hl.forEach(el => { el.style.outline = ''; el.style.outlineOffset = ''; }); hl.clear(); };
 
@@ -319,12 +320,13 @@
     const active = cfg.run && cfg.select;
     if (active) clearHl();
     let found = 0, dsFound = 0;
+    const imgFail = [];
     for (const rec of recs) {
       const isDS = rec.q.startsWith(DS);
       const loc = isDS ? locateDS(rec, all) : locate(rec, all);
       if (!loc) continue;
       if (isDS) dsFound++; else found++;
-      if (!loc.target) { if (!isDS && /^⟦img:/.test(rec.correct)) dbgImg(rec, loc); continue; }
+      if (!loc.target) { if (!isDS && /^⟦img:/.test(rec.correct)) { dbgImg(rec, loc); imgFail.push('Câu ' + numOf(loc.qEl) + ' (' + (loc.why || '?') + ')'); } continue; }
       const key = norm(rec.q);
       if (clickedQ.has(key)) continue;               // mỗi câu chỉ chọn 1 lần, không đè lên lựa chọn của bạn
       if (!active) {                                 // chỉ gợi ý: tô viền đáp án đã nhớ
@@ -345,7 +347,7 @@
       }, 500);
       if (cfg.delay > 0) break;                      // có độ trễ: mỗi nhịp chỉ chọn 1 câu
     }
-    return { found: found + Math.floor(dsFound / 4), ds: dsFound, done: clickedQ.size, page: pageQ.size, bankN: recs.length };
+    return { imgFail, found: found + Math.floor(dsFound / 4), ds: dsFound, done: clickedQ.size, page: pageQ.size, bankN: recs.length };
   }
 
   // ---------- UI Sakura ----------
@@ -507,7 +509,7 @@
     <div id="azh-head">
       <div class="azh-logo">
         <div class="azh-mascot"><div class="azh-flower">${flower}</div></div>
-        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.8 · 桜 SAKURA</div></div>
+        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.9 · 桜 SAKURA</div></div>
       </div>
       <div class="azh-hbtns">
         <button id="azh-run" class="azh-runbtn"></button>
@@ -854,7 +856,7 @@
       if (!r.bankN) return ts('chưa có đáp án cho đề này');
       if (!cfg.run) return ts('đã tạm dừng' + (r.found ? `, tô viền ${r.found} câu đã nhớ` : ''));
       if (!cfg.select) return ts(`tự chọn đang tắt, tô viền gợi ý ${r.found} câu`);
-      return ts(`khớp ${r.found}/${r.page || r.bankN} câu` + (r.ds ? ` (${r.ds} ý đúng/sai)` : '') + `, đã chọn ${r.done}`);
+      return ts(`khớp ${r.found}/${r.page || r.bankN} câu` + (r.ds ? ` (${r.ds} ý đúng/sai)` : '') + `, đã chọn ${r.done}` + (r.imgFail && r.imgFail.length ? ' — chưa chọn được: ' + r.imgFail.join('; ') : ''));
     }
     prog(0, 0);
     if (!cfg.run) return ts('đã tạm dừng, không quét đáp án');
