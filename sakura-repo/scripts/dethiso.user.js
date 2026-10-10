@@ -393,11 +393,74 @@
   }
   $('dts11-exp').onclick = exportTxt;
 
-  // ---------- GitHub (cần cài Sakura Loader) ----------
+  // ---------- Lưu lên GitHub (token nhập mỗi lần, dùng xong bỏ, không lưu) ----------
+  const GHC = { user: 'Huy7684', repo: 'School', branch: 'main', dir: 'sakura-repo/', file: 'banks/dethiso.txt' };
+  const ghEnc = str => { const u = new TextEncoder().encode(str); let s = ''; for (let i = 0; i < u.length; i += 8192) s += String.fromCharCode.apply(null, u.subarray(i, i + 8192)); return btoa(s); };
+  const ghDec = b64 => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\s/g, '')), c => c.charCodeAt(0)));
+  const ghParse = txt => {
+    const out = [];
+    String(txt).replace(/^\uFEFF/, '').split(/\r?\n/).forEach(line => {
+      line = line.trim();
+      if (!line || line[0] === '#') return;
+      const i = line.lastIndexOf('|||');
+      if (i < 0) return;
+      const q = flat(line.slice(0, i)), c = flat(line.slice(i + 3));
+      if (q && c) out.push([q, c]);
+    });
+    return out;
+  };
+  // fetch thẳng; nếu trang chặn (CSP) thì đi qua Sakura Loader
+  function ghViaLoader(method, url, headers, data) {
+    return new Promise(res => {
+      const id = Math.random().toString(36).slice(2);
+      const done = v => { document.removeEventListener('sakura-http-res', h); clearTimeout(t); res(v); };
+      const h = e => { try { const o = JSON.parse(e.detail); if (o.id === id) done({ s: o.s, j: o.j }); } catch (x) {} };
+      const t = setTimeout(() => done({ s: 0, j: null }), 25000);
+      document.addEventListener('sakura-http-res', h);
+      document.dispatchEvent(new CustomEvent('sakura-http', { detail: JSON.stringify({ id, method, url, headers, data }) }));
+    });
+  }
+  function ghReq(method, tok, body) {
+    const url = `https://api.github.com/repos/${GHC.user}/${GHC.repo}/contents/${GHC.dir}${GHC.file}` + (method === 'GET' ? '?ref=' + GHC.branch : '');
+    const headers = { Authorization: 'Bearer ' + tok, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' };
+    const data = body ? JSON.stringify(body) : undefined;
+    return fetch(url, { method, headers, body: data })
+      .then(async r => ({ s: r.status, j: await r.json().catch(() => null) }))
+      .catch(() => ghViaLoader(method, url, headers, data));
+  }
+  const ghErr = s => s === 0 ? 'không kết nối được GitHub (mạng hoặc trang chặn, cần cài Sakura Loader)'
+    : (s === 401 || s === 403) ? 'token sai/hết hạn/thiếu quyền Contents: Read and write (HTTP ' + s + ')'
+    : s === 404 ? 'token không thấy repo ' + GHC.repo + ' (HTTP 404)' : 'lỗi GitHub HTTP ' + s;
+  async function pushGithub() {
+    const items = Object.values(bank).filter(r => r && r.q && r.correct).map(r => [flat(r.q), flat(r.correct)]);
+    if (!items.length) return stat('sổ đang trống, chưa có gì để lưu');
+    let tok = prompt('Dán GitHub token để lưu ' + items.length + ' câu (dùng 1 lần, không được lưu lại):', '');
+    if (!tok || !tok.trim()) return stat('đã huỷ, chưa lưu');
+    tok = tok.trim();
+    stat('đang lưu lên GitHub...');
+    try {
+      for (let attempt = 0; attempt < 2; attempt++) {
+        const cur = await ghReq('GET', tok);
+        if (cur.s !== 200 && cur.s !== 404) return stat(ghErr(cur.s));
+        const map = {};
+        if (cur.s === 200) ghParse(ghDec(cur.j.content)).forEach(([q, c]) => { map[norm(q)] = [q, c]; });
+        let n = 0;
+        items.forEach(([q, c]) => { const k = norm(q); if (!map[k] || norm(map[k][1]) !== norm(c)) n++; map[k] = [q, c]; });
+        if (!n) return stat('sổ đã khớp GitHub, không có gì mới');
+        const text = '# Mỗi dòng: câu hỏi ||| đáp án đúng\n' + Object.values(map).sort((a, b) => a[0].toLowerCase() < b[0].toLowerCase() ? -1 : 1).map(([q, c]) => `${q} ||| ${c}`).join('\n') + '\n';
+        const put = await ghReq('PUT', tok, { message: `bank dethiso: +${n}`, content: ghEnc(text), branch: GHC.branch, sha: cur.s === 200 ? cur.j.sha : undefined });
+        if (put.s === 200 || put.s === 201) return stat(`đã lưu +${n} câu lên GitHub`);
+        if (put.s !== 409 && put.s !== 422) return stat(ghErr(put.s));
+      }
+      stat('xung đột phiên bản, bấm lưu lại nhé');
+    } finally { tok = null; }
+  }
+
+  // ---------- Nút tải từ GitHub (cần Sakura Loader) ----------
   let gAck = 0;
   const gAsk = (ev, msg) => { gAck = 0; stat(msg); document.dispatchEvent(new CustomEvent(ev)); setTimeout(() => { if (!gAck) stat('chưa thấy Sakura Loader, cài loader trước nhé'); }, 3000); };
   $('dts11-gpull').onclick = () => gAsk('sakura-pull', 'đang tải đáp án từ GitHub...');
-  $('dts11-gpush').onclick = () => gAsk('sakura-push', 'đang lưu lên GitHub...');
+  $('dts11-gpush').onclick = pushGithub;
   document.addEventListener('sakura-status', e => { gAck = 1; bank = loadKey(BANK_KEY) || {}; idx2 = null; st = { key: null }; stN = { sig: null }; stat(String(e.detail || '')); });
   $('dts11-imp').onclick = () => $('dts11-file').click();
   $('dts11-file').onchange = e => {
