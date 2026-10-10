@@ -991,7 +991,7 @@ Mở một [Issue](https://github.com/Huy7684/School/issues) và cho mình biế
 
 ### 📬 Liên hệ
 
-Chủ repo: [@Huy7684](https://github.com/Huy7684) Hoặc [HiSiuDz](https://t.me/HiSiuDz) (Telegram)
+Chủ repo: [@Huy7684](https://github.com/Huy7684) (Github) Hoặc [HiSiuDz](https://t.me/HiSiuDz) (Telegram)
 
 <div align="center">
 
