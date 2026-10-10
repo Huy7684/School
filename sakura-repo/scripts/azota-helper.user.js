@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      2.7
+// @version      2.8
 // @description  桜 Sakura Edition: quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -261,7 +261,9 @@
     return all;
   }
   const deepest = list => list.filter(a => !list.some(b => b !== a && a.el.contains(b.el)));
-  const sameText = (a, b) => norm(a) === norm(b) || norm2(a) === norm2(b);
+  const isTok = t => /^⟦img:[^⟧]*⟧$/.test(t);
+  const tokKey = t => t.slice(5, -1).toLowerCase().replace(/[?#].*$/, '').replace(/\.[a-z0-9]{2,5}$/, '').replace(/[-_](?:\d+x\d+|thumb|small|medium|large|origin|original)$/, '');
+  const sameText = (a, b) => norm(a) === norm(b) || norm2(a) === norm2(b) || (isTok(a) && isTok(b) && tokKey(a) === tokKey(b));
   function press(el) {
     ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click'].forEach(t => {
       const Ev = t.startsWith('pointer') && window.PointerEvent ? PointerEvent : MouseEvent;
@@ -295,6 +297,16 @@
     }
     return { qEl: stEl, noFallback: true };
   }
+  const warnedImg = new Set();
+  function dbgImg(rec, loc) {
+    const key = norm(rec.q);
+    if (warnedImg.has(key)) return;
+    warnedImg.add(key);
+    let card = loc.qEl.el.parentElement;
+    for (let i = 0; i < 8 && card; i++, card = card.parentElement) if (card.querySelectorAll('img').length >= 2) break;
+    const imgs = card ? [...card.querySelectorAll('img')].map(im => { const r = im.getBoundingClientRect(); return (imgTok(im) || '(bị bỏ qua)') + ' ' + Math.round(r.width) + 'x' + Math.round(r.height) + ' src=' + String(im.currentSrc || im.src || im.getAttribute('data-src') || '').slice(-70); }) : [];
+    console.warn('[Azota Helper] không khớp ảnh đáp án cho: ' + rec.q.slice(0, 60) + '\n  cần: ' + rec.correct + '\n  ảnh tìm thấy trong câu này:\n  ' + (imgs.join('\n  ') || '(không thấy thẻ <img> nào)'));
+  }
   const clearHl = () => { hl.forEach(el => { el.style.outline = ''; el.style.outlineOffset = ''; }); hl.clear(); };
 
   function selectNow() {
@@ -312,7 +324,7 @@
       const loc = isDS ? locateDS(rec, all) : locate(rec, all);
       if (!loc) continue;
       if (isDS) dsFound++; else found++;
-      if (!loc.target) continue;
+      if (!loc.target) { if (!isDS && /^⟦img:/.test(rec.correct)) dbgImg(rec, loc); continue; }
       const key = norm(rec.q);
       if (clickedQ.has(key)) continue;               // mỗi câu chỉ chọn 1 lần, không đè lên lựa chọn của bạn
       if (!active) {                                 // chỉ gợi ý: tô viền đáp án đã nhớ
@@ -495,7 +507,7 @@
     <div id="azh-head">
       <div class="azh-logo">
         <div class="azh-mascot"><div class="azh-flower">${flower}</div></div>
-        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.7 · 桜 SAKURA</div></div>
+        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v2.8 · 桜 SAKURA</div></div>
       </div>
       <div class="azh-hbtns">
         <button id="azh-run" class="azh-runbtn"></button>
