@@ -81,6 +81,7 @@ AI là gì? ||| Khả năng của máy tính có thể làm những công việc
 AI trong tài chính ngân hàng giúp gì? ||| Phân tích hành vi để dự đoán và phát hiện gian lận.
 AI tạo sinh là gì? ||| AI có khả năng tạo ra nội dung từ dữ liệu đã có.
 Biểu nào dưới đây phù hợp nhất khi nói về khả năng của Trí tuệ nhân tạo hẹp? ||| Giải quyết nhiệm vụ cụ thể theo những gì đã được học.
+Bộ giao tiếp mạng (NIC) có chức năng gì? ||| Truyền và nhận dữ liệu qua cáp mạng hoặc sóng vô tuyến
 Bộ nhớ chính (bộ nhớ trong - memory) bao gồm: ||| ROM và RAM
 Chuẩn kết nối nào dưới đây thường được sử dụng để kết nối các thiết bị âm nhạc với điện thoại di động? ||| Bluetooth.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên Internet.
@@ -91,7 +92,12 @@ Các trợ lý ảo như Google Assistant, Siri có thể làm gì? ||| Giao ti�
 Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên internet.
 DeepMind của Google trong y tế và chăm sóc sức khỏe có thể làm gì? ||| Chẩn đoán bệnh và lập phác đồ điều trị.
 Free soflware còn được gọi là: ||| Phần mềm tự do
+Giao thức FTP được sử dụng để làm gì? ||| Truyền tải các tệp giữa các máy tính
+Giao thức HTTP được sử dụng cho mục đích gì? ||| Truyền tải các trang web
+Giao thức nào sau đây không thuộc bộ giao thức TCP/IP? ||| SMTP
+Giao thức TCP đảm bảo điều gì trong quá trình truyền dữ liệu? ||| Truyền dữ liệu đáng tin cậy và đúng thứ tự
 Hành vi nào sau đây KHÔNG phải là lạm dụng dữ liệu cá nhân bởi mô hình AI? ||| Phân tích dữ liệu y tế cá nhân để đưa ra chẩn đoán bệnh.
+Hệ thống tên miền (DNS) phân tên miền thành các cấp theo thứ tự nào? ||| Cấp cao nhất, cấp hai, cấp ba
 Khái niệm "AI mạnh" là gì? ||| AI có thể giải quyết bất kỳ loại vấn đề phức tạp nào như con người.
 Khả năng nào sau đây ít phổ biến trong các hệ thống AI? ||| Khả năng tự phục hồi sau khi hỏng.
 License còn có nghĩa là: ||| Giấy phép
@@ -99,6 +105,9 @@ Mạch logic thực hiện phép toán logic AND có kí hiệu là : ||| ⟦img
 Mạch logic thực hiện phép toán logic OR có kí hiệu là : ||| ⟦img:f98547968c68e54a1344694fe92283dc.png⟧
 Mạch logic thực hiện phép toán logic phủ định logic NOT có kí hiệu là : ||| ⟦img:a0d896090598d2ba372efafa597c1291.png⟧ Giải thích
 Mạch logic thực hiện phép toán logic XOR có kí hiệu là : ||| ⟦img:d600c448f2c7e39a01fb5df1a7b3a36c.png⟧ Giải thích
+Mạng máy tính là gì? ||| Một hệ thống các thiết bị số được kết nối với nhau để truyền dữ liệu và trao đổi thông tin.
+Mạng WLAN còn được gọi là gì? ||| Mạng cục bộ không dây
+Mục đích của hệ thống tên miền DNS là gì? ||| Để định danh các máy tính trong mạng bằng những chữ gợi nhớ
 Người máy Grace được coi là một ví dụ về gì? ||| Cobot
 Người máy Xoxe có khả năng gì? ||| Giao tiếp với con người bằng hơn 120 thứ tiếng khác nhau.
 Nhận định nào sau đây là SAI khi nói về sự ảnh hưởng của AI trong tương lai? ||| AI sẽ luôn an toàn và có lợi cho con người.
@@ -127,14 +136,25 @@ Phần mềm nào dưới đây là trợ lý ảo của công ty SamSung? ||| B
 Phần mềm nào sau đây không phải là phần mềm mã nguồn mở ||| Microsoft Word 2019
 ROM (Read Only Memory) là bộ nhớ dùng để: ||| Lưu các dữ liệu hệ thống cố định và các chương trình kiểm tra hay khởi động máy tính
 Theo em phần mềm thương mại gồm: ||| Phần mềm đặt hàng và phần mềm đóng gói
+Thiết bị nào dùng để kết nối mạng không dây cho các thiết bị trong một mạng cục bộ? ||| Access Point
+Thiết bị nào dưới đây dùng để kết nối các thiết bị sử dụng Internet tới nhà cung cấp dịch vụ Internet? ||| Modem
+Thiết bị nào dưới đây không phải là thiết bị đầu cuối? ||| Access Point
 Thiết bị nào sau đây KHÔNG có khả năng kết nối với máy tính? ||| Máy hút bụi cầm tay.
 Thiết bị nào sau đây KHÔNG sử dụng trí tuệ nhân tạo để điều khiển tự động? ||| Ấm điện siêu tốc tự động ngắt.
+Thiết bị nào sau đây thường có chức năng phát sóng Wi-Fi và kết nối có dây? ||| Access Point
 Thuật ngữ "AI" bắt đầu được sử dụng vào năm nào? ||| 1956
 Thị giác máy tính là gì? ||| Lĩnh vực nghiên cứu xử lý hình ảnh kỹ thuật số.
+Trong mạng LAN, thiết bị nào được sử dụng để kết nối và chuyển tiếp dữ liệu giữa các thiết bị? ||| Switch
 Trong những tính năng sau tính năng nào KHÔNG phải là của Trợ lý ảo. ||| Tự động cải thiện hiệu suất máy tính.
 Trong những tính năng sau, tính năng nào KHÔNG phải là của Trợ lí ảo? ||| Tự động cải thiện hiệu suất máy tính.
 Trí tuệ nhân tạo còn nhiều hạn chế ở khả năng nào sau đây? ||| Cảm nhận cảm xúc.
 Trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh bằng cách nào sau đây? ||| Nhận diện các bệnh lí qua hình ảnh y khoa.
+Vai trò chính của Router là gì? ||| Kết nối các mạng LAN với nhau và chuyển tiếp dữ liệu giữa chúng
 Ví dụ nào sau đây là một ứng dụng của AI yếu? ||| MYCIN – hệ chuyên gia trong lĩnh vực y tế.
 Youtube được trang bị hệ thống trí tuệ nhân tạo để gợi ý cho người dùng. Hãy cho biết hệ thống này làm nhiệm vụ gì dưới đây? ||| Đề xuất các video dựa trên sở thích của người dùng.
+Điểm nào sau đây là sai khi nói về giao thức TCP? ||| Không có cơ chế kiểm tra lỗi
+Địa chỉ IP là gì? ||| Địa chỉ số được gán cho mỗi thiết bị khi kết nối vào mạng
+Địa chỉ IPv4 được biểu diễn dưới dạng nào? ||| Một chuỗi số 32 bit được chia thành 4 cụm 8 bit
+Địa chỉ IPv6 có bao nhiêu bit? ||| 128 bit
+Địa chỉ MAC là gì? ||| Địa chỉ định danh duy nhất của mỗi thiết bị trong mạng
 Ứng dụng AI trong y tế có thể làm gì? ||| Đọc và phân tích ảnh quét một cách chính xác.
