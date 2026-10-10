@@ -1,28 +1,36 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=320&section=header&text=Sakura%20Helper&fontSize=70&fontColor=ffffff&fontAlignY=36&animation=fadeIn&desc=%E6%A1%9C%20SAKURA%20EDITION%20%C2%B7%20v3.0&descSize=22&descAlignY=58" alt="Sakura Helper" width="100%">
-
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=900&color=D6498F&center=true&vCenter=true&width=680&height=45&lines=Qu%C3%A9t%20%22%C4%90%C3%A1p%20%C3%A1n%20%C4%91%C3%BAng%22%20%E1%BB%9F%20trang%20xem%20%C4%91%C3%A1p%20%C3%A1n%20%E2%9C%BF;Nh%E1%BB%9B%20%C4%91%C3%A1p%20%C3%A1n%20%C2%B7%20t%E1%BB%B1%20ch%E1%BB%8Dn%20l%E1%BA%A1i%20%E1%BB%9F%20l%E1%BA%A7n%20l%C3%A0m%20sau%20%E2%9C%BF;S%E1%BB%95%20%C4%91%C3%A1p%20%C3%A1n%20c%C3%B3%20t%C3%ACm%20ki%E1%BA%BFm%20%C2%B7%20xu%E1%BA%A5t%20/%20nh%E1%BA%ADp%20.txt%20%E2%9C%BF;Kh%C3%B4ng%20t%E1%BB%B1%20n%E1%BB%99p%20b%C3%A0i%20%C2%B7%20ch%E1%BB%89%20%C4%91%E1%BB%83%20h%E1%BB%8Dc%20t%E1%BA%ADp%20%E2%9C%BF" alt="tagline">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=360&section=header&text=Sakura%20Helper&fontSize=76&fontColor=ffe0ee&fontAlignY=34&animation=twinkling&desc=%E6%A1%9C%20SAKURA%20GALAXY%20EDITION%20%C2%B7%20v3.0&descSize=24&descAlignY=56&descAlign=50" alt="Sakura Helper" width="100%">
 
-🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸
-
-![phiên bản](https://img.shields.io/badge/phi%C3%AAn%20b%E1%BA%A3n-3.0-ff7fb8?style=for-the-badge&labelColor=c19bff) ![loại](https://img.shields.io/badge/lo%E1%BA%A1i-userscript-c19bff?style=for-the-badge&labelColor=ff7fb8) ![giao diện](https://img.shields.io/badge/giao%20di%E1%BB%87n-sakura-ff6fb0?style=for-the-badge&labelColor=b69bff)
-
-![mục đích](https://img.shields.io/badge/m%E1%BB%A5c%20%C4%91%C3%ADch-h%E1%BB%8Dc%20t%E1%BA%ADp%20%26%20nghi%C3%AAn%20c%E1%BB%A9u-7fc8ff?style=for-the-badge&labelColor=c19bff) ![tự nộp bài](https://img.shields.io/badge/t%E1%BB%B1%20n%E1%BB%99p%20b%C3%A0i-kh%C3%B4ng-ffb3d4?style=for-the-badge&labelColor=ff7fb8) ![dữ liệu](https://img.shields.io/badge/d%E1%BB%AF%20li%E1%BB%87u-%E1%BB%9F%20tr%C3%ACnh%20duy%E1%BB%87t%20c%E1%BB%A7a%20b%E1%BA%A1n-e6d6ff?style=for-the-badge&labelColor=ff7fb8)
-
-✧･ﾟ: *✧･ﾟ:*　🌸　*:･ﾟ✧*:･ﾟ✧　🌸　✧･ﾟ: *✧･ﾟ:*
-
-### 🌸 &nbsp;*Mỗi lần làm lại một đề là một lần nhớ thêm một chút* &nbsp;🌸
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=900&color=FF7FB8&center=true&vCenter=true&width=680&height=45&lines=%E2%9C%BF%20%E2%9C%BF%20%E2%9C%BF%20%20c%C3%A1nh%20hoa%20r%C6%A1i%2C%20ghi%20nh%E1%BB%9B%20t%E1%BB%ABng%20c%C3%A2u%20%20%E2%9C%BF%20%E2%9C%BF%20%E2%9C%BF;%E2%9D%80%20hanami%20%C2%B7%20ng%E1%BA%AFm%20hoa%20%C2%B7%20%C3%B4n%20b%C3%A0i%20th%E1%BA%ADt%20chill%20%E2%9D%80" alt="">
+✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33a/512.gif" alt="🌺" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa90/512.gif" alt="🪐" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6f8/512.gif" alt="🛸" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f337/512.gif" alt="🌷" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="64" height="64">
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ffd0e5,50:ffb3d4,100:e6d6ff&height=60&section=header&animation=twinkling" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=cylinder&color=0:ff7fb8,40:c19bff,100:0f0c29&height=90&section=header&text=%E2%9C%A6%20COSMIC%20%C2%B7%20SAKURA%20%C2%B7%20STUDY%20%E2%9C%A6&fontSize=30&fontColor=ffffff&fontAlignY=50&animation=blob&stroke=ffb3d4&strokeWidth=2" alt="" width="100%">
 
 <div align="center">
 
-## ✿ Mục lục ✿
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=21&duration=2600&pause=700&color=FF9CCD&center=true&vCenter=true&width=700&height=50&lines=%E2%9C%A6%20Qu%C3%A9t%20%22%C4%90%C3%A1p%20%C3%A1n%20%C4%91%C3%BAng%22%20%E1%BB%9F%20trang%20xem%20%C4%91%C3%A1p%20%C3%A1n%20%E2%9C%A6;%E2%9C%A6%20Nh%E1%BB%9B%20%C4%91%C3%A1p%20%C3%A1n%20%C2%B7%20t%E1%BB%B1%20ch%E1%BB%8Dn%20l%E1%BA%A1i%20%E1%BB%9F%20l%E1%BA%A7n%20l%C3%A0m%20sau%20%E2%9C%A6;%E2%9C%A6%20S%E1%BB%95%20%C4%91%C3%A1p%20%C3%A1n%20c%C3%B3%20t%C3%ACm%20ki%E1%BA%BFm%20%C2%B7%20xu%E1%BA%A5t%20/%20nh%E1%BA%ADp%20.txt%20%E2%9C%A6;%E2%9C%A6%20Kh%C3%B4ng%20t%E1%BB%B1%20n%E1%BB%99p%20b%C3%A0i%20%C2%B7%20ch%E1%BB%89%20%C4%91%E1%BB%83%20h%E1%BB%8Dc%20t%E1%BA%ADp%20%E2%9C%A6" alt="tagline">
+
+✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f680/512.gif" alt="🚀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38">
+
+![phiên bản](https://img.shields.io/badge/phi%C3%AAn%20b%E1%BA%A3n-3.0-ff7fb8?style=for-the-badge&labelColor=302b63) ![loại](https://img.shields.io/badge/lo%E1%BA%A1i-userscript-c19bff?style=for-the-badge&labelColor=0f0c29) ![giao diện](https://img.shields.io/badge/giao%20di%E1%BB%87n-sakura-ff6fb0?style=for-the-badge&labelColor=302b63)
+
+![mục đích](https://img.shields.io/badge/m%E1%BB%A5c%20%C4%91%C3%ADch-h%E1%BB%8Dc%20t%E1%BA%ADp%20%26%20nghi%C3%AAn%20c%E1%BB%A9u-7fc8ff?style=for-the-badge&labelColor=302b63) ![tự nộp bài](https://img.shields.io/badge/t%E1%BB%B1%20n%E1%BB%99p%20b%C3%A0i-kh%C3%B4ng-ffb3d4?style=for-the-badge&labelColor=0f0c29) ![dữ liệu](https://img.shields.io/badge/d%E1%BB%AF%20li%E1%BB%87u-%E1%BB%9F%20tr%C3%ACnh%20duy%E1%BB%87t%20c%E1%BB%A7a%20b%E1%BA%A1n-e6d6ff?style=for-the-badge&labelColor=0f0c29)
+
+･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38">
+
+### 🌸 &nbsp;*Mỗi lần làm lại một đề là một lần nhớ thêm một chút* &nbsp;🌸
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=21&duration=2600&pause=700&color=FF7FB8&center=true&vCenter=true&width=700&height=50&lines=%E2%9C%BF%20%E2%9C%BF%20%E2%9C%BF%20%20c%C3%A1nh%20hoa%20r%C6%A1i%20gi%E1%BB%AFa%20d%E1%BA%A3i%20ng%C3%A2n%20h%C3%A0%20%20%E2%9C%BF%20%E2%9C%BF%20%E2%9C%BF;%E2%9D%80%20hanami%20%C2%B7%20ng%E1%BA%AFm%20hoa%20%C2%B7%20%C3%B4n%20b%C3%A0i%20th%E1%BA%ADt%20chill%20%E2%9D%80;%E2%9C%A6%20m%E1%BB%97i%20c%C3%A2u%20nh%E1%BB%9B%20%C4%91%C6%B0%E1%BB%A3c%20l%C3%A0%20m%E1%BB%99t%20v%C3%AC%20sao%20%E2%9C%A6" alt="">
+
+</div>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:6a2c91,100:ff7fb8&height=70&section=header&animation=twinkling" alt="" width="100%">
+
+<div align="center">
+
+## 🚀 Mục lục 🚀
 
 | | | |
 |:-:|:-:|:-:|
@@ -32,13 +40,13 @@
 | [🔐 Riêng tư](#-bảo-mật-và-riêng-tư) | [🛠️ Sự cố](#️-xử-lý-sự-cố) | [❓ FAQ](#-faq) |
 | [🧭 Hạn chế](#-hạn-chế-và-hướng-phát-triển) | [📖 Thuật ngữ](#-thuật-ngữ) | [📝 Phiên bản](#-lịch-sử-phiên-bản) |
 
-❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀
+⋆｡°✩ 🌌 ✩°｡⋆ ✦ ⋆｡°✩ 🌌 ✩°｡⋆<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f320/512.gif" alt="🌠" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33c/512.gif" alt="🌼" width="38" height="38">
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=INTRODUCTION&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=twinkling" alt="INTRODUCTION" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=INTRODUCTION&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=twinkling&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸</div>
+<div align="center">･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33a/512.gif" alt="🌺" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa90/512.gif" alt="🪐" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6f8/512.gif" alt="🛸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f337/512.gif" alt="🌷" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="38" height="38"></div>
 
 ## 🌷 Giới thiệu
 
@@ -68,11 +76,90 @@ làm bài  ->  nộp bài  ->  mở trang xem đáp án  ->  script tự quét v
 </tr>
 </table>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ffe0ee,50:eee8ff,100:e2f3ff&height=60&section=footer&animation=fadeIn" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:24243e,50:b69bff,100:ffb3d4&height=70&section=footer&animation=fadeIn" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=PURPOSE&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=fadeIn" alt="PURPOSE" width="100%">
 
-<div align="center">✧･ﾟ: *✧･ﾟ:*　🌸　*:･ﾟ✧*:･ﾟ✧　🌸　✧･ﾟ: *✧･ﾟ:*</div>
+<div align="center">
+
+![js](https://img.shields.io/badge/JavaScript-userscript-ff7fb8?style=for-the-badge&logo=javascript&logoColor=white&labelColor=0f0c29) ![gh](https://img.shields.io/badge/GitHub-REST%20API-c19bff?style=for-the-badge&logo=github&logoColor=white&labelColor=0f0c29) ![mm](https://img.shields.io/badge/Mermaid-s%C6%A1%20%C4%91%E1%BB%93-7fc8ff?style=for-the-badge&logo=mermaid&logoColor=white&labelColor=0f0c29)
+
+</div>
+
+## 🌌 Bản đồ vũ trụ của dự án
+
+> Một cái nhìn từ trên cao: dự án gồm những chòm sao nào và chúng nối với nhau ra sao.
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#302b63','primaryTextColor':'#ffe0ee','primaryBorderColor':'#ff9ccd','lineColor':'#c19bff','secondaryColor':'#6a2c91','tertiaryColor':'#0f0c29','fontFamily':'Segoe UI'}}}%%
+mindmap
+  root((🌸 Sakura<br/>Helper))
+    🔍 Tự học
+      Quét Đáp án đúng
+      Tách phương án A B C D
+      Đáp án ảnh
+      Câu đúng sai
+    🌷 Nhớ lại
+      Tìm câu theo nội dung
+      Tô viền gợi ý
+      Chọn sẵn đáp án
+      Mỗi câu chọn một lần
+    📖 Sổ đáp án
+      Tìm kiếm
+      Xoá từng câu
+      Xuất nhập txt
+    ☁️ Đồng bộ
+      GitHub theo mã đề
+      Token dùng một lần
+      Loader vượt CSP
+    🎀 Giao diện
+      Cánh hoa rơi
+      Viền gradient
+      Kéo thả thu gọn
+      Tôn trọng giảm chuyển động
+```
+
+### 🛸 Hành trình của một lần ôn tập
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#302b63','primaryTextColor':'#ffe0ee','lineColor':'#c19bff'}}}%%
+journey
+    title Một vòng ôn tập cùng Sakura Helper (minh hoạ)
+    section Lần đầu
+      Làm bài và tự nộp: 3: Bạn
+      Mở trang xem đáp án: 4: Bạn
+      Script quét và nhớ: 5: Sakura Helper
+    section Lần hai
+      Tải đáp án từ GitHub: 4: Sakura Helper
+      Tô viền đáp án đã nhớ: 5: Sakura Helper
+      Bạn đọc lại và tự quyết định: 5: Bạn
+```
+
+### 🕰️ Dòng thời gian
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#302b63','primaryTextColor':'#ffe0ee','lineColor':'#c19bff'}}}%%
+timeline
+    title Các mốc của Sakura Helper
+    v2.9 : Giao diện Sakura
+         : Đồng bộ GitHub theo mã đề
+         : Đáp án ảnh và câu đúng sai
+    v3.0 : Nhận ảnh cao 0
+         : Làm sạch chữ thừa dính đáp án
+```
+
+### 📟 Nhật ký minh hoạ khi script chạy
+
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=18&duration=2600&pause=700&color=7FC8FF&center=true&vCenter=true&width=760&height=50&lines=%5BSakura%20Helper%5D%20nh%E1%BA%ADn%20m%C3%A3%20%C4%91%E1%BB%81%20t%E1%BB%AB%20%C4%91%C6%B0%E1%BB%9Dng%20d%E1%BA%ABn%E2%80%A6;%5BSakura%20Helper%5D%20%C4%91%E1%BB%81%20ABC123%3A%20%C4%91%C3%A3%20t%E1%BA%A3i%2020%20c%C3%A2u%20t%E1%BB%AB%20GitHub;%5BSakura%20Helper%5D%20kh%E1%BB%9Bp%2020/20%20c%C3%A2u%2C%20%C4%91%C3%A3%20ch%E1%BB%8Dn%2020;%5BSakura%20Helper%5D%20ch%E1%BB%9D%20b%E1%BA%A1n%20t%E1%BB%B1%20ki%E1%BB%83m%20tra%20v%C3%A0%20t%E1%BB%B1%20n%E1%BB%99p%20%E2%9C%BF" alt="nhật ký minh hoạ">
+</div>
+
+> Đây chỉ là ví dụ minh hoạ để dễ hình dung, không phải nhật ký thật.
+
+⋆｡°✩ 🌌 ✩°｡⋆ ✦ ⋆｡°✩ 🌌 ✩°｡⋆<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38">
+
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=PURPOSE&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=fadeIn&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
+
+<div align="center">⋆｡°✩ 🌌 ✩°｡⋆ ✦ ⋆｡°✩ 🌌 ✩°｡⋆<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f680/512.gif" alt="🚀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"></div>
 
 ## 🎓 Mục đích và phạm vi
 
@@ -105,11 +192,11 @@ làm bài  ->  nộp bài  ->  mở trang xem đáp án  ->  script tự quét v
 | Lưu trữ | Lưu cục bộ và đồng bộ | `localStorage`, GitHub Contents API, `sha`, xử lý xung đột 409 |
 | Giao diện | Bảng điều khiển đẹp, nhẹ | CSS thuần: gradient động, keyframes, `prefers-reduced-motion` |
 
-<img src="https://capsule-render.vercel.app/api?type=shark&color=0:ffd0e5,50:ffb3d4,100:e6d6ff&height=60&section=header&animation=blink" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=shark&color=0:0f0c29,50:6a2c91,100:ff7fb8&height=70&section=header&animation=blink" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=ARCHITECTURE&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=blink" alt="ARCHITECTURE" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=ARCHITECTURE&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=blink&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀</div>
+<div align="center">✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"></div>
 
 ## 🏯 Kiến trúc tổng quan
 
@@ -167,11 +254,11 @@ sequenceDiagram
 | **Sổ đáp án** | Lưu cặp câu hỏi và đáp án | `localStorage` của trình duyệt |
 | **Kho GitHub** | Sao lưu, chia sẻ sổ theo đề | Repo `School` của bạn |
 
-<img src="https://capsule-render.vercel.app/api?type=egg&color=0:ffe0ee,50:eee8ff,100:e2f3ff&height=50&section=header&animation=scaleIn" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=egg&color=0:24243e,50:b69bff,100:ffb3d4&height=60&section=header&animation=scaleIn" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=DEEP%20DIVE&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=scaleIn" alt="DEEP DIVE" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=DEEP%20DIVE&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=scaleIn&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸</div>
+<div align="center">⋆｡°✩ 🌌 ✩°｡⋆ ✦ ⋆｡°✩ 🌌 ✩°｡⋆<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f320/512.gif" alt="🌠" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33c/512.gif" alt="🌼" width="38" height="38"></div>
 
 ## 🔬 Giải thích chi tiết từng module
 
@@ -325,11 +412,11 @@ Trang web là ứng dụng một trang (SPA), nội dung thay đổi mà không 
 
 </details>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ffd0e5,50:ffb3d4,100:e6d6ff&height=60&section=header&animation=blob" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:6a2c91,100:ff7fb8&height=70&section=header&animation=blob" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=DATA%20MODEL&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=blob" alt="DATA MODEL" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=DATA%20MODEL&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=blob&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">✧･ﾟ: *✧･ﾟ:*　🌸　*:･ﾟ✧*:･ﾟ✧　🌸　✧･ﾟ: *✧･ﾟ:*</div>
+<div align="center">✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33a/512.gif" alt="🌺" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa90/512.gif" alt="🪐" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6f8/512.gif" alt="🛸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f337/512.gif" alt="🌷" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="38" height="38"></div>
 
 ## 🧾 Mô hình dữ liệu
 
@@ -366,11 +453,11 @@ Mạch logic thực hiện phép toán AND có kí hiệu là : ||| ⟦img:ten-f
 - `⟦img:...⟧`: đáp án là ảnh, định danh bằng tên file ảnh.
 - Dấu tách là `|||`. Khi đọc, dùng **lần xuất hiện cuối cùng** của `|||`, nên câu hỏi có chứa `|||` vẫn an toàn.
 
-<img src="https://capsule-render.vercel.app/api?type=slice&color=0:ffe0ee,50:eee8ff,100:e2f3ff&height=60&section=header&animation=twinkling" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=slice&color=0:24243e,50:b69bff,100:ffb3d4&height=70&section=header&animation=twinkling" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=FEATURES&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=twinkling" alt="FEATURES" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=FEATURES&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=twinkling&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸</div>
+<div align="center">✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"></div>
 
 ## 🌺 Tính năng
 
@@ -385,11 +472,11 @@ Mạch logic thực hiện phép toán AND có kí hiệu là : ||| ⟦img:ten-f
 | 🏵️ | Bảng điều khiển **kéo thả, thu gọn**, nhớ vị trí | Giao diện Sakura nhiều hiệu ứng |
 | 🪷 | **Đồng bộ GitHub** theo từng đề | Token dùng một lần, không lưu |
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ffd0e5,50:ffb3d4,100:e6d6ff&height=60&section=header&animation=twinkling" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=venom&color=0:0f0c29,50:6a2c91,100:ff7fb8&height=60&section=header&animation=fadeIn" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=STRUCTURE&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=fadeIn" alt="STRUCTURE" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=STRUCTURE&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=fadeIn&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀</div>
+<div align="center">･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f680/512.gif" alt="🚀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"></div>
 
 ## 🗂️ Cấu trúc repo
 
@@ -407,11 +494,11 @@ School/
 
 > Tên file có thể khác một chút so với thực tế trong repo, hãy chỉnh lại cho khớp.
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ffe0ee,50:eee8ff,100:e2f3ff&height=60&section=footer&animation=fadeIn" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:6a2c91,100:ff7fb8&height=70&section=header&animation=twinkling" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=INSTALL&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=blink" alt="INSTALL" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=INSTALL&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=blink&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">✧･ﾟ: *✧･ﾟ:*　🌸　*:･ﾟ✧*:･ﾟ✧　🌸　✧･ﾟ: *✧･ﾟ:*</div>
+<div align="center">･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f320/512.gif" alt="🌠" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33c/512.gif" alt="🌼" width="38" height="38"></div>
 
 ## 🚀 Cài đặt
 
@@ -424,11 +511,11 @@ School/
 
 Nâng cấp lên bản mới: dán đè nội dung lên script cũ, lưu lại, rồi **F5** trang. Sổ đáp án trong trình duyệt được giữ nguyên.
 
-<img src="https://capsule-render.vercel.app/api?type=shark&color=0:ffd0e5,50:ffb3d4,100:e6d6ff&height=60&section=header&animation=blink" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:24243e,50:b69bff,100:ffb3d4&height=70&section=footer&animation=fadeIn" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=CONTROL%20PANEL&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=scaleIn" alt="CONTROL PANEL" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=CONTROL%20PANEL&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=scaleIn&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀</div>
+<div align="center">⋆｡°✩ 🌌 ✩°｡⋆ ✦ ⋆｡°✩ 🌌 ✩°｡⋆<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33a/512.gif" alt="🌺" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa90/512.gif" alt="🪐" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6f8/512.gif" alt="🛸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f337/512.gif" alt="🌷" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="38" height="38"></div>
 
 ## 🎛️ Bảng điều khiển và cấu hình
 
@@ -472,11 +559,11 @@ Nâng cấp lên bản mới: dán đè nội dung lên script cũ, lưu lại, 
 | `min` | `false` | Bảng đang thu gọn |
 | `x`, `y` | `null` | Vị trí bảng sau khi kéo thả |
 
-<img src="https://capsule-render.vercel.app/api?type=egg&color=0:ffe0ee,50:eee8ff,100:e2f3ff&height=50&section=header&animation=scaleIn" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=shark&color=0:0f0c29,50:6a2c91,100:ff7fb8&height=70&section=header&animation=blink" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=PRIVACY&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=blob" alt="PRIVACY" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=PRIVACY&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=blob&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸</div>
+<div align="center">･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f680/512.gif" alt="🚀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"></div>
 
 ## 🔐 Bảo mật và riêng tư
 
@@ -486,11 +573,11 @@ Nâng cấp lên bản mới: dán đè nội dung lên script cũ, lưu lại, 
 - 🌐 Repo công khai nghĩa là sổ đáp án **ai cũng đọc được**. Nếu không muốn, hãy để repo riêng tư (khi đó cần token cho cả việc tải).
 - 🧹 Muốn xoá sạch: bấm **Xoá sổ đã nhớ** và xoá các file `banks/` trong repo.
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ffd0e5,50:ffb3d4,100:e6d6ff&height=60&section=header&animation=blob" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=egg&color=0:24243e,50:b69bff,100:ffb3d4&height=60&section=header&animation=scaleIn" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=TROUBLESHOOT&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=twinkling" alt="TROUBLESHOOT" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=TROUBLESHOOT&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=twinkling&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">✧･ﾟ: *✧･ﾟ:*　🌸　*:･ﾟ✧*:･ﾟ✧　🌸　✧･ﾟ: *✧･ﾟ:*</div>
+<div align="center">⋆｡°✩ 🌌 ✩°｡⋆ ✦ ⋆｡°✩ 🌌 ✩°｡⋆<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"></div>
 
 ## 🛠️ Xử lý sự cố
 
@@ -511,11 +598,11 @@ Nâng cấp lên bản mới: dán đè nội dung lên script cũ, lưu lại, 
 
 > 💡 Mẹo: mở **Console** (F12) và tìm các dòng bắt đầu bằng `[Sakura Helper]`. Mỗi dòng đều nêu **lý do** cụ thể.
 
-<img src="https://capsule-render.vercel.app/api?type=slice&color=0:ffe0ee,50:eee8ff,100:e2f3ff&height=60&section=header&animation=twinkling" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:6a2c91,100:ff7fb8&height=70&section=header&animation=blob" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=FAQ&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=fadeIn" alt="FAQ" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=FAQ&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=fadeIn&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀</div>
+<div align="center">✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f320/512.gif" alt="🌠" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33c/512.gif" alt="🌼" width="38" height="38"></div>
 
 ## ❓ FAQ
 
@@ -561,11 +648,11 @@ Script có thể ngừng khớp. Mở Console xem lý do, rồi sửa lại các
 
 </details>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ffd0e5,50:ffb3d4,100:e6d6ff&height=60&section=header&animation=twinkling" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=slice&color=0:24243e,50:b69bff,100:ffb3d4&height=70&section=header&animation=twinkling" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=ROADMAP&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=blink" alt="ROADMAP" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=ROADMAP&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=blink&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸</div>
+<div align="center">⋆｡°✩ 🌌 ✩°｡⋆ ✦ ⋆｡°✩ 🌌 ✩°｡⋆<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33a/512.gif" alt="🌺" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa90/512.gif" alt="🪐" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6f8/512.gif" alt="🛸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f337/512.gif" alt="🌷" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="38" height="38"></div>
 
 ## 🧭 Hạn chế và hướng phát triển
 
@@ -587,11 +674,11 @@ Script có thể ngừng khớp. Mở Console xem lý do, rồi sửa lại các
 - [ ] Giao diện sáng và tối
 - [ ] Đa ngôn ngữ
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ffe0ee,50:eee8ff,100:e2f3ff&height=60&section=footer&animation=fadeIn" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=venom&color=0:0f0c29,50:6a2c91,100:ff7fb8&height=60&section=header&animation=fadeIn" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=GLOSSARY&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=scaleIn" alt="GLOSSARY" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=GLOSSARY&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=scaleIn&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">✧･ﾟ: *✧･ﾟ:*　🌸　*:･ﾟ✧*:･ﾟ✧　🌸　✧･ﾟ: *✧･ﾟ:*</div>
+<div align="center">✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f680/512.gif" alt="🚀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"></div>
 
 ## 📖 Thuật ngữ
 
@@ -608,11 +695,11 @@ Script có thể ngừng khớp. Mở Console xem lý do, rồi sửa lại các
 | **`⟦img:...⟧`** | "Chữ giả" đại diện cho một ảnh, dựa vào tên file |
 | **`[ĐS]`** | Tiền tố đánh dấu một ý của câu đúng/sai |
 
-<img src="https://capsule-render.vercel.app/api?type=shark&color=0:ffd0e5,50:ffb3d4,100:e6d6ff&height=60&section=header&animation=blink" alt="" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:6a2c91,100:ff7fb8&height=70&section=header&animation=twinkling" alt="" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=CHANGELOG&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=blob" alt="CHANGELOG" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=CHANGELOG&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=blob&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀</div>
+<div align="center">･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f380/512.gif" alt="🎀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"></div>
 
 ## 📝 Lịch sử phiên bản
 
@@ -621,9 +708,9 @@ Script có thể ngừng khớp. Mở Console xem lý do, rồi sửa lại các
 | 🌸 **3.0** | Nhận ảnh đáp án có chiều cao 0. Tự bỏ chữ nút thừa dính vào đáp án, kể cả dữ liệu cũ |
 | 🌷 2.9 | Giao diện Sakura, đồng bộ GitHub theo mã đề, đáp án dạng ảnh, câu đúng/sai |
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=90&section=header&text=NOTES&fontSize=32&fontColor=ffffff&fontAlignY=50&animation=twinkling" alt="NOTES" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=soft&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=100&section=header&text=NOTES&fontSize=34&fontColor=ffe0ee&fontAlignY=50&animation=twinkling&stroke=ff9ccd&strokeWidth=2" alt="" width="100%">
 
-<div align="center">🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸 ˚｡⋆ ✿ ⋆｡˚ 🌸</div>
+<div align="center">✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦ ˚ ⋆ ｡ ˚ ✧ ₊ ˚ ⋆ ✦<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f320/512.gif" alt="🌠" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33c/512.gif" alt="🌼" width="38" height="38"></div>
 
 ## ⚖️ Lưu ý
 
@@ -634,14 +721,16 @@ Script có thể ngừng khớp. Mở Console xem lý do, rồi sửa lại các
 
 <div align="center">
 
-✧･ﾟ: *✧･ﾟ:*　🌸　*:･ﾟ✧*:･ﾟ✧　🌸　✧･ﾟ: *✧･ﾟ:*
+･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33a/512.gif" alt="🌺" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1fa90/512.gif" alt="🪐" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6f8/512.gif" alt="🛸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f337/512.gif" alt="🌷" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4ab/512.gif" alt="💫" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f319/512.gif" alt="🌙" width="38" height="38">
 
 ### 🌸 ganbatte ne~ · 頑張って 🌸
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=900&color=B07CE8&center=true&vCenter=true&width=680&height=45&lines=%F0%9F%8C%B8%20H%E1%BB%8Dc%20th%E1%BA%ADt%20%C2%B7%20nh%E1%BB%9B%20th%E1%BA%ADt%20%C2%B7%20ngh%E1%BB%89%20ng%C6%A1i%20%C4%91%E1%BB%A7%20%F0%9F%8C%B8;%E2%9C%BF%20%E6%A1%9C%20%C2%B7%20%E3%81%95%E3%81%8F%E3%82%89%20%C2%B7%20Sakura%20%E2%9C%BF;%E2%9D%80%20M%E1%BB%97i%20l%E1%BA%A7n%20l%C3%A0m%20l%E1%BA%A1i%20l%C3%A0%20m%E1%BB%99t%20l%E1%BA%A7n%20nh%E1%BB%9B%20th%C3%AAm%20%E2%9D%80" alt="">
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=21&duration=2600&pause=700&color=C19BFF&center=true&vCenter=true&width=700&height=50&lines=%F0%9F%8C%8C%20H%E1%BB%8Dc%20th%E1%BA%ADt%20%C2%B7%20nh%E1%BB%9B%20th%E1%BA%ADt%20%C2%B7%20ngh%E1%BB%89%20ng%C6%A1i%20%C4%91%E1%BB%A7%20%F0%9F%8C%8C;%E2%9C%BF%20%E6%A1%9C%20%C2%B7%20%E3%81%95%E3%81%8F%E3%82%89%20%C2%B7%20Sakura%20%C2%B7%20%E5%AE%87%E5%AE%99%20%E2%9C%BF;%E2%9D%80%20M%E1%BB%97i%20l%E1%BA%A7n%20l%C3%A0m%20l%E1%BA%A1i%20l%C3%A0%20m%E1%BB%99t%20l%E1%BA%A7n%20nh%E1%BB%9B%20th%C3%AAm%20%E2%9D%80" alt="">
 
-❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀ ✿ ❁ ✾ ❀
+⋆｡°✩ 🌌 ✩°｡⋆ ✦ ⋆｡°✩ 🌌 ✩°｡⋆<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f680/512.gif" alt="🚀" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f31f/512.gif" alt="🌟" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.gif" alt="✨" width="38" height="38"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="38" height="38">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff7fb8,50:c19bff,100:7fc8ff&height=170&section=footer&text=ganbatte%20ne~%20%E6%A1%9C&fontSize=32&fontColor=ffffff&fontAlignY=62&animation=twinkling" alt="" width="100%">
+･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧ ☆ ･ﾟ✧ ★ ･ﾟ✧<br><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f320/512.gif" alt="🌠" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f30c/512.gif" alt="🌌" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f338/512.gif" alt="🌸" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f98b/512.gif" alt="🦋" width="64" height="64"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f33c/512.gif" alt="🌼" width="64" height="64">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,35:302b63,70:8e2c8f,100:ff7fb8&height=200&section=footer&text=ganbatte%20ne~%20%E6%A1%9C&fontSize=34&fontColor=ffe0ee&fontAlignY=60&animation=twinkling" alt="" width="100%">
 
 </div>
