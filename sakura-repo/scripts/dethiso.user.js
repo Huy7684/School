@@ -257,6 +257,8 @@
         </div>
 
         <div class="dts11-acts">
+          <button id="dts11-gpull" class="dts11-act" style="grid-column:1/-1">Tải đáp án từ GitHub</button>
+          <button id="dts11-gpush" class="dts11-act alt" style="grid-column:1/-1">Lưu sổ lên GitHub</button>
           <button id="dts11-exp" class="dts11-act">Xuất .txt</button>
           <button id="dts11-imp" class="dts11-act alt">Nhập .txt</button>
           <button id="dts11-clr" class="dts11-act danger" title="Xoá toàn bộ câu đã nhớ">Xoá sổ đã nhớ</button>
@@ -390,6 +392,13 @@
     stat(`nhập +${added} câu mới` + (skipped ? `, bỏ ${skipped} dòng lỗi` : ''));
   }
   $('dts11-exp').onclick = exportTxt;
+
+  // ---------- GitHub (cần cài Sakura Loader) ----------
+  let gAck = 0;
+  const gAsk = (ev, msg) => { gAck = 0; stat(msg); document.dispatchEvent(new CustomEvent(ev)); setTimeout(() => { if (!gAck) stat('chưa thấy Sakura Loader, cài loader trước nhé'); }, 3000); };
+  $('dts11-gpull').onclick = () => gAsk('sakura-pull', 'đang tải đáp án từ GitHub...');
+  $('dts11-gpush').onclick = () => gAsk('sakura-push', 'đang lưu lên GitHub...');
+  document.addEventListener('sakura-status', e => { gAck = 1; bank = loadKey(BANK_KEY) || {}; idx2 = null; st = { key: null }; stN = { sig: null }; stat(String(e.detail || '')); });
   $('dts11-imp').onclick = () => $('dts11-file').click();
   $('dts11-file').onchange = e => {
     const f = e.target.files[0];
