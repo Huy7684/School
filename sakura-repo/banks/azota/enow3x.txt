@@ -1,0 +1,22 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+(B) Bộ nhớ ngoài thường được dùng để làm gì? ||| Lưu dữ liệu lâu dài.
+(B) Bộ phận nào của CPU thực hiện các phép tính số học và logic? ||| ALU.
+(B) Cổng logic nào cho đầu ra bằng 1 khi và chỉ khi hai đầu vào khác nhau? ||| XOR.
+(B) Cổng nào truyền được đồng thời hình ảnh và âm thanh số chất lượng cao? ||| HDMI.
+(B) Giấy phép GNU GPL yêu cầu điều gì đối với phần mềm sửa đổi từ một phần mềm nguồn mở theo GPL? ||| Phải phát hành theo GPL và công bố phần mã nguồn thay đổi.
+(B) Khi đăng kí dịch vụ lưu trữ trực tuyến, người dùng thường được cấp gì? ||| Một ổ đĩa trực tuyến.
+(B) Loại phần mềm thương mại nào được thiết kế theo yêu cầu riêng của từng khách hàng? ||| Phần mềm đặt hàng.
+(B) Phát biểu nào đúng về RAM? ||| RAM lưu tạm thời chương trình và dữ liệu đang sử dụng.
+(B) Quyền chia sẻ nào cho phép người được chia sẻ xem, nhận xét và chỉnh sửa nội dung tệp? ||| Người chỉnh sửa.
+(B) Thiết bị nào sau đây là thiết bị vào? ||| Bàn phím.
+(B) Thông số nào của chuột thể hiện số điểm riêng rẽ mà chuột xác định được khi di chuyển một inch? ||| dpi.
+(B) Trước khi hai thiết bị Bluetooth kết nối lần đầu, thường phải thực hiện bước nào? ||| Ghép đôi thiết bị.
+(B) Đơn vị thường dùng để biểu thị tốc độ đồng hồ của CPU là gì? ||| GHz.
+(B) Đặc điểm cơ bản của phần mềm chạy trên Internet là gì? ||| Có thể sử dụng qua Internet mà không cần cài đặt vào máy.
+(B) Độ phân giải màn hình được biểu thị bằng gì? ||| Số điểm ảnh theo chiều ngang và chiều dọc.
+(H) Hai màn hình có cùng kích thước vật lí nhưng màn hình A có độ phân giải cao hơn màn hình B. Nhận xét nào phù hợp nhất? ||| Màn hình A có nhiều điểm ảnh hơn nên có khả năng thể hiện hình ảnh chi tiết hơn.
+(H) Khi kết nối Bluetooth lần đầu giữa điện thoại và máy tính, việc ghép đôi (pairing) có ý nghĩa chủ yếu là: ||| Giúp hai thiết bị nhận diện và thiết lập kết nối với nhau trước khi trao đổi dữ liệu.
+(H) Không thể chỉ dựa vào tần số xung nhịp GHz để khẳng định chắc chắn CPU nào xử lí nhanh hơn trong mọi trường hợp vì: ||| Hiệu năng CPU còn phụ thuộc vào nhiều yếu tố như cấu trúc và số lõi xử lí.
+(H) Một giáo viên muốn kết nối máy tính với máy chiếu và truyền đồng thời hình ảnh lẫn âm thanh số chỉ bằng một cáp. Cổng phù hợp nhất là: ||| HDMI0020.
+(H) Một học sinh đang soạn văn bản nhưng chưa lưu tệp. Máy tính đột ngột mất điện và phần nội dung vừa nhập bị mất. Bộ phận nào liên quan trực tiếp nhất đến hiện tượng này? ||| RAM.
+(H) Một mạch cần cho đầu ra bằng 1 khi hai đầu vào có giá trị khác nhau, và bằng 0 khi hai đầu vào giống nhau. Cổng logic phù hợp là: ||| XOR.
