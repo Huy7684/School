@@ -1,0 +1,16 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+"Turing Test" là gì? ||| Một bài kiểm tra trí tuệ của máy tính.
+AI có thể gây ra hậu quả gì cho xã hội loài người? ||| Làm mất việc làm của con người.
+AI giúp phát triển hệ thống điều khiển tự động trong công xưởng như thế nào? ||| Giám sát và tối ưu hóa quá trình sản xuất.
+AI là gì? ||| Khả năng của máy tính có thể làm những công việc mang tính trí tuệ của con người.
+AI trong tài chính ngân hàng giúp gì? ||| Phân tích hành vi để dự đoán và phát hiện gian lận.
+AI tạo sinh là gì? ||| AI có khả năng tạo ra nội dung từ dữ liệu đã có.
+Các trợ lý ảo như Google Assistant, Siri có thể làm gì? ||| Giao tiếp với người dùng bằng văn bản hoặc tiếng nói.
+DeepMind của Google trong y tế và chăm sóc sức khỏe có thể làm gì? ||| Chẩn đoán bệnh và lập phác đồ điều trị.
+Khái niệm "AI mạnh" là gì? ||| AI có thể giải quyết bất kỳ loại vấn đề phức tạp nào như con người.
+Người máy Grace được coi là một ví dụ về gì? ||| Cobot
+Người máy Xoxe có khả năng gì? ||| Giao tiếp với con người bằng hơn 120 thứ tiếng khác nhau.
+Thuật ngữ "AI" bắt đầu được sử dụng vào năm nào? ||| 1956
+Thị giác máy tính là gì? ||| Lĩnh vực nghiên cứu xử lý hình ảnh kỹ thuật số.
+Ví dụ nào sau đây là một ứng dụng của AI yếu? ||| MYCIN – hệ chuyên gia trong lĩnh vực y tế.
+Ứng dụng AI trong y tế có thể làm gì? ||| Đọc và phân tích ảnh quét một cách chính xác.
