@@ -33,10 +33,11 @@
     try { path = new URL(v).pathname; } catch (e) {}
     const segs = path.split('/').map(s => s.trim()).filter(Boolean);
     if (segs.length > 1 || /^https?:/i.test(v)) {
-      const num = segs.find(s => /^\d{5,}$/.test(s));
-      if (num) return num;
-      const c = segs.filter(s => !/^(vi|en|test|take|take-test|answer-test|exam|result|submit-test|do|view)$/i.test(s)).pop();
-      return c ? clean(c) : '';
+      // azota.vn/de-thi/xmq2mr, .../answer-test/23611069/0/xmq2mr/544206132 -> xmq2mr (bỏ các đoạn toàn số và từ khoá đường dẫn)
+      const skip = /^(vi|en|test|take|take-test|answer-test|exam|result|submit-test|do|view|de-thi|share)$/i;
+      const cand = segs.filter(s => !skip.test(s) && !/^\d+$/.test(s));
+      if (cand.length) return clean(cand[0]);
+      return segs.find(s => /^\d{5,}$/.test(s)) || '';
     }
     return clean(v);
   }
@@ -56,38 +57,66 @@
   // ---------- Học từ trang xem đáp án ----------
   // Mỗi câu có chữ "Đáp án đúng: X" và các phương án "A. ...": quét từng thẻ câu, lưu nội dung phương án đúng.
   const ANS_RE = /^Đáp án đúng\s*:\s*([A-F])$/i;
+  // Đọc phương án theo thứ tự A, B, C, D... kể cả khi cả 4 phương án nằm cùng 1 dòng
+  function parseOpts(body) {
+    const opts = {}, hits = [];
+    let pos = 0;
+    for (const L of 'ABCDEF') {
+      const re = new RegExp('(^|\\s)' + L + '\\s*\\.\\s*', 'g');
+      re.lastIndex = pos;
+      const m = re.exec(body);
+      if (!m) break;
+      hits.push({ L, start: m.index, end: m.index + m[0].length });
+      pos = m.index + m[0].length;
+    }
+    hits.forEach((h, i) => { const t = flat(body.slice(h.end, i + 1 < hits.length ? hits[i + 1].start : body.length)); if (t) opts[h.L] = t; });
+    return opts;
+  }
+  const A_START = /(^|\s)A\s*\.\s*\S/;
   function learnNow() {
     let n = 0, seen = 0, tagged = 0;
-    const marks = [];
-    document.querySelectorAll('div, span, p, b, strong, label').forEach(el => {
-      if (el.children.length || el.closest('#' + panelId)) return;
-      const m = flat(el.textContent).match(ANS_RE);
-      if (m) marks.push({ el, letter: m[1].toUpperCase() });
-    });
+    // tìm các chữ "Đáp án đúng: X" qua text node (nhanh hơn quét mọi thẻ)
+    const marks = [], used = new Set();
+    const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    for (let node; (node = tw.nextNode());) {
+      if (!/Đáp án đúng/i.test(node.nodeValue)) continue;
+      let el = node.parentElement;
+      for (let i = 0; i < 3 && el; i++, el = el.parentElement) {
+        if (el.closest('#' + panelId)) { el = null; break; }
+        const m = flat(el.textContent).match(ANS_RE);
+        if (m) { if (!used.has(el)) { used.add(el); marks.push({ el, letter: m[1].toUpperCase() }); } break; }
+      }
+    }
+    const okNums = new Set(), code = examCode();
     marks.forEach(({ el, letter }) => {
       let card = el.parentElement, text = '';
       for (let i = 0; i < 8 && card; i++, card = card.parentElement) {
         text = card.innerText || '';
-        if (/Câu\s*\d+/i.test(text) && /(^|\n)\s*A\s*\.\s*\S/.test(text)) break;
+        if (/Câu\s*\d+/i.test(text) && A_START.test(text)) break;
       }
       if (!card || (text.match(/Đáp án đúng\s*:/gi) || []).length !== 1) return;   // thẻ chứa nhiều câu: bỏ qua cho an toàn
-      const at = text.search(/(^|\n)\s*A\s*\.\s*\S/);
+      const at = text.search(A_START);
+      const num = (text.match(/Câu\s*(\d+)/i) || [])[1];
       const q = flat(text.slice(0, at).replace(/Câu\s*\d+/i, '').replace(/ID\s*:\s*\d+/gi, ''));
       const body = text.slice(at).replace(/Đáp án đúng[\s\S]*$/i, '');
-      const opts = {};
-      const re = /(?:^|\n)\s*([A-F])\s*\.\s*([\s\S]*?)(?=\n\s*[A-F]\s*\.\s|$)/g;
-      let m;
-      while ((m = re.exec(body))) if (!opts[m[1]]) opts[m[1]] = flat(m[2]);
-      if (q.length < 3 || !opts[letter]) return;
+      const opts = parseOpts(body);
+      if (q.length < 3 || !opts[letter]) { console.warn('[Azota Helper] không đọc được câu', num, JSON.stringify(text.slice(0, 400))); return; }
       seen++;
+      if (num) okNums.add(num);
       const k = norm(q);
-      const code = examCode();
       if (bank[k] && norm(bank[k].correct) === norm(opts[letter])) { if (code && bank[k].t !== code) { bank[k].t = code; tagged++; } return; }
       bank[k] = { q, correct: opts[letter], t: code || undefined };
       n++;
     });
     if (n || tagged) saveBank();
-    return { n, seen };
+    // đếm số câu trên trang để báo câu nào chưa đọc được
+    const pageNums = new Set();
+    document.querySelectorAll('div, span, p, b, strong').forEach(el => {
+      if (el.children.length || el.closest('#' + panelId)) return;
+      const m = flat(el.textContent).match(/^Câu\s*(\d+)$/i);
+      if (m) pageNums.add(m[1]);
+    });
+    return { n, seen, total: pageNums.size, missing: [...pageNums].filter(x => !okNums.has(x)).sort((a, b) => a - b) };
   }
 
   // ---------- Chọn đáp án đã nhớ ----------
@@ -585,7 +614,7 @@
   const codeEl = $('azh-code');
   codeEl.value = cfg.code || '';
   codeEl.onchange = () => { cfg.code = extractCode(codeEl.value); codeEl.value = cfg.code; saveCfg(); stat(cfg.code ? 'mã đề: ' + cfg.code : 'dùng mã tự nhận từ trang: ' + (autoCode() || 'không có')); };
-  setInterval(() => { const h = 'Link / mã đề (tự nhận: ' + (autoCode() || 'không có') + ')'; if (codeEl.placeholder !== h) codeEl.placeholder = h; }, 1000);
+  setInterval(() => { const h = 'Link / mã đề (tự nhận: ' + (autoCode() ? 'azota.vn/de-thi/' + autoCode() : 'không có') + ')'; if (codeEl.placeholder !== h) codeEl.placeholder = h; }, 1000);
 
   document.addEventListener('sakura-status', e => { gAck = 1; bank = load(BANK_KEY) || {}; stat(String(e.detail || '')); });
   $('azh-back').onclick = () => showBook(false);
@@ -641,7 +670,7 @@
     if (!cfg.learn) return;
     const r = learnNow();
     learnedNow += r.n;
-    if (r.seen) stat(`đã quét ${r.seen} câu, học thêm ${learnedNow} câu mới`);
+    if (r.seen) stat(`đã quét ${r.seen}${r.total ? '/' + r.total : ''} câu, học thêm ${learnedNow} câu mới` + (r.missing.length && r.total ? ` — chưa đọc được Câu ${r.missing.join(', ')}` : ''));
     else stat('chờ trang xem đáp án để quét…');
   }
   function loop() {
