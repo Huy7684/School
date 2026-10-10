@@ -32,7 +32,7 @@
 (H) Tiện ích Optimize (Defragment) trên ổ đĩa cứng được dùng chủ yếu để làm gì? ||| Hợp nhất các liên cung của tệp để tăng tốc truy cập.
 (H) Vai trò đúng của hệ điều hành trong quan hệ với phần cứng và phần mềm ứng dụng là gì? ||| Là môi trường trung gian để phần mềm ứng dụng khai thác phần cứng.
 (H) Đặc điểm nào thể hiện rõ tính thân thiện của hệ điều hành máy tính cá nhân? ||| Giao diện đồ hoạ trực quan và cơ chế cắm vào là chạy.
-[ĐS] , ||| Sai
+[ĐS] , ||| Đúng
 [ĐS] AI có thể cá nhân hoá việc học tập cho mỗi học sinh. ||| Đúng
 [ĐS] AI có thể cá nhân hóa về học tập cho mỗi học sinh. ||| Đúng
 [ĐS] AI có thể thu thập thông tin riêng tư của con người. ||| Đúng
@@ -68,8 +68,10 @@
 [ĐS] Phân tích hình ảnh y tế và đưa ra chẩn đoán bệnh. ||| Đúng
 [ĐS] Ta có thể lưu trữ dữ liệu trên không gian lưu trữ đám mây không giới hạn. ||| Sai
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016084 Năm 1997, máy tính Deep Blue của IBM đánh bại đại kiện tướng cờ vua Garry Kasparov. Đây là lần đầu tiên một chương trình đánh bại một nhà vô địch thế giới về cờ vua. Một số bạn học sinh đưa ra các ý kiến sau: a) Cách thức đánh cờ của con người và máy tính là giống nhau. b) Trận đấu là cuộc đụng độ giữa một bên là trực giác kì diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. c) Máy tính Deep Blue của IBM chỉ có thể hoạt động được vào ban ngày. d) Việc máy tính đánh cờ vua chứng minh khả năng máy móc thực hiện được nhiệm vụ đòi hỏi trí thông minh cao. ||| Đúng
+[ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016086 Trí tuệ nhân tạo (AI) đang cải thiện ngành tài chính, ngân hàng bằng cách tăng cường an ninh giao dịch, dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua chatbots. Sau đây là các phát biểu về những ứng dụng của AI đối với ngành tài chính, ngân hàng. a) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. b) AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. c) AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. d) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. ||| Sai
 [ĐS] Thị giác máy tính là một phần của học máy vì nó giúp máy tính nhận dạng và phân tích hình ảnh. ||| Sai
 [ĐS] Trí tuệ nhân tạo là khả năng của máy tính thực hiện các công việc cần trí tuệ như của con người. ||| Đúng
+[ĐS] Trận đấu là cuộc đụng độ giữa một bên là trực giác kì diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. ||| Đúng
 [ĐS] Trận đấu là cuộc đụng độ giữa một bên là trực giác kỳ diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. ||| Đúng
 [ĐS] Việc máy tính đánh cờ vua chứng minh khả năng máy móc thực hiện được nhiệm vụ đòi hỏi trí thông minh cao. ||| Đúng
 [ĐS] Xoxe là một ví dụ của AI yếu vì nó cần sự hỗ trợ của con người để học và hiểu ngôn ngữ tự nhiên. ||| Sai
