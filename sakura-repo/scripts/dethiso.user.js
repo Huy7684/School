@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      11.2
+// @version      11.4
 // @description  Sakura Edition: học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -247,7 +247,7 @@
     <div id="dts11-head">
       <div class="dts11-logo">
         <div class="dts11-mascot"><div class="dts11-flower">${flower}</div></div>
-        <div><div class="dts11-title">DeThiSo Helper</div><div class="dts11-sub">v11.2 · 桜 SAKURA EDITION</div></div>
+        <div><div class="dts11-title">DeThiSo Helper</div><div class="dts11-sub">v11.4 · 桜 SAKURA EDITION</div></div>
       </div>
       <div class="dts11-hbtns">
         <button id="dts11-run" class="dts11-runbtn"></button>
