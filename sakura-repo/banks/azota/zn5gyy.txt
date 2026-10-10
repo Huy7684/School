@@ -1,5 +1,5 @@
 # Mỗi dòng: câu hỏi ||| đáp án đúng
-[ĐS] , ||| Sai
+[ĐS] , ||| Đúng
 [ĐS] AI có thể cá nhân hoá việc học tập cho mỗi học sinh. ||| Đúng
 [ĐS] AI có thể thu thập thông tin riêng tư của con người. ||| Đúng
 [ĐS] AI có thể tự động đánh giá kết quả học tập của học sinh. ||| Đúng
@@ -11,15 +11,20 @@
 [ĐS] AI thay thế hoàn toàn vai trò của giáo viên trong lớp học. ||| Sai
 [ĐS] AI tự động giải quyết mọi vấn đề trong giáo dục. ||| Sai
 [ĐS] Con người có thể bị mất việc làm bởi AI. ||| Đúng
+[ĐS] Cách thức đánh cờ của con người và máy tính là giống nhau. ||| Sai
 [ĐS] Gmail là một dịch vụ thư điện tử miễn phí do Google phát triển. ||| Đúng
 [ĐS] Google có thể hỗ trợ bác sĩ tầm soát và phát hiện bệnh võng mạc tiểu đường thông qua camera điện thoại. ||| Đúng
 [ĐS] Hỗ trợ bác sĩ thực hiện các thủ thuật y tế phức tạp. ||| Đúng
 [ĐS] Hỗ trợ giao tiếp và thấu hiểu cảm xúc bệnh nhân. ||| Sai
 [ĐS] Không thể sử dụng AI để giả mạo giọng nói, khuôn mặt. ||| Sai
 [ĐS] Máy tìm kiếm Google có thể chẩn đoán được tất cả các bệnh tật của con người. ||| Sai
+[ĐS] Máy tính Deep Blue của IBM chỉ có thể hoạt động được vào ban ngày. ||| Sai
 [ĐS] Phân tích hình ảnh y tế và đưa ra chẩn đoán bệnh. ||| Đúng
 [ĐS] Ta có thể lưu trữ dữ liệu trên không gian lưu trữ đám mây không giới hạn. ||| Sai
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016084 Năm 1997, máy tính Deep Blue của IBM đánh bại đại kiện tướng cờ vua Garry Kasparov. Đây là lần đầu tiên một chương trình đánh bại một nhà vô địch thế giới về cờ vua. Một số bạn học sinh đưa ra các ý kiến sau: a) Cách thức đánh cờ của con người và máy tính là giống nhau. b) Trận đấu là cuộc đụng độ giữa một bên là trực giác kì diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. c) Máy tính Deep Blue của IBM chỉ có thể hoạt động được vào ban ngày. d) Việc máy tính đánh cờ vua chứng minh khả năng máy móc thực hiện được nhiệm vụ đòi hỏi trí thông minh cao. ||| Đúng
+[ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016086 Trí tuệ nhân tạo (AI) đang cải thiện ngành tài chính, ngân hàng bằng cách tăng cường an ninh giao dịch, dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua chatbots. Sau đây là các phát biểu về những ứng dụng của AI đối với ngành tài chính, ngân hàng. a) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. b) AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. c) AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. d) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. ||| Sai
+[ĐS] Trận đấu là cuộc đụng độ giữa một bên là trực giác kì diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. ||| Đúng
+[ĐS] Việc máy tính đánh cờ vua chứng minh khả năng máy móc thực hiện được nhiệm vụ đòi hỏi trí thông minh cao. ||| Đúng
 [ĐS] Đưa ra chẩn đoán y tế cuối cùng. ||| Sai
 Chuẩn kết nối nào dưới đây thường được sử dụng để kết nối các thiết bị âm nhạc với điện thoại di động? ||| Bluetooth.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên Internet.
