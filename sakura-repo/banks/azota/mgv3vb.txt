@@ -7,8 +7,8 @@ Free soflware còn được gọi là: ||| Phần mềm tự do
 License còn có nghĩa là: ||| Giấy phép
 Mạch logic thực hiện phép toán logic AND có kí hiệu là : ||| ⟦img:2d3321ad2cdffb06813bc6e0bc37cc42.png⟧
 Mạch logic thực hiện phép toán logic OR có kí hiệu là : ||| ⟦img:f98547968c68e54a1344694fe92283dc.png⟧
-Mạch logic thực hiện phép toán logic phủ định logic NOT có kí hiệu là : ||| ⟦img:a0d896090598d2ba372efafa597c1291.png⟧ Giải thích
-Mạch logic thực hiện phép toán logic XOR có kí hiệu là : ||| ⟦img:d600c448f2c7e39a01fb5df1a7b3a36c.png⟧ Giải thích
+Mạch logic thực hiện phép toán logic phủ định logic NOT có kí hiệu là : ||| ⟦img:a0d896090598d2ba372efafa597c1291.png⟧
+Mạch logic thực hiện phép toán logic XOR có kí hiệu là : ||| ⟦img:d600c448f2c7e39a01fb5df1a7b3a36c.png⟧
 Phần mềm cho phép người dùng sử dụng qua Internet mà không cần phải cài đặt vào máy tính, còn được gọi với tên là gì? ||| Phần mềm trực tuyến
 Phần mềm nào sau đây không phải là phần mềm mã nguồn mở ||| Microsoft Word 2019
 ROM (Read Only Memory) là bộ nhớ dùng để: ||| Lưu các dữ liệu hệ thống cố định và các chương trình kiểm tra hay khởi động máy tính
