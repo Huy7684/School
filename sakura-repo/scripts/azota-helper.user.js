@@ -123,7 +123,7 @@
   }
   // Câu ĐÚNG/SAI: "a) ... b) ... c) ... d) ..." + "Đáp án đúng: a) Đúng b) Sai ..." -> mỗi ý lưu thành 1 bản ghi "[ĐS] nội dung ý" -> Đúng/Sai
   const DS = '[ĐS] ';
-  const DS_ANS = /Đáp án đúng\s*:?\s*[a-d]\s*\)\s*(?:Đúng|Sai)/i;
+  const DS_ANS = /Đáp án đúng(?:(?!Thí sinh|Câu làm sai)[\s\S]){0,80}?(?:^|\s)[a-d]\s*\)\s*(?:Đúng|Sai)/i;   // cho phép nút "Tìm Tài Liệu"... chen giữa
   function readDS(texts) {
     for (const tx of texts) {
       const am = tx.match(/Đáp án đúng\s*:?([\s\S]*?)(?=Thí sinh|Câu làm sai|$)/i);
