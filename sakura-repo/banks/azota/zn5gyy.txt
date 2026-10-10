@@ -1,0 +1,48 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+[ĐS] , ||| Sai
+[ĐS] AI có thể cá nhân hoá việc học tập cho mỗi học sinh. ||| Đúng
+[ĐS] AI có thể thu thập thông tin riêng tư của con người. ||| Đúng
+[ĐS] AI có thể tự động đánh giá kết quả học tập của học sinh. ||| Đúng
+[ĐS] AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. ||| Đúng
+[ĐS] AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. ||| Đúng
+[ĐS] AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. ||| Sai
+[ĐS] AI luôn công bằng khi áp dụng trong hệ thống hỗ trợ tuyển dụng. ||| Sai
+[ĐS] AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. ||| Sai
+[ĐS] AI thay thế hoàn toàn vai trò của giáo viên trong lớp học. ||| Sai
+[ĐS] AI tự động giải quyết mọi vấn đề trong giáo dục. ||| Sai
+[ĐS] Con người có thể bị mất việc làm bởi AI. ||| Đúng
+[ĐS] Gmail là một dịch vụ thư điện tử miễn phí do Google phát triển. ||| Đúng
+[ĐS] Google có thể hỗ trợ bác sĩ tầm soát và phát hiện bệnh võng mạc tiểu đường thông qua camera điện thoại. ||| Đúng
+[ĐS] Hỗ trợ bác sĩ thực hiện các thủ thuật y tế phức tạp. ||| Đúng
+[ĐS] Hỗ trợ giao tiếp và thấu hiểu cảm xúc bệnh nhân. ||| Sai
+[ĐS] Không thể sử dụng AI để giả mạo giọng nói, khuôn mặt. ||| Sai
+[ĐS] Máy tìm kiếm Google có thể chẩn đoán được tất cả các bệnh tật của con người. ||| Sai
+[ĐS] Phân tích hình ảnh y tế và đưa ra chẩn đoán bệnh. ||| Đúng
+[ĐS] Ta có thể lưu trữ dữ liệu trên không gian lưu trữ đám mây không giới hạn. ||| Sai
+[ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016084 Năm 1997, máy tính Deep Blue của IBM đánh bại đại kiện tướng cờ vua Garry Kasparov. Đây là lần đầu tiên một chương trình đánh bại một nhà vô địch thế giới về cờ vua. Một số bạn học sinh đưa ra các ý kiến sau: a) Cách thức đánh cờ của con người và máy tính là giống nhau. b) Trận đấu là cuộc đụng độ giữa một bên là trực giác kì diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. c) Máy tính Deep Blue của IBM chỉ có thể hoạt động được vào ban ngày. d) Việc máy tính đánh cờ vua chứng minh khả năng máy móc thực hiện được nhiệm vụ đòi hỏi trí thông minh cao. ||| Đúng
+[ĐS] Đưa ra chẩn đoán y tế cuối cùng. ||| Sai
+Chuẩn kết nối nào dưới đây thường được sử dụng để kết nối các thiết bị âm nhạc với điện thoại di động? ||| Bluetooth.
+CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên Internet.
+Hành vi nào sau đây KHÔNG phải là lạm dụng dữ liệu cá nhân bởi mô hình AI? ||| Phân tích dữ liệu y tế cá nhân để đưa ra chẩn đoán bệnh.
+Khả năng nào sau đây ít phổ biến trong các hệ thống AI? ||| Khả năng tự phục hồi sau khi hỏng.
+Nhận định nào sau đây là SAI khi nói về sự ảnh hưởng của AI trong tương lai? ||| AI sẽ luôn an toàn và có lợi cho con người.
+Phát biểu nào dưới đây là thách thức lớn nhất liên quan đến việc sử dụng AI? ||| Thiếu quy định và luật lệ về việc sử dụng ai trong xã hội ngày nay.
+Phát biểu nào dưới đây phù hợp nhất khi nói về khả năng của Trí tuệ nhân tạo hẹp? ||| Giải quyết nhiệm vụ cụ thể theo những gì đã được học.
+Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lí ảo? ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
+Phương thức nào sau đây KHÔNG dùng để kết nối máy tính với điện thoại di động? ||| Cáp VGA.
+Phương án nào dưới đây KHÔNG phù hợp để minh hoạ cho hệ thống Trí tuệ nhân tạo có tri thức? ||| Robot hút bụi tự động làm sạch sàn nhà theo lịch trình định sẵn.
+Phương án nào dưới đây liệt kê hai phân loại chính của Trí tuệ nhân tạo (AI)? ||| AI Hẹp (ANI) và AI Tổng quát (AGI).
+Phương án nào dưới đây nêu đúng về khả năng học của AI? ||| Trích xuất thông tin từ dữ liệu để học và tích lũy tri thức.
+Phương án nào dưới đây nêu đúng về khả năng nhận thức của AI? ||| Cảm nhận và hiểu biết môi trường thông qua các cảm biến và thiết bị đầu vào.
+Phương án nào dưới đây nêu đúng về khả năng suy luận của AI? ||| Vận dụng logic và tri thức để đưa ra quyết định hoặc kết luận.
+Phương án nào sau đây nêu đúng về Trí tuệ nhân tạo (AI)? ||| Một lĩnh vực khoa học và kĩ thuật nhằm chế tạo các máy móc thông minh.
+Phương án nào sau đây đúng khi nói về tác động của AI đối với việc làm của con người? ||| AI tạo ra những việc làm mới và thay thế một số công việc hiện có.
+Phần mềm nào dưới đây là trợ lí ảo của công ty Amazon? ||| Alexa.
+Phần mềm nào dưới đây là trợ lí ảo của công ty Apple? ||| Siri.
+Phần mềm nào dưới đây là trợ lí ảo của công ty Samsung? ||| Bixby.
+Thiết bị nào sau đây KHÔNG có khả năng kết nối với máy tính? ||| Máy hút bụi cầm tay.
+Thiết bị nào sau đây KHÔNG sử dụng trí tuệ nhân tạo để điều khiển tự động? ||| Ấm điện siêu tốc tự động ngắt.
+Trong những tính năng sau, tính năng nào KHÔNG phải là của Trợ lí ảo? ||| Tự động cải thiện hiệu suất máy tính.
+Trí tuệ nhân tạo còn nhiều hạn chế ở khả năng nào sau đây? ||| Cảm nhận cảm xúc.
+Trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh bằng cách nào sau đây? ||| Nhận diện các bệnh lí qua hình ảnh y khoa.
+Youtube được trang bị hệ thống trí tuệ nhân tạo để gợi ý cho người dùng. Hãy cho biết hệ thống này làm nhiệm vụ gì dưới đây? ||| Đề xuất các video dựa trên sở thích của người dùng.
