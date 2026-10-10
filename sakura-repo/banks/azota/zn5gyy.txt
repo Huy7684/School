@@ -29,6 +29,7 @@
 [ĐS] Đưa ra chẩn đoán y tế cuối cùng. ||| Sai
 Chuẩn kết nối nào dưới đây thường được sử dụng để kết nối các thiết bị âm nhạc với điện thoại di động? ||| Bluetooth.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên Internet.
+CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lí ảo? ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
 Hành vi nào sau đây KHÔNG phải là lạm dụng dữ liệu cá nhân bởi mô hình AI? ||| Phân tích dữ liệu y tế cá nhân để đưa ra chẩn đoán bệnh.
 Khả năng nào sau đây ít phổ biến trong các hệ thống AI? ||| Khả năng tự phục hồi sau khi hỏng.
 Nhận định nào sau đây là SAI khi nói về sự ảnh hưởng của AI trong tương lai? ||| AI sẽ luôn an toàn và có lợi cho con người.
