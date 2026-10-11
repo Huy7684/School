@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      5.0
+// @version      6.0
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -10,7 +10,7 @@
 // @grant        none
 // ==/UserScript==
 
-// Azota Helper v5 - chạy trên điện thoại, máy tính bảng và máy tính (không dùng regex lookbehind để iPhone/Safari cũ không lỗi); giao diện wibu mới, sửa lỗi.
+// Azota Helper v6 - chạy trên điện thoại, máy tính bảng và máy tính (không dùng regex lookbehind để iPhone/Safari cũ không lỗi); giao diện wibu mới, sửa lỗi.
 (function () {
   'use strict';
   if (window.__azh) return;
@@ -90,7 +90,8 @@
   if (typeof cfg.x !== 'number' || typeof cfg.y !== 'number') { cfg.x = null; cfg.y = null; }
 
   const css = document.createElement('style');
-  css.textContent = `#azh{--pk:#ff86bd;--pk2:#c2297a;--tx:#40305a;--tx2:#7d6c9a;--bg:rgba(255,250,253,.95);--bub:#fff7fb;--card:rgba(255,255,255,.82);--line:rgba(255,134,189,.42);--inp:#fff;--trk:#d9cdee;
+  css.textContent = `#azh{--ink:#2b1b3d;--pk:#ff6fa8;--pk2:#c42a76;--pkl:#ffd3e4;--lv:#9c86f5;--gold:#ffd25e;--red:#e8404f;
+--tx:#2b1b3d;--tx2:#7a6694;--paper:#fff8f1;--paper2:#ffeef6;--edge:#ffd3e4;--dot:rgba(255,111,168,.17);--box:#2b1b3d;--boxtx:#fff6fb;--inp:#fff;--trk:#d8cdea;--rim:rgba(255,255,255,0);
 position:fixed;top:72px;right:max(12px,env(safe-area-inset-right,0px));width:min(348px,calc(100vw - 16px));margin:0;padding:0;
 max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
 display:flex;flex-direction:column;z-index:2147483647;
@@ -98,50 +99,58 @@ font:13px/1.5 "Hiragino Maru Gothic ProN","M PLUS Rounded 1c","Yu Gothic UI","Me
 color:var(--tx);color-scheme:light;text-align:left;letter-spacing:normal;text-transform:none;
 -webkit-text-size-adjust:100%;text-size-adjust:100%;touch-action:manipulation;
 animation:azh-in .5s cubic-bezier(.2,1.4,.4,1) both}
-@media (prefers-color-scheme:dark){#azh{color-scheme:dark;--tx:#f6eefc;--tx2:#c8b9df;--bg:rgba(30,23,46,.95);--bub:#2c2342;--card:rgba(255,255,255,.08);--line:rgba(255,134,189,.32);--inp:#2b2342;--trk:#4a3d68;--pk2:#ff9fcd}}
-#azh *{box-sizing:border-box}
+@media (prefers-color-scheme:dark){#azh{color-scheme:dark;--ink:#150b24;--tx:#fbeefa;--tx2:#c9b8e0;--pk2:#ff9fcd;--paper:#2a1a40;--paper2:#36234f;--edge:#4d3072;--dot:rgba(255,150,200,.11);--box:#150b24;--inp:#231536;--trk:#5a4a78;--rim:rgba(255,159,205,.55)}}
+#azh *,#azh *::before,#azh *::after{box-sizing:border-box}
 #azh button{-webkit-appearance:none;appearance:none;font:inherit;cursor:pointer;border:0;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;margin:0}
 #azh input,#azh select{font:inherit;color:var(--tx);margin:0}
 #azh button:focus-visible,#azh summary:focus-visible,#azh-head:focus-visible{outline:3px solid #7a4dff;outline-offset:2px}
 #azh-head button:focus-visible,#azh-head:focus-visible{outline-color:#fff}
+.azh-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-.azh-card{position:relative;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden;border-radius:24px;border:2px solid transparent;
-  background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(135deg,#ff8fc2,#c19bff,#86cfff) border-box;
-  -webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);
-  box-shadow:0 14px 38px rgba(150,70,160,.36),0 2px 8px rgba(0,0,0,.14)}
+/* khung chính: giấy washi + chấm screentone, viền mực dày, bóng cứng kiểu manga */
+.azh-card{position:relative;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden;border-radius:18px;border:3px solid var(--ink);
+  background:radial-gradient(var(--dot) 1.3px,transparent 1.7px) 0 0/12px 12px,radial-gradient(var(--dot) 1.3px,transparent 1.7px) 6px 6px/12px 12px,var(--paper);
+  box-shadow:inset 0 0 0 2px var(--edge),0 0 0 1.5px var(--rim),5px 6px 0 var(--ink),0 14px 30px rgba(60,20,80,.28)}
+.azh-card::after{content:"桜";position:absolute;right:-4px;bottom:-22px;z-index:0;font:900 132px/1 "Yu Mincho","Hiragino Mincho ProN","Noto Serif CJK JP","Noto Serif JP","Songti SC",serif;color:var(--pk);opacity:.09;pointer-events:none}
 
-/* hiệu ứng nền: nằm sau nội dung, phủ cả khung (không bị cuộn mất) */
+/* cánh hoa rơi sau nội dung */
 .azh-fx{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;overflow:hidden;z-index:0}
 .azh-fx .pt{position:absolute;top:-16px;border-radius:150% 0 150% 0;background:linear-gradient(135deg,#ffd0e5,#ff8fc2);opacity:0;animation:azh-fall linear infinite}
 .azh-fx .sp{position:absolute;background:#fff;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);opacity:0;animation:azh-sp ease-in-out infinite}
 .azh-fx .sp.v{background:#d9c8ff}.azh-fx .sp.b{background:#cdeaff}
 
-/* header */
-#azh-head{position:relative;z-index:2;flex:none;display:flex;align-items:center;justify-content:space-between;padding:10px 12px 12px;color:#fff;cursor:grab;
-  user-select:none;-webkit-user-select:none;touch-action:none;
-  background:linear-gradient(120deg,#e0488f,#9a6cf0 55%,#6a7df0,#e0488f);background-size:240% 100%}
-#azh.running #azh-head{animation:azh-flow 9s linear infinite}
-#azh-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.9) 0 6px,transparent 6px 12px);opacity:.3}
-#azh.running #azh-head::after{opacity:.85}
-@media (pointer:fine){#azh.running #azh-head::after{animation:azh-march .8s linear infinite}}
+/* header: tông hồng screentone, có vạch tốc độ khi đang chạy */
+#azh-head{position:relative;z-index:2;flex:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px 10px;color:#fff;cursor:grab;
+  user-select:none;-webkit-user-select:none;touch-action:none;border-bottom:3px solid var(--ink);
+  background:radial-gradient(rgba(255,255,255,.42) 1.4px,transparent 1.9px) 0 0/9px 9px,linear-gradient(180deg,#ff8dbb,#ff5f9d)}
+#azh-head::before{content:"";position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:repeating-linear-gradient(105deg,transparent 0 16px,rgba(255,255,255,.3) 16px 19px);background-size:38px 100%}
+#azh.running #azh-head::before{opacity:1;animation:azh-lines 1.1s linear infinite}
 .azh-logo{position:relative;z-index:1;display:flex;align-items:center;min-width:0}
 .azh-ttl{min-width:0}
-.azh-title{font-weight:800;font-size:15px;line-height:1.25;letter-spacing:.3px;white-space:nowrap;text-shadow:0 1px 4px rgba(80,20,90,.55)}
-.azh-sub{display:flex;align-items:center;font-size:11px;letter-spacing:.4px;white-space:nowrap;text-shadow:0 1px 3px rgba(80,20,90,.5)}
-.azh-dot{flex:none;width:7px;height:7px;margin-right:5px;border-radius:50%;background:#ffe27a;box-shadow:0 0 0 2px rgba(255,255,255,.35)}
-#azh.running .azh-dot{background:#7dffb0;animation:azh-dotp 1.6s ease-in-out infinite}
+.azh-title{font-weight:900;font-size:16px;line-height:1.2;letter-spacing:.5px;white-space:nowrap;color:#fff;
+  text-shadow:-1.5px -1.5px 0 var(--ink),1.5px -1.5px 0 var(--ink),-1.5px 1.5px 0 var(--ink),1.5px 1.5px 0 var(--ink),0 2.5px 0 var(--ink)}
+.azh-sub{display:inline-flex;align-items:center;margin-top:3px;padding:0 8px 0 6px;border:1.5px solid var(--ink);border-radius:999px;background:#fff8f1;color:#c42a76;
+  font-size:10.5px;font-weight:800;letter-spacing:.3px;white-space:nowrap;line-height:16px;text-shadow:none}
+.azh-dot{flex:none;width:7px;height:7px;margin-right:5px;border-radius:50%;background:#ffd25e;border:1.5px solid var(--ink)}
+#azh.running .azh-dot{background:#5ff0a4;animation:azh-dotp 1.6s ease-in-out infinite}
 .azh-hbtns{position:relative;z-index:1;display:flex;align-items:center;flex:none;margin-left:8px}
-.azh-hbtns>*+*{margin-left:6px}
-.azh-runbtn{padding:7px 14px;border-radius:999px;font-weight:800;font-size:12.5px;min-height:34px;white-space:nowrap;transition:transform .15s}
-.azh-runbtn:active{transform:scale(.94)}
-.azh-runbtn.on{background:#fff;color:#c2297a;box-shadow:0 2px 10px rgba(80,20,90,.3)}
-.azh-runbtn.off{background:#fff3a0;color:#8a4a00;animation:azh-pulse 1.4s ease-in-out infinite}
-.azh-minbtn{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.3);color:#fff;font-size:18px;font-weight:800;line-height:1;padding:0}
-.azh-minbtn:active{background:rgba(255,255,255,.55)}
+.azh-hbtns>*+*{margin-left:7px}
+#azh .azh-runbtn{display:inline-flex;align-items:center;padding:5px 12px;border:2.5px solid var(--ink);border-radius:10px;font-weight:900;font-size:12.5px;min-height:34px;white-space:nowrap;box-shadow:0 3px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+#azh .azh-runbtn::before{margin-right:6px;font-size:10px}
+#azh .azh-runbtn:active{transform:translateY(3px);box-shadow:0 0 0 var(--ink)}
+#azh .azh-runbtn.on{background:#fff8f1;color:#c42a76}
+#azh .azh-runbtn.on::before{content:"❚❚"}
+#azh .azh-runbtn.off{background:#ffd25e;color:#2b1b3d;animation:azh-pulse 1.4s ease-in-out infinite}
+#azh .azh-runbtn.off::before{content:"▶"}
+#azh .azh-minbtn{width:34px;height:34px;border:2.5px solid var(--ink);border-radius:10px;background:#fff8f1;color:#2b1b3d;font-size:18px;font-weight:900;line-height:1;padding:0;box-shadow:0 3px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+#azh .azh-minbtn:active{transform:translateY(3px);box-shadow:0 0 0 var(--ink)}
 
-/* linh vật chibi: đổi biểu cảm theo trạng thái (data-mood) */
-.azh-mascot{position:relative;flex:none;width:48px;height:48px;margin-right:10px;border-radius:50%;
-  background:radial-gradient(circle at 50% 35%,#fff,#ffe9f4);box-shadow:0 0 0 3px rgba(255,255,255,.5),0 3px 10px rgba(80,20,90,.45)}
+/* linh vật neko: đổi biểu cảm theo trạng thái (data-mood) */
+.azh-mascot{position:relative;flex:none;width:50px;height:50px;margin-right:10px;border-radius:50%;border:3px solid var(--ink);
+  background:radial-gradient(circle at 50% 30%,#fff,#ffd9ea 75%);box-shadow:2px 3px 0 rgba(43,27,61,.55)}
+.azh-mascot::before{content:"";position:absolute;left:-7px;right:-7px;top:-7px;bottom:-7px;border-radius:50%;border:2px dashed rgba(255,255,255,.95);opacity:0;transition:opacity .3s;pointer-events:none}
+#azh.running .azh-mascot::before{opacity:1;animation:azh-spin 9s linear infinite}
 #azh.running .azh-mascot{animation:azh-bob 3.2s ease-in-out infinite}
 .azh-mv{position:absolute;left:0;top:0;width:100%;height:100%;display:block;overflow:visible}
 #azh .azh-mv [data-for]{display:none}
@@ -154,122 +163,163 @@ animation:azh-in .5s cubic-bezier(.2,1.4,.4,1) both}
 .azh-spk{transform-box:fill-box;transform-origin:center;animation:azh-sp 1.6s ease-in-out infinite}
 .azh-zz{animation:azh-zz 2.4s ease-in-out infinite}
 
-/* thu gọn thành nút tròn */
-#azh.min{width:60px;height:60px;max-height:none;cursor:pointer;touch-action:none}
-#azh.min .azh-card{border-radius:50%}
+/* thu gọn: nút tròn linh vật + nút Chạy/Dừng ngay bên cạnh */
+#azh .azh-mrun{display:none}
+#azh.min{width:auto;height:auto;max-height:none;cursor:pointer;touch-action:none}
+#azh.min .azh-card{flex-direction:row;align-items:center;overflow:visible;border:0;border-radius:0;background:none;box-shadow:none}
+#azh.min .azh-card::after{display:none}
 #azh.min #azh-body,#azh.min .azh-hbtns,#azh.min .azh-ttl,#azh.min .azh-fx{display:none}
-#azh.min #azh-head{flex:1 1 auto;padding:0;justify-content:center;border-radius:50%;cursor:pointer}
-#azh.min #azh-head::after{display:none}
-#azh.min .azh-mascot{width:46px;height:46px;margin:0}
-.azh-badge{display:none;position:absolute;right:-6px;bottom:-4px;z-index:3;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#fff;color:#c2297a;
-  font-weight:800;font-size:11px;line-height:1;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.3);pointer-events:none}
-#azh.min .azh-badge{display:flex}
+#azh.min #azh-head{flex:none;width:64px;height:64px;padding:0;justify-content:center;border:3px solid var(--ink);border-radius:50%;cursor:pointer;
+  box-shadow:3px 4px 0 var(--ink),0 8px 18px rgba(60,20,80,.3)}
+#azh.min #azh-head::before{border-radius:50%}
+#azh.min .azh-mascot{width:52px;height:52px;margin:0;border:0;background:none;box-shadow:none}
+#azh.min .azh-mascot::before{left:-2px;right:-2px;top:-2px;bottom:-2px}
+#azh.min .azh-mrun{display:flex;align-items:center;justify-content:center;flex:none;width:48px;height:48px;margin-left:10px;padding:0;
+  border:3px solid var(--ink);border-radius:50%;background:var(--pk);color:#fff;box-shadow:3px 4px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+#azh.min .azh-mrun:active{transform:translate(3px,4px);box-shadow:0 0 0 var(--ink)}
+#azh.min:not(.running) .azh-mrun{background:var(--gold);color:var(--ink);animation:azh-ring 1.5s ease-in-out infinite}
+#azh .azh-mrun svg{width:22px;height:22px;fill:currentColor;pointer-events:none}
+#azh .azh-ic-pause{display:none}
+#azh.running .azh-ic-pause{display:block}
+#azh.running .azh-ic-play{display:none}
+.azh-badge{display:none;position:absolute;z-index:3;min-width:22px;height:22px;padding:0 5px;border:2px solid var(--ink);border-radius:999px;background:#fff8f1;color:#c42a76;
+  font-weight:900;font-size:11px;line-height:1;align-items:center;justify-content:center;pointer-events:none}
+#azh.min .azh-badge{display:flex;left:42px;top:42px}
+
+/* hiệu ứng biến hình khi thu gọn / mở ra + cánh hoa bung */
+#azh.fold .azh-card{transform-origin:32px 34px;animation:azh-fold .24s cubic-bezier(.5,0,.9,.4) forwards}
+#azh.pop-in .azh-card{transform-origin:32px 32px;animation:azh-dock .55s cubic-bezier(.2,1.6,.4,1) both}
+#azh.unfold .azh-card{transform-origin:32px 34px;animation:azh-unfold .5s cubic-bezier(.2,1.35,.4,1) both}
+#azh.unfold .azh-main>*{animation:azh-rise .45s cubic-bezier(.2,1.3,.4,1) both}
+#azh.unfold .azh-main>*:nth-child(1){animation-delay:0.10s}
+#azh.unfold .azh-main>*:nth-child(2){animation-delay:0.14s}
+#azh.unfold .azh-main>*:nth-child(3){animation-delay:0.18s}
+#azh.unfold .azh-main>*:nth-child(4){animation-delay:0.22s}
+#azh.unfold .azh-main>*:nth-child(5){animation-delay:0.26s}
+#azh.unfold .azh-main>*:nth-child(6){animation-delay:0.30s}
+#azh.unfold .azh-main>*:nth-child(7){animation-delay:0.34s}
+#azh.unfold .azh-main>*:nth-child(8){animation-delay:0.38s}
+#azh.unfold .azh-main>*:nth-child(9){animation-delay:0.42s}
+#azh.unfold .azh-main>*:nth-child(10){animation-delay:0.46s}
+#azh.unfold .azh-main>*:nth-child(11){animation-delay:0.50s}
+#azh.unfold .azh-main>*:nth-child(12){animation-delay:0.54s}
+.azh-bst{position:absolute;z-index:6;width:11px;height:11px;margin:-5px;border-radius:150% 0 150% 0;pointer-events:none;animation:azh-bst .8s cubic-bezier(.1,.7,.3,1) forwards}
+.azh-bst.s{border-radius:0;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
 
 /* thân */
-#azh-body{position:relative;z-index:1;flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:12px;scrollbar-width:thin;scrollbar-color:#ffb3d4 transparent}
-#azh-body::-webkit-scrollbar{width:6px}#azh-body::-webkit-scrollbar-thumb{background:#ffb3d4;border-radius:6px}
+#azh-body{position:relative;z-index:1;flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:14px 12px 12px;scrollbar-width:thin;scrollbar-color:#ff8fc2 transparent}
+#azh-body::-webkit-scrollbar{width:6px}#azh-body::-webkit-scrollbar-thumb{background:#ff8fc2;border-radius:6px}
 
-.azh-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-.azh-stat{position:relative;min-width:0;overflow:hidden;padding:8px 11px;border-radius:16px;background:var(--card);border:1.5px solid var(--line)}
-.azh-stat::after{content:attr(data-jp);position:absolute;right:7px;bottom:-9px;font:800 42px/1 "Hiragino Maru Gothic ProN","Yu Gothic","Noto Sans CJK JP","Noto Sans JP","Microsoft YaHei",sans-serif;color:var(--pk);opacity:.17;pointer-events:none}
-.azh-stat small{display:block;color:var(--tx2);font-size:11px;white-space:nowrap}
+.azh-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:6px}
+.azh-stat{position:relative;min-width:0;padding:6px 38px 8px 10px;border:2px solid var(--ink);border-radius:11px;background:var(--paper2);box-shadow:2px 3px 0 var(--ink)}
+.azh-stat::after{content:attr(data-jp);position:absolute;right:6px;top:7px;width:26px;height:26px;border-radius:5px;background:var(--red);color:#fff;
+  font:900 15px/26px "Yu Mincho","Hiragino Mincho ProN","Noto Serif CJK JP","Noto Serif JP","Songti SC",serif;text-align:center;transform:rotate(7deg);
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.65);opacity:.95;pointer-events:none}
+.azh-stat small{display:block;color:var(--tx2);font-size:11px;font-weight:700;white-space:nowrap}
 .azh-stat b{position:relative;display:inline-block;font-size:21px;line-height:1.15;color:var(--pk2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;vertical-align:bottom}
 .azh-stat b.sm{font-size:15px;line-height:1.6}
 .azh-stat b.bump{animation:azh-bump .5s cubic-bezier(.3,1.8,.5,1)}
 .azh-stat span{position:relative;color:var(--tx2);font-size:11px}
 
-.azh-bar{height:9px;margin:0 2px 10px;border-radius:999px;background:rgba(179,155,255,.25);overflow:hidden;box-shadow:inset 0 1px 2px rgba(80,40,120,.15)}
-.azh-bar i{display:block;height:100%;width:0;border-radius:999px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.35) 0 6px,transparent 6px 12px),linear-gradient(90deg,#ff7fb8,#b69bff,#7fc8ff);transition:width .5s cubic-bezier(.3,1.4,.5,1)}
-
-
-/* bong bóng thoại: mascot "nói" trạng thái */
-.azh-bubble{position:relative;display:flex;align-items:center;margin:14px 0 12px;padding:9px 12px;border-radius:18px;background:var(--bub);border:2px solid #ffb3d4}
-.azh-bubble::before{content:"";position:absolute;top:-8px;left:20px;width:12px;height:12px;background:var(--bub);border-left:2px solid #ffb3d4;border-top:2px solid #ffb3d4;transform:rotate(45deg)}
+/* khung thoại visual novel: bảng tên + gõ chữ + mũi tên ▼ */
+.azh-bubble{position:relative;display:flex;align-items:flex-start;margin:20px 0 12px;padding:14px 26px 11px 13px;min-height:62px;border:2.5px solid var(--ink);border-radius:12px;background:var(--box);color:var(--boxtx);
+  box-shadow:inset 0 0 0 2px rgba(255,211,228,.5),3px 4px 0 var(--ink)}
 .azh-bubble.pop{animation:azh-pop .4s cubic-bezier(.3,1.7,.5,1)}
-#azh-face{flex:none;margin-right:9px;font-weight:800;color:var(--pk2);white-space:nowrap;font-size:12.5px}
-#azh-st{min-width:0;color:var(--tx);font-size:12.5px;word-break:break-word}
+.azh-np{position:absolute;left:12px;top:-13px;padding:0 12px;border:2.5px solid var(--ink);border-radius:999px;background:var(--pk);color:#fff;font-weight:900;font-size:11.5px;line-height:19px;letter-spacing:.4px;text-shadow:0 1px 0 rgba(43,27,61,.5)}
+.azh-caret{position:absolute;right:10px;bottom:8px;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:8px solid var(--gold);animation:azh-caret 1s ease-in-out infinite}
+#azh-face{flex:none;margin-right:9px;font-weight:800;color:var(--gold);white-space:nowrap;font-size:12.5px}
+#azh-st{min-width:0;color:var(--boxtx);font-size:12.5px;word-break:break-word}
 
-.azh-sw{position:relative;display:flex;align-items:center;min-height:44px;padding:4px 6px;cursor:pointer;border-radius:14px;-webkit-tap-highlight-color:transparent}
-@media (hover:hover){.azh-sw:hover{background:rgba(255,134,189,.14)}}
+.azh-sw{position:relative;display:flex;align-items:center;min-height:44px;padding:4px 6px;cursor:pointer;border-radius:12px;-webkit-tap-highlight-color:transparent}
+@media (hover:hover){.azh-sw:hover{background:rgba(255,111,168,.14)}}
 .azh-sw input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
-.azh-sw i{position:relative;flex:none;width:46px;height:26px;margin-right:11px;border-radius:999px;background:var(--trk);box-shadow:inset 0 1px 3px rgba(60,30,90,.25);transition:background .25s,box-shadow .25s}
-.azh-sw i::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(60,30,90,.4);
-  font:700 12px/20px system-ui,sans-serif;text-align:center;color:#ff5fa8;transition:transform .3s cubic-bezier(.3,1.7,.5,1)}
-.azh-sw input:checked+i{background:linear-gradient(90deg,#ff7fb8,#a98cf5);box-shadow:0 0 10px rgba(255,127,184,.55)}
-.azh-sw input:checked+i::after{content:"\\2665";transform:translateX(20px)}
+.azh-sw i{position:relative;flex:none;width:50px;height:28px;margin-right:11px;border:2.5px solid var(--ink);border-radius:999px;background:var(--trk);transition:background .25s}
+.azh-sw i::after{content:"✿";position:absolute;top:1.5px;left:2px;width:20px;height:20px;border:2px solid var(--ink);border-radius:50%;background:#fff;
+  font:700 12px/16px system-ui,sans-serif;text-align:center;color:#c6bad8;transition:transform .3s cubic-bezier(.3,1.7,.5,1),color .2s}
+.azh-sw input:checked+i{background:var(--pk)}
+.azh-sw input:checked+i::after{transform:translateX(21px) rotate(72deg);color:#e0357f}
 .azh-sw input:focus-visible+i{outline:3px solid #7a4dff;outline-offset:2px}
-.azh-sw span{min-width:0;font-weight:600}
+.azh-sw span{min-width:0;font-weight:700}
 
-.azh-box{margin:8px 0;padding:10px 12px;border-radius:16px;background:var(--card);border:1.5px solid var(--line);border-left:5px solid #ff8fc2}
+.azh-box{position:relative;margin:9px 0;padding:9px 12px 10px;border:2px solid var(--ink);border-radius:12px;background:var(--paper2);box-shadow:2px 3px 0 var(--ink)}
 .azh-box small{color:var(--tx2)}
 #azh-ms{color:var(--pk2);font-size:14px}
-#azh-spd{-webkit-appearance:none;appearance:none;display:block;width:100%;height:12px;margin:14px 0 6px;padding:0;border-radius:999px;outline:0;cursor:pointer;touch-action:pan-y;
-  background:linear-gradient(90deg,#ff7fb8 var(--p,15%),var(--trk) var(--p,15%))}
-#azh-spd::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;border:3px solid #fff;background:radial-gradient(circle at 35% 35%,#fff 0 14%,#ff6fb0 16%);box-shadow:0 2px 10px rgba(200,70,140,.6)}
-#azh-spd::-moz-range-thumb{width:22px;height:22px;border-radius:50%;border:3px solid #fff;background:#ff6fb0;box-shadow:0 2px 10px rgba(200,70,140,.6)}
+#azh-spd{-webkit-appearance:none;appearance:none;display:block;width:100%;height:13px;margin:14px 0 6px;padding:0;border:2px solid var(--ink);border-radius:999px;outline:0;cursor:pointer;touch-action:pan-y;
+  background:linear-gradient(90deg,#ff6fa8 var(--p,15%),var(--trk) var(--p,15%))}
+#azh-spd::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;border:3px solid var(--ink);background:radial-gradient(circle,#ffd25e 0 24%,#ff6fa8 27%);box-shadow:0 2px 0 var(--ink)}
+#azh-spd::-moz-range-thumb{width:20px;height:20px;border-radius:50%;border:3px solid var(--ink);background:radial-gradient(circle,#ffd25e 0 24%,#ff6fa8 27%)}
 #azh-spd::-moz-range-track{background:transparent}
 #azh-spd:focus-visible{outline:3px solid #7a4dff;outline-offset:4px}
-.azh-ends{display:flex;justify-content:space-between;font-size:11px;color:var(--tx2)}
-.azh-inp{display:block;width:100%;margin-top:6px;padding:9px 12px;border-radius:14px;border:1.5px solid #ffc2dc;background:var(--inp);outline:0;min-height:42px}
-.azh-inp:focus{border-color:#a98cf5;box-shadow:0 0 0 3px rgba(169,140,245,.28)}
+.azh-ends{display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:var(--tx2)}
+.azh-inp{display:block;width:100%;margin-top:6px;padding:8px 12px;border:2px solid var(--ink);border-radius:10px;background:var(--inp);outline:0;min-height:42px}
+.azh-inp:focus{border-color:var(--pk2);box-shadow:3px 3px 0 var(--pk)}
 select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
-  background-image:linear-gradient(45deg,transparent 50%,#c2297a 50%),linear-gradient(135deg,#c2297a 50%,transparent 50%);
+  background-image:linear-gradient(45deg,transparent 50%,#c42a76 50%),linear-gradient(135deg,#c42a76 50%,transparent 50%);
   background-position:calc(100% - 19px) 55%,calc(100% - 14px) 55%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
 
-.azh-adv{margin:8px 0 0;border-radius:16px;background:var(--card);border:1.5px solid var(--line)}
-.azh-adv>summary{list-style:none;cursor:pointer;min-height:44px;padding:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center;-webkit-tap-highlight-color:transparent}
+.azh-adv{margin:9px 0 0;border:2px solid var(--ink);border-radius:12px;background:var(--paper2);box-shadow:2px 3px 0 var(--ink)}
+.azh-adv>summary{list-style:none;cursor:pointer;min-height:44px;padding:12px;font-weight:800;display:flex;justify-content:space-between;align-items:center;-webkit-tap-highlight-color:transparent}
 .azh-adv>summary::-webkit-details-marker{display:none}
-.azh-adv>summary::after{content:"\\25BE";color:var(--tx2);transition:transform .2s}
+.azh-adv>summary::after{content:"▾";color:var(--pk2);transition:transform .2s}
 .azh-adv[open]>summary::after{transform:rotate(180deg)}
 .azh-advin{padding:0 10px 10px}
 
-/* nút kẹo: có đáy nổi, nhấn xuống khi bấm */
-.azh-acts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:8px}
-.azh-act{min-height:42px;padding:8px 10px;border-radius:999px;font-weight:800;font-size:12.5px;color:#fff;text-shadow:0 1px 2px rgba(100,10,70,.45);
-  background:linear-gradient(180deg,#f372b0,#cf3a88);box-shadow:0 3px 0 #a52a6c,0 6px 12px rgba(176,70,150,.3);transition:transform .12s,box-shadow .12s}
-@media (hover:hover){.azh-act:hover{transform:translateY(-1px)}}
-.azh-act:active{transform:translateY(3px);box-shadow:0 0 0 #a52a6c,0 2px 5px rgba(176,70,150,.3)}
-.azh-act.alt{background:linear-gradient(180deg,#8aa0ff,#5468d8);box-shadow:0 3px 0 #3b4bb0,0 6px 12px rgba(84,104,216,.3)}
-.azh-act.alt:active{box-shadow:0 0 0 #3b4bb0,0 2px 5px rgba(84,104,216,.3)}
-.azh-act.danger{grid-column:1/-1;background:linear-gradient(180deg,#f0728a,#c93556);box-shadow:0 3px 0 #9e2542,0 6px 12px rgba(201,53,86,.3)}
-.azh-act.danger:active{box-shadow:0 0 0 #9e2542,0 2px 5px rgba(201,53,86,.3)}
-.azh-act.wide{grid-column:1/-1}
+/* nút sticker: viền mực, bóng cứng, nhấn xuống khi bấm */
+.azh-acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:9px}
+#azh .azh-act{min-height:42px;padding:8px 10px;border:2.5px solid var(--ink);border-radius:12px;font-weight:800;font-size:12.5px;color:#fff;text-shadow:0 1.5px 0 rgba(43,27,61,.55);
+  background:linear-gradient(180deg,rgba(255,255,255,.28) 0 45%,transparent 45%),var(--pk);box-shadow:0 4px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+@media (hover:hover){#azh .azh-act:hover{transform:translateY(-1px);box-shadow:0 5px 0 var(--ink)}}
+#azh .azh-act:active{transform:translateY(4px);box-shadow:0 0 0 var(--ink)}
+#azh .azh-act.alt{background:linear-gradient(180deg,rgba(255,255,255,.28) 0 45%,transparent 45%),var(--lv)}
+#azh .azh-act.danger{grid-column:1/-1;background:linear-gradient(180deg,rgba(255,255,255,.28) 0 45%,transparent 45%),var(--red)}
+#azh .azh-act.wide{grid-column:1/-1}
 .azh-rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.6);transform:scale(0);animation:azh-rip .6s ease-out forwards;pointer-events:none}
-.azh-foot{text-align:center;margin-top:12px;font-size:11px;letter-spacing:.6px;color:var(--tx2)}
+.azh-foot{display:flex;align-items:center;margin-top:14px;font-size:11px;font-weight:700;letter-spacing:.6px;color:var(--tx2)}
+.azh-foot::before,.azh-foot::after{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--pk) 0 4px,transparent 4px 8px);opacity:.7}
+.azh-foot::before{margin-right:9px}.azh-foot::after{margin-left:9px}
 .azh-trail{position:absolute;width:9px;height:9px;margin:-4px;border-radius:150% 0 150% 0;pointer-events:none;z-index:5;animation:azh-trail .8s ease-out forwards}
-
+.azh-bar{height:12px;margin:0 2px 8px;border:2px solid var(--ink);border-radius:999px;background:var(--paper2);overflow:hidden}
+.azh-bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.4) 0 6px,transparent 6px 12px),linear-gradient(90deg,#ff6fa8,#b69bff);transition:width .5s cubic-bezier(.3,1.4,.5,1)}
 #azh-bookv{display:none;position:relative;z-index:1}
-#azh-list{margin:10px 0;max-height:min(320px,45vh);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#ffb3d4 transparent}
-.azh-item{position:relative;margin-bottom:7px;padding:8px 38px 8px 11px;border-radius:14px;background:var(--card);border:1.5px solid var(--line);border-left:5px solid #ff8fc2}
-.azh-item .q{font-weight:700;font-size:12px;word-break:break-word}
-.azh-item .a{margin-top:3px;color:var(--pk2);font-size:12px;word-break:break-word}
-#azh .azh-item .x{position:absolute;top:6px;right:6px;width:28px;height:28px;border-radius:50%;background:rgba(255,143,194,.25);color:var(--pk2);font-weight:800;font-size:15px;line-height:1;padding:0}
-#azh .azh-item .x:active{background:#ff8fc2;color:#fff}
+#azh-list{margin:10px 0;max-height:min(320px,45vh);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#ff8fc2 transparent}
+.azh-item{position:relative;margin-bottom:8px;padding:8px 40px 8px 11px;border:2px solid var(--ink);border-radius:11px;background:var(--paper2);box-shadow:2px 3px 0 var(--ink)}
+.azh-item .q{font-weight:800;font-size:12px;word-break:break-word}
+.azh-item .a{margin-top:3px;color:var(--pk2);font-size:12px;font-weight:700;word-break:break-word}
+#azh .azh-item .x{position:absolute;top:7px;right:7px;width:28px;height:28px;border:2px solid var(--ink);border-radius:8px;background:var(--red);color:#fff;font-weight:900;font-size:15px;line-height:1;padding:0;box-shadow:0 2px 0 var(--ink)}
+#azh .azh-item .x:active{transform:translateY(2px);box-shadow:none}
 .azh-empty{text-align:center;color:var(--tx2);padding:14px 0}
+@media (pointer:coarse){#azh .azh-item .x{width:36px;height:36px}}
 
 
 /* mọi kích cỡ màn hình */
-@media (pointer:coarse){#azh input,#azh select{font-size:16px}#azh .azh-act{min-height:46px;font-size:13.5px}#azh .azh-runbtn{min-height:38px}#azh .azh-minbtn{width:38px;height:38px}#azh .azh-item .x{width:36px;height:36px}}
+@media (pointer:coarse){#azh input,#azh select{font-size:16px}#azh .azh-act{min-height:46px;font-size:13.5px}#azh .azh-runbtn{min-height:38px}#azh .azh-minbtn{width:38px;height:38px}}
 @media (max-width:360px){#azh .azh-sub{display:none}#azh .azh-title{font-size:14px}#azh .azh-stat b{font-size:19px}}
 @media (max-height:520px){#azh-body{padding:8px}.azh-fx{display:none}}
-@media (min-width:1280px){#azh{width:372px}}
+@media (min-width:1280px){#azh{width:372px}#azh.min{width:auto}}
 @media print{#azh{display:none!important}}
 
 @keyframes azh-in{from{opacity:0;transform:translateY(-16px) scale(.92)}to{opacity:1;transform:none}}
-@keyframes azh-flow{from{background-position:0 0}to{background-position:240% 0}}
-@keyframes azh-march{from{background-position:0 0}to{background-position:12px 0}}
+@keyframes azh-lines{from{background-position:0 0}to{background-position:38px 0}}
+@keyframes azh-spin{to{transform:rotate(360deg)}}
 @keyframes azh-bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-3px) rotate(4deg)}}
 @keyframes azh-hop{0%{transform:translateY(0)}35%{transform:translateY(-6px) scale(1.08)}70%{transform:translateY(0) scale(.97)}100%{transform:none}}
 @keyframes azh-blink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
 @keyframes azh-sp{0%,100%{opacity:0;transform:scale(.2) rotate(0)}50%{opacity:.95;transform:scale(1) rotate(90deg)}}
 @keyframes azh-zz{0%{opacity:0;transform:translate(0,3px)}40%{opacity:1}100%{opacity:0;transform:translate(4px,-7px)}}
 @keyframes azh-fall{0%{opacity:0;transform:translate(0,0) rotate(0)}10%{opacity:.8}85%{opacity:.8}100%{opacity:0;transform:translate(var(--sx,0px),var(--fh,520px)) rotate(540deg)}}
-@keyframes azh-pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,243,160,.95)}50%{box-shadow:0 0 0 8px rgba(255,243,160,0)}}
+@keyframes azh-pulse{0%,100%{box-shadow:0 3px 0 var(--ink),0 0 0 0 rgba(255,243,160,.95)}50%{box-shadow:0 3px 0 var(--ink),0 0 0 8px rgba(255,243,160,0)}}
+@keyframes azh-ring{0%,100%{box-shadow:3px 4px 0 var(--ink),0 0 0 0 rgba(255,210,94,.95)}50%{box-shadow:3px 4px 0 var(--ink),0 0 0 10px rgba(255,210,94,0)}}
 @keyframes azh-dotp{0%,100%{opacity:1}50%{opacity:.4}}
 @keyframes azh-bump{0%{transform:scale(1)}40%{transform:scale(1.5) rotate(-5deg)}100%{transform:scale(1)}}
 @keyframes azh-pop{0%{transform:scale(.96)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes azh-caret{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 @keyframes azh-rip{to{transform:scale(1);opacity:0}}
 @keyframes azh-trail{0%{opacity:.95;transform:translate(0,0) rotate(0) scale(1)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(.3)}}
+@keyframes azh-fold{0%{transform:none;opacity:1}100%{transform:scale(.16) rotate(-14deg);opacity:0}}
+@keyframes azh-dock{0%{transform:scale(.25) rotate(-30deg);opacity:0}55%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes azh-unfold{0%{transform:scale(.2) rotate(8deg);opacity:0}100%{transform:none;opacity:1}}
+@keyframes azh-rise{0%{opacity:0;transform:translateY(10px) scale(.96)}100%{opacity:1;transform:none}}
+@keyframes azh-bst{0%{opacity:1;transform:translate(0,0) rotate(0) scale(.5)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(1.15)}}
 @media (prefers-reduced-motion:reduce){#azh,#azh *{animation:none!important;transition:none!important}}
 `;
   (document.head || document.documentElement).appendChild(css);
@@ -289,39 +339,50 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
 
   // Linh vật neko chibi (SVG nội tuyến, không cần tải ảnh nên không bị CSP chặn). Biểu cảm đổi theo data-mood của khung.
   const MASCOT = `<svg class="azh-mv" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-    <path d="M12 23L8 3l18 8z" fill="#9f7df0"/><path d="M13.8 17.5L11.5 8.2l8.4 3.6z" fill="#ff9ccb"/>
-    <path d="M52 23L56 3 38 11z" fill="#9f7df0"/><path d="M50.2 17.5L52.5 8.2l-8.4 3.6z" fill="#ff9ccb"/>
-    <path d="M9 34C9 14 19 8 32 8s23 6 23 26v9c0 6-4 10-9 10H18c-5 0-9-4-9-10z" fill="#b79cff"/>
-    <ellipse cx="32" cy="38" rx="18" ry="15" fill="#fff1e8"/>
-    <path d="M13 34C13 17 22 10 32 10S51 17 51 34L47 26L43 32L38 25L32 31L26 25L21 32L17 26Z" fill="#b79cff"/>
-    <path d="M20 17Q26 12 33 12" stroke="#d9c9ff" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <path d="M32 9C30 3 34 0 38 2" fill="none" stroke="#b79cff" stroke-width="2.6" stroke-linecap="round"/>
-    <ellipse cx="19" cy="46" rx="3.4" ry="2" fill="#ff7fb3" opacity=".5"/><ellipse cx="45" cy="46" rx="3.4" ry="2" fill="#ff7fb3" opacity=".5"/>
+    <defs>
+      <linearGradient id="azh-hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdb9ff"/><stop offset="1" stop-color="#9a7bf0"/></linearGradient>
+      <linearGradient id="azh-iris" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a2fb0"/><stop offset=".62" stop-color="#7d5cf0"/><stop offset="1" stop-color="#ff8cc4"/></linearGradient>
+    </defs>
+    <path d="M11 24L8 4l18 8z" fill="url(#azh-hair)" stroke="#2b1b3d" stroke-width="2" stroke-linejoin="round"/><path d="M13.6 18.4L11.8 9.6l8 3.4z" fill="#ff9ccb"/>
+    <path d="M53 24L56 4 38 12z" fill="url(#azh-hair)" stroke="#2b1b3d" stroke-width="2" stroke-linejoin="round"/><path d="M50.4 18.4L52.2 9.6l-8 3.4z" fill="#ff9ccb"/>
+    <path d="M9 34C9 14 19 8 32 8s23 6 23 26v9c0 6-4 10-9 10H18c-5 0-9-4-9-10z" fill="url(#azh-hair)" stroke="#2b1b3d" stroke-width="2" stroke-linejoin="round"/>
+    <ellipse cx="32" cy="38" rx="18" ry="14" fill="#fff1e8"/>
+    <path d="M13 34C13 17 22 10 32 10S51 17 51 34L47 26L43 32L38 25L32 31L26 25L21 32L17 26Z" fill="url(#azh-hair)" stroke="#2b1b3d" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M20 17Q26 12.5 33 12.5" stroke="#e6dbff" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M32 8C30 2 34 -1 38 1" fill="none" stroke="#2b1b3d" stroke-width="4.6" stroke-linecap="round"/><path d="M32 8C30 2 34 -1 38 1" fill="none" stroke="#9a7bf0" stroke-width="2.4" stroke-linecap="round"/>
+    <ellipse cx="19" cy="46.5" rx="3.6" ry="2.1" fill="#ff7fb3" opacity=".55"/><ellipse cx="45" cy="46.5" rx="3.6" ry="2.1" fill="#ff7fb3" opacity=".55"/>
     <g class="azh-eo" data-for="idle worry think">
-      <ellipse cx="24" cy="39" rx="4.1" ry="5.2" fill="#3a2470"/><ellipse cx="40" cy="39" rx="4.1" ry="5.2" fill="#3a2470"/>
-      <circle cx="25.6" cy="36.6" r="1.7" fill="#fff"/><circle cx="41.6" cy="36.6" r="1.7" fill="#fff"/>
-      <circle cx="22.6" cy="41.2" r=".8" fill="#fff"/><circle cx="38.6" cy="41.2" r=".8" fill="#fff"/>
-      <path d="M19.2 35.2Q24 32.6 28.6 35.2M35.4 35.2Q40 32.6 44.8 35.2" stroke="#3a2470" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <ellipse cx="24" cy="39" rx="4.7" ry="5.9" fill="#2b1b3d"/><ellipse cx="40" cy="39" rx="4.7" ry="5.9" fill="#2b1b3d"/>
+      <ellipse cx="24" cy="40.2" rx="3.7" ry="4.7" fill="url(#azh-iris)"/><ellipse cx="40" cy="40.2" rx="3.7" ry="4.7" fill="url(#azh-iris)"/>
+      <circle cx="25.8" cy="37" r="1.9" fill="#fff"/><circle cx="41.8" cy="37" r="1.9" fill="#fff"/>
+      <circle cx="22.4" cy="42.2" r=".9" fill="#fff"/><circle cx="38.4" cy="42.2" r=".9" fill="#fff"/>
+      <path d="M18.4 35.6Q24 31.6 29.6 35.8M34.4 35.8Q40 31.6 45.6 35.6" stroke="#2b1b3d" stroke-width="2.3" fill="none" stroke-linecap="round"/>
     </g>
     <g data-for="star">
-      <ellipse cx="24" cy="39" rx="4.1" ry="5.2" fill="#3a2470"/><ellipse cx="40" cy="39" rx="4.1" ry="5.2" fill="#3a2470"/>
-      <path d="M24 35.4L24.85 38.15 27.6 39 24.85 39.85 24 42.6 23.15 39.85 20.4 39 23.15 38.15Z" fill="#fff"/>
-      <path d="M40 35.4L40.85 38.15 43.6 39 40.85 39.85 40 42.6 39.15 39.85 36.4 39 39.15 38.15Z" fill="#fff"/>
-      <path d="M19.2 35.2Q24 32.6 28.6 35.2M35.4 35.2Q40 32.6 44.8 35.2" stroke="#3a2470" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <ellipse cx="24" cy="39" rx="4.7" ry="5.9" fill="#2b1b3d"/><ellipse cx="40" cy="39" rx="4.7" ry="5.9" fill="#2b1b3d"/>
+      <path d="M24 34.6L25 37.9 28.3 39 25 40.1 24 43.4 23 40.1 19.7 39 23 37.9Z" fill="#fff"/>
+      <path d="M40 34.6L41 37.9 44.3 39 41 40.1 40 43.4 39 40.1 35.7 39 39 37.9Z" fill="#fff"/>
+      <path d="M18.4 35.6Q24 31.6 29.6 35.8M34.4 35.8Q40 31.6 45.6 35.6" stroke="#2b1b3d" stroke-width="2.3" fill="none" stroke-linecap="round"/>
     </g>
-    <path data-for="happy" d="M19.5 40Q24 33 28.5 40M35.5 40Q40 33 44.5 40" stroke="#3a2470" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-    <path data-for="sleep" d="M19.5 38Q24 43 28.5 38M35.5 38Q40 43 44.5 38" stroke="#3a2470" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-    <path data-for="idle" d="M28.4 46Q30.2 49 32 46Q33.8 49 35.6 46" fill="none" stroke="#c2297a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-    <g data-for="happy star"><path d="M28 45.5Q32 53 36 45.5Z" fill="#e0488f"/><path d="M30 49.6Q32 48.4 34 49.6Q32 52 30 49.6z" fill="#ff9ccb"/></g>
-    <ellipse data-for="sleep" cx="32" cy="47" rx="1.9" ry="1.5" fill="#c2297a"/>
-    <path data-for="worry" d="M28 48Q30 45.6 32 48T36 48" fill="none" stroke="#c2297a" stroke-width="1.6" stroke-linecap="round"/>
-    <path data-for="think" d="M30 47h4" fill="none" stroke="#c2297a" stroke-width="1.8" stroke-linecap="round"/>
-    <path data-for="worry" d="M50 22c-2.4 3.4-3.6 5.2-3.6 7a3.6 3.6 0 007.2 0c0-1.8-1.2-3.6-3.6-7z" fill="#8fd3ff" stroke="#fff" stroke-width=".8"/>
-    <text data-for="think" x="45" y="21" font-size="15" font-weight="800" fill="#c2297a" font-family="system-ui,sans-serif">?</text>
-    <text data-for="sleep" class="azh-zz" x="46" y="17" font-size="12" font-weight="800" fill="#7e5ed6" font-family="system-ui,sans-serif">z</text>
-    <g transform="translate(46 15)"><path d="M0 0L-7-5V5zM0 0L7-5V5z" fill="#ff5fa8"/><circle r="2.3" fill="#ff9ccb"/></g>
-    <g data-for="star happy"><g transform="translate(1 12)"><path class="azh-spk" d="M7 14l1.2 3 3 1.2-3 1.2L7 22.4l-1.2-3-3-1.2 3-1.2z" fill="#ffd86b"/></g>
-      <g transform="translate(50 30) scale(.7)"><path class="azh-spk" d="M7 14l1.2 3 3 1.2-3 1.2L7 22.4l-1.2-3-3-1.2 3-1.2z" fill="#ffd86b"/></g></g>
+    <path data-for="happy" d="M19.5 41Q24 33.5 28.5 41M35.5 41Q40 33.5 44.5 41" stroke="#2b1b3d" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <path data-for="sleep" d="M19.5 38Q24 43.5 28.5 38M35.5 38Q40 43.5 44.5 38" stroke="#2b1b3d" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <path data-for="idle" d="M28.4 46.2Q30.2 49.2 32 46.2Q33.8 49.2 35.6 46.2" fill="none" stroke="#c42a76" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <g data-for="happy star"><path d="M28 45.5Q32 53 36 45.5Z" fill="#e0357f" stroke="#2b1b3d" stroke-width="1.2" stroke-linejoin="round"/><path d="M30 49.6Q32 48.4 34 49.6Q32 52 30 49.6z" fill="#ff9ccb"/></g>
+    <ellipse data-for="sleep" cx="32" cy="47" rx="1.9" ry="1.5" fill="#c42a76"/>
+    <path data-for="worry" d="M28 48Q30 45.6 32 48T36 48" fill="none" stroke="#c42a76" stroke-width="1.7" stroke-linecap="round"/>
+    <path data-for="think" d="M30 47h4" fill="none" stroke="#c42a76" stroke-width="1.9" stroke-linecap="round"/>
+    <path data-for="worry" d="M51 22c-2.4 3.4-3.6 5.2-3.6 7a3.6 3.6 0 007.2 0c0-1.8-1.2-3.6-3.6-7z" fill="#8fd3ff" stroke="#2b1b3d" stroke-width="1"/>
+    <text data-for="think" x="46" y="21" font-size="15" font-weight="800" fill="#c42a76" stroke="#fff" stroke-width=".8" paint-order="stroke" font-family="system-ui,sans-serif">?</text>
+    <text data-for="sleep" class="azh-zz" x="47" y="18" font-size="12" font-weight="800" fill="#7e5ed6" stroke="#fff" stroke-width=".8" paint-order="stroke" font-family="system-ui,sans-serif">z</text>
+    <g transform="translate(19.5 16.5)">
+      <g fill="#ff8cbc" stroke="#2b1b3d" stroke-width=".9" stroke-linejoin="round">
+        <ellipse cx="0" cy="-4.3" rx="2.9" ry="3.8"/><ellipse cx="0" cy="-4.3" rx="2.9" ry="3.8" transform="rotate(72)"/><ellipse cx="0" cy="-4.3" rx="2.9" ry="3.8" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-4.3" rx="2.9" ry="3.8" transform="rotate(216)"/><ellipse cx="0" cy="-4.3" rx="2.9" ry="3.8" transform="rotate(288)"/>
+      </g>
+      <circle r="2.1" fill="#ffd25e" stroke="#2b1b3d" stroke-width=".8"/>
+    </g>
+    <g data-for="star happy"><g transform="translate(46 28)"><path class="azh-spk" d="M7 14l1.2 3 3 1.2-3 1.2L7 22.4l-1.2-3-3-1.2 3-1.2z" fill="#ffd25e" stroke="#2b1b3d" stroke-width=".8"/></g>
+      <g transform="translate(2 28) scale(.7)"><path class="azh-spk" d="M7 14l1.2 3 3 1.2-3 1.2L7 22.4l-1.2-3-3-1.2 3-1.2z" fill="#ffd25e" stroke="#2b1b3d" stroke-width=".8"/></g></g>
   </svg>`;
 
   const headHtml = ver => `
@@ -339,7 +400,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   const panel = document.createElement('div');
   panel.id = 'azh';
   panel.setAttribute('data-mood', 'idle');
-  panel.innerHTML = `<div class="azh-card">${fxHtml}${headHtml('v5')}
+  panel.innerHTML = `<div class="azh-card">${fxHtml}${headHtml('v6')}<button id="azh-mrun" class="azh-mrun" type="button" aria-label="Tạm dừng" title="Chạy / Tạm dừng"><svg class="azh-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a.8.8 0 001.2.7l10.6-6.8a.8.8 0 000-1.4L9.2 4.5A.8.8 0 008 5.2z"/></svg><svg class="azh-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4.5" width="4.6" height="15" rx="1.4"/><rect x="13.9" y="4.5" width="4.6" height="15" rx="1.4"/></svg></button>
     <div id="azh-body">
       <div class="azh-main" id="azh-mainv">
         <div class="azh-stats">
@@ -347,7 +408,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
           <div class="azh-stat" data-jp="合"><small>Khớp trang này</small><div><b id="azh-pt">–</b></div></div>
         </div>
         <div class="azh-bar" role="presentation"><i id="azh-pb"></i></div>
-        <div class="azh-bubble" aria-live="polite"><span id="azh-face">(◕‿◕)</span><span id="azh-st"></span></div>
+        <div class="azh-bubble"><span class="azh-np">HuyDz</span><span id="azh-face">(◕‿◕)</span><span id="azh-st"></span><span class="azh-sr" id="azh-sr" aria-live="polite"></span><i class="azh-caret"></i></div>
 
         <label class="azh-sw"><input type="checkbox" id="azh-sel"><i></i><span>Tự chọn đáp án đã nhớ</span></label>
         <label class="azh-sw"><input type="checkbox" id="azh-lrn"><i></i><span>Tự học ở trang xem đáp án</span></label>
@@ -387,6 +448,37 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   const $ = id => document.getElementById('azh-' + id);
   const head = $('head');
 
+
+  // gõ chữ kiểu visual novel (chữ đầy đủ vẫn nằm trong vùng đọc màn hình ẩn)
+  let typeT = 0, lastType = 0;
+  function typeInto(el, text) {
+    clearInterval(typeT);
+    const sr = $('sr'); if (sr) sr.textContent = text;
+    const t = Date.now(), fast = t - lastType < 300;
+    lastType = t;
+    if (REDUCED || fast || isMin() || text.length < 4) { el.textContent = text; return; }
+    const step = Math.max(1, Math.ceil(text.length / 18));
+    let i = 0;
+    el.textContent = '';
+    typeT = setInterval(() => { i += step; el.textContent = text.slice(0, i); if (i >= text.length) clearInterval(typeT); }, 18);
+  }
+  // cánh hoa + sao bung ra quanh linh vật khi đóng / mở
+  function burst() {
+    if (REDUCED) return;
+    const cx = isMin() ? 32 : 37, cy = isMin() ? 32 : 35, cols = ['#ffb3d4', '#ff6fa8', '#c9b6ff', '#ffd25e', '#a9dcff'];
+    for (let i = 0; i < 14; i++) {
+      const b = document.createElement('b'), a = (i / 14) * Math.PI * 2 + rnd(-.2, .2), d = rnd(34, 74);
+      b.className = 'azh-bst' + (i % 3 === 0 ? ' s' : '');
+      b.style.left = cx + 'px'; b.style.top = cy + 'px';
+      b.style.background = cols[i % cols.length];
+      b.style.setProperty('--dx', (Math.cos(a) * d).toFixed(0) + 'px');
+      b.style.setProperty('--dy', (Math.sin(a) * d).toFixed(0) + 'px');
+      b.style.setProperty('--r', rnd(-300, 300).toFixed(0) + 'deg');
+      b.addEventListener('animationend', () => b.remove());
+      panel.appendChild(b);
+    }
+  }
+
   let curMood = 'idle';
   const setMood = m => { if (m !== curMood) { curMood = m; panel.setAttribute('data-mood', m); } };
 
@@ -417,14 +509,29 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     panel.style.left = x + 'px'; panel.style.top = y + 'px'; panel.style.right = 'auto'; panel.style.bottom = 'auto';
   }
   function savePos() { cfg.x = panel.offsetLeft; cfg.y = panel.offsetTop; saveCfg(); }
-  function setMin(v, silent) {
+  let morphing = false;
+  function applyMin(v, silent) {
     cfg.min = !!v;
     panel.classList.toggle('min', cfg.min);
     // thu gọn: đầu khung thành nút bấm được bằng bàn phím
-    if (cfg.min) { head.setAttribute('role', 'button'); head.setAttribute('tabindex', '0'); head.setAttribute('aria-label', 'Mở bảng HuyDz'); }
-    else { head.removeAttribute('role'); head.removeAttribute('tabindex'); head.removeAttribute('aria-label'); }
+    if (cfg.min) { head.setAttribute('role', 'button'); head.setAttribute('tabindex', '0'); head.setAttribute('aria-label', 'Mở bảng HuyDz'); head.title = 'Chạm để mở · kéo để di chuyển'; }
+    else { head.removeAttribute('role'); head.removeAttribute('tabindex'); head.removeAttribute('aria-label'); head.title = 'Kéo để di chuyển'; }
     if (!silent) saveCfg();
     requestAnimationFrame(() => { clampPanel(); if (!silent) savePos(); });
+  }
+  // thu gọn / mở ra có hiệu ứng: khung co lại vào linh vật rồi bật ra nút tròn, mở thì bung ngược lại
+  function setMin(v, silent) {
+    v = !!v;
+    if (morphing) return;
+    if (silent || REDUCED || v === panel.classList.contains('min')) { applyMin(v, silent); return; }
+    morphing = true;
+    const fin = () => { panel.classList.remove('fold', 'pop-in', 'unfold'); morphing = false; };
+    if (v) {
+      panel.classList.add('fold');
+      setTimeout(() => { panel.classList.remove('fold'); applyMin(true); panel.classList.add('pop-in'); burst(); setTimeout(fin, 560); }, 230);
+    } else {
+      applyMin(false); panel.classList.add('unfold'); burst(); setTimeout(fin, 700);
+    }
   }
   if (cfg.x !== null) { panel.style.left = cfg.x + 'px'; panel.style.top = cfg.y + 'px'; panel.style.right = 'auto'; }
   setMin(cfg.min, true);
@@ -438,12 +545,13 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   $('min').onclick = () => setMin(true);
   head.addEventListener('keydown', e => { if (isMin() && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); setMin(false); } });
   // trình duyệt quá cũ không có Pointer Events: chạm vào nút tròn vẫn mở được
-  if (!window.PointerEvent) panel.addEventListener('click', () => { if (isMin()) setMin(false); });
+  if (!window.PointerEvent) panel.addEventListener('click', e => { if (isMin() && !e.target.closest('.azh-mrun')) setMin(false); });
 
   panel.addEventListener('pointerdown', e => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     if (e.isPrimary === false) return;
     const min = isMin();
+    if (min && e.target.closest('.azh-mrun')) return;
     if (!min && (!e.target.closest('#azh-head') || e.target.closest('button'))) return;
     const r = panel.getBoundingClientRect();
     drag = { id: e.pointerId, ox: e.clientX - r.left, oy: e.clientY - r.top, sx: e.clientX, sy: e.clientY, moved: false, min };
@@ -469,7 +577,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   // gợn sóng khi bấm nút
   panel.addEventListener('click', e => {
     if (REDUCED) return;
-    const btn = e.target.closest('.azh-act, .azh-runbtn');
+    const btn = e.target.closest('.azh-act, .azh-runbtn, .azh-mrun');
     if (!btn) return;
     const r = btn.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2;
     const s = document.createElement('span');
@@ -832,7 +940,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     $('cnt').textContent = n; $('badge').textContent = n > 99 ? '99+' : n;
     const fc = faceFor(lastMsg || '');
     $('face').textContent = fc[0]; setMood(fc[1]);
-    $('st').textContent = m;
+    typeInto($('st'), m);
     const bub = panel.querySelector('.azh-bubble');
     bub.classList.remove('pop'); void bub.offsetWidth; bub.classList.add('pop');
     if (lastN !== -1 && n !== lastN) {
@@ -849,6 +957,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     b.textContent = cfg.run ? 'Tạm dừng' : 'Chạy nào!';
     b.className = 'azh-runbtn ' + (cfg.run ? 'on' : 'off');
     panel.classList.toggle('running', !!cfg.run);
+    $('mrun').setAttribute('aria-label', cfg.run ? 'Tạm dừng' : 'Chạy nào'); $('mrun').title = cfg.run ? 'Tạm dừng' : 'Chạy nào!';
   };
   const fillSpd = () => $('spd').style.setProperty('--p', (cfg.delay / 20) + '%');
 
@@ -856,7 +965,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   $('lrn').checked = cfg.learn;  $('lrn').onchange = e => { cfg.learn = e.target.checked; saveCfg(); stat(cfg.learn ? 'tự học đã bật' : 'tự học đã tắt, không quét đáp án nữa'); };
   $('spd').value = cfg.delay; $('ms').textContent = cfg.delay; fillSpd();
   $('spd').oninput = e => { cfg.delay = +e.target.value; $('ms').textContent = cfg.delay; fillSpd(); saveCfg(); };
-  $('run').onclick = () => { cfg.run = !cfg.run; runLabel(); saveCfg(); if (!cfg.run) clearHl(); stat(cfg.run ? 'đang chạy, cố lên!' : 'đã tạm dừng'); };
+  $('run').onclick = $('mrun').onclick = () => { cfg.run = !cfg.run; runLabel(); saveCfg(); if (!cfg.run) clearHl(); stat(cfg.run ? 'đang chạy, cố lên!' : 'đã tạm dừng'); };
   runLabel(); stat('');
 
   // ---------- Sổ đáp án: xem, tìm, xoá từng câu ----------
