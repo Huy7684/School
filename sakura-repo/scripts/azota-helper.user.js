@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      6.0
+// @version      6.1
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -321,6 +321,73 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
 @keyframes azh-rise{0%{opacity:0;transform:translateY(10px) scale(.96)}100%{opacity:1;transform:none}}
 @keyframes azh-bst{0%{opacity:1;transform:translate(0,0) rotate(0) scale(.5)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(1.15)}}
 @media (prefers-reduced-motion:reduce){#azh,#azh *{animation:none!important;transition:none!important}}
+
+
+/* ===== v2: giao diện tinh chỉnh + đổi kích thước menu ===== */
+#azh{width:var(--w,min(348px,calc(100vw - 16px)));height:var(--h,auto);
+--ic-sync:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 11a8 8 0 00-14.5-4M4 4v4h4M4 13a8 8 0 0014.5 4M20 20v-4h-4' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+--ic-cdl:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 18a4.5 4.5 0 01-.6-8.96A6 6 0 0117.7 8.5 4 4 0 0117 18M12 11v7m0 0l-3-3m3 3l3-3' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+--ic-cup:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 18a4.5 4.5 0 01-.6-8.96A6 6 0 0117.7 8.5 4 4 0 0117 18M12 18v-7m0 0l-3 3m3-3l3 3' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+--ic-dl:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 4v11m0 0l-4-4m4 4l4-4M5 20h14' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+--ic-ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 15V4m0 0L8 8m4-4l4 4M5 20h14' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+--ic-trash:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+--ic-link:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1' fill='none' stroke='%23ff6fa8' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+@media (min-width:1280px){#azh{width:var(--w,372px)}}
+#azh.sizing{user-select:none;-webkit-user-select:none}
+#azh.sizing *{transition:none!important}
+#azh-body{padding-bottom:24px}
+
+/* tay nắm kéo giãn ở góc dưới bên phải */
+.azh-grip{position:absolute;right:2px;bottom:2px;z-index:7;width:28px;height:28px;border-radius:10px;cursor:nwse-resize;touch-action:none;opacity:.8;transition:opacity .15s,background .15s}
+.azh-grip::before{content:"";position:absolute;right:6px;bottom:6px;width:13px;height:13px;
+  background:linear-gradient(135deg,transparent 0 38%,var(--pk2) 38% 50%,transparent 50% 63%,var(--pk2) 63% 75%,transparent 75% 88%,var(--pk2) 88% 100%);clip-path:polygon(100% 0,100% 100%,0 100%)}
+@media (hover:hover){.azh-grip:hover{opacity:1;background:rgba(255,111,168,.16)}}
+#azh.sizing .azh-grip{opacity:1;background:rgba(255,111,168,.22)}
+#azh.min .azh-grip{display:none}
+@media (pointer:coarse){.azh-grip{width:38px;height:38px}.azh-grip::before{right:9px;bottom:9px}}
+
+/* khối "Đồng bộ & dữ liệu" */
+#azh .azh-adv{margin-top:12px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,var(--paper2),var(--paper))}
+#azh .azh-adv>summary{justify-content:flex-start;gap:10px;padding:12px 14px;font-size:13px;letter-spacing:.2px}
+#azh .azh-adv>summary::before{content:"";flex:none;width:20px;height:20px;background:var(--pk2);-webkit-mask:var(--ic-sync) center/contain no-repeat;mask:var(--ic-sync) center/contain no-repeat}
+#azh .azh-adv>summary::after{margin-left:auto;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;border:2px solid var(--ink);background:var(--pk);color:#fff;font-size:11px;line-height:1}
+#azh .azh-adv[open]>summary{border-bottom:2px dashed var(--edge)}
+#azh .azh-advin{padding:12px}
+#azh #azh-code{min-height:46px;margin:0;padding:10px 12px 10px 40px;border:2px solid var(--ink);border-radius:14px;font-size:13px;
+  background:var(--inp) var(--ic-link) 13px center/17px no-repeat;box-shadow:inset 0 2px 0 rgba(43,27,61,.08);transition:box-shadow .15s,border-color .15s}
+#azh #azh-code:focus{border-color:var(--pk);box-shadow:0 0 0 3px rgba(255,111,168,.35)}
+#azh .azh-acts{gap:9px;margin-top:11px}
+#azh .azh-act{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:9px 12px;border:2px solid var(--ink);border-radius:14px;
+  font-weight:800;font-size:12.5px;letter-spacing:.2px;color:#fff;text-shadow:none;background:linear-gradient(135deg,#ff86b8,#f0488f);
+  box-shadow:0 3px 0 var(--ink),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .1s,box-shadow .1s,filter .15s}
+#azh .azh-act::before{content:"";flex:none;width:17px;height:17px;background:currentColor;pointer-events:none;-webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}
+#azh #azh-gpull{--i:var(--ic-cdl)}#azh #azh-gpush{--i:var(--ic-cup)}#azh #azh-exp{--i:var(--ic-dl)}#azh #azh-imp{--i:var(--ic-ul)}#azh #azh-clr{--i:var(--ic-trash)}
+@media (hover:hover){#azh .azh-act:hover{transform:translateY(-1px);filter:brightness(1.07);box-shadow:0 4px 0 var(--ink),inset 0 1px 0 rgba(255,255,255,.45)}}
+#azh .azh-act:active{transform:translateY(3px);box-shadow:0 0 0 var(--ink),inset 0 1px 0 rgba(255,255,255,.45)}
+#azh .azh-act.wide.alt{background:linear-gradient(135deg,#b3a2ff,#7a5ae6)}
+#azh .azh-act:not(.wide):not(.danger){background:var(--inp);color:var(--tx);box-shadow:0 3px 0 var(--ink)}
+#azh #azh-exp::before{background:var(--pk2)}#azh #azh-imp::before{background:var(--lv)}
+#azh .azh-act.danger{min-height:40px;background:transparent;color:var(--red);border:2px dashed var(--red);box-shadow:none;font-size:12px}
+#azh .azh-act.danger:active{transform:none;background:var(--red);color:#fff;box-shadow:none}
+@media (hover:hover){#azh .azh-act.danger:hover{transform:none;filter:none;background:var(--red);color:#fff;box-shadow:none}}
+@media (prefers-color-scheme:dark){#azh .azh-act.danger{color:#ff8791;border-color:#ff8791}#azh .azh-act.danger:active{background:#e8404f;color:#fff}}
+@media (prefers-color-scheme:dark) and (hover:hover){#azh .azh-act.danger:hover{background:#e8404f;color:#fff}}
+
+/* khối "Kích thước menu" */
+#azh .azh-szh{display:flex;justify-content:space-between;align-items:baseline}
+#azh .azh-szh label{font-weight:800}
+#azh .azh-szh b{color:var(--pk2);font-size:13px}
+#azh #azh-sz{-webkit-appearance:none;appearance:none;display:block;width:100%;height:13px;margin:14px 0 8px;padding:0;border:2px solid var(--ink);border-radius:999px;outline:0;cursor:pointer;touch-action:pan-y;
+  background:linear-gradient(90deg,#ff6fa8 var(--p,40%),var(--trk) var(--p,40%))}
+#azh #azh-sz::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;border:3px solid var(--ink);background:radial-gradient(circle,#ffd25e 0 24%,#ff6fa8 27%);box-shadow:0 2px 0 var(--ink)}
+#azh #azh-sz::-moz-range-thumb{width:20px;height:20px;border-radius:50%;border:3px solid var(--ink);background:radial-gradient(circle,#ffd25e 0 24%,#ff6fa8 27%)}
+#azh #azh-sz::-moz-range-track{background:transparent}
+#azh #azh-sz:focus-visible{outline:3px solid #7a4dff;outline-offset:4px}
+#azh .azh-ends{align-items:center}
+#azh .azh-chip{padding:3px 12px;border:2px solid var(--ink);border-radius:999px;background:var(--inp);color:var(--tx);font-weight:800;font-size:11px;box-shadow:0 2px 0 var(--ink)}
+#azh .azh-chip:active{transform:translateY(2px);box-shadow:none}
+@media (pointer:coarse){#azh .azh-chip{padding:8px 16px}}
+#azh .azh-tip{margin-top:8px;font-size:11px;color:var(--tx2)}
 `;
   (document.head || document.documentElement).appendChild(css);
 
@@ -435,6 +502,12 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
           </div>
         </details>
         <input type="file" id="azh-file" accept=".txt,text/plain" style="display:none">
+        <div class="azh-box azh-size">
+          <div class="azh-szh"><label for="azh-sz">Kích thước menu</label><b id="azh-szv"></b></div>
+          <input type="range" id="azh-sz" min="280" max="560" step="10" aria-label="Chiều rộng menu">
+          <div class="azh-ends"><span>nhỏ</span><button type="button" id="azh-szr" class="azh-chip">Mặc định</button><span>lớn</span></div>
+          <div class="azh-tip">Kéo góc dưới bên phải để đổi cả chiều cao.</div>
+        </div>
         <div class="azh-foot">頑張ってね ✧ ganbatte ne~</div>
       </div>
 
@@ -534,6 +607,63 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     }
   }
   if (cfg.x !== null) { panel.style.left = cfg.x + 'px'; panel.style.top = cfg.y + 'px'; panel.style.right = 'auto'; }
+  // ---------- Kích thước menu: kéo góc dưới phải hoặc dùng thanh trượt (nhớ lại cho lần sau) ----------
+  const SZ = { minW: 280, maxW: 640, minH: 280, def: 348 };
+  const vwNow = () => document.documentElement.clientWidth || innerWidth;
+  const slider = $('sz');
+  function applySize(save) {
+    const maxW = Math.max(SZ.minW, vwNow() - 16);
+    const hasW = typeof cfg.w === 'number', hasH = typeof cfg.h === 'number';
+    if (hasW) panel.style.setProperty('--w', Math.min(Math.max(cfg.w, Math.min(SZ.minW, maxW)), maxW) + 'px'); else panel.style.removeProperty('--w');
+    if (hasH) panel.style.setProperty('--h', Math.min(Math.max(cfg.h, SZ.minH), Math.max(SZ.minH, innerHeight - 16)) + 'px'); else panel.style.removeProperty('--h');
+    const hi = Math.min(SZ.maxW, maxW), lo = Math.min(SZ.minW, hi);
+    slider.min = lo; slider.max = hi;
+    const w = hasW ? Math.min(cfg.w, hi) : (isMin() ? SZ.def : Math.round(panel.offsetWidth) || SZ.def);
+    slider.value = w;
+    slider.style.setProperty('--p', (hi > lo ? ((w - lo) / (hi - lo)) * 100 : 0) + '%');
+    $('szv').textContent = hasW || hasH ? (hasW ? w : 'auto') + (hasH ? ' × ' + Math.round(cfg.h) : '') + ' px' : 'mặc định';
+    if (save) saveCfg();
+  }
+  slider.oninput = e => { cfg.w = +e.target.value; applySize(true); };
+  $('szr').onclick = () => { cfg.w = null; cfg.h = null; applySize(true); requestAnimationFrame(() => { clampPanel(); savePos(); }); };
+  const grip = document.createElement('div');
+  grip.className = 'azh-grip';
+  grip.title = 'Kéo để đổi kích thước · bấm đúp = mặc định';
+  grip.setAttribute('aria-hidden', 'true');
+  panel.querySelector('.azh-card').appendChild(grip);
+  let rs = null;
+  grip.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (e.isPrimary === false) return;
+    e.preventDefault(); e.stopPropagation();
+    // neo theo góc trên-trái để kéo góc dưới-phải cho đúng tay
+    panel.style.left = panel.offsetLeft + 'px'; panel.style.top = panel.offsetTop + 'px'; panel.style.right = 'auto'; panel.style.bottom = 'auto';
+    rs = { id: e.pointerId, sx: e.clientX, sy: e.clientY, w: panel.offsetWidth, h: panel.offsetHeight };
+    try { grip.setPointerCapture(e.pointerId); } catch (x) {}
+    panel.classList.add('sizing');
+  });
+  grip.addEventListener('pointermove', e => {
+    if (!rs || e.pointerId !== rs.id) return;
+    e.preventDefault();
+    const maxW = Math.max(SZ.minW, Math.min(SZ.maxW, vwNow() - panel.offsetLeft - 8));
+    const maxH = Math.max(SZ.minH, innerHeight - panel.offsetTop - 8);
+    cfg.w = Math.round(Math.min(Math.max(SZ.minW, rs.w + e.clientX - rs.sx), maxW));
+    cfg.h = Math.round(Math.min(Math.max(SZ.minH, rs.h + e.clientY - rs.sy), maxH));
+    applySize(false);
+  });
+  const endSize = e => {
+    if (!rs || e.pointerId !== rs.id) return;
+    rs = null; panel.classList.remove('sizing');
+    try { grip.releasePointerCapture(e.pointerId); } catch (x) {}
+    saveCfg(); savePos();
+  };
+  grip.addEventListener('pointerup', endSize);
+  grip.addEventListener('pointercancel', endSize);
+  grip.addEventListener('dblclick', () => $('szr').click());
+  addEventListener('resize', () => applySize(false));
+  applySize(false);
+
+  
   setMin(cfg.min, true);
 
   // Khung đổi cao (mở "Đồng bộ & dữ liệu", mở sổ đáp án, đổi cỡ màn hình): giữ nguyên trong màn hình + cập nhật độ rơi của cánh hoa
