@@ -256,7 +256,7 @@
     <div id="dts11-head">
       <div class="dts11-logo">
         <div class="dts11-mascot"><div class="dts11-flower">${flower}</div></div>
-        <div><div class="dts11-title">DeThiSo Helper</div><div class="dts11-sub">v11.4 · 桜 SAKURA EDITION</div></div>
+        <div><div class="dts11-title">HuyDz</div><div class="dts11-sub">v11.4 · 桜 SAKURA EDITION</div></div>
       </div>
       <div class="dts11-hbtns">
         <button id="dts11-run" class="dts11-runbtn"></button>
