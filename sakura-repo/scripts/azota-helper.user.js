@@ -80,6 +80,13 @@
     if (k !== ueKey) { ueKey = k; ueVal = Object.entries(bank).filter(([, v]) => usableWith(v, sc)); }
     return ueVal;
   };
+  // số câu hiện trên bảng: khi đã nhận ra đề thì chỉ đếm câu gắn đúng mã đề đó (không cộng cả sổ chung)
+  let scnKey = '', scnVal = 0;
+  const shownCount = () => {
+    const sc = strictCode(), k = bankVer + '|' + sc;
+    if (k !== scnKey) { scnKey = k; scnVal = sc ? Object.values(bank).filter(r => r && r.q && r.correct && hasT(r, sc)).length : usableRecs().length; }
+    return scnVal;
+  };
   const usableRecs = () => { const e = usableEntries(); if (urSrc !== e) { urSrc = e; urVal = e.map(x => x[1]); } return urVal; };
 
   // ---------- Giao diện (điện thoại, máy tính bảng, máy tính) ----------
@@ -362,6 +369,9 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   box-shadow:0 3px 0 var(--ink),inset 0 1px 0 rgba(255,255,255,.45);transition:transform .1s,box-shadow .1s,filter .15s}
 #azh .azh-act::before{content:"";flex:none;width:17px;height:17px;background:currentColor;pointer-events:none;-webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}
 #azh #azh-gpull{--i:var(--ic-cdl)}#azh #azh-gpush{--i:var(--ic-cup)}#azh #azh-exp{--i:var(--ic-dl)}#azh #azh-imp{--i:var(--ic-ul)}#azh #azh-clr{--i:var(--ic-trash)}
+#azh #azh-book{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 5a2 2 0 012-2h13v15H6a2 2 0 00-2 2zM4 20a2 2 0 002 2h13M9 7.5h6' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+#azh #azh-back{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 6l-6 6 6 6M4 12h16' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+#azh .azh-act:not([id])::before{display:none}
 @media (hover:hover){#azh .azh-act:hover{transform:translateY(-1px);filter:brightness(1.07);box-shadow:0 4px 0 var(--ink),inset 0 1px 0 rgba(255,255,255,.45)}}
 #azh .azh-act:active{transform:translateY(3px);box-shadow:0 0 0 var(--ink),inset 0 1px 0 rgba(255,255,255,.45)}
 #azh .azh-act.wide.alt{background:linear-gradient(135deg,#b3a2ff,#7a5ae6)}
@@ -1062,12 +1072,15 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   function stat(msg, fromTick) {
     if (msg !== undefined) lastMsg = msg;
     if (msg && !fromTick) holdUntil = Date.now() + 5000;
-    const n = usableRecs().length;
+    const n = shownCount(), sc = strictCode(), total = usableRecs().length;
     const m = (lastMsg || 'sẵn sàng nè ~') + (ghNote ? ' · ' + ghNote : '');
-    const sig = n + '|' + m;
+    const sig = n + '|' + sc + '|' + total + '|' + m;
     if (sig === lastShown) return;
     lastShown = sig;
     $('cnt').textContent = n; $('badge').textContent = n > 99 ? '99+' : n;
+    { const box = $('cnt').closest('.azh-stat'), sm = box && box.querySelector('small');
+      if (sm) sm.textContent = sc ? 'Đáp án đề này' : 'Sổ đáp án';
+      if (box) box.title = sc ? `Đề ${sc}: ${n} câu · sổ chung: ${Object.keys(bank).length} câu` : `Sổ chung: ${Object.keys(bank).length} câu`; }
     const fc = faceFor(lastMsg || '');
     $('face').textContent = fc[0]; setMood(fc[1]);
     typeInto($('st'), m);
