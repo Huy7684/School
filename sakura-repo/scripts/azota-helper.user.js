@@ -1,15 +1,16 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      4.0
+// @version      5.0
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
+// @noframes
 // @run-at       document-idle
 // @grant        none
 // ==/UserScript==
 
-// Azota Helper v4 - chạy trên cả điện thoại lẫn máy tính (bỏ regex lookbehind để iPhone/Safari cũ không lỗi), giao diện mới, sửa lỗi.
+// Azota Helper v5 - chạy trên điện thoại, máy tính bảng và máy tính (không dùng regex lookbehind để iPhone/Safari cũ không lỗi); giao diện wibu mới, sửa lỗi.
 (function () {
   'use strict';
   if (window.__azh) return;
@@ -31,7 +32,8 @@
   // dọn bản ghi hỏng cũ (đáp án chỉ là "B. C. D." do không đọc được ảnh)
   const labelOnly = c => /^(?:[A-F]\s*\.\s*)+$/i.test(flat(c));
   const cleanAns = s => flat(s).replace(/\s*(Giải thích|Tìm (Giáo Án|Tài Liệu)).*$/i, '');   // bỏ chữ nút dính vào đáp án
-  const saveBank = () => { try { localStorage.setItem(BANK_KEY, JSON.stringify(bank)); } catch (e) {} };
+  let bankVer = 0;   // tăng mỗi khi sổ đổi, để biết khi nào phải tính lại danh sách dùng được
+  const saveBank = () => { bankVer++; try { localStorage.setItem(BANK_KEY, JSON.stringify(bank)); } catch (e) {} };
   { let dirty = 0; Object.keys(bank).forEach(k => { const r = bank[k]; if (r && r.correct) { const cc = cleanAns(r.correct); if (cc !== r.correct) { r.correct = cc; dirty = 1; } } if (!r || !r.q || !r.correct || labelOnly(r.correct)) { delete bank[k]; dirty = 1; } }); if (dirty) saveBank(); }
 
   // ---------- Mã đề (từ link) ----------
@@ -58,158 +60,214 @@
   // Chỉ lọc theo mã đề khi sổ đã có câu gắn đúng mã đề này (câu chưa gắn mã vẫn dùng được).
   // Nếu mã đề nhận khác nhau giữa trang xem đáp án và trang làm bài thì dùng cả sổ, tránh "có đáp án mà không chọn".
   const STRICT_EXAM = true;
-  const strictCode = () => {
-    const c = examCode();
-    return STRICT_EXAM && c && Object.values(bank).some(r => r && r.t === c) ? c : '';
+  // Mỗi câu có thể thuộc nhiều đề: r.t là danh sách mã đề cách nhau bằng dấu phẩy (sổ cũ chỉ có 1 mã vẫn đọc được).
+  // Trước đây r.t chỉ giữ 1 mã nên câu trùng giữa 2 đề cứ bị gắn lại qua lại, đề này lấy mất của đề kia.
+  const hasT = (r, c) => !!r && !!r.t && ('' + r.t).split(',').indexOf(c) >= 0;
+  const addT = (t, c) => !c ? t : (!t ? c : (hasT({ t }, c) ? t : t + ',' + c));
+  const putRec = (q, c, code) => {
+    const k = norm(q), o = bank[k], same = !!o && norm(o.correct) === norm(c);
+    bank[k] = { q, correct: c, t: same ? (code ? addT(o.t, code) : o.t) : (code || undefined) };
   };
-  const usableWith = (r, sc) => !!(r && r.q && r.correct && (!sc || !r.t || r.t === sc));
-  const usableEntries = () => { const sc = strictCode(); return Object.entries(bank).filter(([, v]) => usableWith(v, sc)); };
-  const usableRecs = () => usableEntries().map(e => e[1]);
+  let scKey = '', scVal = '', ueKey = '', ueVal = [], urSrc = null, urVal = [];
+  const strictCode = () => {
+    const c = examCode(), k = bankVer + '|' + c;
+    if (k !== scKey) { scKey = k; scVal = STRICT_EXAM && c && Object.values(bank).some(r => r && hasT(r, c)) ? c : ''; }
+    return scVal;
+  };
+  const usableWith = (r, sc) => !!(r && r.q && r.correct && (!sc || !r.t || hasT(r, sc)));
+  const usableEntries = () => {
+    const sc = strictCode(), k = bankVer + '|' + sc;
+    if (k !== ueKey) { ueKey = k; ueVal = Object.entries(bank).filter(([, v]) => usableWith(v, sc)); }
+    return ueVal;
+  };
+  const usableRecs = () => { const e = usableEntries(); if (urSrc !== e) { urSrc = e; urVal = e.map(x => x[1]); } return urVal; };
 
-  // ---------- Giao diện (dùng được cho cả điện thoại lẫn máy tính) ----------
-  const REDUCED = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const COARSE = !!(window.matchMedia && matchMedia('(pointer: coarse)').matches);
+  // ---------- Giao diện (điện thoại, máy tính bảng, máy tính) ----------
+  const mq = q => { try { return !!(window.matchMedia && matchMedia(q).matches); } catch (e) { return false; } };
+  const REDUCED = mq('(prefers-reduced-motion: reduce)');
+  const COARSE = mq('(pointer: coarse)');
   if (typeof cfg.min !== 'boolean') cfg.min = innerWidth <= 640;   // điện thoại: mặc định thu gọn thành nút tròn
   if (typeof cfg.x !== 'number' || typeof cfg.y !== 'number') { cfg.x = null; cfg.y = null; }
 
   const css = document.createElement('style');
-  css.textContent = `#azh{--pk:#ff7eb6;--pk2:#e0559b;--vi:#a78bfa;--sk:#7dc4ff;--tx:#3d2f52;--tx2:#7a6a94;--bg:rgba(255,255,255,.92);--card:rgba(255,255,255,.7);--line:rgba(255,150,200,.38);--inp:#fff;
-  position:fixed;top:72px;right:max(12px,env(safe-area-inset-right,0px));width:min(340px,calc(100vw - 16px));
-  max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);display:flex;flex-direction:column;z-index:2147483647;
-  font:13px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--tx);border-radius:22px;overflow:hidden;border:2px solid transparent;
-  background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(135deg,#ff8fc2,#c19bff,#86cfff) border-box;
-  -webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);
-  box-shadow:0 14px 40px rgba(150,80,160,.35),0 2px 8px rgba(0,0,0,.12);
-  -webkit-text-size-adjust:100%;touch-action:manipulation;text-align:left;letter-spacing:normal;
-  animation:azh-in .45s cubic-bezier(.2,1.4,.4,1) both}
-@media (prefers-color-scheme:dark){#azh{--tx:#f3ebfb;--tx2:#bcaed4;--bg:rgba(34,27,50,.93);--card:rgba(255,255,255,.07);--line:rgba(255,150,200,.28);--inp:#2b2342}}
+  css.textContent = `#azh{--pk:#ff86bd;--pk2:#c2297a;--tx:#40305a;--tx2:#7d6c9a;--bg:rgba(255,250,253,.95);--bub:#fff7fb;--card:rgba(255,255,255,.82);--line:rgba(255,134,189,.42);--inp:#fff;--trk:#d9cdee;
+position:fixed;top:72px;right:max(12px,env(safe-area-inset-right,0px));width:min(348px,calc(100vw - 16px));margin:0;padding:0;
+max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
+display:flex;flex-direction:column;z-index:2147483647;
+font:13px/1.5 "Hiragino Maru Gothic ProN","M PLUS Rounded 1c","Yu Gothic UI","Meiryo UI",system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;
+color:var(--tx);color-scheme:light;text-align:left;letter-spacing:normal;text-transform:none;
+-webkit-text-size-adjust:100%;text-size-adjust:100%;touch-action:manipulation;
+animation:azh-in .5s cubic-bezier(.2,1.4,.4,1) both}
+@media (prefers-color-scheme:dark){#azh{color-scheme:dark;--tx:#f6eefc;--tx2:#c8b9df;--bg:rgba(30,23,46,.95);--bub:#2c2342;--card:rgba(255,255,255,.08);--line:rgba(255,134,189,.32);--inp:#2b2342;--trk:#4a3d68;--pk2:#ff9fcd}}
 #azh *{box-sizing:border-box}
-#azh button{font:inherit;cursor:pointer;border:0;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;margin:0}
+#azh button{-webkit-appearance:none;appearance:none;font:inherit;cursor:pointer;border:0;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent;margin:0}
 #azh input,#azh select{font:inherit;color:var(--tx);margin:0}
+#azh button:focus-visible,#azh summary:focus-visible,#azh-head:focus-visible{outline:3px solid #7a4dff;outline-offset:2px}
+#azh-head button:focus-visible,#azh-head:focus-visible{outline-color:#fff}
+
+.azh-card{position:relative;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden;border-radius:24px;border:2px solid transparent;
+  background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(135deg,#ff8fc2,#c19bff,#86cfff) border-box;
+  -webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);
+  box-shadow:0 14px 38px rgba(150,70,160,.36),0 2px 8px rgba(0,0,0,.14)}
+
+/* hiệu ứng nền: nằm sau nội dung, phủ cả khung (không bị cuộn mất) */
+.azh-fx{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;overflow:hidden;z-index:0}
+.azh-fx .pt{position:absolute;top:-16px;border-radius:150% 0 150% 0;background:linear-gradient(135deg,#ffd0e5,#ff8fc2);opacity:0;animation:azh-fall linear infinite}
+.azh-fx .sp{position:absolute;background:#fff;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);opacity:0;animation:azh-sp ease-in-out infinite}
+.azh-fx .sp.v{background:#d9c8ff}.azh-fx .sp.b{background:#cdeaff}
 
 /* header */
-#azh-head{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;color:#fff;cursor:grab;
-  user-select:none;-webkit-user-select:none;touch-action:none;flex:none;
-  background:linear-gradient(120deg,#ff7fb8,#c19bff 55%,#7fc8ff,#ff7fb8);background-size:240% 100%}
+#azh-head{position:relative;z-index:2;flex:none;display:flex;align-items:center;justify-content:space-between;padding:10px 12px 12px;color:#fff;cursor:grab;
+  user-select:none;-webkit-user-select:none;touch-action:none;
+  background:linear-gradient(120deg,#e0488f,#9a6cf0 55%,#6a7df0,#e0488f);background-size:240% 100%}
 #azh.running #azh-head{animation:azh-flow 9s linear infinite}
-#azh-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.85) 0 7px,transparent 7px 14px);opacity:.35}
-#azh.running #azh-head::after{opacity:.9}
+#azh-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.9) 0 6px,transparent 6px 12px);opacity:.3}
+#azh.running #azh-head::after{opacity:.85}
 @media (pointer:fine){#azh.running #azh-head::after{animation:azh-march .8s linear infinite}}
-.azh-logo{position:relative;z-index:1;display:flex;align-items:center;gap:9px;min-width:0}
-.azh-title{font-weight:800;font-size:14px;letter-spacing:.3px;text-shadow:0 1px 5px rgba(150,40,120,.55);white-space:nowrap}
-.azh-sub{display:flex;align-items:center;gap:5px;font-size:10px;letter-spacing:.7px;opacity:.95;white-space:nowrap}
-.azh-dot{width:7px;height:7px;border-radius:50%;background:#ffe27a;box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+.azh-logo{position:relative;z-index:1;display:flex;align-items:center;min-width:0}
+.azh-ttl{min-width:0}
+.azh-title{font-weight:800;font-size:15px;line-height:1.25;letter-spacing:.3px;white-space:nowrap;text-shadow:0 1px 4px rgba(80,20,90,.55)}
+.azh-sub{display:flex;align-items:center;font-size:11px;letter-spacing:.4px;white-space:nowrap;text-shadow:0 1px 3px rgba(80,20,90,.5)}
+.azh-dot{flex:none;width:7px;height:7px;margin-right:5px;border-radius:50%;background:#ffe27a;box-shadow:0 0 0 2px rgba(255,255,255,.35)}
 #azh.running .azh-dot{background:#7dffb0;animation:azh-dotp 1.6s ease-in-out infinite}
-.azh-hbtns{position:relative;z-index:1;display:flex;gap:6px;align-items:center;flex:none}
-.azh-mascot{position:relative;width:38px;height:38px;flex:none;border-radius:50%;background:rgba(255,255,255,.93);
-  box-shadow:0 0 0 3px rgba(255,255,255,.35),0 3px 10px rgba(150,40,120,.4)}
-.azh-flower{position:absolute;inset:0;animation:azh-spin 16s linear infinite}
-.azh-flower i{position:absolute;left:50%;top:50%;width:10px;height:14px;margin:-14px 0 0 -5px;transform-origin:50% 100%;
-  border-radius:50% 50% 50% 50%/75% 75% 25% 25%;background:linear-gradient(180deg,#ffe0ee,#ff7fb8)}
-.azh-flower::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px;border-radius:50%;background:radial-gradient(circle,#fff6a8,#ffc55c)}
-.azh-badge{display:none;position:absolute;right:-7px;bottom:-5px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#fff;color:var(--pk2);
-  font-weight:800;font-size:11px;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.28)}
-.azh-runbtn{padding:7px 13px;border-radius:999px;font-weight:800;font-size:12px;min-height:30px;transition:transform .15s}
+.azh-hbtns{position:relative;z-index:1;display:flex;align-items:center;flex:none;margin-left:8px}
+.azh-hbtns>*+*{margin-left:6px}
+.azh-runbtn{padding:7px 14px;border-radius:999px;font-weight:800;font-size:12.5px;min-height:34px;white-space:nowrap;transition:transform .15s}
 .azh-runbtn:active{transform:scale(.94)}
-.azh-runbtn.on{background:#fff;color:var(--pk2);box-shadow:0 2px 10px rgba(120,40,110,.3)}
-.azh-runbtn.off{background:#fff3a0;color:#a65a00;animation:azh-pulse 1.4s ease-in-out infinite}
-.azh-minbtn{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.35);color:#fff;font-size:17px;font-weight:800;line-height:1;padding:0}
-.azh-minbtn:active{background:rgba(255,255,255,.6)}
+.azh-runbtn.on{background:#fff;color:#c2297a;box-shadow:0 2px 10px rgba(80,20,90,.3)}
+.azh-runbtn.off{background:#fff3a0;color:#8a4a00;animation:azh-pulse 1.4s ease-in-out infinite}
+.azh-minbtn{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.3);color:#fff;font-size:18px;font-weight:800;line-height:1;padding:0}
+.azh-minbtn:active{background:rgba(255,255,255,.55)}
+
+/* linh vật chibi: đổi biểu cảm theo trạng thái (data-mood) */
+.azh-mascot{position:relative;flex:none;width:48px;height:48px;margin-right:10px;border-radius:50%;
+  background:radial-gradient(circle at 50% 35%,#fff,#ffe9f4);box-shadow:0 0 0 3px rgba(255,255,255,.5),0 3px 10px rgba(80,20,90,.45)}
+#azh.running .azh-mascot{animation:azh-bob 3.2s ease-in-out infinite}
+.azh-mv{position:absolute;left:0;top:0;width:100%;height:100%;display:block;overflow:visible}
+#azh .azh-mv [data-for]{display:none}
+#azh[data-mood="idle"] .azh-mv [data-for~="idle"],#azh[data-mood="happy"] .azh-mv [data-for~="happy"],#azh[data-mood="star"] .azh-mv [data-for~="star"],
+#azh[data-mood="sleep"] .azh-mv [data-for~="sleep"],#azh[data-mood="worry"] .azh-mv [data-for~="worry"],#azh[data-mood="think"] .azh-mv [data-for~="think"]{display:inline}
+.azh-eo{transform-box:fill-box;transform-origin:50% 55%}
+#azh[data-mood="idle"] .azh-eo{animation:azh-blink 4.8s infinite}
+#azh[data-mood="think"] .azh-eo{transform:translate(1.4px,-1.2px)}
+#azh[data-mood="star"] .azh-mv{animation:azh-hop .6s ease-out}
+.azh-spk{transform-box:fill-box;transform-origin:center;animation:azh-sp 1.6s ease-in-out infinite}
+.azh-zz{animation:azh-zz 2.4s ease-in-out infinite}
 
 /* thu gọn thành nút tròn */
-#azh.min{width:58px;height:58px;max-height:none;border-radius:50%;cursor:pointer;touch-action:none}
-#azh.min #azh-body,#azh.min .azh-hbtns,#azh.min .azh-ttl{display:none}
-#azh.min #azh-head{padding:0;width:100%;height:100%;justify-content:center;border-radius:50%}
+#azh.min{width:60px;height:60px;max-height:none;cursor:pointer;touch-action:none}
+#azh.min .azh-card{border-radius:50%}
+#azh.min #azh-body,#azh.min .azh-hbtns,#azh.min .azh-ttl,#azh.min .azh-fx{display:none}
+#azh.min #azh-head{flex:1 1 auto;padding:0;justify-content:center;border-radius:50%;cursor:pointer}
 #azh.min #azh-head::after{display:none}
-#azh.min .azh-mascot{width:40px;height:40px;animation:azh-bob 2.8s ease-in-out infinite}
+#azh.min .azh-mascot{width:46px;height:46px;margin:0}
+.azh-badge{display:none;position:absolute;right:-6px;bottom:-4px;z-index:3;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#fff;color:#c2297a;
+  font-weight:800;font-size:11px;line-height:1;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.3);pointer-events:none}
 #azh.min .azh-badge{display:flex}
 
 /* thân */
-#azh-body{position:relative;flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:12px;scrollbar-width:thin;scrollbar-color:#ffb3d4 transparent}
-.azh-fx{position:absolute;left:0;top:0;right:0;height:100%;pointer-events:none;overflow:hidden;z-index:0}
-.azh-fx .pt{position:absolute;top:-18px;border-radius:150% 0 150% 0;opacity:.7;animation:azh-fall linear infinite;background:linear-gradient(135deg,#ffd0e5,#ff8fc2)}
-.azh-fx .sp{position:absolute;background:#fff;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);animation:azh-twinkle ease-in-out infinite;opacity:0}
-.azh-fx .sp.v{background:#d9c8ff}.azh-fx .sp.b{background:#cdeaff}
-.azh-main{position:relative;z-index:1}
+#azh-body{position:relative;z-index:1;flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:12px;scrollbar-width:thin;scrollbar-color:#ffb3d4 transparent}
+#azh-body::-webkit-scrollbar{width:6px}#azh-body::-webkit-scrollbar-thumb{background:#ffb3d4;border-radius:6px}
 
-.azh-stats{display:flex;gap:8px;margin-bottom:8px}
-.azh-stat{flex:1;min-width:0;padding:8px 11px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
-.azh-stat small{display:block;color:var(--tx2);font-size:10px;letter-spacing:.6px;text-transform:uppercase;white-space:nowrap}
-.azh-stat b{display:inline-block;font-size:20px;line-height:1.15;color:var(--pk2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;vertical-align:bottom}
-.azh-stat b.sm{font-size:14px;line-height:1.7}
+.azh-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.azh-stat{position:relative;min-width:0;overflow:hidden;padding:8px 11px;border-radius:16px;background:var(--card);border:1.5px solid var(--line)}
+.azh-stat::after{content:attr(data-jp);position:absolute;right:7px;bottom:-9px;font:800 42px/1 "Hiragino Maru Gothic ProN","Yu Gothic","Noto Sans CJK JP","Noto Sans JP","Microsoft YaHei",sans-serif;color:var(--pk);opacity:.17;pointer-events:none}
+.azh-stat small{display:block;color:var(--tx2);font-size:11px;white-space:nowrap}
+.azh-stat b{position:relative;display:inline-block;font-size:21px;line-height:1.15;color:var(--pk2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;vertical-align:bottom}
+.azh-stat b.sm{font-size:15px;line-height:1.6}
 .azh-stat b.bump{animation:azh-bump .5s cubic-bezier(.3,1.8,.5,1)}
-.azh-stat span{color:var(--tx2);font-size:11px}
-.azh-bar{height:7px;margin:0 2px 10px;border-radius:999px;background:rgba(167,139,250,.2);overflow:hidden}
-.azh-bar i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#ff7fb8,#b69bff,#7fc8ff);transition:width .5s cubic-bezier(.3,1.4,.5,1)}
+.azh-stat span{position:relative;color:var(--tx2);font-size:11px}
 
-.azh-bubble{display:flex;align-items:center;gap:9px;padding:9px 12px;margin-bottom:10px;border-radius:16px;background:var(--card);border:1.5px dashed #ffb3d4}
+.azh-bar{height:9px;margin:0 2px 10px;border-radius:999px;background:rgba(179,155,255,.25);overflow:hidden;box-shadow:inset 0 1px 2px rgba(80,40,120,.15)}
+.azh-bar i{display:block;height:100%;width:0;border-radius:999px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.35) 0 6px,transparent 6px 12px),linear-gradient(90deg,#ff7fb8,#b69bff,#7fc8ff);transition:width .5s cubic-bezier(.3,1.4,.5,1)}
+
+
+/* bong bóng thoại: mascot "nói" trạng thái */
+.azh-bubble{position:relative;display:flex;align-items:center;margin:14px 0 12px;padding:9px 12px;border-radius:18px;background:var(--bub);border:2px solid #ffb3d4}
+.azh-bubble::before{content:"";position:absolute;top:-8px;left:20px;width:12px;height:12px;background:var(--bub);border-left:2px solid #ffb3d4;border-top:2px solid #ffb3d4;transform:rotate(45deg)}
 .azh-bubble.pop{animation:azh-pop .4s cubic-bezier(.3,1.7,.5,1)}
-#azh-face{font-weight:800;color:var(--pk2);white-space:nowrap;font-size:12.5px}
-#azh-st{color:var(--tx2);font-size:12px;word-break:break-word;min-width:0}
+#azh-face{flex:none;margin-right:9px;font-weight:800;color:var(--pk2);white-space:nowrap;font-size:12.5px}
+#azh-st{min-width:0;color:var(--tx);font-size:12.5px;word-break:break-word}
 
-.azh-sw{position:relative;display:flex;align-items:center;gap:11px;min-height:42px;padding:4px 6px;cursor:pointer;border-radius:12px;-webkit-tap-highlight-color:transparent}
-@media (hover:hover){.azh-sw:hover{background:rgba(255,160,205,.16)}}
-.azh-sw input{position:absolute;opacity:0;pointer-events:none}
-.azh-sw i{position:relative;flex:none;width:42px;height:24px;border-radius:999px;background:rgba(150,130,180,.4);transition:background .25s,box-shadow .25s}
-.azh-sw i::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(60,30,90,.4);transition:transform .3s cubic-bezier(.3,1.7,.5,1)}
-.azh-sw input:checked + i{background:linear-gradient(90deg,#ff7fb8,#b69bff);box-shadow:0 0 10px rgba(255,127,184,.55)}
-.azh-sw input:checked + i::after{transform:translateX(18px)}
-.azh-sw input:focus-visible + i{outline:2px solid #b69bff;outline-offset:2px}
-.azh-sw span{font-weight:600;min-width:0}
+.azh-sw{position:relative;display:flex;align-items:center;min-height:44px;padding:4px 6px;cursor:pointer;border-radius:14px;-webkit-tap-highlight-color:transparent}
+@media (hover:hover){.azh-sw:hover{background:rgba(255,134,189,.14)}}
+.azh-sw input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
+.azh-sw i{position:relative;flex:none;width:46px;height:26px;margin-right:11px;border-radius:999px;background:var(--trk);box-shadow:inset 0 1px 3px rgba(60,30,90,.25);transition:background .25s,box-shadow .25s}
+.azh-sw i::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(60,30,90,.4);
+  font:700 12px/20px system-ui,sans-serif;text-align:center;color:#ff5fa8;transition:transform .3s cubic-bezier(.3,1.7,.5,1)}
+.azh-sw input:checked+i{background:linear-gradient(90deg,#ff7fb8,#a98cf5);box-shadow:0 0 10px rgba(255,127,184,.55)}
+.azh-sw input:checked+i::after{content:"\\2665";transform:translateX(20px)}
+.azh-sw input:focus-visible+i{outline:3px solid #7a4dff;outline-offset:2px}
+.azh-sw span{min-width:0;font-weight:600}
 
-.azh-box{margin:8px 0;padding:10px 12px;border-radius:14px;background:var(--card);border:1px solid var(--line);border-left:4px solid #ff8fc2}
+.azh-box{margin:8px 0;padding:10px 12px;border-radius:16px;background:var(--card);border:1.5px solid var(--line);border-left:5px solid #ff8fc2}
 .azh-box small{color:var(--tx2)}
 #azh-ms{color:var(--pk2);font-size:14px}
-#azh-spd{-webkit-appearance:none;appearance:none;display:block;width:100%;height:10px;margin:12px 0 4px;border-radius:999px;outline:0;touch-action:pan-y;
-  background:linear-gradient(90deg,#ff7fb8 var(--p,15%),rgba(167,139,250,.25) var(--p,15%))}
-#azh-spd::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;border:3px solid #fff;background:radial-gradient(circle at 35% 35%,#fff 0 16%,#ff6fb0 18%);box-shadow:0 2px 10px rgba(200,70,140,.6)}
-#azh-spd::-moz-range-thumb{width:20px;height:20px;border-radius:50%;border:3px solid #fff;background:#ff6fb0;box-shadow:0 2px 10px rgba(200,70,140,.6)}
-.azh-inp{display:block;width:100%;margin-top:6px;padding:9px 12px;border-radius:12px;border:1.5px solid #ffc2dc;background:var(--inp);outline:0;min-height:40px}
-.azh-inp:focus{border-color:#b69bff;box-shadow:0 0 0 3px rgba(182,155,255,.25)}
+#azh-spd{-webkit-appearance:none;appearance:none;display:block;width:100%;height:12px;margin:14px 0 6px;padding:0;border-radius:999px;outline:0;cursor:pointer;touch-action:pan-y;
+  background:linear-gradient(90deg,#ff7fb8 var(--p,15%),var(--trk) var(--p,15%))}
+#azh-spd::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;border:3px solid #fff;background:radial-gradient(circle at 35% 35%,#fff 0 14%,#ff6fb0 16%);box-shadow:0 2px 10px rgba(200,70,140,.6)}
+#azh-spd::-moz-range-thumb{width:22px;height:22px;border-radius:50%;border:3px solid #fff;background:#ff6fb0;box-shadow:0 2px 10px rgba(200,70,140,.6)}
+#azh-spd::-moz-range-track{background:transparent}
+#azh-spd:focus-visible{outline:3px solid #7a4dff;outline-offset:4px}
+.azh-ends{display:flex;justify-content:space-between;font-size:11px;color:var(--tx2)}
+.azh-inp{display:block;width:100%;margin-top:6px;padding:9px 12px;border-radius:14px;border:1.5px solid #ffc2dc;background:var(--inp);outline:0;min-height:42px}
+.azh-inp:focus{border-color:#a98cf5;box-shadow:0 0 0 3px rgba(169,140,245,.28)}
+select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
+  background-image:linear-gradient(45deg,transparent 50%,#c2297a 50%),linear-gradient(135deg,#c2297a 50%,transparent 50%);
+  background-position:calc(100% - 19px) 55%,calc(100% - 14px) 55%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
 
-.azh-adv{margin:8px 0 0;border-radius:14px;background:var(--card);border:1px solid var(--line)}
-.azh-adv>summary{list-style:none;cursor:pointer;padding:11px 12px;font-weight:700;display:flex;justify-content:space-between;align-items:center;-webkit-tap-highlight-color:transparent}
+.azh-adv{margin:8px 0 0;border-radius:16px;background:var(--card);border:1.5px solid var(--line)}
+.azh-adv>summary{list-style:none;cursor:pointer;min-height:44px;padding:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center;-webkit-tap-highlight-color:transparent}
 .azh-adv>summary::-webkit-details-marker{display:none}
-.azh-adv>summary::after{content:"▾";color:var(--tx2);transition:transform .2s}
+.azh-adv>summary::after{content:"\\25BE";color:var(--tx2);transition:transform .2s}
 .azh-adv[open]>summary::after{transform:rotate(180deg)}
 .azh-advin{padding:0 10px 10px}
 
-.azh-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
-.azh-act{min-height:40px;padding:8px 10px;border-radius:999px;font-weight:700;font-size:12px;color:#fff;
-  background:linear-gradient(90deg,#ff7fb8,#b69bff);box-shadow:0 3px 10px rgba(180,90,170,.3);transition:transform .15s,box-shadow .15s}
-@media (hover:hover){.azh-act:hover{transform:translateY(-2px);box-shadow:0 7px 16px rgba(180,90,170,.4)}}
-.azh-act:active{transform:scale(.96)}
-.azh-act.alt{background:linear-gradient(90deg,#6fc4ff,#b69bff)}
+/* nút kẹo: có đáy nổi, nhấn xuống khi bấm */
+.azh-acts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:8px}
+.azh-act{min-height:42px;padding:8px 10px;border-radius:999px;font-weight:800;font-size:12.5px;color:#fff;text-shadow:0 1px 2px rgba(100,10,70,.45);
+  background:linear-gradient(180deg,#f372b0,#cf3a88);box-shadow:0 3px 0 #a52a6c,0 6px 12px rgba(176,70,150,.3);transition:transform .12s,box-shadow .12s}
+@media (hover:hover){.azh-act:hover{transform:translateY(-1px)}}
+.azh-act:active{transform:translateY(3px);box-shadow:0 0 0 #a52a6c,0 2px 5px rgba(176,70,150,.3)}
+.azh-act.alt{background:linear-gradient(180deg,#8aa0ff,#5468d8);box-shadow:0 3px 0 #3b4bb0,0 6px 12px rgba(84,104,216,.3)}
+.azh-act.alt:active{box-shadow:0 0 0 #3b4bb0,0 2px 5px rgba(84,104,216,.3)}
+.azh-act.danger{grid-column:1/-1;background:linear-gradient(180deg,#f0728a,#c93556);box-shadow:0 3px 0 #9e2542,0 6px 12px rgba(201,53,86,.3)}
+.azh-act.danger:active{box-shadow:0 0 0 #9e2542,0 2px 5px rgba(201,53,86,.3)}
 .azh-act.wide{grid-column:1/-1}
-.azh-act.danger{grid-column:1/-1;background:linear-gradient(90deg,#ff8fa3,#ffb0c8)}
 .azh-rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.6);transform:scale(0);animation:azh-rip .6s ease-out forwards;pointer-events:none}
-.azh-foot{text-align:center;margin-top:10px;font-size:10.5px;letter-spacing:1px;color:var(--tx2);opacity:.8}
+.azh-foot{text-align:center;margin-top:12px;font-size:11px;letter-spacing:.6px;color:var(--tx2)}
 .azh-trail{position:absolute;width:9px;height:9px;margin:-4px;border-radius:150% 0 150% 0;pointer-events:none;z-index:5;animation:azh-trail .8s ease-out forwards}
 
-/* sổ đáp án */
 #azh-bookv{display:none;position:relative;z-index:1}
-#azh-list{margin:10px 0;max-height:min(300px,45vh);overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;gap:7px;scrollbar-width:thin;scrollbar-color:#ffb3d4 transparent}
-.azh-item{position:relative;padding:8px 32px 8px 10px;border-radius:14px;background:var(--card);border:1px solid var(--line);border-left:4px solid #ff8fc2}
+#azh-list{margin:10px 0;max-height:min(320px,45vh);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#ffb3d4 transparent}
+.azh-item{position:relative;margin-bottom:7px;padding:8px 38px 8px 11px;border-radius:14px;background:var(--card);border:1.5px solid var(--line);border-left:5px solid #ff8fc2}
 .azh-item .q{font-weight:700;font-size:12px;word-break:break-word}
 .azh-item .a{margin-top:3px;color:var(--pk2);font-size:12px;word-break:break-word}
-#azh .azh-item .x{position:absolute;top:6px;right:6px;width:24px;height:24px;border-radius:50%;background:rgba(255,143,194,.25);color:var(--pk2);font-weight:800;font-size:14px;line-height:1;padding:0}
+#azh .azh-item .x{position:absolute;top:6px;right:6px;width:28px;height:28px;border-radius:50%;background:rgba(255,143,194,.25);color:var(--pk2);font-weight:800;font-size:15px;line-height:1;padding:0}
 #azh .azh-item .x:active{background:#ff8fc2;color:#fff}
 .azh-empty{text-align:center;color:var(--tx2);padding:14px 0}
 
-@media (pointer:coarse){#azh input,#azh select{font-size:16px}#azh .azh-act{min-height:44px;font-size:13px}}
-@media (max-width:360px){.azh-sub{display:none}}
 
-@keyframes azh-in{from{opacity:0;transform:translateY(-16px) scale(.9)}to{opacity:1;transform:none}}
+/* mọi kích cỡ màn hình */
+@media (pointer:coarse){#azh input,#azh select{font-size:16px}#azh .azh-act{min-height:46px;font-size:13.5px}#azh .azh-runbtn{min-height:38px}#azh .azh-minbtn{width:38px;height:38px}#azh .azh-item .x{width:36px;height:36px}}
+@media (max-width:360px){#azh .azh-sub{display:none}#azh .azh-title{font-size:14px}#azh .azh-stat b{font-size:19px}}
+@media (max-height:520px){#azh-body{padding:8px}.azh-fx{display:none}}
+@media (min-width:1280px){#azh{width:372px}}
+@media print{#azh{display:none!important}}
+
+@keyframes azh-in{from{opacity:0;transform:translateY(-16px) scale(.92)}to{opacity:1;transform:none}}
 @keyframes azh-flow{from{background-position:0 0}to{background-position:240% 0}}
-@keyframes azh-march{from{background-position:0 0}to{background-position:14px 0}}
-@keyframes azh-bob{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-3px) rotate(5deg)}}
-@keyframes azh-spin{to{transform:rotate(360deg)}}
+@keyframes azh-march{from{background-position:0 0}to{background-position:12px 0}}
+@keyframes azh-bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-3px) rotate(4deg)}}
+@keyframes azh-hop{0%{transform:translateY(0)}35%{transform:translateY(-6px) scale(1.08)}70%{transform:translateY(0) scale(.97)}100%{transform:none}}
+@keyframes azh-blink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+@keyframes azh-sp{0%,100%{opacity:0;transform:scale(.2) rotate(0)}50%{opacity:.95;transform:scale(1) rotate(90deg)}}
+@keyframes azh-zz{0%{opacity:0;transform:translate(0,3px)}40%{opacity:1}100%{opacity:0;transform:translate(4px,-7px)}}
+@keyframes azh-fall{0%{opacity:0;transform:translate(0,0) rotate(0)}10%{opacity:.8}85%{opacity:.8}100%{opacity:0;transform:translate(var(--sx,0px),var(--fh,520px)) rotate(540deg)}}
 @keyframes azh-pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,243,160,.95)}50%{box-shadow:0 0 0 8px rgba(255,243,160,0)}}
 @keyframes azh-dotp{0%,100%{opacity:1}50%{opacity:.4}}
-@keyframes azh-fall{0%{transform:translate(0,0) rotate(0)}25%{transform:translate(16px,120px) rotate(120deg)}50%{transform:translate(-10px,240px) rotate(240deg)}75%{transform:translate(14px,360px) rotate(360deg)}100%{transform:translate(-6px,520px) rotate(480deg)}}
-@keyframes azh-twinkle{0%,100%{opacity:0;transform:scale(.2) rotate(0)}50%{opacity:.9;transform:scale(1) rotate(90deg)}}
 @keyframes azh-bump{0%{transform:scale(1)}40%{transform:scale(1.5) rotate(-5deg)}100%{transform:scale(1)}}
-@keyframes azh-pop{0%{transform:scale(.95)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes azh-pop{0%{transform:scale(.96)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
 @keyframes azh-rip{to{transform:scale(1);opacity:0}}
 @keyframes azh-trail{0%{opacity:.95;transform:translate(0,0) rotate(0) scale(1)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(.3)}}
 @media (prefers-reduced-motion:reduce){#azh,#azh *{animation:none!important;transition:none!important}}
@@ -217,22 +275,59 @@
   (document.head || document.documentElement).appendChild(css);
 
   const rnd = (a, b) => a + Math.random() * (b - a);
-  // cánh hoa rơi chỉ bật trên máy tính (điện thoại tắt cho đỡ nóng máy / tốn pin)
-  const FX = !COARSE && !REDUCED;
-  const petals = FX ? Array.from({ length: 12 }, () => {
+  // cánh hoa + lấp lánh nằm sau nội dung; điện thoại dùng ít hơn cho đỡ nóng máy, tắt hẳn nếu bật "giảm chuyển động"
+  const nPt = COARSE ? 5 : 12, nSp = COARSE ? 3 : 7;
+  const petals = REDUCED ? '' : Array.from({ length: nPt }, () => {
     const s = rnd(7, 14).toFixed(1);
-    return `<span class="pt" style="left:${rnd(0, 96).toFixed(0)}%;width:${s}px;height:${s}px;animation-duration:${rnd(7, 13).toFixed(1)}s;animation-delay:${(-rnd(0, 12)).toFixed(1)}s"></span>`;
-  }).join('') : '';
-  const sparks = FX ? Array.from({ length: 7 }, (_, i) => {
+    return `<span class="pt" style="left:${rnd(0, 96).toFixed(0)}%;width:${s}px;height:${s}px;--sx:${rnd(-24, 24).toFixed(0)}px;animation-duration:${rnd(7, 13).toFixed(1)}s;animation-delay:${(-rnd(0, 12)).toFixed(1)}s"></span>`;
+  }).join('');
+  const sparks = REDUCED ? '' : Array.from({ length: nSp }, (_, i) => {
     const s = rnd(8, 14).toFixed(0);
     return `<span class="sp ${['', 'v', 'b'][i % 3]}" style="left:${rnd(2, 94).toFixed(0)}%;top:${rnd(2, 94).toFixed(0)}%;width:${s}px;height:${s}px;animation-duration:${rnd(2.4, 4.5).toFixed(1)}s;animation-delay:${(-rnd(0, 4)).toFixed(1)}s"></span>`;
-  }).join('') : '';
-  const flower = [0, 1, 2, 3, 4].map(i => `<i style="transform:rotate(${i * 72}deg)"></i>`).join('');
-  const fxHtml = FX ? `<div class="azh-fx">${petals}${sparks}</div>` : '';
+  }).join('');
+  const fxHtml = REDUCED ? '' : `<div class="azh-fx" aria-hidden="true">${petals}${sparks}</div>`;
+
+  // Linh vật neko chibi (SVG nội tuyến, không cần tải ảnh nên không bị CSP chặn). Biểu cảm đổi theo data-mood của khung.
+  const MASCOT = `<svg class="azh-mv" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+    <path d="M12 23L8 3l18 8z" fill="#9f7df0"/><path d="M13.8 17.5L11.5 8.2l8.4 3.6z" fill="#ff9ccb"/>
+    <path d="M52 23L56 3 38 11z" fill="#9f7df0"/><path d="M50.2 17.5L52.5 8.2l-8.4 3.6z" fill="#ff9ccb"/>
+    <path d="M9 34C9 14 19 8 32 8s23 6 23 26v9c0 6-4 10-9 10H18c-5 0-9-4-9-10z" fill="#b79cff"/>
+    <ellipse cx="32" cy="38" rx="18" ry="15" fill="#fff1e8"/>
+    <path d="M13 34C13 17 22 10 32 10S51 17 51 34L47 26L43 32L38 25L32 31L26 25L21 32L17 26Z" fill="#b79cff"/>
+    <path d="M20 17Q26 12 33 12" stroke="#d9c9ff" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M32 9C30 3 34 0 38 2" fill="none" stroke="#b79cff" stroke-width="2.6" stroke-linecap="round"/>
+    <ellipse cx="19" cy="46" rx="3.4" ry="2" fill="#ff7fb3" opacity=".5"/><ellipse cx="45" cy="46" rx="3.4" ry="2" fill="#ff7fb3" opacity=".5"/>
+    <g class="azh-eo" data-for="idle worry think">
+      <ellipse cx="24" cy="39" rx="4.1" ry="5.2" fill="#3a2470"/><ellipse cx="40" cy="39" rx="4.1" ry="5.2" fill="#3a2470"/>
+      <circle cx="25.6" cy="36.6" r="1.7" fill="#fff"/><circle cx="41.6" cy="36.6" r="1.7" fill="#fff"/>
+      <circle cx="22.6" cy="41.2" r=".8" fill="#fff"/><circle cx="38.6" cy="41.2" r=".8" fill="#fff"/>
+      <path d="M19.2 35.2Q24 32.6 28.6 35.2M35.4 35.2Q40 32.6 44.8 35.2" stroke="#3a2470" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </g>
+    <g data-for="star">
+      <ellipse cx="24" cy="39" rx="4.1" ry="5.2" fill="#3a2470"/><ellipse cx="40" cy="39" rx="4.1" ry="5.2" fill="#3a2470"/>
+      <path d="M24 35.4L24.85 38.15 27.6 39 24.85 39.85 24 42.6 23.15 39.85 20.4 39 23.15 38.15Z" fill="#fff"/>
+      <path d="M40 35.4L40.85 38.15 43.6 39 40.85 39.85 40 42.6 39.15 39.85 36.4 39 39.15 38.15Z" fill="#fff"/>
+      <path d="M19.2 35.2Q24 32.6 28.6 35.2M35.4 35.2Q40 32.6 44.8 35.2" stroke="#3a2470" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </g>
+    <path data-for="happy" d="M19.5 40Q24 33 28.5 40M35.5 40Q40 33 44.5 40" stroke="#3a2470" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    <path data-for="sleep" d="M19.5 38Q24 43 28.5 38M35.5 38Q40 43 44.5 38" stroke="#3a2470" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    <path data-for="idle" d="M28.4 46Q30.2 49 32 46Q33.8 49 35.6 46" fill="none" stroke="#c2297a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <g data-for="happy star"><path d="M28 45.5Q32 53 36 45.5Z" fill="#e0488f"/><path d="M30 49.6Q32 48.4 34 49.6Q32 52 30 49.6z" fill="#ff9ccb"/></g>
+    <ellipse data-for="sleep" cx="32" cy="47" rx="1.9" ry="1.5" fill="#c2297a"/>
+    <path data-for="worry" d="M28 48Q30 45.6 32 48T36 48" fill="none" stroke="#c2297a" stroke-width="1.6" stroke-linecap="round"/>
+    <path data-for="think" d="M30 47h4" fill="none" stroke="#c2297a" stroke-width="1.8" stroke-linecap="round"/>
+    <path data-for="worry" d="M50 22c-2.4 3.4-3.6 5.2-3.6 7a3.6 3.6 0 007.2 0c0-1.8-1.2-3.6-3.6-7z" fill="#8fd3ff" stroke="#fff" stroke-width=".8"/>
+    <text data-for="think" x="45" y="21" font-size="15" font-weight="800" fill="#c2297a" font-family="system-ui,sans-serif">?</text>
+    <text data-for="sleep" class="azh-zz" x="46" y="17" font-size="12" font-weight="800" fill="#7e5ed6" font-family="system-ui,sans-serif">z</text>
+    <g transform="translate(46 15)"><path d="M0 0L-7-5V5zM0 0L7-5V5z" fill="#ff5fa8"/><circle r="2.3" fill="#ff9ccb"/></g>
+    <g data-for="star happy"><g transform="translate(1 12)"><path class="azh-spk" d="M7 14l1.2 3 3 1.2-3 1.2L7 22.4l-1.2-3-3-1.2 3-1.2z" fill="#ffd86b"/></g>
+      <g transform="translate(50 30) scale(.7)"><path class="azh-spk" d="M7 14l1.2 3 3 1.2-3 1.2L7 22.4l-1.2-3-3-1.2 3-1.2z" fill="#ffd86b"/></g></g>
+  </svg>`;
+
   const headHtml = ver => `
     <div id="azh-head" title="Kéo để di chuyển">
       <div class="azh-logo">
-        <div class="azh-mascot"><div class="azh-flower">${flower}</div><span class="azh-badge" id="azh-badge">0</span></div>
+        <div class="azh-mascot">${MASCOT}</div>
         <div class="azh-ttl"><div class="azh-title">HuyDz</div><div class="azh-sub"><span class="azh-dot"></span>${ver} · 桜 SAKURA</div></div>
       </div>
       <div class="azh-hbtns">
@@ -243,15 +338,15 @@
 
   const panel = document.createElement('div');
   panel.id = 'azh';
-  panel.innerHTML = headHtml('v4') + `
+  panel.setAttribute('data-mood', 'idle');
+  panel.innerHTML = `<div class="azh-card">${fxHtml}${headHtml('v5')}
     <div id="azh-body">
-      ${fxHtml}
       <div class="azh-main" id="azh-mainv">
         <div class="azh-stats">
-          <div class="azh-stat"><small>Sổ đáp án</small><div><b id="azh-cnt">0</b> <span>câu</span></div></div>
-          <div class="azh-stat"><small>Khớp trang này</small><div><b id="azh-pt">–</b></div></div>
+          <div class="azh-stat" data-jp="答"><small>Sổ đáp án</small><div><b id="azh-cnt">0</b> <span>câu</span></div></div>
+          <div class="azh-stat" data-jp="合"><small>Khớp trang này</small><div><b id="azh-pt">–</b></div></div>
         </div>
-        <div class="azh-bar"><i id="azh-pb"></i></div>
+        <div class="azh-bar" role="presentation"><i id="azh-pb"></i></div>
         <div class="azh-bubble" aria-live="polite"><span id="azh-face">(◕‿◕)</span><span id="azh-st"></span></div>
 
         <label class="azh-sw"><input type="checkbox" id="azh-sel"><i></i><span>Tự chọn đáp án đã nhớ</span></label>
@@ -259,7 +354,8 @@
 
         <div class="azh-box">
           Độ trễ giữa các câu: <b id="azh-ms"></b> ms <small>(0 = nhanh nhất)</small>
-          <input type="range" id="azh-spd" min="0" max="2000" step="50">
+          <input type="range" id="azh-spd" min="0" max="2000" step="50" aria-label="Độ trễ giữa các câu (ms)">
+          <div class="azh-ends"><span>nhanh</span><span>chậm</span></div>
         </div>
 
         <div class="azh-acts"><button id="azh-book" class="azh-act wide" type="button">Xem sổ đáp án</button></div>
@@ -267,7 +363,7 @@
         <details class="azh-adv">
           <summary>Đồng bộ &amp; dữ liệu</summary>
           <div class="azh-advin">
-            <input id="azh-code" class="azh-inp" type="text" spellcheck="false" autocomplete="off" autocapitalize="off">
+            <input id="azh-code" class="azh-inp" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" enterkeyhint="done" aria-label="Link hoặc mã đề">
             <div class="azh-acts">
               <button id="azh-gpull" class="azh-act wide" type="button">Tải đáp án từ GitHub</button>
               <button id="azh-gpush" class="azh-act wide alt" type="button">Lưu sổ lên GitHub</button>
@@ -278,45 +374,75 @@
           </div>
         </details>
         <input type="file" id="azh-file" accept=".txt,text/plain" style="display:none">
-        <div class="azh-foot">ganbatte ne~ · 頑張って</div>
+        <div class="azh-foot">頑張ってね ✧ ganbatte ne~</div>
       </div>
 
       <div id="azh-bookv">
-        <input id="azh-q" class="azh-inp" type="search" placeholder="Tìm câu hỏi hoặc đáp án…" autocomplete="off">
+        <input id="azh-q" class="azh-inp" type="search" placeholder="Tìm câu hỏi hoặc đáp án…" autocomplete="off" aria-label="Tìm trong sổ đáp án">
         <div id="azh-list"></div>
         <div class="azh-acts"><button id="azh-back" class="azh-act wide" type="button">Quay lại</button></div>
       </div>
-    </div>`;
+    </div></div><span class="azh-badge" id="azh-badge">0</span>`;
   (document.body || document.documentElement).appendChild(panel);
   const $ = id => document.getElementById('azh-' + id);
+  const head = $('head');
 
-  // ---------- Vị trí / thu gọn / kéo thả (chuột + cảm ứng) ----------
+  let curMood = 'idle';
+  const setMood = m => { if (m !== curMood) { curMood = m; panel.setAttribute('data-mood', m); } };
+
+  // ---------- Vị trí / thu gọn / kéo thả (chuột + cảm ứng + bút) ----------
   const isMin = () => panel.classList.contains('min');
+  let drag = null;
+  // vùng an toàn (tai thỏ, thanh điều hướng) — đọc qua env() bằng 1 phần tử đo
+  function insets() {
+    const o = { t: 0, r: 0, b: 0, l: 0 };
+    try {
+      const p = document.createElement('div');
+      p.style.cssText = 'position:fixed;left:0;top:0;width:0;height:0;visibility:hidden;pointer-events:none;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)';
+      document.documentElement.appendChild(p);
+      const cs = getComputedStyle(p);
+      o.t = parseFloat(cs.paddingTop) || 0; o.r = parseFloat(cs.paddingRight) || 0; o.b = parseFloat(cs.paddingBottom) || 0; o.l = parseFloat(cs.paddingLeft) || 0;
+      p.remove();
+    } catch (e) {}
+    return o;
+  }
   function clampPanel() {
+    if (drag) return;
     // đo theo layout (offset*) chứ không theo getBoundingClientRect, vì lúc đang chạy hiệu ứng xuất hiện khung bị co/dịch
-    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const w = panel.offsetWidth, h = panel.offsetHeight, ins = insets(), M = 8;
     const vw = document.documentElement.clientWidth || innerWidth, vh = innerHeight;
-    const x = Math.min(Math.max(8, panel.offsetLeft), Math.max(8, vw - w - 8));
-    const y = Math.min(Math.max(8, panel.offsetTop), Math.max(8, vh - h - 8));
+    const minX = M + ins.l, minY = M + ins.t;
+    const x = Math.min(Math.max(minX, panel.offsetLeft), Math.max(minX, vw - w - M - ins.r));
+    const y = Math.min(Math.max(minY, panel.offsetTop), Math.max(minY, vh - h - M - ins.b));
     panel.style.left = x + 'px'; panel.style.top = y + 'px'; panel.style.right = 'auto'; panel.style.bottom = 'auto';
   }
   function savePos() { cfg.x = panel.offsetLeft; cfg.y = panel.offsetTop; saveCfg(); }
   function setMin(v, silent) {
     cfg.min = !!v;
     panel.classList.toggle('min', cfg.min);
-    $('min').textContent = '–';
+    // thu gọn: đầu khung thành nút bấm được bằng bàn phím
+    if (cfg.min) { head.setAttribute('role', 'button'); head.setAttribute('tabindex', '0'); head.setAttribute('aria-label', 'Mở bảng HuyDz'); }
+    else { head.removeAttribute('role'); head.removeAttribute('tabindex'); head.removeAttribute('aria-label'); }
     if (!silent) saveCfg();
     requestAnimationFrame(() => { clampPanel(); if (!silent) savePos(); });
   }
   if (cfg.x !== null) { panel.style.left = cfg.x + 'px'; panel.style.top = cfg.y + 'px'; panel.style.right = 'auto'; }
   setMin(cfg.min, true);
-  addEventListener('resize', clampPanel);
-  addEventListener('orientationchange', () => setTimeout(clampPanel, 350));
-  $('min').onclick = () => setMin(true);
 
-  let drag = null;
+  // Khung đổi cao (mở "Đồng bộ & dữ liệu", mở sổ đáp án, đổi cỡ màn hình): giữ nguyên trong màn hình + cập nhật độ rơi của cánh hoa
+  const fxEl = panel.querySelector('.azh-fx');
+  const onSize = () => { clampPanel(); if (fxEl) fxEl.style.setProperty('--fh', (panel.offsetHeight + 24) + 'px'); };
+  if (window.ResizeObserver) { try { new ResizeObserver(onSize).observe(panel); } catch (e) {} }
+  addEventListener('resize', onSize);
+  addEventListener('orientationchange', () => setTimeout(onSize, 350));
+  $('min').onclick = () => setMin(true);
+  head.addEventListener('keydown', e => { if (isMin() && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); setMin(false); } });
+  // trình duyệt quá cũ không có Pointer Events: chạm vào nút tròn vẫn mở được
+  if (!window.PointerEvent) panel.addEventListener('click', () => { if (isMin()) setMin(false); });
+
   panel.addEventListener('pointerdown', e => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (e.isPrimary === false) return;
     const min = isMin();
     if (!min && (!e.target.closest('#azh-head') || e.target.closest('button'))) return;
     const r = panel.getBoundingClientRect();
@@ -510,7 +636,7 @@
     const store = (q, correct, noSeen) => {
       if (!noSeen) seen++;
       const k = norm(q);
-      if (bank[k] && norm(bank[k].correct) === norm(correct)) { if (code && bank[k].t !== code) { bank[k].t = code; tagged++; } return; }
+      if (bank[k] && norm(bank[k].correct) === norm(correct)) { if (code && !hasT(bank[k], code)) { bank[k].t = addT(bank[k].t, code); tagged++; } return; }
       bank[k] = { q, correct, t: code || undefined };
       n++;
     };
@@ -587,6 +713,10 @@
   const isTok = t => /^⟦img:[^⟧]*⟧$/.test(t);
   const tokKey = t => t.slice(5, -1).toLowerCase().replace(/[?#].*$/, '').replace(/\.[a-z0-9]{2,5}$/, '').replace(/[-_](?:\d+x\d+|thumb|small|medium|large|origin|original)$/, '');
   const sameText = (a, b) => norm(a) === norm(b) || norm2(a) === norm2(b) || (isTok(a) && isTok(b) && tokKey(a) === tokKey(b));
+  // Bản nhanh của sameText: chuẩn hoá chữ của mỗi phần tử trang đúng 1 lần mỗi lượt quét (trước đây chuẩn hoá lại cho từng câu trong sổ -> điện thoại nóng máy)
+  const prepStr = t => ({ n1: norm(t), n2: norm2(t), tk: isTok(t) ? tokKey(t) : null });
+  const prep = a => { if (a.n1 === undefined) { const p = prepStr(a.t); a.n1 = p.n1; a.n2 = p.n2; a.tk = p.tk; } return a; };
+  const same = (a, s) => { prep(a); return a.n1 === s.n1 || a.n2 === s.n2 || (a.tk !== null && s.tk !== null && a.tk === s.tk); };
   function press(el) {
     ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click'].forEach(t => {
       const Ev = t.startsWith('pointer') && window.PointerEvent ? PointerEvent : MouseEvent;
@@ -595,11 +725,12 @@
   }
   // Trả về { qEl } nếu thấy câu hỏi, kèm { card, target } nếu xác định được ô đáp án đúng
   function locate(rec, all) {
-    const qEl = deepest(all.filter(a => sameText(a.t, rec.q)))[0];
+    const qs = prepStr(rec.q), as = prepStr(cleanAns(rec.correct));
+    const qEl = deepest(all.filter(a => same(a, qs)))[0];
     if (!qEl) return null;
     for (let card = qEl.el.parentElement, i = 0; card && i < 8; card = card.parentElement, i++) {
       if (((card.innerText || '').match(/(^|\n)\s*Câu\s*\d+/gi) || []).length > 1) return { qEl, why: 'thẻ gộp nhiều câu' };   // leo quá cao
-      const hits = deepest(all.filter(a => card.contains(a.el) && !a.el.contains(qEl.el) && a.el !== qEl.el && sameText(a.t, cleanAns(rec.correct))));
+      const hits = deepest(all.filter(a => same(a, as) && card.contains(a.el) && !a.el.contains(qEl.el) && a.el !== qEl.el));
       if (!hits.length) continue;
       if (hits.length > 1) return { qEl, why: hits.length + ' ô trùng nhau' };           // hai phương án trùng chữ: không đoán bừa
       return { qEl, card, target: hits[0].el };
@@ -610,10 +741,11 @@
   function locateDS(rec, all) {
     const k = norm2(rec.q.slice(DS.length));
     if (!k) return null;
-    const stEl = deepest(all.filter(a => { const t = norm2(a.t); return t.length >= k.length && t.length <= k.length + 6 && t.includes(k); }))[0];
+    const as = prepStr(cleanAns(rec.correct));
+    const stEl = deepest(all.filter(a => { const t = prep(a).n2; return t.length >= k.length && t.length <= k.length + 6 && t.includes(k); }))[0];
     if (!stEl) return null;
     for (let card = stEl.el.parentElement, i = 0; card && i < 6; card = card.parentElement, i++) {
-      const hits = deepest(all.filter(a => card.contains(a.el) && !a.el.contains(stEl.el) && a.el !== stEl.el && sameText(a.t, cleanAns(rec.correct))));
+      const hits = deepest(all.filter(a => same(a, as) && card.contains(a.el) && !a.el.contains(stEl.el) && a.el !== stEl.el));
       if (!hits.length) continue;
       if (hits.length > 1) return { qEl: stEl, noFallback: true };
       return { qEl: stEl, card, target: hits[0].el, noFallback: true };
@@ -642,7 +774,7 @@
     if (!recs.length) return { found: 0, done: 0, page: pageQ.size, bankN: 0 };
     const active = cfg.run && cfg.select;
     if (active) clearHl();
-    let found = 0, dsFound = 0;
+    let found = 0, dsFound = 0, pend = false;   // pend: còn câu đang chờ chọn (để vòng quét biết khi nào được nghỉ)
     const imgFail = [];
     for (const rec of recs) {
       const isDS = rec.q.startsWith(DS);
@@ -657,7 +789,7 @@
         continue;
       }
       const t = Date.now();
-      if (t - lastAct < cfg.delay) break;            // giữ nhịp theo độ trễ đã chỉnh
+      if (t - lastAct < cfg.delay) { pend = true; break; }   // giữ nhịp theo độ trễ đã chỉnh
       const { card, target } = loc, before = card.outerHTML;
       clickedQ.add(key); lastAct = t;
       press(target);
@@ -668,18 +800,25 @@
         if (row && row.children[0] && row.children[0] !== target) press(row.children[0]);
         setTimeout(() => { if (card.outerHTML === before && row) press(row); }, 400);
       }, 500);
-      if (cfg.delay > 0) break;                      // có độ trễ: mỗi nhịp chỉ chọn 1 câu
+      if (cfg.delay > 0) { pend = true; break; }     // có độ trễ: mỗi nhịp chỉ chọn 1 câu
     }
-    return { imgFail, found: found + Math.floor(dsFound / 4), ds: dsFound, done: clickedQ.size, page: pageQ.size, bankN: recs.length };
+    return { imgFail, pend, found: found + Math.floor(dsFound / 4), ds: dsFound, done: clickedQ.size, page: pageQ.size, bankN: recs.length };
   }
 
   // ---------- Giao diện: trạng thái ----------
+  // Mặt kaomoji + biểu cảm linh vật theo trạng thái (điều kiện cụ thể đặt trước điều kiện chung)
   const FACES = [
-    [/trống/, '(・ω・)'], [/học thêm|vừa học/, '(≧▽≦)'], [/đã chọn|khớp/, '(๑•̀ㅂ•́)و✧'],
-    [/tạm dừng/, '(－ω－) zzZ'], [/đang chạy/, '(＾▽＾)'], [/xuất|nhập/, '(๑˃ᴗ˂)ﻭ'],
-    [/xoá/, '(・ω・)'], [/chờ|quét/, '(・・?)']
+    [/⚠️|không kết nối|token sai|lỗi GitHub|xung đột|giới hạn lượt/, '(；′⌒`)', 'worry'],
+    [/trống/, '(・ω・)', 'idle'],
+    [/học thêm|vừa học|đã lưu|đã tải/, '(≧▽≦)', 'star'],
+    [/xuất|nhập \+/, '(๑˃ᴗ˂)ﻭ', 'star'],
+    [/đã chọn|khớp/, '(๑•̀ㅂ•́)و✧', 'happy'],
+    [/tạm dừng/, '(－ω－) zzZ', 'sleep'],
+    [/đang chạy/, '(＾▽＾)', 'happy'],
+    [/xoá/, '(・ω・)', 'idle'],
+    [/chờ|quét|chưa có đáp án/, '(・・?)', 'think']
   ];
-  const faceFor = m => { const f = FACES.find(x => x[0].test(m)); return f ? f[1] : '(◕‿◕)'; };
+  const faceFor = m => { const f = FACES.find(x => x[0].test(m)); return f ? [f[1], f[2]] : ['(◕‿◕)', cfg.run ? 'idle' : 'sleep']; };
 
   let lastMsg = '', lastShown = '', lastN = -1;
   function stat(msg, fromTick) {
@@ -691,7 +830,8 @@
     if (sig === lastShown) return;
     lastShown = sig;
     $('cnt').textContent = n; $('badge').textContent = n > 99 ? '99+' : n;
-    $('face').textContent = faceFor(lastMsg || '');
+    const fc = faceFor(lastMsg || '');
+    $('face').textContent = fc[0]; setMood(fc[1]);
     $('st').textContent = m;
     const bub = panel.querySelector('.azh-bubble');
     bub.classList.remove('pop'); void bub.offsetWidth; bub.classList.add('pop');
@@ -814,7 +954,7 @@
     if (pushing) return;
     const code = examCode();
     const all = Object.values(bank).filter(r => r && r.q && r.correct);
-    const mine = code ? all.filter(r => r.t === code) : [];
+    const mine = code ? all.filter(r => hasT(r, code)) : [];
     const pair = r => [flat(r.q), flat(r.correct)];
     if (!all.length) return stat('sổ đang trống, chưa có gì để lưu');
     let tok = prompt('Dán GitHub token để lưu (dùng 1 lần, không được lưu lại)\nSổ chung: ' + all.length + ' câu' + (code ? '\nĐề ' + code + ': ' + mine.length + ' câu' : '\n(chưa nhận ra mã đề)'), '');
@@ -849,7 +989,7 @@
     if (code !== examCode()) return;                 // đã sang link khác, bỏ kết quả cũ
     if (r.s === 200 && r.j && r.j.content) {
       const items = ghParse(ghDec(r.j.content)).filter(([q, c]) => !labelOnly(c));
-      items.forEach(([q, c]) => { bank[norm(q)] = { q, correct: cleanAns(c), t: code }; });
+      items.forEach(([q, c]) => putRec(q, cleanAns(c), code));
       saveBank();
       ghNote = `đề ${code}: đã tải ${items.length} câu từ GitHub`;
     } else if (r.s === 404) ghNote = `đề ${code} không có trên GitHub`;
@@ -876,7 +1016,7 @@
   }
   setInterval(watchUrl, 700); watchUrl();
 
-  document.addEventListener('sakura-status', e => { bank = load(BANK_KEY) || {}; stat(String(e.detail || '')); });
+  document.addEventListener('sakura-status', e => { bank = load(BANK_KEY) || {}; bankVer++; stat(String(e.detail || '')); });
 
   // ---------- Xuất / nhập .txt ----------
   $('exp').onclick = () => {
@@ -898,7 +1038,7 @@
         const q = i < 0 ? '' : flat(line.slice(0, i)), c = i < 0 ? '' : flat(line.slice(i + 3));
         if (!q || !c) { bad++; return; }
         if (!bank[norm(q)]) add++;
-        bank[norm(q)] = { q, correct: cleanAns(c), t: examCode() || undefined };
+        putRec(q, cleanAns(c), examCode());
       });
       saveBank(); stat(`nhập +${add} câu mới` + (bad ? `, bỏ ${bad} dòng lỗi` : ''));
     };
@@ -913,10 +1053,12 @@
   };
 
   // ---------- Vòng lặp (trang là SPA nên quét định kỳ) ----------
+  let selPending = true;
   const ts = m => { if (Date.now() >= holdUntil) stat(m, true); };
   function tick() {
     if (inTake()) {
       const r = selectNow();
+      selPending = !!r.pend;
       prog(r.found, r.page);
       if (!r.bankN) return ts('chưa có đáp án cho đề này');
       if (!cfg.run) return ts('đã tạm dừng' + (r.found ? `, tô viền ${r.found} câu đã nhớ` : ''));
@@ -934,8 +1076,8 @@
   // điện thoại quét thưa hơn một chút cho đỡ nóng máy; tab ẩn thì gần như nghỉ
   function loop() {
     try { if (!document.hidden) tick(); } catch (e) { console.error('Azota Helper:', e); }
-    const fast = inTake() && cfg.run && cfg.select && cfg.delay > 0 && cfg.delay < 600;
-    setTimeout(loop, document.hidden ? 1500 : (fast ? Math.max(COARSE ? 300 : 150, cfg.delay / 2) : 1000));
+    const fast = inTake() && cfg.run && cfg.select && cfg.delay > 0 && cfg.delay < 600 && selPending;
+    setTimeout(loop, document.hidden ? 1500 : (fast ? Math.max(COARSE ? 300 : 150, cfg.delay / 2) : (inTake() ? 700 : 1000)));
   }
   loop();
 })();
