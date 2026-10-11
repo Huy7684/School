@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      6.2
+// @version      6.3
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -86,6 +86,15 @@
     const sc = strictCode(), k = bankVer + '|' + sc;
     if (k !== scnKey) { scnKey = k; scnVal = sc ? Object.values(bank).filter(r => r && r.q && r.correct && hasT(r, sc)).length : usableRecs().length; }
     return scnVal;
+  };
+  // Danh sách dùng để so khớp với trang: chỉ câu gắn đúng mã đề này. Nếu trang còn câu chưa khớp thì mới mở rộng ra cả sổ (wideMode).
+  let wideMode = false, wideFor = '', poolKey = '', poolVal = [];
+  const poolRecs = () => {
+    const sc = strictCode(), k = bankVer + '|' + sc + '|' + location.pathname;
+    if (k !== wideFor) { wideFor = k; wideMode = false; }
+    if (!sc || wideMode) return usableRecs();
+    if (k !== poolKey) { poolKey = k; poolVal = usableEntries().map(x => x[1]).filter(r => hasT(r, sc)); }
+    return poolVal.length ? poolVal : usableRecs();
   };
   const usableRecs = () => { const e = usableEntries(); if (urSrc !== e) { urSrc = e; urVal = e.map(x => x[1]); } return urVal; };
 
@@ -1015,7 +1024,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
 
   function selectNow() {
     if (clickedUrl !== location.href) { clickedUrl = location.href; clickedQ = new Set(); clearHl(); }
-    const recs = usableRecs();
+    const recs = poolRecs();
     const all = pageEls();
     const pageQ = new Set();
     all.forEach(a => { const m = a.t.match(/^Câu\s*(\d+)$/i); if (m) pageQ.add(m[1]); });
@@ -1050,7 +1059,9 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       }, 500);
       if (cfg.delay > 0) { pend = true; break; }     // có độ trễ: mỗi nhịp chỉ chọn 1 câu
     }
-    return { imgFail, pend, found: found + Math.floor(dsFound / 4), ds: dsFound, done: clickedQ.size, page: pageQ.size, bankN: recs.length };
+    const fnd = found + Math.floor(dsFound / 4);
+    if (!wideMode && !pend && strictCode() && pageQ.size && fnd < pageQ.size && recs.length < usableRecs().length) wideMode = true;   // còn câu chưa khớp: thử thêm các câu cũ chưa gắn mã đề
+    return { imgFail, pend, found: fnd, ds: dsFound, done: clickedQ.size, page: pageQ.size, bankN: recs.length };
   }
 
   // ---------- Giao diện: trạng thái ----------
@@ -1114,7 +1125,8 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   // ---------- Sổ đáp án: xem, tìm, xoá từng câu ----------
   function renderBook() {
     const f = norm($('q').value);
-    const entries = usableEntries().filter(([, v]) => !f || norm(v.q).includes(f) || norm(v.correct).includes(f));
+    const sc0 = strictCode(), base0 = usableEntries(), mine0 = sc0 ? base0.filter(([, v]) => hasT(v, sc0)) : base0;
+    const entries = (mine0.length ? mine0 : base0).filter(([, v]) => !f || norm(v.q).includes(f) || norm(v.correct).includes(f));
     const box = $('list');
     box.textContent = '';
     if (!entries.length) {
