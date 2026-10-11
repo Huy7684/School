@@ -32,7 +32,7 @@
 (H) Tiện ích Optimize (Defragment) trên ổ đĩa cứng được dùng chủ yếu để làm gì? ||| Hợp nhất các liên cung của tệp để tăng tốc truy cập.
 (H) Vai trò đúng của hệ điều hành trong quan hệ với phần cứng và phần mềm ứng dụng là gì? ||| Là môi trường trung gian để phần mềm ứng dụng khai thác phần cứng.
 (H) Đặc điểm nào thể hiện rõ tính thân thiện của hệ điều hành máy tính cá nhân? ||| Giao diện đồ hoạ trực quan và cơ chế cắm vào là chạy.
-[ĐS] , ||| Sai
+[ĐS] , ||| Đúng
 [ĐS] AI có thể cá nhân hoá việc học tập cho mỗi học sinh. ||| Đúng
 [ĐS] AI có thể cá nhân hóa về học tập cho mỗi học sinh. ||| Đúng
 [ĐS] AI có thể thu thập thông tin riêng tư của con người. ||| Đúng
@@ -71,6 +71,7 @@
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016086 Trí tuệ nhân tạo (AI) đang cải thiện ngành tài chính, ngân hàng bằng cách tăng cường an ninh giao dịch, dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua chatbots. Sau đây là các phát biểu về những ứng dụng của AI đối với ngành tài chính, ngân hàng. a) AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. b) AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. c) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. d) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. ||| Sai
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016086 Trí tuệ nhân tạo (AI) đang cải thiện ngành tài chính, ngân hàng bằng cách tăng cường an ninh giao dịch, dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua chatbots. Sau đây là các phát biểu về những ứng dụng của AI đối với ngành tài chính, ngân hàng. a) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. b) AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. c) AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. d) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. ||| Sai
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016086 Trí tuệ nhân tạo (AI) đang cải thiện ngành tài chính, ngân hàng bằng cách tăng cường an ninh giao dịch, dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua chatbots. Sau đây là các phát biểu về những ứng dụng của AI đối với ngành tài chính, ngân hàng. a) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. b) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. c) AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. d) AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. ||| Đúng
+[ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016088 Trí tuệ nhân tạo (AI) mang lại những ảnh hưởng tích cực như tăng cường hiệu quả công việc và cải thiện chất lượng cuộc sống. Tuy nhiên, AI cũng gây ra những thách thức về việc làm và quyền riêng tư của con người. Sau đây là các phát biểu về những ảnh hưởng của AI đối với con người. a) AI luôn công bằng khi áp dụng trong hệ thống hỗ trợ tuyển dụng. b) Không thể sử dụng AI để giả mạo giọng nói, khuôn mặt. c) AI có thể thu thập thông tin riêng tư của con người. d) Con người có thể bị mất việc làm bởi AI. ||| Đúng
 [ĐS] Thị giác máy tính là một phần của học máy vì nó giúp máy tính nhận dạng và phân tích hình ảnh. ||| Sai
 [ĐS] Trí tuệ nhân tạo là khả năng của máy tính thực hiện các công việc cần trí tuệ như của con người. ||| Đúng
 [ĐS] Trận đấu là cuộc đụng độ giữa một bên là trực giác kì diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. ||| Đúng
@@ -88,6 +89,7 @@ Biểu nào dưới đây phù hợp nhất khi nói về khả năng của Trí
 Bộ giao tiếp mạng (NIC) có chức năng gì? ||| Truyền và nhận dữ liệu qua cáp mạng hoặc sóng vô tuyến
 Bộ nhớ chính (bộ nhớ trong - memory) bao gồm: ||| ROM và RAM
 Chuẩn kết nối nào dưới đây thường được sử dụng để kết nối các thiết bị âm nhạc với điện thoại di động? ||| Bluetooth.
+CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Chuẩn kết nối nào dưới đây thường được sử dụng để kết nối các thiết bị âm nhạc với điện thoại di động? ||| Bluetooth.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên Internet.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lí ảo? ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Phần mềm nào dưới đây là trợ lí ảo của công ty Apple? ||| Siri.
@@ -127,7 +129,7 @@ Phương án nào dưới đây KHÔNG phù hợp để minh họa cho hệ th�
 Phương án nào dưới đây liệt kê hai phân loại chính của Trí tuệ nhân tạo (AI)? ||| AI Hẹp (ANI) và AI Tổng quát (AGI).
 Phương án nào dưới đây liệt kê hai phân loại chính của trí tuệ nhân tạo? ||| AI Hẹp (ANI) và AI Tổng quát (AGI).
 Phương án nào dưới đây nêu đúng về khả năng học của AI? ||| Trích xuất thông tin từ dữ liệu để học và tích lũy tri thức.
-Phương án nào dưới đây nêu đúng về khả năng nhận thức của AI? ||| Cảm cảm nhận và hiểu biết môi trường thông qua các cảm biến và thiết bị đầu vào.
+Phương án nào dưới đây nêu đúng về khả năng nhận thức của AI? ||| Cảm nhận và hiểu biết môi trường thông qua các cảm biến và thiết bị đầu vào.
 Phương án nào dưới đây nêu đúng về khả năng suy luận của AI? ||| Vận dụng logic và tri thức để đưa ra quyết định hoặc kết luận.
 Phương án nào sau đây nêu đúng về Trí tuệ nhân tạo (AI)? ||| Một lĩnh vực khoa học và kĩ thuật nhằm chế tạo các máy móc thông minh.
 Phương án nào sau đây nêu đúng về trí tuệ nhân tạo? ||| Một lĩnh vực khoa học và kỹ thuật nhằm chế tạo các máy móc thông minh.
@@ -154,7 +156,7 @@ Trong mạng LAN, thiết bị nào được sử dụng để kết nối và c
 Trong những tính năng sau tính năng nào KHÔNG phải là của Trợ lý ảo. ||| Tự động cải thiện hiệu suất máy tính.
 Trong những tính năng sau, tính năng nào KHÔNG phải là của Trợ lí ảo? ||| Tự động cải thiện hiệu suất máy tính.
 Trí tuệ nhân tạo còn nhiều hạn chế ở khả năng nào sau đây? ||| Cảm nhận cảm xúc.
-Trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh bằng cách nào sau đây? ||| Nhận diện các bệnh lý qua hình ảnh y khoa.
+Trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh bằng cách nào sau đây? ||| Nhận diện các bệnh lí qua hình ảnh y khoa.
 Vai trò chính của Router là gì? ||| Kết nối các mạng LAN với nhau và chuyển tiếp dữ liệu giữa chúng
 Ví dụ nào sau đây là một ứng dụng của AI yếu? ||| MYCIN – hệ chuyên gia trong lĩnh vực y tế.
 Youtube được trang bị hệ thống trí tuệ nhân tạo để gợi ý cho người dùng. Hãy cho biết hệ thống này làm nhiệm vụ gì dưới đây? ||| Đề xuất các video dựa trên sở thích của người dùng.
