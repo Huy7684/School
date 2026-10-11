@@ -510,7 +510,7 @@
     <div id="azh-head">
       <div class="azh-logo">
         <div class="azh-mascot"><div class="azh-flower">${flower}</div></div>
-        <div><div class="azh-title">Azota Helper</div><div class="azh-sub">v3.0 · 桜 SAKURA</div></div>
+        <div><div class="azh-title">HuyDz</div><div class="azh-sub">v3.0 · 桜 SAKURA</div></div>
       </div>
       <div class="azh-hbtns">
         <button id="azh-run" class="azh-runbtn"></button>
