@@ -1,0 +1,32 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+Các bước để vẽ sơ đồ nguyên lí mạch điện là: ||| Xác định các thành phần trong mạch điện -> Phân tích mối liên hệ của các thành phần của mạch điện -> vẽ sơ đồ mạch điện
+Các thông số kĩ thuật ghi trên aptomat có trong hình bên bao gồm: ⤢ Phóng to ảnh [hình:18e4clb] ||| Điện áp định mức 240V/415V, dòng điện định mức 100A, dòng cắt ngắn mạch 10kA
+Cấu trúc gồm các thành phần tủ đóng cắt và đo lường, tủ điện tổng, tủ điện nhánh, tải điện là của hệ thống điện: ||| Trong gia đình
+Khả nǎng chịu dòng điện tối đa của tiếp điểm aptomat trong một khoảng thời gian nhất định của aptomat trong hình bên là: ⤢ Phóng to ảnh [hình:1gab7nq] ||| 6000 A
+Kí hiệu trong hình bên thể hiện thiết bị điện nào trên sơ đồ hệ thống điện: ⤢ Phóng to ảnh [hình:1el7ddz] ||| Cầu chì
+Kí hiệu trong hình bên thể hiện thiết bị điện nào trên sơ đồ hệ thống điện: ⤢ Phóng to ảnh [hình:1g5r46s] ||| Ổ cắm điện
+Máy giặt có công suất 2200W (hệ số cosႴ = 0,8) và điện áp 220V thì cường độ dòng điện chạy trong dây dẫn điện được tính là: ||| 12,5A
+Những thiết bị điện có chức năng đóng- cắt mạch điện là: ||| Cầu dao điện, aptomat, công tắc điện
+Sau khi tính được tiết diện dây dẫn S = 1,6 𝑚 𝑚 2 mm 2 cho một đồ dùng điện trong gia đình nên chọn dây dẫn có tiết diện hợp lí nhất là: ||| 2,5 mm2\displaystyle mm^{2}mm2
+Sơ đồ mạch điện trong hình bên thể hiện có: ⤢ Phóng to ảnh [hình:kc3men] ||| 2 cầu chì, 2 công tắc, 2 bóng đèn
+Sơ đồ mạch điện trong hình bên thể hiện: ⤢ Phóng to ảnh [hình:1ptu15s] ||| 2 cầu chì, 2 công tắc, 1 ổ cắm, 2 bóng đèn
+Sơ đồ trong hình bên thể hiện cấu trúc chung của hệ thống điện: ⤢ Phóng to ảnh [hình:1vmsgzm] ||| Trong gia đình
+Sắp xếp các hoạt động sau theo thứ tự phù hợp để tiến hành lắp đặt một mạch điện đơn giản trong gia đình: ⤢ Phóng to ảnh [hình:1whvqbq] ||| (2) ->(5) ->(4) ->(3) ->(1)
+Thiết bị điện có chức năng đo điện năng tiêu thụ của các thiết bị và đồ dùng điện trong gia đình: ||| Công tơ điện
+Thiết bị điện có chức năng đóng - cắt mạch điện và tự động cắt mạch điện khi có sự cố về điện: ||| Aptomat
+Thiết bị điện như hình bên là: ⤢ Phóng to ảnh [hình:1r4s78y] ||| Công tơ điện
+Thiết bị điện như hình bên là: ⤢ Phóng to ảnh [hình:22eb3j] ||| Công tắc ba cực
+Thiết bị điện như hình bên là: ⤢ Phóng to ảnh [hình:hcils7] ||| Cầu dao điện
+Thiết bị điện như hình bên là: ⤢ Phóng to ảnh [hình:wmdwx9] ||| Ổ cắm điện
+Thiết bị điện trong hình bên có chức nǎng: ⤢ Phóng to ảnh [hình:2k9ze0] ||| Đóng cắt mạch điện và tự động đóng cắt khi có sự cố về điện
+Thiết bị điện trong hình bên có chức nǎng: ⤢ Phóng to ảnh [hình:kputs4] ||| Đo điện nǎng tiêu thụ của các thiết bị, đồ dùng điện trong gia đình
+Thành phần có vai trò bảo vệ chống quá tải và đóng cắt nguồn điện mạch nhánh trong hệ thống điện trong gia đình là: ||| Tủ điện nhánh
+Trong các sơ đồ dưới đây, sơ đồ thể hiện đúng nhất về cấu trúc chung của hệ thống điện trong gia đình là: ⤢ Phóng to ảnh [hình:1974utq] ||| Sơ đồ a
+Trong các sơ đồ lắp đặt dưới đây, sơ đồ tương ứng với sơ đồ nguyên lí đã cho là: ⤢ Phóng to ảnh [hình:1ngm5tt] ||| Sơ đồ c
+Trong công thức tính dòng điện I = 𝑃 𝑈 cos ⁡ 𝜃 Ucosθ P ​ thì cos ⁡ 𝜃 cosθ là hệ số ||| Công suất
+Trong công thức tính tiết diện dây dẫn điện S = I/J thì J là: ||| Mật độ dòng điện
+Trong hệ thống điện gia đình, thành phần có vai trò đóng-cắt toàn bộ nguồn điện cấp vào bảo vệ hệ thống điện khi gặp sự cố là: ||| Tủ điện tổng
+Để cung cấp điện cho ổ cắm của máy giặt dùng trong gia đình có công suất 2200W (hệ số cosႴ =0,8) và điện áp là 220V cần lựa chọn dây dẫn đồng (mật độ dòng là J = 6 A/ 𝑚 𝑚 2 mm 2 ) có tiết diện phù hợp là: ||| 2,5 mm2\displaystyle mm^{2}mm2
+Để cấp điện cho nồi cơm điện cao tần có công suất 1445 W (hệ số cosႴ =1) và điện áp 220V chọn aptomat có dòng điện định mức phù hợp là: ||| 10A
+Để đăm bảo an toàn, sau khi tính tiết diện dây dẫn diện theo công thức S = I / J thì nên chọn dây dẫn điện có tiết diện: ||| Ở cấp lớn hơn
+Để đảm bảo an toàn, tránh lāng phí khi sử dụng các thiết bị và đồ dùng điện, cần lựa chọn tiết diện dây dẫn điện phù hợp với: ||| Công suất tiêu thụ của đồ dùng điện
