@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.3
+// @version      14.4
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1153,8 +1153,9 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     });
     const raw = card.innerText || '';
     const mq = raw.match(/^\s*Câu\s*(\d+)/);
-    const q = flat(raw.split(/\nA\s*\n/)[0].replace(/^Câu\s*\d+\s*\/\s*\d+\s*/, '')) + imgTag(qImgs);
-    return { q, qno: mq ? mq[1] : '', els, texts };
+    const qText = flat(raw.split(/\nA\s*\n/)[0].replace(/^Câu\s*\d+\s*\/\s*\d+\s*/, ''));
+    const q = qText + imgTag(qImgs);
+    return { q, qText, qno: mq ? mq[1] : '', els, texts };
   }
 
   // Các ô có icon (sau khi kiểm tra); `texts` = 4 phương án đã chụp, loại hộp "Đúng rồi!"
@@ -1197,7 +1198,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       const pick = good || (rows.length === 1 && rows[0].kind !== 'bad' ? rows[0] : null);
       if (pick) {
         const inf = infoFor(pick.el, pick.txt, true);
-        if (inf.cont.includes(lastSnap.q)) return inf;   // đúng là câu vừa chụp (chống học nhầm khi bấm "Trước")
+        if (inf.cont.includes(lastSnap.qText !== undefined ? lastSnap.qText : lastSnap.q)) return inf;   // đúng là câu vừa chụp (chống học nhầm khi bấm "Trước")
       }
     }
     const g = genericGood();
