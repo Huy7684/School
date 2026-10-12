@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.1
+// @version      14.2
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -88,6 +88,9 @@
   // Chỉ lọc theo mã đề khi sổ đã có câu gắn đúng mã đề này (câu chưa gắn mã vẫn dùng được).
   // Nếu mã đề nhận sai / sổ chưa gắn mã nào thì dùng cả sổ, tránh "có đáp án mà không chọn".
   const STRICT_EXAM = true;
+  // true: đề chưa có đáp án riêng thì vẫn thử dùng câu trùng chữ trong sổ chung (các đề khác).
+  // false: đề nào chỉ dùng đáp án gắn đúng mã đề đó, không mượn từ đề khác.
+  const SHARED_FALLBACK = true;
   // Mỗi câu có thể thuộc nhiều đề: r.t là danh sách mã đề cách nhau bằng dấu phẩy (sổ cũ chỉ có 1 mã vẫn đọc được).
   // Trước đây r.t chỉ giữ 1 mã nên câu trùng giữa 2 đề cứ bị gắn lại qua lại, đề này lấy mất của đề kia.
   const hasT = (r, c) => !!r && !!r.t && ('' + r.t).split(',').indexOf(c) >= 0;
@@ -99,10 +102,10 @@
   let scKey = '', scVal = '', urKey = '', urVal = [];
   const strictCode = () => {
     const c = examCode(), k = bankVer + '|' + c;
-    if (k !== scKey) { scKey = k; scVal = STRICT_EXAM && c && Object.values(bank).some(r => r && hasT(r, c)) ? c : ''; }
+    if (k !== scKey) { scKey = k; scVal = STRICT_EXAM && c && (!SHARED_FALLBACK || Object.values(bank).some(r => r && hasT(r, c))) ? c : ''; }
     return scVal;
   };
-  const usableWith = (r, sc) => !!(r && r.q && r.correct && (!sc || !r.t || hasT(r, sc)));
+  const usableWith = (r, sc) => !!(r && r.q && r.correct && (!sc || (!r.t && SHARED_FALLBACK) || hasT(r, sc)));
   const usableRecs = () => {
     const sc = strictCode(), k = bankVer + '|' + sc;
     if (k !== urKey) { urKey = k; urVal = Object.values(bank).filter(r => usableWith(r, sc)); }
@@ -509,7 +512,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     <div id="dts11-body">
       <div class="dts11-main">
         <div class="dts11-stats">
-          <div class="dts11-stat" data-jp="答"><small>Sổ đáp án</small><div><b id="dts11-cnt">0</b> <span>câu</span></div></div>
+          <div class="dts11-stat" data-jp="答"><small>Đáp án đề này</small><div><b id="dts11-cnt">0</b> <span id="dts11-tot">câu</span></div></div>
           <div class="dts11-stat" data-jp="番"><small>Mã đề</small><div><b id="dts11-codeshow" class="sm">–</b></div></div>
         </div>
         <div class="dts11-bubble"><span class="dts11-np">HuyDz</span><span id="dts11-face">(◕‿◕)</span><span id="dts11-st"></span><span class="dts11-sr" id="dts11-sr" aria-live="polite"></span><i class="dts11-caret"></i></div>
@@ -800,14 +803,25 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   const faceFor = m => { const f = FACES.find(x => x[0].test(m)); return f ? [f[1], f[2]] : ['(◕‿◕)', cfg.run ? 'idle' : 'sleep']; };
 
   let lastMsg = '', lastShown = '', lastN = -1;
+  // đếm riêng từng đề: chỉ câu gắn đúng mã đề này; sổ chung đếm riêng, không trộn vào số chính
+  let cntKey = '', cntVal = { n: 0, tot: 0 };
+  function counts(code) {
+    const k = bankVer + '|' + code;
+    if (k !== cntKey) {
+      cntKey = k;
+      const all = Object.values(bank).filter(r => r && r.q && r.correct);
+      cntVal = { tot: all.length, n: code ? all.filter(r => hasT(r, code)).length : all.length };
+    }
+    return cntVal;
+  }
   function stat(msg) {
     if (msg !== undefined) lastMsg = msg;
-    const n = usableRecs().length, code = examCode();
+    const code = examCode(), cc = counts(code), n = cc.n, tot = cc.tot;
     const m = (lastMsg || 'sẵn sàng nè ~') + (ghNote ? ' · ' + ghNote : '');
-    const sig = n + '|' + code + '|' + m;
+    const sig = n + '|' + tot + '|' + code + '|' + m;
     if (sig === lastShown) return;   // chỉ cập nhật DOM khi có thay đổi
     lastShown = sig;
-    $('cnt').textContent = n; $('badge').textContent = n > 99 ? '99+' : n;
+    $('cnt').textContent = n; $('tot').textContent = code && tot !== n ? 'câu · sổ chung ' + tot : 'câu'; $('badge').textContent = n > 99 ? '99+' : n;
     $('codeshow').textContent = code || '–';
     const fc = faceFor(lastMsg || '');
     $('face').textContent = fc[0]; setMood(fc[1]);
@@ -967,7 +981,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       items.forEach(([q, c]) => putRec(q, c, code));
       saveBank(); st = { key: null }; stN = { sig: null };
       ghNote = `đề ${code}: đã tải ${items.length} câu từ GitHub`;
-    } else if (r.s === 404) ghNote = `đề ${code} không có trên GitHub`;
+    } else if (r.s === 404) ghNote = `đề ${code} không có trên GitHub` + (SHARED_FALLBACK ? ' (chỉ dùng câu trùng trong sổ chung)' : '');
     else if (r.s === 0) ghNote = 'không kết nối được GitHub';
     else if (r.s === 403) ghNote = 'GitHub đang giới hạn lượt gọi, thử lại sau';
     else ghNote = 'lỗi GitHub HTTP ' + r.s;
