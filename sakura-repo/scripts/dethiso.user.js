@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.2
+// @version      14.3
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -90,7 +90,7 @@
   const STRICT_EXAM = true;
   // true: đề chưa có đáp án riêng thì vẫn thử dùng câu trùng chữ trong sổ chung (các đề khác).
   // false: đề nào chỉ dùng đáp án gắn đúng mã đề đó, không mượn từ đề khác.
-  const SHARED_FALLBACK = true;
+  const SHARED_FALLBACK = false;
   // Mỗi câu có thể thuộc nhiều đề: r.t là danh sách mã đề cách nhau bằng dấu phẩy (sổ cũ chỉ có 1 mã vẫn đọc được).
   // Trước đây r.t chỉ giữ 1 mã nên câu trùng giữa 2 đề cứ bị gắn lại qua lại, đề này lấy mất của đề kia.
   const hasT = (r, c) => !!r && !!r.t && ('' + r.t).split(',').indexOf(c) >= 0;
@@ -821,7 +821,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const sig = n + '|' + tot + '|' + code + '|' + m;
     if (sig === lastShown) return;   // chỉ cập nhật DOM khi có thay đổi
     lastShown = sig;
-    $('cnt').textContent = n; $('tot').textContent = code && tot !== n ? 'câu · sổ chung ' + tot : 'câu'; $('badge').textContent = n > 99 ? '99+' : n;
+    $('cnt').textContent = n; $('tot').textContent = SHARED_FALLBACK && code && tot !== n ? 'câu · sổ chung ' + tot : 'câu'; $('badge').textContent = n > 99 ? '99+' : n;
     $('codeshow').textContent = code || '–';
     const fc = faceFor(lastMsg || '');
     $('face').textContent = fc[0]; setMood(fc[1]);
@@ -1109,6 +1109,24 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     return r.width >= 120 && r.height >= 36 && r.height <= 280;
   };
 
+  // ---------- Nhận diện hình trong câu hỏi / phương án ----------
+  // Câu kiểu "Thiết bị điện như hình bên là:" giống chữ nhưng mỗi đề một hình khác nhau -> gắn mã hình vào câu để không nhầm đáp án.
+  const hashStr = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36); };
+  const imgId = im => {
+    const src = im.currentSrc || im.getAttribute('src') || '';
+    if (!src) return '';
+    if (/^data:/i.test(src)) return 'd' + hashStr(src);
+    if (/^blob:/i.test(src)) return 'b' + (im.naturalWidth || 0) + 'x' + (im.naturalHeight || 0);
+    try { const u = new URL(src, location.href); return hashStr(decodeURIComponent(u.pathname)); } catch (e) { return hashStr(src); }
+  };
+  const realImgs = (root, skip) => [...root.querySelectorAll('img')].filter(im => {
+    if (panel.contains(im) || (skip && skip.some(e => e.contains(im)))) return false;
+    const r = im.getBoundingClientRect();
+    return !(r.width && r.width < 14 && r.height < 14);   // bỏ icon nhỏ
+  });
+  const imgsReady = list => list.every(im => (im.currentSrc || im.getAttribute('src')) && im.complete);
+  const imgTag = list => { const ids = list.map(imgId).filter(Boolean); return ids.length ? ' [hình:' + ids.join(',') + ']' : ''; };
+
   // Chụp câu hỏi + 4 phương án khi CHƯA kiểm tra (các ô còn hiện chữ A-D)
   function snapshot() {
     const rows = {};
@@ -1122,14 +1140,20 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     });
     if (Object.keys(rows).length < 4) return null;
     const els = {}, texts = {};
-    Object.keys(rows).forEach(l => {
-      els[l] = rows[l].el;
-      texts[l] = flat(rows[l].el.textContent).replace(/^[A-D]\s*/, '');
-    });
+    Object.keys(rows).forEach(l => { els[l] = rows[l].el; });
     const card = els.A.parentElement.parentElement || els.A.parentElement;
+    const optEls = Object.values(els);
+    const qImgs = realImgs(card, optEls);
+    const oImgs = {};
+    Object.keys(els).forEach(l => { oImgs[l] = realImgs(els[l]); });
+    // hình chưa tải xong thì chờ, tránh chụp câu thiếu mã hình rồi học/chọn nhầm
+    if (!imgsReady(qImgs) || Object.values(oImgs).some(a => !imgsReady(a))) return null;
+    Object.keys(els).forEach(l => {
+      texts[l] = (flat(els[l].textContent).replace(/^[A-D]\s*/, '') + imgTag(oImgs[l])).trim();
+    });
     const raw = card.innerText || '';
     const mq = raw.match(/^\s*Câu\s*(\d+)/);
-    const q = flat(raw.split(/\nA\s*\n/)[0].replace(/^Câu\s*\d+\s*\/\s*\d+\s*/, ''));
+    const q = flat(raw.split(/\nA\s*\n/)[0].replace(/^Câu\s*\d+\s*\/\s*\d+\s*/, '')) + imgTag(qImgs);
     return { q, qno: mq ? mq[1] : '', els, texts };
   }
 
@@ -1139,7 +1163,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const rows = [];
     document.querySelectorAll('div, button, li, label').forEach(el => {
       if (!rowOk(el) || !el.querySelector('svg')) return;
-      const txt = flat(el.textContent);
+      const txt = (flat(el.textContent) + imgTag(realImgs(el))).trim();
       if (allowed && !allowed.has(norm(txt))) return;
       rows.push({ el, txt, kind: rowKind(el) });
     });
@@ -1177,7 +1201,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       }
     }
     const g = genericGood();
-    return g ? infoFor(g, flat(g.textContent), false) : null;
+    return g ? infoFor(g, (flat(g.textContent) + imgTag(realImgs(g))).trim(), false) : null;
   }
 
   // ---------- Nút ----------
