@@ -1,0 +1,70 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+Biểu thức dòng điện xoay chiều một pha có dạng ||| i = Im sin(ωt+φ)
+Cho mạch điện đối xứng như hình vẽ bên, biết tổng trở pha của tải Zp= 5Ω, Ud =220V. Dòng điện pha và dòng điện dây của mạch có giá trị là: ⤢ Phóng to ảnh [hình:q02hgw] ||| Ip = 44A, Id =443\displaystyle \sqrt{3}3​A
+Có bao nhiêu cách để nối tài ba pha trong mạch điện xoay chiều ba pha ||| 2 cách
+Dòng điện xoay chiều một pha là dòng điện biến thiên tuần hoàn theo dạng hình ||| Sin
+Hình bên dưới mô tả cách nối nguồn và nối tải ba pha theo kiểu ⤢ Phóng to ảnh [hình:1igsw7p] ||| Nguồn nối hình sao, tải nối hình tam giác
+Hình bên dưới mô tả cách nối nguồn và nối tải ba theo kiểu: ⤢ Phóng to ảnh [hình:n7m23r] ||| Nguồn nối hình sao có dây trung tính, tải nối hình sao có dây trung tính
+Hình ảnh sau đây thể hiện phương pháp sản xuất điện nǎng bằng nǎng lượng nào bên dưới đây: ⤢ Phóng to ảnh [hình:ixre84] ||| Gió
+Hệ thống điện quốc gia gồm: ||| Nguồn điện, các lưới điện và các hộ tiêu thụ điện trên toàn quốc
+Khi máy phát điện xoay chiều ba pha hoạt động, sức điện động xuất hiện trên các pha sẽ lệch góc: ||| 2π/3
+Mach điện gồm một tải ba pha đối xúng với ba điện trở R = 10Ω nối hình tam giác đấu vào nguồn điện ba pha có điện áp pha bằng 220V. Dòng điện pha và dòng điện dây có giá trị là: ||| Ip = 22A, Id =38A
+Mach điện xoay chiều ba pha ba dây gồm một tải ba pha đối xứng với ba điện trở 10Ω nối hình tam giác đấu vào nguồn điện ba pha có điện áp dây bằng 380V. Dòng điện pha và dòng điện dây có giá trị là: ||| Ip = 38A, Id =65.8A
+Máy phát điện xoay chiều ba pha có cấu tạo gồm ||| Stator và rotor
+Máy phát điện xoay chiều là máy điện biến đổi ||| Cơ nǎng thành điện nǎng
+Mạch điện xoay chiều ba pha ba dây có điện áp dây và dòng điện dây lần lượt là 380V, 80A và tải ba điện trở R có giá trị bằng nhau, được nối tam giác. Điện trở tải R có giá trị gần nhất là: ||| 8.21 Ω
+Mạng điện có nhiệm vụ truyền tải năng lượng điện từ trạm biến áp phân phối đến công tơ điện của người dùng là các hộ gia đình là: ||| Mạng điện hạ áp dùng trong sinh hoạt
+Mạng điện hạ áp dùng trong sinh hoạt của Việt Nam có tần số là: ||| 50 Hz
+Mạng điện hạ áp dùng trong sinh hoạt của Việt Nam có điện áp ||| 220 V
+Mạng điện hạ áp dùng trong sinh hoạt thuộc lưới điện: ||| Phân phối
+Mạng điện sản xuất quy mô nhỏ là mạng điện có công suất tiêu thụ ||| Từ vài chục kW đến vài trǎm kW
+Một dòng điện xoay chiều được mô tả bởi phương trình i = 4cos(100πt) A Tính bằng giây. Cường độ cực đại của dòng điện là ||| 4 A
+Một máy phát điện xoay chiều ba pha có điện áp mỗi dây quấn pha là 110V, nếu nối sao thì điện áp pha và điện áp dây có giá trị lần lượt là: ||| Ud = 110V, Up = 190,5V
+Một nguồn điện xoay chiều ba pha bốn dây có ghi các điện áp 220V/ 380V Khi đó thông số 380V là điện áp pha giữa ||| Hai dây pha
+Một trong những nhuợc điểm của nhà máy thuỷ điện là ||| Công suất phát của nhà máy thuỷ điện phụ thuộc vào lưu lượng nước tích trữ trong hồ chứa nước
+Một tải ba pha gồm ba điện trở R=20 Ω nối hình sao đấu vào nguồn điện ba pha có điện áp dây là 380V. Dòng điện pha và dòng điện dây có giá trị là: ||| Ip = 11A, Id =11A
+Nguyên lí hoạt động của máy phát điện xoay chiều ba pha dựa trên hiện tượng ||| Cảm ứng điện từ
+Nguồn điện ba pha đối xứng có điện áp dây 220 V, tải nối hình sao là các điện trở có giá trị RA = RB =12.5Ω, RC = 25Ω. Dòng điện trong các pha có giá trị gần nhất lần lượt là: ||| IA = 10A, IB = 10A, IC = 5A
+Sơ đồ cấu trúc mạng điện như hình bên dưới là sơ đồ thể hiện cấu trúc của ⤢ Phóng to ảnh [hình:19ny3sw] ||| Mạng điện hạ áp dùng trong sinh hoạt
+Sơ đồ cấu trúc mạng điện như hình sau là sơ đồ thể hiện cấu trúc của: ⤢ Phóng to ảnh [hình:k5zh50] ||| Mạng điện sản xuất quy mô nhỏ
+Sản xuất điện nǎng là quá trình chuyển đổi ||| Các dạng nǎng lượng khác thành nǎng lượng điện
+Thiết bi nào sau đây không thuộc cấu trúc mang điện hạ áp dùng sinh hoạt: ||| Tủ điện chiếu sáng
+Trong các phương pháp sản xuất điện nǎng, phương pháp cần có bộ chuyển đổi dòng điện một chiều (DC) thành dòng điện xoay chiều (AC) là: ||| Điện mặt trời
+Trong các phương pháp sản xuất điện nǎng, phương pháp không có sự biến đổi cơ năng thành điện năng là: ||| Điện mặt trời
+Trong các phương pháp sản xuất điện nǎng, phương pháp làm ảnh hưởng đáng kể đến đa dạng sinh học là: ||| Thủy điện
+Trong các phương pháp sản xuất điện nǎng, phương pháp tạo ra chất thải có nguy cơ gây ảnh hưởng nghiêm trọng đến hệ sinh thái và con người là: ||| Điện hạt nhân
+Trong cách mắc mạch điện xoay chiều ba pha đối xứng theo hình sao, phát biểu nào sau đây không đúng: ||| Điện áp pha bằng 3\displaystyle \sqrt{3}3​ lần điện áp giữa hai dây
+Trong hệ thống điện quốc gia ở nước ta, cấp điện áp cao nhất là: ||| 500 kV
+Trong hệ thống điện quốc gia, biện pháp để làm giảm hao phí và tổn thất điện năng trong quá trình truyền tải đi xa: ||| Tăng điện áp trước khi truyền tải
+Trong hệ thống điện quốc gia, luới diện bao gồm: ||| Các đường dây truyền tải và phân phối, trạm điện, hệ thống giám sát và điều khiển
+Trong hệ thống điện quốc gia, lưới điện có cấp điện áp trên 220 kV là luới điện ||| Siêu cao áp
+Trong hệ thống điện quốc gia, lưới điện có vai trò ||| Kết nối truyền tải và phân phối điện năng từ các nhà máy điện đến nơi tiêu thụ
+Trong hệ thống điện quốc gia, lưới điện hạ áp có cấp điện áp tối đa là ||| 1 kV
+Trong hệ thống điện quốc gia, lưới điện phân phối thực hiện nhiệm vụ truyền tải điện năng từ trạm điện phân phối chính đến tải tiêu thụ có điện áp: ||| Từ 110 kV trở xuống
+Trong hệ thống điện quốc gia, lưới điện truyền tải thực hiện nhiệm vụ truyền tải điện năng từ trạm điện nguồn đến trạm điện phân phối chính có điện áp ||| Lớn hơn 110 kV
+Trong hệ thống điện quốc gia, tải tiêu thụ (tải điện) là các thiết bị ||| Tiêu thu điện và biến điện năng thành các dạng năng luợng khác
+Trong hệ thống điện quốc gia, đưòng dây truyền tải là các đường dây ||| Cao áp
+Trong mang điện sản xuất quy mô nhỏ, thao tác cắt mạch điện theo thứ tự: ||| Tủ phân phối -> Tủ động lực -> Biến áp hạ áp -> Tủ chiếu sáng
+Trong máy phát điện xoay chiều ba pha, rotor đuợc cấu tạo là ||| Một nam châm điện
+Trong mạch điện ba pha đối xúng, nếu tài nối hình tam giác thì các thông số hiệu dụng của dòng điện dây và điện áp dây được xác định bằng công thức ||| Id = 3\displaystyle \sqrt{3}3​Ip ; Ud = Up
+Trong mạch điện ba pha đối xứng, nếu tải nối hình sao thì các thông số hiệu dụng của dòng điện dây và điện áp dây được xác định bằng công thức: ||| Id = Ip ; Ud = 3\displaystyle \sqrt{3}3​Up
+Trong mạch điện ba pha đối xứng, tải trên mỗi pha A, B, C có tổng trở được kí hiệu là ZA ,ZB ,ZC và tải được gọi là đối xứng khi: ||| ZA = ZB = ZC
+Trong mạch điện xoay chiều ba pha, điện áp dây (Ud) là điện áp giữa ||| Hai dây pha
+Trong mạng điện hạ áp dùng trong sinh hoạt, điện áp cho phép dao động quanh giá trị định mức không quá: ||| ± 5%
+Trong mạng điện sản xuất quy mô nhỏ, thao tác đóng mạch điện theo thứ tự: ||| Biến áp hạ áp -> Tủ phân phối tổng -> Tủ phân phối nhánh
+Trong mạng điện sản xuất quy mô nhỏ, thiết bị có chức năng bảo vệ mạch điện khi các máy sản xuất xảy ra sự cố là: ||| Tủ động lực
+Trong mạng điện sản xuất quy mô nhỏ, thiết bị có vai trò kết nối các thành phần của mạng điện là: ||| Cáp điện
+Trong mạng điện sản xuất quy mô nhỏ, thiết bị có vai trò nhận điện năng từ tủ điện phân phối nhánh để cung cấp cho các máy sản xuất là: ||| Tủ điện động lực
+Trong mạng điện sản xuất quy mô nhỏ, thiết bị có vai trò nhận điện năng từ tủ điện phân phối nhánh để cung cấp cho hệ thống chiếu sáng của phân xưởng là: ||| Tủ điện chiếu sáng
+Trong mạng điện sản xuất quy mô nhỏ, thiết bị có vai trò nhận điện năng từ tủ điện phân phối tổng để phân phối tiếp cho các tủ phân phối động lực và tủ điện chiếu sáng trong phân xưởng là: ||| Tủ điện phân phối nhánh
+Trong mạng điện sản xuất quy mô nhỏ, thiết bị có vai trò nhận điện năng từ đường dây hạ áp của máy biến áp để cung cấp cho tủ điện phân phối nhánh là: ||| Tủ điện phân phối tổng
+Trong mạng điện sản xuất quy mô nhỏ, trạm biến áp có vai trò biến đổi từ lưới điện phân phối xuống điện áp: ||| Hạ áp
+Trong sinh hoạt, tải tiêu thụ của mạng điện thường là tải: ||| Một pha
+Trong sơ đồ mạng điện hạ áp dùng sinh hoạt, kí hiệu ở vị trí số (2) trong hình bên dưới là: ⤢ Phóng to ảnh [hình:1yg3uoe] ||| Tủ điện phân phối tổng
+Trong sơ đồ mạng điện hạ áp dùng trong sinh hoạt như hình qua trạm biến áp, điện áp được hạ xuống để cung cấp tới tủ điện phân phối tổng có giá trị ⤢ Phóng to ảnh [hình:19ny3sw] ||| 0.4 kV
+Trong sơ đồ mạng điện hạ áp dùng trong sinh hoạt, kí hiệu như hình bên dưới là ⤢ Phóng to ảnh [hình:7t0ac4] ||| Trạm biến áp
+Trong sản xuất điện năng, nhóm phương pháp tạo ra điện nǎng từ nguồn năng lượng tái tạo là: ||| Thủy triều, điện gió và điện mặt trời
+Trong tủ điện phân phối tổng của mạng điện sản xuất quy mô nhỏ, để bảo vệ mạng điện khi xảy ra quá tải, ngắn mạch thường sử dụng thiết bị bảo vệ là: ||| Aptomat
+Trong tủ điện động lực của mạng điện sản xuất quy mô nhỏ, để bảo vệ mạng điện khi xảy ra quá tải, ngắn mạch thường sử dụng thiết bị bảo vệ là: ||| Aptomat hoặc cầu dao điện
+Đặc điểm của mạng điện sản xuất quy mô nhỏ là ||| Có một máy biến áp riêng cấp chung cho cả mạng động lực và chiếu sáng
+Để đun nóng nước tạo ra hơi nuớc có áp suất cao làm quay turbine, nhà máy điện hạt nhân đã sử dụng năng lượng từ: ||| Phản ứng phân hạch
