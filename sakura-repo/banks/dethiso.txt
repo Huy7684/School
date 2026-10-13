@@ -1,14 +1,18 @@
 # Mỗi dòng: câu hỏi ||| đáp án đúng
 Biểu thức dòng điện xoay chiều một pha có dạng ||| i = Im sin(ωt+φ)
 Cho mạch điện đối xứng như hình vẽ bên, biết tổng trở pha của tải Zp= 5Ω, Ud =220V. Dòng điện pha và dòng điện dây của mạch có giá trị là: ⤢ Phóng to ảnh ||| Ip = 44A, Id =443\displaystyle \sqrt{3}3​A
+Cho mạch điện đối xứng như hình vẽ bên, biết tổng trở pha của tải Zp= 5Ω, Ud =220V. Dòng điện pha và dòng điện dây của mạch có giá trị là: ⤢ Phóng to ảnh [hình:q02hgw] ||| Ip = 44A, Id =443\displaystyle \sqrt{3}3​A
 Các bước để vẽ sơ đồ nguyên lí mạch điện là: ||| Xác định các thành phần trong mạch điện -> Phân tích mối liên hệ của các thành phần của mạch điện -> vẽ sơ đồ mạch điện
 Các thông số kĩ thuật ghi trên aptomat có trong hình bên bao gồm: ⤢ Phóng to ảnh [hình:18e4clb] ||| Điện áp định mức 240V/415V, dòng điện định mức 100A, dòng cắt ngắn mạch 10kA
 Có bao nhiêu cách để nối tài ba pha trong mạch điện xoay chiều ba pha ||| 2 cách
 Cấu trúc gồm các thành phần tủ đóng cắt và đo lường, tủ điện tổng, tủ điện nhánh, tải điện là của hệ thống điện: ||| Trong gia đình
 Dòng điện xoay chiều một pha là dòng điện biến thiên tuần hoàn theo dạng hình ||| Sin
 Hình bên dưới mô tả cách nối nguồn và nối tải ba pha theo kiểu ⤢ Phóng to ảnh ||| Nguồn nối hình sao, tải nối hình tam giác
+Hình bên dưới mô tả cách nối nguồn và nối tải ba pha theo kiểu ⤢ Phóng to ảnh [hình:1igsw7p] ||| Nguồn nối hình sao, tải nối hình tam giác
 Hình bên dưới mô tả cách nối nguồn và nối tải ba theo kiểu: ⤢ Phóng to ảnh ||| Nguồn nối hình sao có dây trung tính, tải nối hình sao có dây trung tính
+Hình bên dưới mô tả cách nối nguồn và nối tải ba theo kiểu: ⤢ Phóng to ảnh [hình:n7m23r] ||| Nguồn nối hình sao có dây trung tính, tải nối hình sao có dây trung tính
 Hình ảnh sau đây thể hiện phương pháp sản xuất điện nǎng bằng nǎng lượng nào bên dưới đây: ⤢ Phóng to ảnh ||| Gió
+Hình ảnh sau đây thể hiện phương pháp sản xuất điện nǎng bằng nǎng lượng nào bên dưới đây: ⤢ Phóng to ảnh [hình:ixre84] ||| Gió
 Hệ thống điện quốc gia gồm: ||| Nguồn điện, các lưới điện và các hộ tiêu thụ điện trên toàn quốc
 Khi máy phát điện xoay chiều ba pha hoạt động, sức điện động xuất hiện trên các pha sẽ lệch góc: ||| 2π/3
 Khả nǎng chịu dòng điện tối đa của tiếp điểm aptomat trong một khoảng thời gian nhất định của aptomat trong hình bên là: ⤢ Phóng to ảnh [hình:1gab7nq] ||| 6000 A
@@ -35,7 +39,9 @@ Nguồn điện ba pha đối xứng có điện áp dây 220 V, tải nối hì
 Những thiết bị điện có chức năng đóng- cắt mạch điện là: ||| Cầu dao điện, aptomat, công tắc điện
 Sau khi tính được tiết diện dây dẫn S = 1,6 𝑚 𝑚 2 mm 2 cho một đồ dùng điện trong gia đình nên chọn dây dẫn có tiết diện hợp lí nhất là: ||| 2,5 mm2\displaystyle mm^{2}mm2
 Sơ đồ cấu trúc mạng điện như hình bên dưới là sơ đồ thể hiện cấu trúc của ⤢ Phóng to ảnh ||| Mạng điện hạ áp dùng trong sinh hoạt
+Sơ đồ cấu trúc mạng điện như hình bên dưới là sơ đồ thể hiện cấu trúc của ⤢ Phóng to ảnh [hình:19ny3sw] ||| Mạng điện hạ áp dùng trong sinh hoạt
 Sơ đồ cấu trúc mạng điện như hình sau là sơ đồ thể hiện cấu trúc của: ⤢ Phóng to ảnh ||| Mạng điện sản xuất quy mô nhỏ
+Sơ đồ cấu trúc mạng điện như hình sau là sơ đồ thể hiện cấu trúc của: ⤢ Phóng to ảnh [hình:k5zh50] ||| Mạng điện sản xuất quy mô nhỏ
 Sơ đồ mạch điện trong hình bên thể hiện có: ⤢ Phóng to ảnh [hình:kc3men] ||| 2 cầu chì, 2 công tắc, 2 bóng đèn
 Sơ đồ mạch điện trong hình bên thể hiện: ⤢ Phóng to ảnh [hình:1ptu15s] ||| 2 cầu chì, 2 công tắc, 1 ổ cắm, 2 bóng đèn
 Sơ đồ trong hình bên thể hiện cấu trúc chung của hệ thống điện: ⤢ Phóng to ảnh [hình:1vmsgzm] ||| Trong gia đình
@@ -88,8 +94,11 @@ Trong mạng điện sản xuất quy mô nhỏ, thiết bị có vai trò nhậ
 Trong mạng điện sản xuất quy mô nhỏ, trạm biến áp có vai trò biến đổi từ lưới điện phân phối xuống điện áp: ||| Hạ áp
 Trong sinh hoạt, tải tiêu thụ của mạng điện thường là tải: ||| Một pha
 Trong sơ đồ mạng điện hạ áp dùng sinh hoạt, kí hiệu ở vị trí số (2) trong hình bên dưới là: ⤢ Phóng to ảnh ||| Tủ điện phân phối tổng
+Trong sơ đồ mạng điện hạ áp dùng sinh hoạt, kí hiệu ở vị trí số (2) trong hình bên dưới là: ⤢ Phóng to ảnh [hình:1yg3uoe] ||| Tủ điện phân phối tổng
 Trong sơ đồ mạng điện hạ áp dùng trong sinh hoạt như hình qua trạm biến áp, điện áp được hạ xuống để cung cấp tới tủ điện phân phối tổng có giá trị ⤢ Phóng to ảnh ||| 0.4 kV
+Trong sơ đồ mạng điện hạ áp dùng trong sinh hoạt như hình qua trạm biến áp, điện áp được hạ xuống để cung cấp tới tủ điện phân phối tổng có giá trị ⤢ Phóng to ảnh [hình:19ny3sw] ||| 0.4 kV
 Trong sơ đồ mạng điện hạ áp dùng trong sinh hoạt, kí hiệu như hình bên dưới là ⤢ Phóng to ảnh ||| Trạm biến áp
+Trong sơ đồ mạng điện hạ áp dùng trong sinh hoạt, kí hiệu như hình bên dưới là ⤢ Phóng to ảnh [hình:7t0ac4] ||| Trạm biến áp
 Trong sản xuất điện năng, nhóm phương pháp tạo ra điện nǎng từ nguồn năng lượng tái tạo là: ||| Thủy triều, điện gió và điện mặt trời
 Trong tủ điện phân phối tổng của mạng điện sản xuất quy mô nhỏ, để bảo vệ mạng điện khi xảy ra quá tải, ngắn mạch thường sử dụng thiết bị bảo vệ là: ||| Aptomat
 Trong tủ điện động lực của mạng điện sản xuất quy mô nhỏ, để bảo vệ mạng điện khi xảy ra quá tải, ngắn mạch thường sử dụng thiết bị bảo vệ là: ||| Aptomat hoặc cầu dao điện
