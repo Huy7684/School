@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      6.3
+// @version      6.4
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -776,10 +776,13 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   function parseOpts(body) {
     const opts = {}, hits = [];
     let pos = 0;
-    for (const L of 'ABCDEF') {
-      const re = new RegExp('(^|\\s)' + L + '\\s*\\.\\s*', 'g');
-      re.lastIndex = pos;
-      const m = re.exec(body);
+    const ALL = 'ABCDEF';
+    const findLab = X => { const re = new RegExp('(^|\\s)' + X + '\\s*\\.\\s*', 'g'); re.lastIndex = pos; return re.exec(body); };
+    for (let i = 0; i < ALL.length; i++) {
+      const L = ALL[i];
+      let m = findLab(L);
+      // đề gõ nhầm nhãn (vd 2 phương án cùng ghi "C."): nhãn lặp lại thì tính theo thứ tự, khỏi nuốt phương án sau vào đáp án
+      if (!m && i >= 1 && i < 4) m = findLab(ALL[i - 1]);
       if (!m) break;
       hits.push({ L, start: m.index + m[1].length, end: m.index + m[0].length });
       pos = m.index + m[0].length;
@@ -799,7 +802,8 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   function imgTok(im) {
     const r = im.getBoundingClientRect();
-    if (r.width < 20 || (r.height > 0 && r.height < 20)) return '';     // bỏ icon nhỏ; giữ ảnh chưa có chiều cao (cao 0)
+    if (!im.getClientRects().length) return '';                       // ảnh ẩn
+    if (im.complete && im.naturalWidth > 0 && (r.width < 20 || (r.height > 0 && r.height < 20))) return '';   // chỉ bỏ icon nhỏ đã tải xong; ảnh chưa tải vẫn giữ token (khoá theo tên file) để câu không đổi khoá theo tốc độ tải     // bỏ icon nhỏ; giữ ảnh chưa có chiều cao (cao 0)
     const k = imgKey(im);
     return k ? '⟦img:' + k + '⟧' : '';
   }
@@ -1028,6 +1032,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const all = pageEls();
     const pageQ = new Set();
     all.forEach(a => { const m = a.t.match(/^Câu\s*(\d+)$/i); if (m) pageQ.add(m[1]); });
+    if (!pageQ.size && clickedQ.size) { clickedQ = new Set(); clearHl(); }   // trang không còn thẻ câu (đang tải / sang màn kết quả): lần làm lại sau phải được chọn lại từ đầu
     if (!recs.length) return { found: 0, done: 0, page: pageQ.size, bankN: 0 };
     const active = cfg.run && cfg.select;
     if (active) clearHl();
