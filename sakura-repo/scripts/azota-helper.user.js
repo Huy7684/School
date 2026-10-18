@@ -774,23 +774,24 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   // Đọc phương án theo thứ tự A, B, C, D... kể cả khi cả 4 phương án nằm cùng 1 dòng.
   // Không dùng regex lookbehind (iPhone / Safari cũ không hỗ trợ): bắt khoảng trắng đứng trước rồi trừ ra.
   function parseOpts(body) {
-    const opts = {}, hits = [];
-    let pos = 0;
-    const ALL = 'ABCDEF';
-    const findLab = X => { const re = new RegExp('(^|\\s)' + X + '\\s*\\.\\s*', 'g'); re.lastIndex = pos; return re.exec(body); };
-    for (let i = 0; i < ALL.length; i++) {
-      const L = ALL[i];
-      let m = findLab(L);
-      // đề gõ nhầm nhãn (vd 2 phương án cùng ghi "C."): nhãn lặp lại thì tính theo thứ tự, khỏi nuốt phương án sau vào đáp án
-      if (!m && i >= 1 && i < 4) m = findLab(ALL[i - 1]);
-      if (!m) break;
+    // Azota có thể đảo vị trí phương án (trang hiện A, C, B, D) nên đọc theo CHỮ CÁI của nhãn, không theo thứ tự xuất hiện.
+    const opts = {}, hits = [], seen = {};
+    const re = /(^|\s)([A-F])\s*\.\s*/g;
+    for (let m; (m = re.exec(body));) {
+      let L = m[2];
+      if (seen[L]) {
+        // đề gõ nhầm nhãn (2 phương án liền nhau cùng "C."): gán cho chữ còn thiếu duy nhất trong A-D
+        const miss = [...'ABCD'].filter(x => !seen[x]);
+        if (hits.length && hits[hits.length - 1].L === L && miss.length === 1) L = miss[0]; else continue;
+      }
+      seen[L] = 1;
       hits.push({ L, start: m.index + m[1].length, end: m.index + m[0].length });
-      pos = m.index + m[0].length;
     }
     hits.forEach((h, i) => { const t = flat(body.slice(h.end, i + 1 < hits.length ? hits[i + 1].start : body.length)); if (t) opts[h.L] = t; });
     return opts;
   }
-  const A_START = /(^|\s)A\s*\.\s*\S/;
+  const optAt = tx => { let best = -1; for (const L of 'ABCD') { const m = new RegExp('(^|\\s)' + L + '\\s*\\.\\s*\\S').exec(tx); if (m && (best < 0 || m.index < best)) best = m.index; } return best; };
+  const A_START = { test: tx => optAt(tx) >= 0, [Symbol.search]: tx => optAt(tx) };
   // Phương án / câu hỏi là ẢNH: dùng tên file ảnh làm "chữ" định danh, dạng ⟦img:ten-file.png⟧
   const hashStr = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36); };
   function imgKey(im) {
