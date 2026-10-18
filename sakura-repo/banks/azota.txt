@@ -32,6 +32,13 @@
 (H) Tiện ích Optimize (Defragment) trên ổ đĩa cứng được dùng chủ yếu để làm gì? ||| Hợp nhất các liên cung của tệp để tăng tốc truy cập.
 (H) Vai trò đúng của hệ điều hành trong quan hệ với phần cứng và phần mềm ứng dụng là gì? ||| Là môi trường trung gian để phần mềm ứng dụng khai thác phần cứng.
 (H) Đặc điểm nào thể hiện rõ tính thân thiện của hệ điều hành máy tính cá nhân? ||| Giao diện đồ hoạ trực quan và cơ chế cắm vào là chạy.
+[ĐS] (biết) Phản ứng giữa carboxylic acid và alcohol tạo thành ester được gọi là phản ứng ester hoá. ||| Đúng
+[ĐS] (hiểu) Các hợp chất hữu cơ trong phân tử có nhóm ⟦img:9accc6642327a2b5477e4f41191ab38e.png⟧ đều thuộc loại ester. Giải thích ||| Sai
+[ĐS] (hiểu) Khi thủy phân (X) trong môi trường acid thu được sản phẩm có chứa acid béo omega-6 và omega-9. ||| Sai
+[ĐS] (hiểu) Ở 25°C, độ tan trong nước của ba ester HCOOC 2 H 5 , CH 3 COOC 2 H 5 và C 2 H 5 COOC 2 H 5 theo thứ tự sau: HCOOC 2 H 5 > CH 3 COOC 2 H 5 > C 2 H 5 COOC 2 H 5 . ||| Đúng
+[ĐS] (vận dụng) Thành phần của ester no, đơn chức, mạch hở luôn có tỉ lệ số nguyên tử H và C tương ứng là 2 : 1. ||| Đúng
+[ĐS] (vận dụng) Thể tích khí hydrogen (ở đkc) cần dùng để chuyển hóa 128,1 g (X) thành bơ nhân tạo là 20,8236 L, biết hiệu suất của quá trình chuyển hóa đạt 80%. ||| Sai
+[ĐS] (X) thuộc loại chất béo lỏng vì trong thành phần có các acid béo không no chiếm ưu thế. ||| Đúng
 [ĐS] , ||| Đúng
 [ĐS] AI có thể cá nhân hoá việc học tập cho mỗi học sinh. ||| Đúng
 [ĐS] AI có thể cá nhân hóa về học tập cho mỗi học sinh. ||| Đúng
@@ -53,6 +60,8 @@
 [ĐS] AlphaGo là một ví dụ của AI mạnh vì nó có khả năng đánh bại nhà vô địch cờ vây mà không cần sự trợ giúp từ con người. ||| Sai
 [ĐS] Con người có thể bị mất việc làm bởi AI. ||| Đúng
 [ĐS] Cách thức đánh cờ của con người và máy tính là giống nhau. ||| Sai
+[ĐS] Dạng α-glucose và β-glucose khác nhau vị trí trong không gian của nhóm –OH hemiacetal. ||| Đúng
+[ĐS] Dạng α-glucose và β-glucose đều phản ứng trực tiếp với thuốc thử Tollens. Giải thích ||| Sai
 [ĐS] Gmail là 1 dịch vụ thư điện tử miễn phí do Google phát triển. ||| Đúng
 [ĐS] Gmail là một dịch vụ thư điện tử miễn phí do Google phát triển. ||| Đúng
 [ĐS] Google có thể hỗ trợ bác sĩ tầm soát và phát hiện bệnh võng mạc tiểu đường thông qua camera điện thoại. ||| Đúng
@@ -60,6 +69,9 @@
 [ĐS] Học máy là lĩnh vực nghiên cứu làm cho máy tính có khả năng học từ dữ liệu. ||| Đúng
 [ĐS] Hỗ trợ bác sĩ thực hiện các thủ thuật y tế phức tạp. ||| Đúng
 [ĐS] Hỗ trợ giao tiếp và thấu hiểu cảm xúc bệnh nhân. ||| Sai
+[ĐS] Khi phản ứng với CH 3 OH (dư) trong HCl thì cả 5 nhóm –OH của glucose đều bị ether hóa. ||| Sai
+[ĐS] Khi phản ứng với Cu(OH) 2 /NaOH ở nhiệt độ thường và Cu(OH) 2 /NaOH đun nóng thì glucose đều bị oxi hoá. ||| Sai
+[ĐS] Khi để lâu ngoài không khí, (X) bị khử chậm bởi oxygen tạo thành hợp chất có mùi khó chịu. Giải thích ||| Sai
 [ĐS] Không thể sử dụng ai để giả mạo giọng nói khuôn mặt. ||| Sai
 [ĐS] Không thể sử dụng AI để giả mạo giọng nói, khuôn mặt. ||| Sai
 [ĐS] MYCIN là một ví dụ của AI mạnh vì nó có khả năng chẩn đoán bệnh mà không cần sự hỗ trợ từ con người. ||| Sai
@@ -85,10 +97,26 @@ AI giúp phát triển hệ thống điều khiển tự động trong công xư
 AI là gì? ||| Khả năng của máy tính có thể làm những công việc mang tính trí tuệ của con người.
 AI trong tài chính ngân hàng giúp gì? ||| Phân tích hành vi để dự đoán và phát hiện gian lận.
 AI tạo sinh là gì? ||| AI có khả năng tạo ra nội dung từ dữ liệu đã có.
+Biết Chất nào sau đây thuộc loại polysaccharide? ||| cellulose.
 Biểu nào dưới đây phù hợp nhất khi nói về khả năng của Trí tuệ nhân tạo hẹp? ||| Giải quyết nhiệm vụ cụ thể theo những gì đã được học.
 Bộ giao tiếp mạng (NIC) có chức năng gì? ||| Truyền và nhận dữ liệu qua cáp mạng hoặc sóng vô tuyến
 Bộ nhớ chính (bộ nhớ trong - memory) bao gồm: ||| ROM và RAM
+Carbohydrate (X) có công thức cấu tạo dưới đây: ⟦img:c8a0e6e536775c01105d2e0a93c72d51.png⟧ Nhận định nào sau đây là đúng khi nói về (X)? ||| (X) còn được gọi là đường mạch nha được sản xuất từ ngũ cốc.
+Carbohydrate là gì? ||| Carbohydrate là những hợp chất hữu cơ tạp chức và đa số chúng có công thức chung là Cn(H2O)m.
+Cellulose thuộc loại polysaccharide, là thành phần chính tạo nên màng tế bào thực vật, có nhiều trong gỗ, bông gòn. Công thức của cellulose là ||| (C6H10O5)n.
+Cho các chất: triolein, cellulose, saccharose, tinh bột. Số chất bị thuỷ phân trong môi trường acid là ||| 4.
+Cho các phát biểu sau: (a) Chất béo được gọi chung là triglyceride. (b) Chất béo nhẹ hơn nước, không tan trong nước nhưng tan nhiều trong dung môi hữu cơ. (c) Phản ứng thủy phân chất béo trong môi trường acid là phản ứng thuận nghịch. (d) Ở nhiệt độ thường, chất béo chứa nhiều gốc acid béo không no thường ở thể rắn. Số phát biểu đúng là ||| 3.
+Cho dãy các chất: ethanol, acetic acid, methyl fomate, propionic acid. Chất nào có nhiệt độ sôi thấp nhất? ||| methyl fomate.
 Chuẩn kết nối nào dưới đây thường được sử dụng để kết nối các thiết bị âm nhạc với điện thoại di động? ||| Bluetooth.
+Chất béo là triester của acid béo với ||| glycerol.
+Chất giặt rửa tổng hợp sodium laurysulfate có công thức cấu tạo như sau: ⟦img:a19ab61e0671690273528f6ba58f7fa6.png⟧ Nhóm được khoanh tròn trong công thức trên là ||| đầu ưa nước.
+Chất nào sau đây có phản ứng tráng bạc? ||| Glucose.
+Chất nào sau đây là ester? ||| CH3COOC2H5
+Chất nào sau đây là thành phần chính của chất giặt rửa tổng hợp? ||| CH3[CH2]11C6H4SO3Na.
+Chất nào sau đây là thành phần chủ yếu của xà phòng? ||| CH3[CH2]16COONa.
+Chất nào sau đây thuộc loại ester? ||| CH3COOCH3.
+Chất nào sau đây thuộc loại monosaccharide? ||| Fructose.
+Chất X được tạo thành trong cây xanh nhờ quá trình quang hợp. Thủy phân hoàn toàn X (xúc tác acid) thu được chất Y. Hai chất X và Y lần lượt là ||| Tinh bột và glucose.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Chuẩn kết nối nào dưới đây thường được sử dụng để kết nối các thiết bị âm nhạc với điện thoại di động? ||| Bluetooth.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên Internet.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lí ảo? ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
@@ -98,29 +126,43 @@ Các bộ phận chính trong cấu trúc chung của máy tính bao gồm: ||| 
 Các lệnh và dữ liệu trong khi các chương trình đang thực hiện được lưu trên thiết bị: ||| RAM
 Các trợ lý ảo như Google Assistant, Siri có thể làm gì? ||| Giao tiếp với người dùng bằng văn bản hoặc tiếng nói.
 Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên internet.
+Công thức của ester tạo bởi acid no, đơn chức mạch hở và alcohol no đơn chức mạch hở là ||| CnH2nO2 (n ≥ 2).
+Công thức của ethyl acetate là ||| CH3COOC2H5.
+Cặp chất nào sau đây có thể phân biệt bằng thuốc thử Tollens? ||| Saccharose và glucose.
 DeepMind của Google trong y tế và chăm sóc sức khỏe có thể làm gì? ||| Chẩn đoán bệnh và lập phác đồ điều trị.
+Dung dịch chất nào sau đây hòa tan Cu(OH)2, thu được dung dịch có màu xanh lam? ||| Saccharose.
+Ester nào sau đây tác dụng với NaOH thu được ethyl alcohol? ||| CH3COOC2H5.
+Ester X được tạo bởi methyl alcohol và acetic acid. Công thức của X là ||| CH3COOCH3.
+Ester được tạo thành từ phản ứng ester hoá giữa CH3COOH và C2H5OH có công thức nào sau đây? ||| CH3COOC2H5.
+Ethyl propionate là ester có mùi thơm của dứa. Công thức của ethyl propionate là ||| C2H5COOC2H5.
 Free soflware còn được gọi là: ||| Phần mềm tự do
 Giao thức FTP được sử dụng để làm gì? ||| Truyền tải các tệp giữa các máy tính
 Giao thức HTTP được sử dụng cho mục đích gì? ||| Truyền tải các trang web
 Giao thức nào sau đây không thuộc bộ giao thức TCP/IP? ||| SMTP
 Giao thức TCP đảm bảo điều gì trong quá trình truyền dữ liệu? ||| Truyền dữ liệu đáng tin cậy và đúng thứ tự
+Glucide (carbohydrate) là những hợp chất hữu cơ tạp chức có công thức chung là ||| Cn(H2O)m.
 Hành vi nào sau đây KHÔNG phải là lạm dụng dữ liệu cá nhân bởi mô hình AI? ||| Phân tích dữ liệu y tế cá nhân để đưa ra chẩn đoán bệnh.
 Hệ thống tên miền (DNS) phân tên miền thành các cấp theo thứ tự nào? ||| Cấp cao nhất, cấp hai, cấp ba
 Khái niệm "AI mạnh" là gì? ||| AI có thể giải quyết bất kỳ loại vấn đề phức tạp nào như con người.
 Khả năng nào sau đây ít phổ biến trong các hệ thống AI? ||| Khả năng tự phục hồi sau khi hỏng.
+Kết quả thí nghiệm của các dung dịch X, Y, Z với thuốc thử được ghi ở bảng sau: Mẫu thử Thuốc thử Hiện tượng X Dung dịch I2 Có màu xanh tím Y Cu(OH)2 Có màu xanh lam Z Dung dịch AgNO3 trong NH3 Tạo kết tủa Ag Các dung dịch X, Y, Z lần lượt là ||| Hồ tinh bột, saccharose, glucose.
 License còn có nghĩa là: ||| Giấy phép
+Maltose là một loại disaccharide có nhiều trong mạch nha. Công thức phân tử của maltose là ||| C12H22O11.
 Mạch logic thực hiện phép toán logic AND có kí hiệu là : ||| ⟦img:2d3321ad2cdffb06813bc6e0bc37cc42.png⟧
 Mạch logic thực hiện phép toán logic OR có kí hiệu là : ||| ⟦img:f98547968c68e54a1344694fe92283dc.png⟧
 Mạch logic thực hiện phép toán logic phủ định logic NOT có kí hiệu là : ||| ⟦img:a0d896090598d2ba372efafa597c1291.png⟧
 Mạch logic thực hiện phép toán logic XOR có kí hiệu là : ||| ⟦img:d600c448f2c7e39a01fb5df1a7b3a36c.png⟧
 Mạng máy tính là gì? ||| Một hệ thống các thiết bị số được kết nối với nhau để truyền dữ liệu và trao đổi thông tin.
 Mạng WLAN còn được gọi là gì? ||| Mạng cục bộ không dây
+Mỗi đơn vị glucose trong cellulose liên kết với nhau bởi liên kết ||| β-1,4-glycoside.
 Mục đích của hệ thống tên miền DNS là gì? ||| Để định danh các máy tính trong mạng bằng những chữ gợi nhớ
 Người máy Grace được coi là một ví dụ về gì? ||| Cobot
 Người máy Xoxe có khả năng gì? ||| Giao tiếp với con người bằng hơn 120 thứ tiếng khác nhau.
+Nhận xét nào sau đây không đúng về xà phòng? ||| Nước quả bồ kết, bồ hòn không có tác dụng giặt rửa giống xà phòng.
 Nhận định nào sau đây là SAI khi nói về sự ảnh hưởng của AI trong tương lai? ||| AI sẽ luôn an toàn và có lợi cho con người.
 Phát biểu nào dưới đây là thách thức lớn nhất liên quan đến việc sử dụng AI? ||| Thiếu quy định và luật lệ về việc sử dụng ai trong xã hội ngày nay.
 Phát biểu nào dưới đây phù hợp nhất khi nói về khả năng của Trí tuệ nhân tạo hẹp? ||| Giải quyết nhiệm vụ cụ thể theo những gì đã được học.
+Phát biểu nào sau đây không đúng? ||| Tinh bột tan tốt trong nước lạnh.
 Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lí ảo? ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
 Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lý ảo. ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
 Phương thức nào sau đây KHÔNG dùng để kết nối máy tính với điện thoại di động? ||| Cáp VGA.
@@ -134,6 +176,7 @@ Phương án nào dưới đây nêu đúng về khả năng suy luận của AI
 Phương án nào sau đây nêu đúng về Trí tuệ nhân tạo (AI)? ||| Một lĩnh vực khoa học và kĩ thuật nhằm chế tạo các máy móc thông minh.
 Phương án nào sau đây nêu đúng về trí tuệ nhân tạo? ||| Một lĩnh vực khoa học và kỹ thuật nhằm chế tạo các máy móc thông minh.
 Phương án nào sau đây đúng khi nói về tác động của AI đối với việc làm của con người? ||| AI tạo ra những việc làm mới và thay thế một số công việc hiện có.
+Phản ứng điều chế xà phòng từ chất béo được gọi là phản ứng ||| xà phòng hóa.
 Phần mềm cho phép người dùng sử dụng qua Internet mà không cần phải cài đặt vào máy tính, còn được gọi với tên là gì? ||| Phần mềm trực tuyến
 Phần mềm nào dưới đây là trợ lí ảo của công ty Amazon? ||| Alexa.
 Phần mềm nào dưới đây là trợ lí ảo của công ty Apple? ||| Siri.
@@ -143,7 +186,10 @@ Phần mềm nào dưới đây là trợ lý ảo của công ty Apple? ||| Sir
 Phần mềm nào dưới đây là trợ lý ảo của công ty SamSung? ||| Bixby.
 Phần mềm nào sau đây không phải là phần mềm mã nguồn mở ||| Microsoft Word 2019
 ROM (Read Only Memory) là bộ nhớ dùng để: ||| Lưu các dữ liệu hệ thống cố định và các chương trình kiểm tra hay khởi động máy tính
+Sodium dodecylbenzenesulfonate (SDBS), hay còn gọi là dodecylbenzene sulfonic acid, sodium salt hoặc linear alkylbenzene sulfonate (LAS), là một loại chất hoạt động bề mặt đa năng có nhiều ứng dụng trong chất tẩy rửa, sản phẩm làm sạch và nhiều quy trình công nghiệp khác nhau. ⟦img:e649c0f887377a3cc4de1b22f57fab21.png⟧ (a) Công thức của sodium dodecylbenzenesulfonate là C 12 H 25 C 6 H 4 SO 3 Na. (b) Đầu ưa nước của sodium dodecylbenzenesulfonate là Na + . (c) Sodium dodecylbenzenesulfonate là chất tẩy rửa vì có tính oxi hóa mạnh. (d) Sodium dodecylbenzenesulfonate không thể dùng trong nước có hàm lượng Ca(HCO 3 ) 2 cao vì tạo kết tủa với Ca 2+ tương tự như sodium oleate. Số phát biểu đúng là ||| 1.
+Sản phẩm trung gian nào sau đây không thể có trong quá trình thủy phân tinh bột? ||| Saccharose.
 Theo em phần mềm thương mại gồm: ||| Phần mềm đặt hàng và phần mềm đóng gói
+Theo nguồn gốc, chất giặt rửa được chia thành hai loại: chất giặt rửa tự nhiên và chất giặt rửa tổng hợp. Phát biểu nào sau đây là không đúng? ||| Chất giặt rửa tổng hợp dễ bị phân huỷ sinh học bởi các vi sinh vật hơn xà phòng.
 Thiết bị nào dùng để kết nối mạng không dây cho các thiết bị trong một mạng cục bộ? ||| Access Point
 Thiết bị nào dưới đây dùng để kết nối các thiết bị sử dụng Internet tới nhà cung cấp dịch vụ Internet? ||| Modem
 Thiết bị nào dưới đây không phải là thiết bị đầu cuối? ||| Access Point
@@ -151,16 +197,27 @@ Thiết bị nào sau đây KHÔNG có khả năng kết nối với máy tính?
 Thiết bị nào sau đây KHÔNG sử dụng trí tuệ nhân tạo để điều khiển tự động? ||| Ấm điện siêu tốc tự động ngắt.
 Thiết bị nào sau đây thường có chức năng phát sóng Wi-Fi và kết nối có dây? ||| Access Point
 Thuật ngữ "AI" bắt đầu được sử dụng vào năm nào? ||| 1956
+Thành phần của xà phòng bao gồm muối của acid béo với kim loại X và các chất phụ gia. Kim loại X có thể là ||| sodium hoặc potassium.
 Thị giác máy tính là gì? ||| Lĩnh vực nghiên cứu xử lý hình ảnh kỹ thuật số.
+Tiến hành thí nghiệm điều chế ethyl acetate theo các bước sau đây: Bước 1: Cho 1 mL C2H5OH, 1 mL CH3COOH và vài giọt dung dịch H2SO4 đặc vào ống nghiệm. Bước 2: Lắc đều ống nghiệm, đun cách thủy (trong nồi nước nóng) khoảng 5 - 6 phút ở 65 - 70oC. Bước 3: Làm lạnh, sau đó rót 2 mL dung dịch NaCl bão hòa vào ống nghiệm. Phát biểu nào sau đây là sai ? ||| Mục đích chính của việc thêm dung dịch NaCl bão hòa là để tránh phân hủy sản phẩm.
+Trong các hợp chất cho dưới đây, hợp chất nào chứa đơn vị fructose trong phân tử? ||| Saccharose.
+Trong công nghiệp sản xuất đường saccharose, người ta đã sử dụng phương pháp nào để tách saccharose ra khỏi dung dịch nước mía? ||| Kết tinh.
+Trong công nghiệp thực phẩm, saccharose được sử dụng phổ biến làm nguyên liệu để sản xuất bánh kẹo, nước giải khát,... Phát biểu nào sau đây là sai? ||| Thuỷ phân saccharose chỉ thu được glucose.
 Trong mạng LAN, thiết bị nào được sử dụng để kết nối và chuyển tiếp dữ liệu giữa các thiết bị? ||| Switch
 Trong những tính năng sau tính năng nào KHÔNG phải là của Trợ lý ảo. ||| Tự động cải thiện hiệu suất máy tính.
 Trong những tính năng sau, tính năng nào KHÔNG phải là của Trợ lí ảo? ||| Tự động cải thiện hiệu suất máy tính.
+Trong thành phần của quả bông có 90% cellulose về khối lượng. Trong phân tử cellulose các đơn vị β-glucose liên kết với nhau qua liên kết nào sau đây? ||| liên kết β-1,4-glycoside.
+Trong điều kiện thích hợp glucose lên men tạo thành khí CO2 và ||| C2H5OH.
 Trí tuệ nhân tạo còn nhiều hạn chế ở khả năng nào sau đây? ||| Cảm nhận cảm xúc.
 Trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh bằng cách nào sau đây? ||| Nhận diện các bệnh lí qua hình ảnh y khoa.
 Vai trò chính của Router là gì? ||| Kết nối các mạng LAN với nhau và chuyển tiếp dữ liệu giữa chúng
 Ví dụ nào sau đây là một ứng dụng của AI yếu? ||| MYCIN – hệ chuyên gia trong lĩnh vực y tế.
+Xà phòng là muối sodium hoặc potassium của ||| acid béo.
 Youtube được trang bị hệ thống trí tuệ nhân tạo để gợi ý cho người dùng. Hãy cho biết hệ thống này làm nhiệm vụ gì dưới đây? ||| Đề xuất các video dựa trên sở thích của người dùng.
 Điểm nào sau đây là sai khi nói về giao thức TCP? ||| Không có cơ chế kiểm tra lỗi
+Đun nóng tinh bột trong dung dịch acid vô cơ loãng sẽ thu được ||| glucose.
+Để loại bỏ dầu mỡ khỏi quần áo, không thể dùng ||| nước cất.
+Để tráng một lớp bạc lên ruột phích, người ta cho chất X phản ứng với lượng dư dung dịch AgNO3 trong NH3, đun nóng. Chất X là ||| glucose.
 Địa chỉ IP là gì? ||| Địa chỉ số được gán cho mỗi thiết bị khi kết nối vào mạng
 Địa chỉ IPv4 được biểu diễn dưới dạng nào? ||| Một chuỗi số 32 bit được chia thành 4 cụm 8 bit
 Địa chỉ IPv6 có bao nhiêu bit? ||| 128 bit
