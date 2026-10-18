@@ -33,11 +33,16 @@
 (H) Vai trò đúng của hệ điều hành trong quan hệ với phần cứng và phần mềm ứng dụng là gì? ||| Là môi trường trung gian để phần mềm ứng dụng khai thác phần cứng.
 (H) Đặc điểm nào thể hiện rõ tính thân thiện của hệ điều hành máy tính cá nhân? ||| Giao diện đồ hoạ trực quan và cơ chế cắm vào là chạy.
 [ĐS] (biết) Phản ứng giữa carboxylic acid và alcohol tạo thành ester được gọi là phản ứng ester hoá. ||| Đúng
+[ĐS] (hiểu) Các hợp chất hữu cơ trong phân tử có nhóm đều thuộc loại ester. ||| Sai
+[ĐS] (hiểu) Các hợp chất hữu cơ trong phân tử có nhóm ⟦img:9accc6642327a2b5477e4f41191ab38e.png⟧ đều thuộc loại ester. ||| Sai
 [ĐS] (hiểu) Các hợp chất hữu cơ trong phân tử có nhóm ⟦img:9accc6642327a2b5477e4f41191ab38e.png⟧ đều thuộc loại ester. Giải thích ||| Sai
 [ĐS] (hiểu) Khi thủy phân (X) trong môi trường acid thu được sản phẩm có chứa acid béo omega-6 và omega-9. ||| Sai
 [ĐS] (hiểu) Ở 25°C, độ tan trong nước của ba ester HCOOC 2 H 5 , CH 3 COOC 2 H 5 và C 2 H 5 COOC 2 H 5 theo thứ tự sau: HCOOC 2 H 5 > CH 3 COOC 2 H 5 > C 2 H 5 COOC 2 H 5 . ||| Đúng
+[ĐS] (hiểu) Ở 25°C, độ tan trong nước của ba ester HCOOC2H5, CH3COOC2H5 và C2H5COOC2H5 theo thứ tự sau: HCOOC2H5 > CH3COOC2H5 > C2H5COOC2H5. ||| Đúng
 [ĐS] (vận dụng) Thành phần của ester no, đơn chức, mạch hở luôn có tỉ lệ số nguyên tử H và C tương ứng là 2 : 1. ||| Đúng
+[ĐS] (vận dụng) Thành phần của ester no, đơn chức, mạch hở luôn có tỉ lệ số nguyên tử H và C tương ứng là 2 : 1. Giải thích ||| Đúng
 [ĐS] (vận dụng) Thể tích khí hydrogen (ở đkc) cần dùng để chuyển hóa 128,1 g (X) thành bơ nhân tạo là 20,8236 L, biết hiệu suất của quá trình chuyển hóa đạt 80%. ||| Sai
+[ĐS] (vận dụng) Thể tích khí hydrogen (ở đkc) cần dùng để chuyển hóa 128,1 g (X) thành bơ nhân tạo là 20,8236 L, biết hiệu suất của quá trình chuyển hóa đạt 80%. Giải thích ||| Sai
 [ĐS] (X) thuộc loại chất béo lỏng vì trong thành phần có các acid béo không no chiếm ưu thế. ||| Đúng
 [ĐS] , ||| Đúng
 [ĐS] AI có thể cá nhân hoá việc học tập cho mỗi học sinh. ||| Đúng
@@ -61,6 +66,8 @@
 [ĐS] Con người có thể bị mất việc làm bởi AI. ||| Đúng
 [ĐS] Cách thức đánh cờ của con người và máy tính là giống nhau. ||| Sai
 [ĐS] Dạng α-glucose và β-glucose khác nhau vị trí trong không gian của nhóm –OH hemiacetal. ||| Đúng
+[ĐS] Dạng α-glucose và β-glucose khác nhau vị trí trong không gian của nhóm –OH hemiacetal. Giải thích ||| Đúng
+[ĐS] Dạng α-glucose và β-glucose đều phản ứng trực tiếp với thuốc thử Tollens. ||| Sai
 [ĐS] Dạng α-glucose và β-glucose đều phản ứng trực tiếp với thuốc thử Tollens. Giải thích ||| Sai
 [ĐS] Gmail là 1 dịch vụ thư điện tử miễn phí do Google phát triển. ||| Đúng
 [ĐS] Gmail là một dịch vụ thư điện tử miễn phí do Google phát triển. ||| Đúng
@@ -70,7 +77,10 @@
 [ĐS] Hỗ trợ bác sĩ thực hiện các thủ thuật y tế phức tạp. ||| Đúng
 [ĐS] Hỗ trợ giao tiếp và thấu hiểu cảm xúc bệnh nhân. ||| Sai
 [ĐS] Khi phản ứng với CH 3 OH (dư) trong HCl thì cả 5 nhóm –OH của glucose đều bị ether hóa. ||| Sai
+[ĐS] Khi phản ứng với CH3OH (dư) trong HCl thì cả 5 nhóm –OH của glucose đều bị ether hóa. ||| Sai
 [ĐS] Khi phản ứng với Cu(OH) 2 /NaOH ở nhiệt độ thường và Cu(OH) 2 /NaOH đun nóng thì glucose đều bị oxi hoá. ||| Sai
+[ĐS] Khi phản ứng với Cu(OH)2/NaOH ở nhiệt độ thường và Cu(OH)2/NaOH đun nóng thì glucose đều bị oxi hoá. ||| Sai
+[ĐS] Khi để lâu ngoài không khí, (X) bị khử chậm bởi oxygen tạo thành hợp chất có mùi khó chịu. ||| Sai
 [ĐS] Khi để lâu ngoài không khí, (X) bị khử chậm bởi oxygen tạo thành hợp chất có mùi khó chịu. Giải thích ||| Sai
 [ĐS] Không thể sử dụng ai để giả mạo giọng nói khuôn mặt. ||| Sai
 [ĐS] Không thể sử dụng AI để giả mạo giọng nói, khuôn mặt. ||| Sai
@@ -186,6 +196,7 @@ Phần mềm nào dưới đây là trợ lý ảo của công ty Apple? ||| Sir
 Phần mềm nào dưới đây là trợ lý ảo của công ty SamSung? ||| Bixby.
 Phần mềm nào sau đây không phải là phần mềm mã nguồn mở ||| Microsoft Word 2019
 ROM (Read Only Memory) là bộ nhớ dùng để: ||| Lưu các dữ liệu hệ thống cố định và các chương trình kiểm tra hay khởi động máy tính
+Sodium dodecylbenzenesulfonate (SDBS), hay còn gọi là dodecylbenzene sulfonic acid, sodium salt hoặc linear alkylbenzene sulfonate (LAS), là một loại chất hoạt động bề mặt đa năng có nhiều ứng dụng trong chất tẩy rửa, sản phẩm làm sạch và nhiều quy trình công nghiệp khác nhau. (a) Công thức của sodium dodecylbenzenesulfonate là C12H25C6H4SO3Na. (b) Đầu ưa nước của sodium dodecylbenzenesulfonate là Na+. (c) Sodium dodecylbenzenesulfonate là chất tẩy rửa vì có tính oxi hóa mạnh. (d) Sodium dodecylbenzenesulfonate không thể dùng trong nước có hàm lượng Ca(HCO3)2 cao vì tạo kết tủa với Ca2+ tương tự như sodium oleate. Số phát biểu đúng là ||| 1.
 Sodium dodecylbenzenesulfonate (SDBS), hay còn gọi là dodecylbenzene sulfonic acid, sodium salt hoặc linear alkylbenzene sulfonate (LAS), là một loại chất hoạt động bề mặt đa năng có nhiều ứng dụng trong chất tẩy rửa, sản phẩm làm sạch và nhiều quy trình công nghiệp khác nhau. ⟦img:e649c0f887377a3cc4de1b22f57fab21.png⟧ (a) Công thức của sodium dodecylbenzenesulfonate là C 12 H 25 C 6 H 4 SO 3 Na. (b) Đầu ưa nước của sodium dodecylbenzenesulfonate là Na + . (c) Sodium dodecylbenzenesulfonate là chất tẩy rửa vì có tính oxi hóa mạnh. (d) Sodium dodecylbenzenesulfonate không thể dùng trong nước có hàm lượng Ca(HCO 3 ) 2 cao vì tạo kết tủa với Ca 2+ tương tự như sodium oleate. Số phát biểu đúng là ||| 1.
 Sản phẩm trung gian nào sau đây không thể có trong quá trình thủy phân tinh bột? ||| Saccharose.
 Theo em phần mềm thương mại gồm: ||| Phần mềm đặt hàng và phần mềm đóng gói
