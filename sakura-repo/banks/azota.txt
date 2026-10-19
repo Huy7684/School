@@ -2,6 +2,7 @@
 "Turing Test" là gì? ||| Một bài kiểm tra trí tuệ của máy tính.
 (B) Bộ nhớ ngoài thường được dùng để làm gì? ||| Lưu dữ liệu lâu dài.
 (B) Bộ phận nào của CPU thực hiện các phép tính số học và logic? ||| ALU.
+(B) Các chú thích trong HTML sẽ bắt đầu bằng: ||| <!-- và kết thúc bằng -->
 (B) Cổng logic nào cho đầu ra bằng 1 khi và chỉ khi hai đầu vào khác nhau? ||| XOR.
 (B) Cổng nào truyền được đồng thời hình ảnh và âm thanh số chất lượng cao? ||| HDMI.
 (B) Giấy phép GNU GPL yêu cầu điều gì đối với phần mềm sửa đổi từ một phần mềm nguồn mở theo GPL? ||| Phải phát hành theo GPL và công bố phần mã nguồn thay đổi.
@@ -9,15 +10,21 @@
 (B) Khi đăng kí dịch vụ lưu trữ trực tuyến, người dùng thường được cấp gì? ||| Một ổ đĩa trực tuyến.
 (B) LINUX được phát triển dựa trên nguồn gốc từ hệ điều hành nào? ||| UNIX.
 (B) Loại phần mềm thương mại nào được thiết kế theo yêu cầu riêng của từng khách hàng? ||| Phần mềm đặt hàng.
+(B) Nhận định nào sau đây mô tả đúng về HTML? ||| Là bộ quy tắc dùng để trình bày cấu trúc, nội dung và hình thức trang web
 (B) Phiên bản Windows nào được sách nêu là bắt đầu tích hợp các tính năng cơ bản của hệ điều hành trực tiếp vào Windows? ||| Windows 95.
 (B) Phát biểu nào đúng về RAM? ||| RAM lưu tạm thời chương trình và dữ liệu đang sử dụng.
+(B) Phương án nào sau đây khai báo tạo đoạn văn bản trong HTML? ||| <p> Đoạn văn bản </p>
+(B) Phương án nào sau đây nêu đúng các thành phần của một phần tử (element) HTML? ||| Thẻ mở, thuộc tính, nội dung và thẻ đóng (nếu có).
 (B) Phần mềm thương mại là phần mềm như thế nào? ||| Được bán và người dùng phải mua quyền sử dụng.
 (B) Quyền chia sẻ nào cho phép người được chia sẻ xem, nhận xét và chỉnh sửa nội dung tệp? ||| Người chỉnh sửa.
 (B) Thao tác nào thường làm xuất hiện bảng chọn chứa các lệnh có thể thực hiện với một đối tượng? ||| Nháy nút phải chuột.
 (B) Thiết bị nào sau đây là thiết bị vào? ||| Bàn phím.
 (B) Thông số nào của chuột thể hiện số điểm riêng rẽ mà chuột xác định được khi di chuyển một inch? ||| dpi.
+(B) Thẻ nào sau đây dùng để mô tả các thông tin bổ sung như mã hoá và từ khoá? ||| <meta>
+(B) Trong HTML, dấu “/” trong thẻ có ý nghĩa gì? ||| Kết thúc thẻ
 (B) Trong Windows, tiện ích thường dùng để quản lí tệp và thư mục là gì? ||| File Explorer.
 (B) Trước khi hai thiết bị Bluetooth kết nối lần đầu, thường phải thực hiện bước nào? ||| Ghép đôi thiết bị.
+(B) Tên thẻ HTML có phân biệt chữ hoa và chữ thường không? ||| Không phân biệt
 (B) Đơn vị thường dùng để biểu thị tốc độ đồng hồ của CPU là gì? ||| GHz.
 (B) Đặc điểm cơ bản của phần mềm chạy trên Internet là gì? ||| Có thể sử dụng qua Internet mà không cần cài đặt vào máy.
 (B) Độ phân giải màn hình được biểu thị bằng gì? ||| Số điểm ảnh theo chiều ngang và chiều dọc.
@@ -30,8 +37,12 @@
 (H) Phần mềm nguồn mở khác phần mềm tự do ở điểm nổi bật nào? ||| Được cung cấp mã nguồn để người dùng có thể sửa đổi, cải tiến và phân phối theo giấy phép.
 (H) Tiện ích nào trên thiết bị di động phù hợp nhất để đặt lịch hẹn và nhắc việc? ||| Đồng hồ/Lịch.
 (H) Tiện ích Optimize (Defragment) trên ổ đĩa cứng được dùng chủ yếu để làm gì? ||| Hợp nhất các liên cung của tệp để tăng tốc truy cập.
+(H) Tệp “trangchu.html” có nội dung như sau: Nội dung nào sau đây được hiển thị trên thanh tiêu đề của cửa sổ trình duyệt web khi mở tệp bằng trình duyệt web Google Chrome? ||| Hiển thị “trangchu.html” trên thanh tiêu đề
+(H) Tệp “trangchu.html” có nội dung như sau: ⟦img:deaac41e75f87a3d1d1c52b79e634705.png⟧ Nội dung nào sau đây được hiển thị trên thanh tiêu đề của cửa sổ trình duyệt web khi mở tệp bằng trình duyệt web Google Chrome? ||| Hiển thị “trangchu.html” trên thanh tiêu đề
 (H) Vai trò đúng của hệ điều hành trong quan hệ với phần cứng và phần mềm ứng dụng là gì? ||| Là môi trường trung gian để phần mềm ứng dụng khai thác phần cứng.
 (H) Đặc điểm nào thể hiện rõ tính thân thiện của hệ điều hành máy tính cá nhân? ||| Giao diện đồ hoạ trực quan và cơ chế cắm vào là chạy.
+(H). Phương án nào đúng nhất khi muốn hiển thị tiêu đề trang web với nội dung là “Trang chủ”: ||| <head><title> Trang chủ </title></head>
+(H). Để khai báo thuộc tính cho phần tử HTML, phương án nào sau đây là đúng cú pháp? ||| <Tên phần tử tên thuộc tính= “giá trị”> Nội dung </Tên phần tử>
 [ĐS] (biết) Phản ứng giữa carboxylic acid và alcohol tạo thành ester được gọi là phản ứng ester hoá. ||| Đúng
 [ĐS] (hiểu) Các hợp chất hữu cơ trong phân tử có nhóm đều thuộc loại ester. ||| Sai
 [ĐS] (hiểu) Các hợp chất hữu cơ trong phân tử có nhóm ⟦img:9accc6642327a2b5477e4f41191ab38e.png⟧ đều thuộc loại ester. ||| Sai
