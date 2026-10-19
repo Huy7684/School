@@ -1,0 +1,47 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+[ĐS] Các máy tính trong phòng thực hành kết nối với nhau qua bộ chuyển mạch. ||| Đúng
+[ĐS] Các máy tính để bàn không thể kết nối vào Modem và Access point vì các thiết bị này không có cổng để cấm cáp mạng. ||| Sai
+[ĐS] Có thể bổ sung thêm máy tính vào phòng thực hành do vẫn còn cổng trên Switch chưa sử dụng. ||| Đúng
+[ĐS] Cần lắp đặt thêm một Modem nối với Modem hiện thời để tạo một mạng tương tự như mạng đang có, giúp kết nối thêm các thiết bị và mạng. ||| Sai
+[ĐS] Cần vào Network and Sharing center, chọn Turn on file and printer sharing để bật tính năng chia sẻ máy in. ||| Đúng
+[ĐS] Cần vào Network and Sharing center, chọn Turn on Network discovery để bật tính năng chia sẻ máy in. ||| Sai
+[ĐS] Cần đăng ký nâng cấp gói cước với nhà cung cấp dịch vụ vì có thêm nhiều thiết bị truy cập mạng. ||| Đúng
+[ĐS] Hệ thống máy tính trong phòng thực hành có thể khai thác để tổ chức thi Olympic qua Internet. ||| Sai
+[ĐS] Hệ thống mạng nhà trường sử dụng thiết bị có chức năng chia sẻ mạng wifi. ||| Đúng
+[ĐS] Máy tính cài đặt máy in này chưa bật chế độ cho phép chia sẻ máy in. ||| Đúng
+[ĐS] Máy tính cài đặt máy in này không có tính năng chia sẻ máy in dùng chung. ||| Sai
+[ĐS] Mở laptop, chọn Settings, chọn Network and Internet, chọn Mobile hotspot để tạo điểm phát sóng. ||| Sai
+[ĐS] Mở laptop, sử dụng chức năng mạng của hệ điều hành để chia sẻ tập tin. ||| Sai
+[ĐS] Nên sử dụng thêm các Access point để mở rộng mạng ở các vị trí cần lắp đặt mạng bổ sung, nơi có nhiều người dùng thiết bị di động. ||| Đúng
+[ĐS] Phân quyền Change cho nhóm người dùng Everyone. ||| Sai
+[ĐS] Phân quyền Change cho nhóm người dùng GIÁO VIÊN. ||| Đúng
+[ĐS] Phân quyền Full control cho nhóm người dùng Everyone. ||| Sai
+[ĐS] Phân quyền Full control cho nhóm người dùng GIÁO VIÊN. ||| Sai
+[ĐS] Phân quyền Read cho nhóm người dùng Everyone. ||| Sai
+[ĐS] Phân quyền Read cho nhóm người dùng GIÁO VIÊN. ||| Sai
+[ĐS] Phải thay Switch bằng một Modem khác, giúp vừa kết nối tất cả các máy tính trong phòng thực hành bằng cáp nối, vừa kết nối các thiết bị di động. ||| Sai
+[ĐS] Sử dụng thêm thiết bị Access point để mở rộng mạng không dây, cho phép các thiết bị không dây truy cập vào tài nguyên mạng. ||| Đúng
+[ĐS] Thay thế Modem đang dùng bằng Router hiện đại, tốc độ cao. ||| Sai
+[ĐS] Thiết bị bắt buộc dùng để kết nối các thiết bị với mạng Internet là Modem. ||| Đúng
+[ĐS] Trên điện thoại thông minh bật tính năng chia sẻ Mobile hotspot để tạo điểm phát sóng và chia sẻ kết nối cho laptop. ||| Đúng
+[ĐS] Đi tìm quán cà phê gần nhất để có mạng wifi. ||| Sai
+Bộ định tuyến là thiết bị nào sau đây? ||| Router.
+Modem là thiết bị có khả năng nào sau đây? ||| Chuyển đổi từ tín hiệu tương tự sang dữ liệu số và ngược lại.
+Ngoài chức năng kết nối không dây, Access point còn có thêm chức năng: ||| định tuyến trong mạng không dây.
+Ngoài việc kết nối các thiết bị theo mô hình sao, Switch còn có chức năng nào sau đây? ||| Mở rộng băng thông của đường truyền (số bit truyền trên giây).
+Nội dung nào sau đây không phải là giao thức mạng hoạt động trên thiết bị gửi? ||| Giải nén dữ liệu.
+Nội dung nào sau đây KHÔNG phải là giao thức mạng hoạt động trên thiết bị nhận? ||| Đóng gói dữ liệu.
+Nội dung nào sau đây là giao thức mạng hoạt động trên cả thiết bị gửi và thiết bị nhận? ||| Kiểm tra lỗi và đảm bảo độ tin cậy.
+Phát biểu nào sau đây KHÔNG đúng về địa chỉ IP? ||| Có thể tạo được 28 địa chỉ IPv4.
+Phương án nào sau đây KHÔNG phải là một nhiệm vụ của giao thức TCP? ||| Quản lý việc định địa chỉ và định tuyến của các gói dữ liệu trong mạng
+Thiết bị Modem KHÔNG cho phép kết nối trong trường hợp nào sau đây? ||| Các thiết bị khác thông qua cổng USB-C
+Thiết bị nào sau đây có chức năng biến đổi dữ liệu số từ các thiết bị kết nối mạng thành tín hiệu tương tự để truyền đi qua mạng và ngược lại? ||| Modem
+Thiết bị nào sau đây giúp kết nối các thiết bị tạo thành mạng hình sao? ||| Switch.
+Thiết bị Switch KHÔNG có khả năng nào sau đây? ||| Kết nối trực tiếp các máy tính với đường truyền của nhà cung cấp dịch vụ.
+Trong phòng thực hành Tin học có 30 máy tính, muốn kết nối các máy tính đó thành mạng LAN, ta nên dùng thiết bị nào sau đây? ||| Switch.
+Tại thiết bị gửi, giao thức mạng nào sau đây cần thực hiện ngay trước khi truyền gói dữ liệu? ||| Xác định đường đi tối ưu cho gói dữ liệu.
+Tại thiết bị gửi, ngay sau khi đóng gói dữ liệu, xác định địa chỉ IP và địa chỉ MAC, giao thức mạng nào sau đây sẽ được thực hiện? ||| Xác định đường đi tối ưu cho gói dữ liệu.
+Tại thiết bị nhận, giao thức mạng nào sau đây cần thực hiện ngay trước khi giải nén dữ liệu nhận được? ||| Kiểm tra lỗi và đảm bảo độ tin cậy.
+Điều gì sau đây đảm bảo cho máy tính và thiết bị mạng có thể giao tiếp được với nhau đúng cách? ||| Giao thức mạng (Network protocol).
+Đặc tính nào sau đây là một trong các nhược điểm của giao thức TCP/IP? ||| Không hỗ trợ đa phương tiện.
+Đặc tính nào sau đây là một trong các ưu điểm của giao thức TCP/IP? ||| Khả năng kiểm soát luồng.
