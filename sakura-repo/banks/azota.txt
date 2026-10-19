@@ -65,7 +65,14 @@
 [ĐS] AI yếu chủ yếu được sử dụng trong các hệ thống tự học và không cần sự tham gia của con người. ||| Sai
 [ĐS] AlphaGo là một ví dụ của AI mạnh vì nó có khả năng đánh bại nhà vô địch cờ vây mà không cần sự trợ giúp từ con người. ||| Sai
 [ĐS] Con người có thể bị mất việc làm bởi AI. ||| Đúng
+[ĐS] Các máy tính trong phòng thực hành kết nối với nhau qua bộ chuyển mạch. ||| Đúng
+[ĐS] Các máy tính để bàn không thể kết nối vào Modem và Access point vì các thiết bị này không có cổng để cấm cáp mạng. ||| Sai
 [ĐS] Cách thức đánh cờ của con người và máy tính là giống nhau. ||| Sai
+[ĐS] Có thể bổ sung thêm máy tính vào phòng thực hành do vẫn còn cổng trên Switch chưa sử dụng. ||| Đúng
+[ĐS] Cần lắp đặt thêm một Modem nối với Modem hiện thời để tạo một mạng tương tự như mạng đang có, giúp kết nối thêm các thiết bị và mạng. ||| Sai
+[ĐS] Cần vào Network and Sharing center, chọn Turn on file and printer sharing để bật tính năng chia sẻ máy in. ||| Đúng
+[ĐS] Cần vào Network and Sharing center, chọn Turn on Network discovery để bật tính năng chia sẻ máy in. ||| Sai
+[ĐS] Cần đăng ký nâng cấp gói cước với nhà cung cấp dịch vụ vì có thêm nhiều thiết bị truy cập mạng. ||| Đúng
 [ĐS] Dạng α-glucose và β-glucose khác nhau vị trí trong không gian của nhóm –OH hemiacetal. ||| Đúng
 [ĐS] Dạng α-glucose và β-glucose khác nhau vị trí trong không gian của nhóm –OH hemiacetal. Giải thích ||| Đúng
 [ĐS] Dạng α-glucose và β-glucose đều phản ứng trực tiếp với thuốc thử Tollens. ||| Sai
@@ -73,6 +80,8 @@
 [ĐS] Gmail là 1 dịch vụ thư điện tử miễn phí do Google phát triển. ||| Đúng
 [ĐS] Gmail là một dịch vụ thư điện tử miễn phí do Google phát triển. ||| Đúng
 [ĐS] Google có thể hỗ trợ bác sĩ tầm soát và phát hiện bệnh võng mạc tiểu đường thông qua camera điện thoại. ||| Đúng
+[ĐS] Hệ thống máy tính trong phòng thực hành có thể khai thác để tổ chức thi Olympic qua Internet. ||| Sai
+[ĐS] Hệ thống mạng nhà trường sử dụng thiết bị có chức năng chia sẻ mạng wifi. ||| Đúng
 [ĐS] Học máy giúp máy tính tự học hỏi từ dữ liệu và tự cải thiện mà không cần sự hỗ trợ từ con người. ||| Đúng
 [ĐS] Học máy là lĩnh vực nghiên cứu làm cho máy tính có khả năng học từ dữ liệu. ||| Đúng
 [ĐS] Hỗ trợ bác sĩ thực hiện các thủ thuật y tế phức tạp. ||| Đúng
@@ -88,21 +97,38 @@
 [ĐS] Không thể sử dụng AI để giả mạo giọng nói, khuôn mặt. ||| Sai
 [ĐS] MYCIN là một ví dụ của AI mạnh vì nó có khả năng chẩn đoán bệnh mà không cần sự hỗ trợ từ con người. ||| Sai
 [ĐS] Máy tìm kiếm Google có thể chẩn đoán được tất cả các bệnh tật của con người. ||| Sai
+[ĐS] Máy tính cài đặt máy in này chưa bật chế độ cho phép chia sẻ máy in. ||| Đúng
+[ĐS] Máy tính cài đặt máy in này không có tính năng chia sẻ máy in dùng chung. ||| Sai
 [ĐS] Máy tính Deep Blue của IBM chỉ có thể hoạt động được vào ban ngày. ||| Sai
+[ĐS] Mở laptop, chọn Settings, chọn Network and Internet, chọn Mobile hotspot để tạo điểm phát sóng. ||| Sai
+[ĐS] Mở laptop, sử dụng chức năng mạng của hệ điều hành để chia sẻ tập tin. ||| Sai
+[ĐS] Nên sử dụng thêm các Access point để mở rộng mạng ở các vị trí cần lắp đặt mạng bổ sung, nơi có nhiều người dùng thiết bị di động. ||| Đúng
+[ĐS] Phân quyền Change cho nhóm người dùng Everyone. ||| Sai
+[ĐS] Phân quyền Change cho nhóm người dùng GIÁO VIÊN. ||| Đúng
+[ĐS] Phân quyền Full control cho nhóm người dùng Everyone. ||| Sai
+[ĐS] Phân quyền Full control cho nhóm người dùng GIÁO VIÊN. ||| Sai
+[ĐS] Phân quyền Read cho nhóm người dùng Everyone. ||| Sai
+[ĐS] Phân quyền Read cho nhóm người dùng GIÁO VIÊN. ||| Sai
 [ĐS] Phân tích hình ảnh y tế và đưa ra chẩn đoán bệnh. ||| Đúng
+[ĐS] Phải thay Switch bằng một Modem khác, giúp vừa kết nối tất cả các máy tính trong phòng thực hành bằng cáp nối, vừa kết nối các thiết bị di động. ||| Sai
+[ĐS] Sử dụng thêm thiết bị Access point để mở rộng mạng không dây, cho phép các thiết bị không dây truy cập vào tài nguyên mạng. ||| Đúng
 [ĐS] Ta có thể lưu trữ dữ liệu trên không gian lưu trữ đám mây không giới hạn. ||| Sai
+[ĐS] Thay thế Modem đang dùng bằng Router hiện đại, tốc độ cao. ||| Sai
+[ĐS] Thiết bị bắt buộc dùng để kết nối các thiết bị với mạng Internet là Modem. ||| Đúng
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016084 Năm 1997, máy tính Deep Blue của IBM đánh bại đại kiện tướng cờ vua Garry Kasparov. Đây là lần đầu tiên một chương trình đánh bại một nhà vô địch thế giới về cờ vua. Một số bạn học sinh đưa ra các ý kiến sau: a) Cách thức đánh cờ của con người và máy tính là giống nhau. b) Trận đấu là cuộc đụng độ giữa một bên là trực giác kì diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. c) Máy tính Deep Blue của IBM chỉ có thể hoạt động được vào ban ngày. d) Việc máy tính đánh cờ vua chứng minh khả năng máy móc thực hiện được nhiệm vụ đòi hỏi trí thông minh cao. ||| Đúng
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016086 Trí tuệ nhân tạo (AI) đang cải thiện ngành tài chính, ngân hàng bằng cách tăng cường an ninh giao dịch, dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua chatbots. Sau đây là các phát biểu về những ứng dụng của AI đối với ngành tài chính, ngân hàng. a) AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. b) AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. c) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. d) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. ||| Sai
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016086 Trí tuệ nhân tạo (AI) đang cải thiện ngành tài chính, ngân hàng bằng cách tăng cường an ninh giao dịch, dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua chatbots. Sau đây là các phát biểu về những ứng dụng của AI đối với ngành tài chính, ngân hàng. a) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. b) AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. c) AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. d) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. ||| Sai
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016086 Trí tuệ nhân tạo (AI) đang cải thiện ngành tài chính, ngân hàng bằng cách tăng cường an ninh giao dịch, dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua chatbots. Sau đây là các phát biểu về những ứng dụng của AI đối với ngành tài chính, ngân hàng. a) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. b) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. c) AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. d) AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. ||| Đúng
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016088 Trí tuệ nhân tạo (AI) mang lại những ảnh hưởng tích cực như tăng cường hiệu quả công việc và cải thiện chất lượng cuộc sống. Tuy nhiên, AI cũng gây ra những thách thức về việc làm và quyền riêng tư của con người. Sau đây là các phát biểu về những ảnh hưởng của AI đối với con người. a) AI luôn công bằng khi áp dụng trong hệ thống hỗ trợ tuyển dụng. b) Không thể sử dụng AI để giả mạo giọng nói, khuôn mặt. c) AI có thể thu thập thông tin riêng tư của con người. d) Con người có thể bị mất việc làm bởi AI. ||| Đúng
 [ĐS] Thị giác máy tính là một phần của học máy vì nó giúp máy tính nhận dạng và phân tích hình ảnh. ||| Sai
+[ĐS] Trên điện thoại thông minh bật tính năng chia sẻ Mobile hotspot để tạo điểm phát sóng và chia sẻ kết nối cho laptop. ||| Đúng
 [ĐS] Trí tuệ nhân tạo là khả năng của máy tính thực hiện các công việc cần trí tuệ như của con người. ||| Đúng
 [ĐS] Trận đấu là cuộc đụng độ giữa một bên là trực giác kì diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. ||| Đúng
 [ĐS] Trận đấu là cuộc đụng độ giữa một bên là trực giác kỳ diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. ||| Đúng
 [ĐS] Việc máy tính đánh cờ vua chứng minh khả năng máy móc thực hiện được nhiệm vụ đòi hỏi trí thông minh cao. ||| Đúng
 [ĐS] Xoxe là một ví dụ của AI yếu vì nó cần sự hỗ trợ của con người để học và hiểu ngôn ngữ tự nhiên. ||| Sai
 [ĐS] Xử lí ngôn ngữ tự nhiên giúp máy tính giao tiếp với con người bằng ngôn ngữ tự nhiên, cả ngôn ngữ viết và tiếng nói. ||| Đúng
+[ĐS] Đi tìm quán cà phê gần nhất để có mạng wifi. ||| Sai
 [ĐS] Đưa ra chẩn đoán y tế cuối cùng. ||| Sai
 AI có thể gây ra hậu quả gì cho xã hội loài người? ||| Làm mất việc làm của con người.
 AI giúp phát triển hệ thống điều khiển tự động trong công xưởng như thế nào? ||| Giám sát và tối ưu hóa quá trình sản xuất.
@@ -113,6 +139,7 @@ Biết Chất nào sau đây thuộc loại polysaccharide? ||| cellulose.
 Biểu nào dưới đây phù hợp nhất khi nói về khả năng của Trí tuệ nhân tạo hẹp? ||| Giải quyết nhiệm vụ cụ thể theo những gì đã được học.
 Bộ giao tiếp mạng (NIC) có chức năng gì? ||| Truyền và nhận dữ liệu qua cáp mạng hoặc sóng vô tuyến
 Bộ nhớ chính (bộ nhớ trong - memory) bao gồm: ||| ROM và RAM
+Bộ định tuyến là thiết bị nào sau đây? ||| Router.
 Carbohydrate (X) có công thức cấu tạo dưới đây: ⟦img:c8a0e6e536775c01105d2e0a93c72d51.png⟧ Nhận định nào sau đây là đúng khi nói về (X)? ||| (X) còn được gọi là đường mạch nha được sản xuất từ ngũ cốc.
 Carbohydrate là gì? ||| Carbohydrate là những hợp chất hữu cơ tạp chức và đa số chúng có công thức chung là Cn(H2O)m.
 Cellulose thuộc loại polysaccharide, là thành phần chính tạo nên màng tế bào thực vật, có nhiều trong gỗ, bông gòn. Công thức của cellulose là ||| (C6H10O5)n.
@@ -162,6 +189,7 @@ Khả năng nào sau đây ít phổ biến trong các hệ thống AI? ||| Kh�
 Kết quả thí nghiệm của các dung dịch X, Y, Z với thuốc thử được ghi ở bảng sau: Mẫu thử Thuốc thử Hiện tượng X Dung dịch I2 Có màu xanh tím Y Cu(OH)2 Có màu xanh lam Z Dung dịch AgNO3 trong NH3 Tạo kết tủa Ag Các dung dịch X, Y, Z lần lượt là ||| Hồ tinh bột, saccharose, glucose.
 License còn có nghĩa là: ||| Giấy phép
 Maltose là một loại disaccharide có nhiều trong mạch nha. Công thức phân tử của maltose là ||| C12H22O11.
+Modem là thiết bị có khả năng nào sau đây? ||| Chuyển đổi từ tín hiệu tương tự sang dữ liệu số và ngược lại.
 Mạch logic thực hiện phép toán logic AND có kí hiệu là : ||| ⟦img:2d3321ad2cdffb06813bc6e0bc37cc42.png⟧
 Mạch logic thực hiện phép toán logic OR có kí hiệu là : ||| ⟦img:f98547968c68e54a1344694fe92283dc.png⟧
 Mạch logic thực hiện phép toán logic phủ định logic NOT có kí hiệu là : ||| ⟦img:a0d896090598d2ba372efafa597c1291.png⟧
@@ -170,12 +198,18 @@ Mạng máy tính là gì? ||| Một hệ thống các thiết bị số đượ
 Mạng WLAN còn được gọi là gì? ||| Mạng cục bộ không dây
 Mỗi đơn vị glucose trong cellulose liên kết với nhau bởi liên kết ||| β-1,4-glycoside.
 Mục đích của hệ thống tên miền DNS là gì? ||| Để định danh các máy tính trong mạng bằng những chữ gợi nhớ
+Ngoài chức năng kết nối không dây, Access point còn có thêm chức năng: ||| định tuyến trong mạng không dây.
+Ngoài việc kết nối các thiết bị theo mô hình sao, Switch còn có chức năng nào sau đây? ||| Mở rộng băng thông của đường truyền (số bit truyền trên giây).
 Người máy Grace được coi là một ví dụ về gì? ||| Cobot
 Người máy Xoxe có khả năng gì? ||| Giao tiếp với con người bằng hơn 120 thứ tiếng khác nhau.
 Nhận xét nào sau đây không đúng về xà phòng? ||| Nước quả bồ kết, bồ hòn không có tác dụng giặt rửa giống xà phòng.
 Nhận định nào sau đây là SAI khi nói về sự ảnh hưởng của AI trong tương lai? ||| AI sẽ luôn an toàn và có lợi cho con người.
+Nội dung nào sau đây không phải là giao thức mạng hoạt động trên thiết bị gửi? ||| Giải nén dữ liệu.
+Nội dung nào sau đây KHÔNG phải là giao thức mạng hoạt động trên thiết bị nhận? ||| Đóng gói dữ liệu.
+Nội dung nào sau đây là giao thức mạng hoạt động trên cả thiết bị gửi và thiết bị nhận? ||| Kiểm tra lỗi và đảm bảo độ tin cậy.
 Phát biểu nào dưới đây là thách thức lớn nhất liên quan đến việc sử dụng AI? ||| Thiếu quy định và luật lệ về việc sử dụng ai trong xã hội ngày nay.
 Phát biểu nào dưới đây phù hợp nhất khi nói về khả năng của Trí tuệ nhân tạo hẹp? ||| Giải quyết nhiệm vụ cụ thể theo những gì đã được học.
+Phát biểu nào sau đây KHÔNG đúng về địa chỉ IP? ||| Có thể tạo được 28 địa chỉ IPv4.
 Phát biểu nào sau đây không đúng? ||| Tinh bột tan tốt trong nước lạnh.
 Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lí ảo? ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
 Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lý ảo. ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
@@ -187,6 +221,7 @@ Phương án nào dưới đây liệt kê hai phân loại chính của trí tu
 Phương án nào dưới đây nêu đúng về khả năng học của AI? ||| Trích xuất thông tin từ dữ liệu để học và tích lũy tri thức.
 Phương án nào dưới đây nêu đúng về khả năng nhận thức của AI? ||| Cảm nhận và hiểu biết môi trường thông qua các cảm biến và thiết bị đầu vào.
 Phương án nào dưới đây nêu đúng về khả năng suy luận của AI? ||| Vận dụng logic và tri thức để đưa ra quyết định hoặc kết luận.
+Phương án nào sau đây KHÔNG phải là một nhiệm vụ của giao thức TCP? ||| Quản lý việc định địa chỉ và định tuyến của các gói dữ liệu trong mạng
 Phương án nào sau đây nêu đúng về Trí tuệ nhân tạo (AI)? ||| Một lĩnh vực khoa học và kĩ thuật nhằm chế tạo các máy móc thông minh.
 Phương án nào sau đây nêu đúng về trí tuệ nhân tạo? ||| Một lĩnh vực khoa học và kỹ thuật nhằm chế tạo các máy móc thông minh.
 Phương án nào sau đây đúng khi nói về tác động của AI đối với việc làm của con người? ||| AI tạo ra những việc làm mới và thay thế một số công việc hiện có.
@@ -205,12 +240,16 @@ Sodium dodecylbenzenesulfonate (SDBS), hay còn gọi là dodecylbenzene sulfoni
 Sản phẩm trung gian nào sau đây không thể có trong quá trình thủy phân tinh bột? ||| Saccharose.
 Theo em phần mềm thương mại gồm: ||| Phần mềm đặt hàng và phần mềm đóng gói
 Theo nguồn gốc, chất giặt rửa được chia thành hai loại: chất giặt rửa tự nhiên và chất giặt rửa tổng hợp. Phát biểu nào sau đây là không đúng? ||| Chất giặt rửa tổng hợp dễ bị phân huỷ sinh học bởi các vi sinh vật hơn xà phòng.
+Thiết bị Modem KHÔNG cho phép kết nối trong trường hợp nào sau đây? ||| Các thiết bị khác thông qua cổng USB-C
 Thiết bị nào dùng để kết nối mạng không dây cho các thiết bị trong một mạng cục bộ? ||| Access Point
 Thiết bị nào dưới đây dùng để kết nối các thiết bị sử dụng Internet tới nhà cung cấp dịch vụ Internet? ||| Modem
 Thiết bị nào dưới đây không phải là thiết bị đầu cuối? ||| Access Point
+Thiết bị nào sau đây có chức năng biến đổi dữ liệu số từ các thiết bị kết nối mạng thành tín hiệu tương tự để truyền đi qua mạng và ngược lại? ||| Modem
+Thiết bị nào sau đây giúp kết nối các thiết bị tạo thành mạng hình sao? ||| Switch.
 Thiết bị nào sau đây KHÔNG có khả năng kết nối với máy tính? ||| Máy hút bụi cầm tay.
 Thiết bị nào sau đây KHÔNG sử dụng trí tuệ nhân tạo để điều khiển tự động? ||| Ấm điện siêu tốc tự động ngắt.
 Thiết bị nào sau đây thường có chức năng phát sóng Wi-Fi và kết nối có dây? ||| Access Point
+Thiết bị Switch KHÔNG có khả năng nào sau đây? ||| Kết nối trực tiếp các máy tính với đường truyền của nhà cung cấp dịch vụ.
 Thuật ngữ "AI" bắt đầu được sử dụng vào năm nào? ||| 1956
 Thành phần của xà phòng bao gồm muối của acid béo với kim loại X và các chất phụ gia. Kim loại X có thể là ||| sodium hoặc potassium.
 Thị giác máy tính là gì? ||| Lĩnh vực nghiên cứu xử lý hình ảnh kỹ thuật số.
@@ -221,16 +260,23 @@ Trong công nghiệp thực phẩm, saccharose được sử dụng phổ biến
 Trong mạng LAN, thiết bị nào được sử dụng để kết nối và chuyển tiếp dữ liệu giữa các thiết bị? ||| Switch
 Trong những tính năng sau tính năng nào KHÔNG phải là của Trợ lý ảo. ||| Tự động cải thiện hiệu suất máy tính.
 Trong những tính năng sau, tính năng nào KHÔNG phải là của Trợ lí ảo? ||| Tự động cải thiện hiệu suất máy tính.
+Trong phòng thực hành Tin học có 30 máy tính, muốn kết nối các máy tính đó thành mạng LAN, ta nên dùng thiết bị nào sau đây? ||| Switch.
 Trong thành phần của quả bông có 90% cellulose về khối lượng. Trong phân tử cellulose các đơn vị β-glucose liên kết với nhau qua liên kết nào sau đây? ||| liên kết β-1,4-glycoside.
 Trong điều kiện thích hợp glucose lên men tạo thành khí CO2 và ||| C2H5OH.
 Trí tuệ nhân tạo còn nhiều hạn chế ở khả năng nào sau đây? ||| Cảm nhận cảm xúc.
 Trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh bằng cách nào sau đây? ||| Nhận diện các bệnh lí qua hình ảnh y khoa.
+Tại thiết bị gửi, giao thức mạng nào sau đây cần thực hiện ngay trước khi truyền gói dữ liệu? ||| Xác định đường đi tối ưu cho gói dữ liệu.
+Tại thiết bị gửi, ngay sau khi đóng gói dữ liệu, xác định địa chỉ IP và địa chỉ MAC, giao thức mạng nào sau đây sẽ được thực hiện? ||| Xác định đường đi tối ưu cho gói dữ liệu.
+Tại thiết bị nhận, giao thức mạng nào sau đây cần thực hiện ngay trước khi giải nén dữ liệu nhận được? ||| Kiểm tra lỗi và đảm bảo độ tin cậy.
 Vai trò chính của Router là gì? ||| Kết nối các mạng LAN với nhau và chuyển tiếp dữ liệu giữa chúng
 Ví dụ nào sau đây là một ứng dụng của AI yếu? ||| MYCIN – hệ chuyên gia trong lĩnh vực y tế.
 Xà phòng là muối sodium hoặc potassium của ||| acid béo.
 Youtube được trang bị hệ thống trí tuệ nhân tạo để gợi ý cho người dùng. Hãy cho biết hệ thống này làm nhiệm vụ gì dưới đây? ||| Đề xuất các video dựa trên sở thích của người dùng.
+Điều gì sau đây đảm bảo cho máy tính và thiết bị mạng có thể giao tiếp được với nhau đúng cách? ||| Giao thức mạng (Network protocol).
 Điểm nào sau đây là sai khi nói về giao thức TCP? ||| Không có cơ chế kiểm tra lỗi
 Đun nóng tinh bột trong dung dịch acid vô cơ loãng sẽ thu được ||| glucose.
+Đặc tính nào sau đây là một trong các nhược điểm của giao thức TCP/IP? ||| Không hỗ trợ đa phương tiện.
+Đặc tính nào sau đây là một trong các ưu điểm của giao thức TCP/IP? ||| Khả năng kiểm soát luồng.
 Để loại bỏ dầu mỡ khỏi quần áo, không thể dùng ||| nước cất.
 Để tráng một lớp bạc lên ruột phích, người ta cho chất X phản ứng với lượng dư dung dịch AgNO3 trong NH3, đun nóng. Chất X là ||| glucose.
 Địa chỉ IP là gì? ||| Địa chỉ số được gán cho mỗi thiết bị khi kết nối vào mạng
