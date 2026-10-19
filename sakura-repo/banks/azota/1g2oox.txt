@@ -1,0 +1,12 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+(B) Các chú thích trong HTML sẽ bắt đầu bằng: ||| <!-- và kết thúc bằng -->
+(B) Nhận định nào sau đây mô tả đúng về HTML? ||| Là bộ quy tắc dùng để trình bày cấu trúc, nội dung và hình thức trang web
+(B) Phương án nào sau đây khai báo tạo đoạn văn bản trong HTML? ||| <p> Đoạn văn bản </p>
+(B) Phương án nào sau đây nêu đúng các thành phần của một phần tử (element) HTML? ||| Thẻ mở, thuộc tính, nội dung và thẻ đóng (nếu có).
+(B) Thẻ nào sau đây dùng để mô tả các thông tin bổ sung như mã hoá và từ khoá? ||| <meta>
+(B) Trong HTML, dấu “/” trong thẻ có ý nghĩa gì? ||| Kết thúc thẻ
+(B) Tên thẻ HTML có phân biệt chữ hoa và chữ thường không? ||| Không phân biệt
+(H) Tệp “trangchu.html” có nội dung như sau: Nội dung nào sau đây được hiển thị trên thanh tiêu đề của cửa sổ trình duyệt web khi mở tệp bằng trình duyệt web Google Chrome? ||| Hiển thị “trangchu.html” trên thanh tiêu đề
+(H) Tệp “trangchu.html” có nội dung như sau: ⟦img:deaac41e75f87a3d1d1c52b79e634705.png⟧ Nội dung nào sau đây được hiển thị trên thanh tiêu đề của cửa sổ trình duyệt web khi mở tệp bằng trình duyệt web Google Chrome? ||| Hiển thị “trangchu.html” trên thanh tiêu đề
+(H). Phương án nào đúng nhất khi muốn hiển thị tiêu đề trang web với nội dung là “Trang chủ”: ||| <head><title> Trang chủ </title></head>
+(H). Để khai báo thuộc tính cho phần tử HTML, phương án nào sau đây là đúng cú pháp? ||| <Tên phần tử tên thuộc tính= “giá trị”> Nội dung </Tên phần tử>
