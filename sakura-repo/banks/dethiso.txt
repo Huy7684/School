@@ -1,4 +1,6 @@
 # Mỗi dòng: câu hỏi ||| đáp án đúng
+An toàn điện là những quy định, quy tắc và kĩ năng cần thiết được đặt ra nhằm đảm bảo an toàn cho người, thiết bị và hệ thống lưới điện trong ||| thiết kế, sử dụng, bảo dưỡng và sửa chữa điện
+An toàn điện là những quy định, quy tắc và kĩ năng cần thiết được đặt ra trong thiết kế, sử dụng, bảo dưỡng và sửa chữa điện nhằm đảm bảo an toàn cho ||| người, thiết bị và hệ thống lưới điện
 Biểu thức dòng điện xoay chiều một pha có dạng ||| i = Im sin(ωt+φ)
 Cho mạch điện đối xứng như hình vẽ bên, biết tổng trở pha của tải Zp= 5Ω, Ud =220V. Dòng điện pha và dòng điện dây của mạch có giá trị là: ⤢ Phóng to ảnh ||| Ip = 44A, Id =443\displaystyle \sqrt{3}3​A
 Cho mạch điện đối xứng như hình vẽ bên, biết tổng trở pha của tải Zp= 5Ω, Ud =220V. Dòng điện pha và dòng điện dây của mạch có giá trị là: ⤢ Phóng to ảnh [hình:q02hgw] ||| Ip = 44A, Id =443\displaystyle \sqrt{3}3​A
@@ -14,7 +16,9 @@ Hình bên dưới mô tả cách nối nguồn và nối tải ba theo kiểu: 
 Hình ảnh sau đây thể hiện phương pháp sản xuất điện nǎng bằng nǎng lượng nào bên dưới đây: ⤢ Phóng to ảnh ||| Gió
 Hình ảnh sau đây thể hiện phương pháp sản xuất điện nǎng bằng nǎng lượng nào bên dưới đây: ⤢ Phóng to ảnh [hình:ixre84] ||| Gió
 Hệ thống điện quốc gia gồm: ||| Nguồn điện, các lưới điện và các hộ tiêu thụ điện trên toàn quốc
+Khi lắp đặt và sử dụng các thiết bị điện có vỏ bằng kim loại cần thực hiện các biện pháp an toàn như: ||| thực hiện nối đất với vỏ của thiết bị; thường xuyên kiểm tra nguy cơ rò rỉ điện
 Khi máy phát điện xoay chiều ba pha hoạt động, sức điện động xuất hiện trên các pha sẽ lệch góc: ||| 2π/3
+Khi sử dụng bình nước nóng phục vụ việc tắm rửa, để đảm bảo an toàn cho người cần thực hiện các biện pháp như: ||| sử dụng aptomat chống rò điện để đóng cắt nguồn, khi tắm phải tắt nguồn điện và không được để máy hoạt động 2424\displaystyle \frac{24}{24}2424​ giờ
 Khả nǎng chịu dòng điện tối đa của tiếp điểm aptomat trong một khoảng thời gian nhất định của aptomat trong hình bên là: ⤢ Phóng to ảnh [hình:1gab7nq] ||| 6000 A
 Kí hiệu trong hình bên thể hiện thiết bị điện nào trên sơ đồ hệ thống điện: ⤢ Phóng to ảnh [hình:1el7ddz] ||| Cầu chì
 Kí hiệu trong hình bên thể hiện thiết bị điện nào trên sơ đồ hệ thống điện: ⤢ Phóng to ảnh [hình:1g5r46s] ||| Ổ cắm điện
@@ -47,6 +51,8 @@ Sơ đồ mạch điện trong hình bên thể hiện: ⤢ Phóng to ảnh [hì
 Sơ đồ trong hình bên thể hiện cấu trúc chung của hệ thống điện: ⤢ Phóng to ảnh [hình:1vmsgzm] ||| Trong gia đình
 Sản xuất điện nǎng là quá trình chuyển đổi ||| Các dạng nǎng lượng khác thành nǎng lượng điện
 Sắp xếp các hoạt động sau theo thứ tự phù hợp để tiến hành lắp đặt một mạch điện đơn giản trong gia đình: ⤢ Phóng to ảnh [hình:1whvqbq] ||| (2) ->(5) ->(4) ->(3) ->(1)
+Theo các nhà sản xuất máy điều hoà (máy lạnh), với công suất 600 BTU thì có khả năng làm mát tốt cho 1 m 2 2 diện tích. Do đó, để tiết kiệm chi phí và tiết kiệm điện, khi chọn máy điều hoà (máy lạnh) cho phòng có diện tích 20 m 2 2 nên chọn loại có công suất ||| 1,5 HP (~ 12000 BTU)
+Theo các nhà sản xuất máy điều hoà, với công suất 600 BTU thì có khả năng làm mát tốt cho 1 m 2 2 diện tích. Do đó, máy điều hoà (máy lạnh) có công suất 2,5 HP (~ 24000 BTU) được chọn phù hợp lắp đặt cho phòng có diện tích ||| từ 30 m2\displaystyle ^{2}2 đến 40 m2\displaystyle ^{2}2
 Thiết bi nào sau đây không thuộc cấu trúc mang điện hạ áp dùng sinh hoạt: ||| Tủ điện chiếu sáng
 Thiết bị điện có chức năng đo điện năng tiêu thụ của các thiết bị và đồ dùng điện trong gia đình: ||| Công tơ điện
 Thiết bị điện có chức năng đóng - cắt mạch điện và tự động cắt mạch điện khi có sự cố về điện: ||| Aptomat
@@ -57,6 +63,7 @@ Thiết bị điện như hình bên là: ⤢ Phóng to ảnh [hình:wmdwx9] |||
 Thiết bị điện trong hình bên có chức nǎng: ⤢ Phóng to ảnh [hình:2k9ze0] ||| Đóng cắt mạch điện và tự động đóng cắt khi có sự cố về điện
 Thiết bị điện trong hình bên có chức nǎng: ⤢ Phóng to ảnh [hình:kputs4] ||| Đo điện nǎng tiêu thụ của các thiết bị, đồ dùng điện trong gia đình
 Thành phần có vai trò bảo vệ chống quá tải và đóng cắt nguồn điện mạch nhánh trong hệ thống điện trong gia đình là: ||| Tủ điện nhánh
+Tiết kiệm điện năng cần thực hiện ngay từ giai đoạn ||| thiết kế cho đến lựa chọn, lắp đặt, sử dụng, vận hành hệ thống và thiết bị điện
 Trong các phương pháp sản xuất điện nǎng, phương pháp cần có bộ chuyển đổi dòng điện một chiều (DC) thành dòng điện xoay chiều (AC) là: ||| Điện mặt trời
 Trong các phương pháp sản xuất điện nǎng, phương pháp không có sự biến đổi cơ năng thành điện năng là: ||| Điện mặt trời
 Trong các phương pháp sản xuất điện nǎng, phương pháp làm ảnh hưởng đáng kể đến đa dạng sinh học là: ||| Thủy điện
@@ -100,11 +107,18 @@ Trong sơ đồ mạng điện hạ áp dùng trong sinh hoạt như hình qua t
 Trong sơ đồ mạng điện hạ áp dùng trong sinh hoạt, kí hiệu như hình bên dưới là ⤢ Phóng to ảnh ||| Trạm biến áp
 Trong sơ đồ mạng điện hạ áp dùng trong sinh hoạt, kí hiệu như hình bên dưới là ⤢ Phóng to ảnh [hình:7t0ac4] ||| Trạm biến áp
 Trong sản xuất điện năng, nhóm phương pháp tạo ra điện nǎng từ nguồn năng lượng tái tạo là: ||| Thủy triều, điện gió và điện mặt trời
+Trong thiết kế, lắp đặt điện, cần tính toán lựa chọn dây dẫn và cáp điện có thông số ||| điện áp phù hợp với điện áp của hệ thống và tiết diện lõi phù hợp với công suất tiêu thụ của thiết bị
+Trong thiết kế, xây dựng nhà ở, để tiết kiệm điện nên ||| tận dụng tối đa nguồn ánh sáng và nguồn gió tự nhiên, sử dụng vật liệu cách nhiệt tốt
 Trong tủ điện phân phối tổng của mạng điện sản xuất quy mô nhỏ, để bảo vệ mạng điện khi xảy ra quá tải, ngắn mạch thường sử dụng thiết bị bảo vệ là: ||| Aptomat
 Trong tủ điện động lực của mạng điện sản xuất quy mô nhỏ, để bảo vệ mạng điện khi xảy ra quá tải, ngắn mạch thường sử dụng thiết bị bảo vệ là: ||| Aptomat hoặc cầu dao điện
 Đặc điểm của mạng điện sản xuất quy mô nhỏ là ||| Có một máy biến áp riêng cấp chung cho cả mạng động lực và chiếu sáng
 Để cung cấp điện cho ổ cắm của máy giặt dùng trong gia đình có công suất 2200W (hệ số cosႴ =0,8) và điện áp là 220V cần lựa chọn dây dẫn đồng (mật độ dòng là J = 6 A/ 𝑚 𝑚 2 mm 2 ) có tiết diện phù hợp là: ||| 2,5 mm2\displaystyle mm^{2}mm2
 Để cấp điện cho nồi cơm điện cao tần có công suất 1445 W (hệ số cosႴ =1) và điện áp 220V chọn aptomat có dòng điện định mức phù hợp là: ||| 10A
+Để tiết kiệm điện khi sử dụng bình nước nóng, cần điều chỉnh nhiệt độ ||| phù hợp với nhu cầu, tắt nguồn điện trước khi tắm và vệ sinh, bảo trì định kì
+Để tiết kiệm điện khi sử dụng máy giặt cần ||| giặt đúng theo khối lượng ghi trên máy, chọn chương trình và chế độ vắt phù hợp, vệ sinh máy giặt định kì
+Để tiết kiệm điện khi sử dụng tivi nên ||| điều chỉnh độ sáng màn hình phù hợp với điều kiện ánh sáng xung quanh, rút phích nguồn khi không sử dụng, vệ sinh tivi thường xuyên
+Để tiết kiệm điện khi sử dụng tủ lạnh cần ||| thực hiện thao tác đóng mở tủ lạnh nhanh, không chứa quá nhiều thực phẩm chiếm hết không gian bên trong tủ lạnh
+Để tiết kiệm điện khi sử dụng điều hoà cần ||| đặt nhiệt độ điều hoà phù hợp với nhiệt độ ngoài trời và sử dụng kết hợp với quạt điện để phân bố đồng đều hơi lạnh
 Để đun nóng nước tạo ra hơi nuớc có áp suất cao làm quay turbine, nhà máy điện hạt nhân đã sử dụng năng lượng từ: ||| Phản ứng phân hạch
 Để đăm bảo an toàn, sau khi tính tiết diện dây dẫn diện theo công thức S = I / J thì nên chọn dây dẫn điện có tiết diện: ||| Ở cấp lớn hơn
 Để đảm bảo an toàn, tránh lāng phí khi sử dụng các thiết bị và đồ dùng điện, cần lựa chọn tiết diện dây dẫn điện phù hợp với: ||| Công suất tiêu thụ của đồ dùng điện
