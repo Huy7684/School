@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      6.4
+// @version      6.6
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -16,9 +16,13 @@
   if (window.__azh) return;
   window.__azh = true;
 
+  const DS_PREFIX = '[ĐS] ';
   const BANK_KEY = 'azh-bank', CFG_KEY = 'azh-cfg', SEP = ' ||| ';
   const flat = s => String(s || '').replace(/\s+/g, ' ').trim();
   const norm = s => flat(s).toLowerCase();
+  // v6.6: bỏ tiêu đề phần (vd "PHẦN I. TRẮC NGHIỆM ... LỰA CHỌN") dính vào đầu câu hỏi đầu tiên của mỗi phần
+  const PART_RE = /^\s*PHẦN\s+[IVXLC\d]+\s*[.:\-–]?\s*[^\p{Ll}]+?(?=\s*\p{Lu}\p{Ll})/u;
+  const stripPart = t => { const f = flat(t), r = f.replace(PART_RE, '').trim(); return r.length >= 3 ? r : f; };
   const norm2 = s => String(s || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
   const load = k => { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } };
   const panelId = 'azh';
@@ -35,6 +39,16 @@
   let bankVer = 0;   // tăng mỗi khi sổ đổi, để biết khi nào phải tính lại danh sách dùng được
   const saveBank = () => { bankVer++; try { localStorage.setItem(BANK_KEY, JSON.stringify(bank)); } catch (e) {} };
   { let dirty = 0; Object.keys(bank).forEach(k => { const r = bank[k]; if (r && r.correct) { const cc = cleanAns(r.correct); if (cc !== r.correct) { r.correct = cc; dirty = 1; } } if (!r || !r.q || !r.correct || labelOnly(r.correct)) { delete bank[k]; dirty = 1; } }); if (dirty) saveBank(); }
+
+  { // v6.6: sửa các câu đã lưu bị dính tiêu đề "PHẦN ..."
+    let dirty = 0;
+    Object.keys(bank).forEach(k => {
+      const r = bank[k]; if (!r || !r.q || r.q.indexOf(DS_PREFIX) === 0) return;
+      const nq = stripPart(r.q);
+      if (nq !== flat(r.q)) { delete bank[k]; const nk = norm(nq); if (!bank[nk]) bank[nk] = Object.assign({}, r, { q: nq }); dirty = 1; }
+    });
+    if (dirty) saveBank();
+  }
 
   // ---------- Mã đề (từ link) ----------
   function extractCode(v) {
@@ -824,7 +838,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     for (const tx of texts) {
       const at = tx.search(A_START);
       if (at < 0) continue;
-      const q = flat(tx.slice(0, at).replace(/Câu\s*\d+/i, '').replace(/ID\s*:\s*\d+/gi, ''));
+      const q = stripPart(tx.slice(0, at).replace(/Câu\s*\d+/i, '').replace(/ID\s*:\s*\d+/gi, ''));
       const opts = parseOpts(tx.slice(at).replace(/Đáp án đúng[\s\S]*$/i, ''));
       if (q.length >= 3 && opts[letter]) return { q, correct: cleanAns(opts[letter]) };
     }
@@ -958,6 +972,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   const inTake = () => /take-test/.test(location.pathname);
   let clickedQ = new Set(), clickedUrl = location.href, learnedNow = 0, lastAct = 0;
   const hl = new Set();   // các ô đang được tô viền gợi ý
+  const retryN = {};   // số lần đã bấm mỗi câu (để thử lại câu bị mất cú bấm)
 
   function pageEls() {
     const all = [], withImg = new Set();
@@ -988,7 +1003,8 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   // Trả về { qEl } nếu thấy câu hỏi, kèm { card, target } nếu xác định được ô đáp án đúng
   function locate(rec, all) {
     const qs = prepStr(rec.q), as = prepStr(cleanAns(rec.correct));
-    const qEl = deepest(all.filter(a => same(a, qs)))[0];
+    let qEl = deepest(all.filter(a => same(a, qs)))[0];
+    if (!qEl) { const q2 = stripPart(rec.q); if (q2 !== flat(rec.q)) { const s2 = prepStr(q2); qEl = deepest(all.filter(a => same(a, s2)))[0]; } }
     if (!qEl) return null;
     for (let card = qEl.el.parentElement, i = 0; card && i < 8; card = card.parentElement, i++) {
       if (((card.innerText || '').match(/(^|\n)\s*Câu\s*\d+/gi) || []).length > 1) return { qEl, why: 'thẻ gộp nhiều câu' };   // leo quá cao
@@ -1057,11 +1073,17 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       clickedQ.add(key); lastAct = t;
       press(target);
       // nếu trang chưa đổi gì thì thử bấm vòng tròn chữ cái / cả hàng
+      const tries = (retryN[key] = (retryN[key] || 0) + 1);
+      const urlAtClick = location.href;
       setTimeout(() => {
         if (loc.noFallback || card.outerHTML !== before) return;
         const row = target.parentElement;
         if (row && row.children[0] && row.children[0] !== target) press(row.children[0]);
-        setTimeout(() => { if (card.outerHTML === before && row) press(row); }, 400);
+        setTimeout(() => {
+          if (card.outerHTML === before && row) press(row);
+          // v6.5: bấm mà ô không đổi gì (hay gặp ở câu đầu lúc trang đang tải) -> cho phép thử lại, tối đa 3 lần
+          setTimeout(() => { if (card.outerHTML === before && tries < 3 && urlAtClick === location.href) clickedQ.delete(key); }, 500);
+        }, 400);
       }, 500);
       if (cfg.delay > 0) { pend = true; break; }     // có độ trễ: mỗi nhịp chỉ chọn 1 câu
     }
