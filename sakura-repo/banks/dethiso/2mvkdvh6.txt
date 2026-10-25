@@ -1,0 +1,15 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+An toàn điện là những quy định, quy tắc và kĩ năng cần thiết được đặt ra nhằm đảm bảo an toàn cho người, thiết bị và hệ thống lưới điện trong ||| thiết kế, sử dụng, bảo dưỡng và sửa chữa điện
+An toàn điện là những quy định, quy tắc và kĩ năng cần thiết được đặt ra trong thiết kế, sử dụng, bảo dưỡng và sửa chữa điện nhằm đảm bảo an toàn cho ||| người, thiết bị và hệ thống lưới điện
+Khi lắp đặt và sử dụng các thiết bị điện có vỏ bằng kim loại cần thực hiện các biện pháp an toàn như: ||| thực hiện nối đất với vỏ của thiết bị; thường xuyên kiểm tra nguy cơ rò rỉ điện
+Khi sử dụng bình nước nóng phục vụ việc tắm rửa, để đảm bảo an toàn cho người cần thực hiện các biện pháp như: ||| sử dụng aptomat chống rò điện để đóng cắt nguồn, khi tắm phải tắt nguồn điện và không được để máy hoạt động 2424\displaystyle \frac{24}{24}2424​ giờ
+Theo các nhà sản xuất máy điều hoà (máy lạnh), với công suất 600 BTU thì có khả năng làm mát tốt cho 1 m 2 2 diện tích. Do đó, để tiết kiệm chi phí và tiết kiệm điện, khi chọn máy điều hoà (máy lạnh) cho phòng có diện tích 20 m 2 2 nên chọn loại có công suất ||| 1,5 HP (~ 12000 BTU)
+Theo các nhà sản xuất máy điều hoà, với công suất 600 BTU thì có khả năng làm mát tốt cho 1 m 2 2 diện tích. Do đó, máy điều hoà (máy lạnh) có công suất 2,5 HP (~ 24000 BTU) được chọn phù hợp lắp đặt cho phòng có diện tích ||| từ 30 m2\displaystyle ^{2}2 đến 40 m2\displaystyle ^{2}2
+Tiết kiệm điện năng cần thực hiện ngay từ giai đoạn ||| thiết kế cho đến lựa chọn, lắp đặt, sử dụng, vận hành hệ thống và thiết bị điện
+Trong thiết kế, lắp đặt điện, cần tính toán lựa chọn dây dẫn và cáp điện có thông số ||| điện áp phù hợp với điện áp của hệ thống và tiết diện lõi phù hợp với công suất tiêu thụ của thiết bị
+Trong thiết kế, xây dựng nhà ở, để tiết kiệm điện nên ||| tận dụng tối đa nguồn ánh sáng và nguồn gió tự nhiên, sử dụng vật liệu cách nhiệt tốt
+Để tiết kiệm điện khi sử dụng bình nước nóng, cần điều chỉnh nhiệt độ ||| phù hợp với nhu cầu, tắt nguồn điện trước khi tắm và vệ sinh, bảo trì định kì
+Để tiết kiệm điện khi sử dụng máy giặt cần ||| giặt đúng theo khối lượng ghi trên máy, chọn chương trình và chế độ vắt phù hợp, vệ sinh máy giặt định kì
+Để tiết kiệm điện khi sử dụng tivi nên ||| điều chỉnh độ sáng màn hình phù hợp với điều kiện ánh sáng xung quanh, rút phích nguồn khi không sử dụng, vệ sinh tivi thường xuyên
+Để tiết kiệm điện khi sử dụng tủ lạnh cần ||| thực hiện thao tác đóng mở tủ lạnh nhanh, không chứa quá nhiều thực phẩm chiếm hết không gian bên trong tủ lạnh
+Để tiết kiệm điện khi sử dụng điều hoà cần ||| đặt nhiệt độ điều hoà phù hợp với nhiệt độ ngoài trời và sử dụng kết hợp với quạt điện để phân bố đồng đều hơi lạnh
