@@ -57,6 +57,7 @@
 [ĐS] (vận dụng) Thể tích khí hydrogen (ở đkc) cần dùng để chuyển hóa 128,1 g (X) thành bơ nhân tạo là 20,8236 L, biết hiệu suất của quá trình chuyển hóa đạt 80%. Giải thích ||| Sai
 [ĐS] (X) thuộc loại chất béo lỏng vì trong thành phần có các acid béo không no chiếm ưu thế. ||| Đúng
 [ĐS] , ||| Đúng
+[ĐS] 12 lao động có hợp đồng lao động xác định thời hạn sẽ không được đảm bảo an toàn cho cuộc sống khi gặp rủi ro. ||| Đúng
 [ĐS] AI có thể cá nhân hoá việc học tập cho mỗi học sinh. ||| Đúng
 [ĐS] AI có thể cá nhân hóa về học tập cho mỗi học sinh. ||| Đúng
 [ĐS] AI có thể thu thập thông tin riêng tư của con người. ||| Đúng
@@ -75,6 +76,10 @@
 [ĐS] AI tự động giải quyết mọi vấn đề trong giáo dục. ||| Sai
 [ĐS] AI yếu chủ yếu được sử dụng trong các hệ thống tự học và không cần sự tham gia của con người. ||| Sai
 [ĐS] AlphaGo là một ví dụ của AI mạnh vì nó có khả năng đánh bại nhà vô địch cờ vây mà không cần sự trợ giúp từ con người. ||| Sai
+[ĐS] Bảo hiểm thất nghiệp là bảo hiểm thuộc lĩnh vực chăm sóc sức khỏe. ||| Sai
+[ĐS] Bảo hiểm thất nghiệp đã thể hiện vai trò giảm tổn thất, góp phần ổn định cuộc sống chị N khi mất việc. ||| Đúng
+[ĐS] Chị N thuộc diện tham gia bảo hiểm thất nghiệp, bảo hiểm xã hội và bảo hiểm y tế bắt buộc. ||| Đúng
+[ĐS] Chị N thuộc đối tượng tham gia bảo hiểm xã hội, bảo hiểm y tế tự nguyện. ||| Sai
 [ĐS] Con người có thể bị mất việc làm bởi AI. ||| Đúng
 [ĐS] Các máy tính trong phòng thực hành kết nối với nhau qua bộ chuyển mạch. ||| Đúng
 [ĐS] Các máy tính để bàn không thể kết nối vào Modem và Access point vì các thiết bị này không có cổng để cấm cáp mạng. ||| Sai
@@ -84,10 +89,12 @@
 [ĐS] Cần vào Network and Sharing center, chọn Turn on file and printer sharing để bật tính năng chia sẻ máy in. ||| Đúng
 [ĐS] Cần vào Network and Sharing center, chọn Turn on Network discovery để bật tính năng chia sẻ máy in. ||| Sai
 [ĐS] Cần đăng ký nâng cấp gói cước với nhà cung cấp dịch vụ vì có thêm nhiều thiết bị truy cập mạng. ||| Đúng
+[ĐS] Do là lao động có hợp đồng lao động xác định thời hạn, doanh nghiệp có quyền quyết định xem có đóng bảo hiểm xã hội hay không. ||| Sai
 [ĐS] Dạng α-glucose và β-glucose khác nhau vị trí trong không gian của nhóm –OH hemiacetal. ||| Đúng
 [ĐS] Dạng α-glucose và β-glucose khác nhau vị trí trong không gian của nhóm –OH hemiacetal. Giải thích ||| Đúng
 [ĐS] Dạng α-glucose và β-glucose đều phản ứng trực tiếp với thuốc thử Tollens. ||| Sai
 [ĐS] Dạng α-glucose và β-glucose đều phản ứng trực tiếp với thuốc thử Tollens. Giải thích ||| Sai
+[ĐS] GDP là chỉ số tổng thu nhập quốc dân. -SAI ||| Sai
 [ĐS] Gmail là 1 dịch vụ thư điện tử miễn phí do Google phát triển. ||| Đúng
 [ĐS] Gmail là một dịch vụ thư điện tử miễn phí do Google phát triển. ||| Đúng
 [ĐS] Google có thể hỗ trợ bác sĩ tầm soát và phát hiện bệnh võng mạc tiểu đường thông qua camera điện thoại. ||| Đúng
@@ -97,6 +104,9 @@
 [ĐS] Học máy là lĩnh vực nghiên cứu làm cho máy tính có khả năng học từ dữ liệu. ||| Đúng
 [ĐS] Hỗ trợ bác sĩ thực hiện các thủ thuật y tế phức tạp. ||| Đúng
 [ĐS] Hỗ trợ giao tiếp và thấu hiểu cảm xúc bệnh nhân. ||| Sai
+[ĐS] Hội nhập kinh tế quốc tế góp phần cải thiện đời sống nhân dân. ||| Đúng
+[ĐS] Hội nhập quốc tế sẽ làm mất độc lập, tự chủ và bản sắc dân tộc của các nước. ||| Sai
+[ĐS] Khi hội nhập quốc tế, Việt Nam không thể giữ vững độc lập, tự chủ. ||| Sai
 [ĐS] Khi phản ứng với CH 3 OH (dư) trong HCl thì cả 5 nhóm –OH của glucose đều bị ether hóa. ||| Sai
 [ĐS] Khi phản ứng với CH3OH (dư) trong HCl thì cả 5 nhóm –OH của glucose đều bị ether hóa. ||| Sai
 [ĐS] Khi phản ứng với Cu(OH) 2 /NaOH ở nhiệt độ thường và Cu(OH) 2 /NaOH đun nóng thì glucose đều bị oxi hoá. ||| Sai
@@ -106,6 +116,7 @@
 [ĐS] Khi để lâu ngoài không khí, (X) bị khử chậm bởi oxygen tạo thành hợp chất có mùi khó chịu. Giải thích ||| Sai
 [ĐS] Không thể sử dụng ai để giả mạo giọng nói khuôn mặt. ||| Sai
 [ĐS] Không thể sử dụng AI để giả mạo giọng nói, khuôn mặt. ||| Sai
+[ĐS] Liên kết, hợp tác với nhiều nước sẽ làm suy giảm tiềm lực kinh tế Việt Nam. ||| Sai
 [ĐS] MYCIN là một ví dụ của AI mạnh vì nó có khả năng chẩn đoán bệnh mà không cần sự hỗ trợ từ con người. ||| Sai
 [ĐS] Máy tìm kiếm Google có thể chẩn đoán được tất cả các bệnh tật của con người. ||| Sai
 [ĐS] Máy tính cài đặt máy in này chưa bật chế độ cho phép chia sẻ máy in. ||| Đúng
@@ -114,6 +125,7 @@
 [ĐS] Mở laptop, chọn Settings, chọn Network and Internet, chọn Mobile hotspot để tạo điểm phát sóng. ||| Sai
 [ĐS] Mở laptop, sử dụng chức năng mạng của hệ điều hành để chia sẻ tập tin. ||| Sai
 [ĐS] Nên sử dụng thêm các Access point để mở rộng mạng ở các vị trí cần lắp đặt mạng bổ sung, nơi có nhiều người dùng thiết bị di động. ||| Đúng
+[ĐS] Năm 2023, nền kinh tế Việt Nam có sự tăng trưởng kinh tế. - ĐÚNG ||| Sai
 [ĐS] Phân quyền Change cho nhóm người dùng Everyone. ||| Sai
 [ĐS] Phân quyền Change cho nhóm người dùng GIÁO VIÊN. ||| Đúng
 [ĐS] Phân quyền Full control cho nhóm người dùng Everyone. ||| Sai
@@ -122,32 +134,50 @@
 [ĐS] Phân quyền Read cho nhóm người dùng GIÁO VIÊN. ||| Sai
 [ĐS] Phân tích hình ảnh y tế và đưa ra chẩn đoán bệnh. ||| Đúng
 [ĐS] Phải thay Switch bằng một Modem khác, giúp vừa kết nối tất cả các máy tính trong phòng thực hành bằng cáp nối, vừa kết nối các thiết bị di động. ||| Sai
+[ĐS] Quan điểm giữ vững độc lập, tự chủ trong hội nhập quốc tế của Đảng sẽ cản trở quá trình hội nhập kinh tế quốc tế của Việt Nam. ||| Sai
 [ĐS] Sử dụng thêm thiết bị Access point để mở rộng mạng không dây, cho phép các thiết bị không dây truy cập vào tài nguyên mạng. ||| Đúng
 [ĐS] Ta có thể lưu trữ dữ liệu trên không gian lưu trữ đám mây không giới hạn. ||| Sai
 [ĐS] Thay thế Modem đang dùng bằng Router hiện đại, tốc độ cao. ||| Sai
 [ĐS] Thiết bị bắt buộc dùng để kết nối các thiết bị với mạng Internet là Modem. ||| Đúng
+[ĐS] Thu nhập bình quân đầu người năm 2022 của cả nước cao hơn năm 2023. -SAI ||| Sai
+[ĐS] Thu nhập bình quân đầu người tăng sẽ thúc đẩy tiến bộ, công bằng xã hội. -ĐÚNG ||| Sai
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016084 Năm 1997, máy tính Deep Blue của IBM đánh bại đại kiện tướng cờ vua Garry Kasparov. Đây là lần đầu tiên một chương trình đánh bại một nhà vô địch thế giới về cờ vua. Một số bạn học sinh đưa ra các ý kiến sau: a) Cách thức đánh cờ của con người và máy tính là giống nhau. b) Trận đấu là cuộc đụng độ giữa một bên là trực giác kì diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. c) Máy tính Deep Blue của IBM chỉ có thể hoạt động được vào ban ngày. d) Việc máy tính đánh cờ vua chứng minh khả năng máy móc thực hiện được nhiệm vụ đòi hỏi trí thông minh cao. ||| Đúng
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016086 Trí tuệ nhân tạo (AI) đang cải thiện ngành tài chính, ngân hàng bằng cách tăng cường an ninh giao dịch, dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua chatbots. Sau đây là các phát biểu về những ứng dụng của AI đối với ngành tài chính, ngân hàng. a) AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. b) AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. c) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. d) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. ||| Sai
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016086 Trí tuệ nhân tạo (AI) đang cải thiện ngành tài chính, ngân hàng bằng cách tăng cường an ninh giao dịch, dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua chatbots. Sau đây là các phát biểu về những ứng dụng của AI đối với ngành tài chính, ngân hàng. a) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. b) AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. c) AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. d) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. ||| Sai
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016086 Trí tuệ nhân tạo (AI) đang cải thiện ngành tài chính, ngân hàng bằng cách tăng cường an ninh giao dịch, dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua chatbots. Sau đây là các phát biểu về những ứng dụng của AI đối với ngành tài chính, ngân hàng. a) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch. b) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính. c) AI hỗ trợ tự động hoá các quy trình thủ công để nâng cao trải nghiệm khách hàng. d) AI hỗ trợ phân tích và dự báo xu hướng thị trường để tối ưu hoá hoạt động kinh doanh. ||| Đúng
 [ĐS] thí sinh chọn đúng hoặc sai.) Câu 1 ID:583016088 Trí tuệ nhân tạo (AI) mang lại những ảnh hưởng tích cực như tăng cường hiệu quả công việc và cải thiện chất lượng cuộc sống. Tuy nhiên, AI cũng gây ra những thách thức về việc làm và quyền riêng tư của con người. Sau đây là các phát biểu về những ảnh hưởng của AI đối với con người. a) AI luôn công bằng khi áp dụng trong hệ thống hỗ trợ tuyển dụng. b) Không thể sử dụng AI để giả mạo giọng nói, khuôn mặt. c) AI có thể thu thập thông tin riêng tư của con người. d) Con người có thể bị mất việc làm bởi AI. ||| Đúng
+[ĐS] Thông tin trên cho thấy được lợi ích thiết thực từ việc hội nhập kinh tế quốc tế. ||| Đúng
 [ĐS] Thị giác máy tính là một phần của học máy vì nó giúp máy tính nhận dạng và phân tích hình ảnh. ||| Sai
 [ĐS] Trên điện thoại thông minh bật tính năng chia sẻ Mobile hotspot để tạo điểm phát sóng và chia sẻ kết nối cho laptop. ||| Đúng
 [ĐS] Trí tuệ nhân tạo là khả năng của máy tính thực hiện các công việc cần trí tuệ như của con người. ||| Đúng
 [ĐS] Trận đấu là cuộc đụng độ giữa một bên là trực giác kì diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. ||| Đúng
 [ĐS] Trận đấu là cuộc đụng độ giữa một bên là trực giác kỳ diệu của con người với bên kia là tốc độ tính toán siêu phàm của máy tính. ||| Đúng
+[ĐS] Tất cả 72 công nhân của doanh nghiệp may mặc X đều thuộc đối tượng tham gia bảo hiểm xã hội bắt buộc. ||| Đúng
+[ĐS] Việc không tham gia bảo hiểm y tế đã khiến ông Đ phải chịu chi phí y tế cá nhân cao, không có sự hỗ trợ tài chính từ bảo hiểm. ||| Đúng
+[ĐS] Việc không đóng bảo hiểm xã hội cho 12 lao động có hợp đồng lao động xác định thời hạn là phù hợp với quy định hiện hành. ||| Sai
 [ĐS] Việc máy tính đánh cờ vua chứng minh khả năng máy móc thực hiện được nhiệm vụ đòi hỏi trí thông minh cao. ||| Đúng
+[ĐS] Việc đóng bảo hiểm y tế đối với người lao động là cần thiết để chăm sóc sức khỏe và bù đắp chi phí khám chữa bệnh khi gặp rủi ro, ốm đau ||| Đúng
 [ĐS] Xoxe là một ví dụ của AI yếu vì nó cần sự hỗ trợ của con người để học và hiểu ngôn ngữ tự nhiên. ||| Sai
 [ĐS] Xử lí ngôn ngữ tự nhiên giúp máy tính giao tiếp với con người bằng ngôn ngữ tự nhiên, cả ngôn ngữ viết và tiếng nói. ||| Đúng
+[ĐS] Ông Đ là đối tượng tự nguyện tham gia bảo hiểm y tế. ||| Sai
+[ĐS] Ông Đ và doanh nghiệp nơi ông Đ làm việc đã vi phạm quy định của Luật Bảo hiểm y tế ||| Đúng
+[ĐS] Ý kiến trên phản ánh chưa đúng về sự cần thiết của hội nhập kinh tế quốc tế. ||| Đúng
 [ĐS] Đi tìm quán cà phê gần nhất để có mạng wifi. ||| Sai
 [ĐS] Đưa ra chẩn đoán y tế cuối cùng. ||| Sai
+[ĐS] Độc lập, tự chủ là cơ sở, điều kiện, tiền đề để chủ động, tích cực hội nhập quốc tế. ||| Đúng
 AI có thể gây ra hậu quả gì cho xã hội loài người? ||| Làm mất việc làm của con người.
 AI giúp phát triển hệ thống điều khiển tự động trong công xưởng như thế nào? ||| Giám sát và tối ưu hóa quá trình sản xuất.
 AI là gì? ||| Khả năng của máy tính có thể làm những công việc mang tính trí tuệ của con người.
+Ai là người có quyền được hưởng trợ cấp thất nghiệp khi bị mất việc làm? ||| Người lao động
 AI trong tài chính ngân hàng giúp gì? ||| Phân tích hành vi để dự đoán và phát hiện gian lận.
 AI tạo sinh là gì? ||| AI có khả năng tạo ra nội dung từ dữ liệu đã có.
 Biết Chất nào sau đây thuộc loại polysaccharide? ||| cellulose.
 Biểu nào dưới đây phù hợp nhất khi nói về khả năng của Trí tuệ nhân tạo hẹp? ||| Giải quyết nhiệm vụ cụ thể theo những gì đã được học.
+Bảo hiểm bao gồm những loại hình nào sau đây? ||| Bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, bảo hiểm thương mại
+Bảo hiểm nhân thọ có chức năng chính nào sau đây? ||| Bảo vệ người tham gia trong trường hợp qua đời hoặc sống đủ thời hạn hợp đồng
+Bảo hiểm nào chỉ có hình thức bắt buộc, không có hình thức tự nguyện? ||| Bảo hiểm thất nghiệp
+Bảo hiểm thương mại có điểm nào khác biệt so với bảo hiểm xã hội? ||| Bảo hiểm thương mại cung cấp dịch vụ bảo hiểm trên cơ sở thương mại, bảo hiểm xã hội thì không
+Bảo hiểm y tế tự nguyện dành cho đối tượng nào? ||| Người lao động tự do không thuộc diện bắt buộc tham gia
 Bộ giao tiếp mạng (NIC) có chức năng gì? ||| Truyền và nhận dữ liệu qua cáp mạng hoặc sóng vô tuyến
 Bộ nhớ chính (bộ nhớ trong - memory) bao gồm: ||| ROM và RAM
 Bộ định tuyến là thiết bị nào sau đây? ||| Router.
@@ -158,6 +188,7 @@ Cho các chất: triolein, cellulose, saccharose, tinh bột. Số chất bị t
 Cho các phát biểu sau: (a) Chất béo được gọi chung là triglyceride. (b) Chất béo nhẹ hơn nước, không tan trong nước nhưng tan nhiều trong dung môi hữu cơ. (c) Phản ứng thủy phân chất béo trong môi trường acid là phản ứng thuận nghịch. (d) Ở nhiệt độ thường, chất béo chứa nhiều gốc acid béo không no thường ở thể rắn. Số phát biểu đúng là ||| 3.
 Cho dãy các chất: ethanol, acetic acid, methyl fomate, propionic acid. Chất nào có nhiệt độ sôi thấp nhất? ||| methyl fomate.
 Cho sơ đồ: Tinh bột → A1 → A2 → A3 (A1, A2 và A3 là các chất có ứng dụng trong chế biến thực phẩm, đồ uống,.). Các chất A1, A2, A3 có công thức lần lượt là ||| C6H12O6, C2H5OH, CH3COOH.
+Chuyển dịch cơ cấu kinh tế theo hướng tích cực là gì? ||| Tăng tỉ trọng ngành công nghiệp và dịch vụ, giảm tỉ trọng ngành nông nghiệp
 Chuẩn kết nối nào dưới đây thường được sử dụng để kết nối các thiết bị âm nhạc với điện thoại di động? ||| Bluetooth.
 Chất béo là triester của acid béo với ||| glycerol.
 Chất giặt rửa tổng hợp sodium laurysulfate có công thức cấu tạo như sau: Nhóm được khoanh tròn trong công thức trên là ||| đầu ưa nước.
@@ -169,6 +200,7 @@ Chất nào sau đây là thành phần chủ yếu của xà phòng? ||| CH3[CH
 Chất nào sau đây thuộc loại ester? ||| CH3COOCH3.
 Chất nào sau đây thuộc loại monosaccharide? ||| Fructose.
 Chất X được tạo thành trong cây xanh nhờ quá trình quang hợp. Thủy phân hoàn toàn X (xúc tác acid) thu được chất Y. Hai chất X và Y lần lượt là ||| Tinh bột và glucose.
+Chỉ tiêu nào sau đây phản ánh mức thu nhập bình quân của một người dân trong một quốc gia? ||| GNI/người
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Chuẩn kết nối nào dưới đây thường được sử dụng để kết nối các thiết bị âm nhạc với điện thoại di động? ||| Bluetooth.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên Internet.
 CHỦ ĐỀ 1: TRÍ TUỆ NHÂN TẠO - AI PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lí ảo? ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
@@ -180,9 +212,11 @@ Các trợ lý ảo như Google Assistant, Siri có thể làm gì? ||| Giao ti�
 Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên internet.
 Công thức của ester tạo bởi acid no, đơn chức mạch hở và alcohol no đơn chức mạch hở là ||| CnH2nO2 (n ≥ 2).
 Công thức của ethyl acetate là ||| CH3COOC2H5.
+Cơ chế nào dưới đây giúp các quốc gia có thể giải quyết tranh chấp trong quá trình hội nhập kinh tế? ||| Trọng tài quốc tế
 Cặp chất nào sau đây có thể phân biệt bằng thuốc thử Tollens? ||| Saccharose và glucose.
 DeepMind của Google trong y tế và chăm sóc sức khỏe có thể làm gì? ||| Chẩn đoán bệnh và lập phác đồ điều trị.
 Dung dịch chất nào sau đây hòa tan Cu(OH)2, thu được dung dịch có màu xanh lam? ||| Saccharose.
+Dịch vụ thu ngoại tệ mang lại gì cho quốc gia? ||| Góp phần vào thu nhập quốc gia thông qua kiều hối và du lịch
 Ester nào sau đây tác dụng với NaOH thu được ethyl alcohol? ||| CH3COOC2H5.
 Ester X được tạo bởi methyl alcohol và acetic acid. Công thức của X là ||| CH3COOCH3.
 Ester được tạo thành từ phản ứng ester hoá giữa CH3COOH và C2H5OH có công thức nào sau đây? ||| CH3COOC2H5.
@@ -193,12 +227,21 @@ Giao thức HTTP được sử dụng cho mục đích gì? ||| Truyền tải c
 Giao thức nào sau đây không thuộc bộ giao thức TCP/IP? ||| SMTP
 Giao thức TCP đảm bảo điều gì trong quá trình truyền dữ liệu? ||| Truyền dữ liệu đáng tin cậy và đúng thứ tự
 Glucide (carbohydrate) là những hợp chất hữu cơ tạp chức có công thức chung là ||| Cn(H2O)m.
+Hiệp định Thương mại Tự do (FTA) chủ yếu nhằm mục đích gì? ||| Giảm thiểu thuế quan và các rào cản thương mại giữa hai hoặc nhiều quốc gia
+Hoạt động dịch vụ tài chính, trong đó người tham gia bảo hiểm đóng một khoản phí cho tổ chức bảo hiểm để nhận bồi thường hoặc chi trả bảo hiểm khi xảy ra sự kiện bảo hiểm, được gọi là gì? ||| Bảo hiểm
+Hành vi nào dưới đây thể hiện đúng trách nhiệm của công dân về hội nhập kinh tế quốc tế? ||| Doanh nghiệp thủy sản X tuân thủ đúng quy định về dán nhãn, giấy tờ chứng minh nguồn gốc và các giấy chứng thư vệ sinh cần thiết khi xuất khẩu hàng hóa vào EU
 Hành vi nào sau đây KHÔNG phải là lạm dụng dữ liệu cá nhân bởi mô hình AI? ||| Phân tích dữ liệu y tế cá nhân để đưa ra chẩn đoán bệnh.
+Hệ số Gini phản ánh điều gì trong nền kinh tế? ||| Mức độ phân phối thu nhập bình đẳng trong xã hội
 Hệ thống tên miền (DNS) phân tên miền thành các cấp theo thứ tự nào? ||| Cấp cao nhất, cấp hai, cấp ba
+Hội nhập kinh tế quốc tế được hiểu là gì? ||| Quá trình gắn kết nền kinh tế của một quốc gia với các quốc gia khác
+Hội nhập song phương là gì? ||| Hợp tác giữa hai quốc gia
+Hội nhập đa phương đặc trưng bởi điều gì? ||| Hợp tác giữa ba quốc gia trở lên
+Khi nào người tham gia bảo hiểm sẽ nhận được quyền lợi bồi thường? ||| Khi xảy ra sự kiện rủi ro theo hợp đồng bảo hiểm
 Khái niệm "AI mạnh" là gì? ||| AI có thể giải quyết bất kỳ loại vấn đề phức tạp nào như con người.
 Khả năng nào sau đây ít phổ biến trong các hệ thống AI? ||| Khả năng tự phục hồi sau khi hỏng.
 Kết quả thí nghiệm của các dung dịch X, Y, Z với thuốc thử được ghi ở bảng sau: Mẫu thử Thuốc thử Hiện tượng X Dung dịch I2 Có màu xanh tím Y Cu(OH)2 Có màu xanh lam Z Dung dịch AgNO3 trong NH3 Tạo kết tủa Ag Các dung dịch X, Y, Z lần lượt là ||| Hồ tinh bột, saccharose, glucose.
 License còn có nghĩa là: ||| Giấy phép
+Loại hình bảo hiểm nào đảm bảo thay thế hoặc bù đắp một phần thu nhập của người lao động khi họ bị giảm hoặc mất thu nhập do ốm đau, thai sản, tai nạn lao động, hết tuổi lao động,... trên cơ sở đóng vào quỹ bảo hiểm xã hội? ||| Bảo hiểm xã hội
 Maltose là một loại disaccharide có nhiều trong mạch nha. Công thức phân tử của maltose là ||| C12H22O11.
 Modem là thiết bị có khả năng nào sau đây? ||| Chuyển đổi từ tín hiệu tương tự sang dữ liệu số và ngược lại.
 Mạch logic thực hiện phép toán logic AND có kí hiệu là : ||| ⟦img:2d3321ad2cdffb06813bc6e0bc37cc42.png⟧
@@ -208,6 +251,7 @@ Mạch logic thực hiện phép toán logic XOR có kí hiệu là : ||| ⟦img
 Mạng máy tính là gì? ||| Một hệ thống các thiết bị số được kết nối với nhau để truyền dữ liệu và trao đổi thông tin.
 Mạng WLAN còn được gọi là gì? ||| Mạng cục bộ không dây
 Mỗi đơn vị glucose trong cellulose liên kết với nhau bởi liên kết ||| β-1,4-glycoside.
+Mục đích chính của bảo hiểm là gì? ||| Bảo vệ tài chính cho người tham gia khi gặp rủi ro
 Mục đích của hệ thống tên miền DNS là gì? ||| Để định danh các máy tính trong mạng bằng những chữ gợi nhớ
 Ngoài chức năng kết nối không dây, Access point còn có thêm chức năng: ||| định tuyến trong mạng không dây.
 Ngoài việc kết nối các thiết bị theo mô hình sao, Switch còn có chức năng nào sau đây? ||| Mở rộng băng thông của đường truyền (số bit truyền trên giây).
@@ -224,6 +268,9 @@ Phát biểu nào sau đây KHÔNG đúng về địa chỉ IP? ||| Có thể t�
 Phát biểu nào sau đây không đúng? ||| Tinh bột tan tốt trong nước lạnh.
 Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lí ảo? ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
 Phát biểu nào sau đây là phù hợp nhất khi nói về Trợ lý ảo. ||| Một công nghệ AI có thể hiểu và thực hiện các yêu cầu bằng ngôn ngữ tự nhiên.
+Phát biểu nào sau đây là sai khi nói về bảo hiểm y tế? ||| Bảo hiểm y tế chỉ chi trả toàn bộ chi phí khám chữa bệnh mà không có hạn mức
+Phát biểu nào sau đây là sai về sự cần thiết của hội nhập kinh tế quốc tế? ||| Giúp nước này có thể chi phối nước khác về lĩnh vực kinh tế
+Phát triển kinh tế là gì? ||| Sự tăng trưởng về mọi mặt của nền kinh tế trong một thời gian nhất định, bao gồm tăng trưởng kinh tế và chuyển dịch cơ cấu kinh tế hợp lý
 Phương thức nào sau đây KHÔNG dùng để kết nối máy tính với điện thoại di động? ||| Cáp VGA.
 Phương án nào dưới đây KHÔNG phù hợp để minh hoạ cho hệ thống Trí tuệ nhân tạo có tri thức? ||| Robot hút bụi tự động làm sạch sàn nhà theo lịch trình định sẵn.
 Phương án nào dưới đây KHÔNG phù hợp để minh họa cho hệ thống trí tuệ nhân tạo có tri thức? ||| Robot hút bụi tự động làm sạch sàn nhà theo lịch trình định sẵn.
@@ -237,6 +284,7 @@ Phương án nào sau đây nêu đúng về Trí tuệ nhân tạo (AI)? ||| M�
 Phương án nào sau đây nêu đúng về trí tuệ nhân tạo? ||| Một lĩnh vực khoa học và kỹ thuật nhằm chế tạo các máy móc thông minh.
 Phương án nào sau đây đúng khi nói về tác động của AI đối với việc làm của con người? ||| AI tạo ra những việc làm mới và thay thế một số công việc hiện có.
 Phản ứng điều chế xà phòng từ chất béo được gọi là phản ứng ||| xà phòng hóa.
+PHẦN I. TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Tăng trưởng kinh tế được đo lường bằng chỉ tiêu nào dưới đây? ||| Tổng sản phẩm quốc nội (GDP)
 Phần mềm cho phép người dùng sử dụng qua Internet mà không cần phải cài đặt vào máy tính, còn được gọi với tên là gì? ||| Phần mềm trực tuyến
 Phần mềm nào dưới đây là trợ lí ảo của công ty Amazon? ||| Alexa.
 Phần mềm nào dưới đây là trợ lí ảo của công ty Apple? ||| Siri.
@@ -249,6 +297,9 @@ ROM (Read Only Memory) là bộ nhớ dùng để: ||| Lưu các dữ liệu h�
 Sodium dodecylbenzenesulfonate (SDBS), hay còn gọi là dodecylbenzene sulfonic acid, sodium salt hoặc linear alkylbenzene sulfonate (LAS), là một loại chất hoạt động bề mặt đa năng có nhiều ứng dụng trong chất tẩy rửa, sản phẩm làm sạch và nhiều quy trình công nghiệp khác nhau. (a) Công thức của sodium dodecylbenzenesulfonate là C12H25C6H4SO3Na. (b) Đầu ưa nước của sodium dodecylbenzenesulfonate là Na+. (c) Sodium dodecylbenzenesulfonate là chất tẩy rửa vì có tính oxi hóa mạnh. (d) Sodium dodecylbenzenesulfonate không thể dùng trong nước có hàm lượng Ca(HCO3)2 cao vì tạo kết tủa với Ca2+ tương tự như sodium oleate. Số phát biểu đúng là ||| 1.
 Sodium dodecylbenzenesulfonate (SDBS), hay còn gọi là dodecylbenzene sulfonic acid, sodium salt hoặc linear alkylbenzene sulfonate (LAS), là một loại chất hoạt động bề mặt đa năng có nhiều ứng dụng trong chất tẩy rửa, sản phẩm làm sạch và nhiều quy trình công nghiệp khác nhau. ⟦img:e649c0f887377a3cc4de1b22f57fab21.png⟧ (a) Công thức của sodium dodecylbenzenesulfonate là C 12 H 25 C 6 H 4 SO 3 Na. (b) Đầu ưa nước của sodium dodecylbenzenesulfonate là Na + . (c) Sodium dodecylbenzenesulfonate là chất tẩy rửa vì có tính oxi hóa mạnh. (d) Sodium dodecylbenzenesulfonate không thể dùng trong nước có hàm lượng Ca(HCO 3 ) 2 cao vì tạo kết tủa với Ca 2+ tương tự như sodium oleate. Số phát biểu đúng là ||| 1.
 Sản phẩm trung gian nào sau đây không thể có trong quá trình thủy phân tinh bột? ||| Saccharose.
+Sự gia tăng tổng sản phẩm quốc nội (GDP) trong một thời kỳ nhất định là một ví dụ của: ||| Tăng trưởng kinh tế
+Sự khác biệt chính giữa tăng trưởng kinh tế và phát triển kinh tế là gì ||| Tăng trưởng kinh tế tập trung vào việc gia tăng giá trị sản xuất, còn phát triển kinh tế bao gồm cả sự tiến bộ về mặt xã hội và môi trường
+Tham gia Tổ chức Thương mại Thế giới (WTO) là hình thức hội nhập nào? ||| Hội nhập toàn cầu
 Theo em phần mềm thương mại gồm: ||| Phần mềm đặt hàng và phần mềm đóng gói
 Theo nguồn gốc, chất giặt rửa được chia thành hai loại: chất giặt rửa tự nhiên và chất giặt rửa tổng hợp. Phát biểu nào sau đây là không đúng? ||| Chất giặt rửa tổng hợp dễ bị phân huỷ sinh học bởi các vi sinh vật hơn xà phòng.
 Thiết bị Modem KHÔNG cho phép kết nối trong trường hợp nào sau đây? ||| Các thiết bị khác thông qua cổng USB-C
@@ -269,23 +320,36 @@ Trong các hợp chất cho dưới đây, hợp chất nào chứa đơn vị f
 Trong công nghiệp sản xuất đường saccharose, người ta đã sử dụng phương pháp nào để tách saccharose ra khỏi dung dịch nước mía? ||| Kết tinh.
 Trong công nghiệp thực phẩm, saccharose được sử dụng phổ biến làm nguyên liệu để sản xuất bánh kẹo, nước giải khát,... Phát biểu nào sau đây là sai? ||| Thuỷ phân saccharose chỉ thu được glucose.
 Trong mạng LAN, thiết bị nào được sử dụng để kết nối và chuyển tiếp dữ liệu giữa các thiết bị? ||| Switch
+Trong một nền kinh tế thị trường, yếu tố nào có thể hạn chế tăng trưởng bền vững? ||| Thiếu đầu tư vào giáo dục và cơ sở hạ tầng
 Trong những tính năng sau tính năng nào KHÔNG phải là của Trợ lý ảo. ||| Tự động cải thiện hiệu suất máy tính.
 Trong những tính năng sau, tính năng nào KHÔNG phải là của Trợ lí ảo? ||| Tự động cải thiện hiệu suất máy tính.
 Trong phòng thực hành Tin học có 30 máy tính, muốn kết nối các máy tính đó thành mạng LAN, ta nên dùng thiết bị nào sau đây? ||| Switch.
 Trong thành phần của quả bông có 90% cellulose về khối lượng. Trong phân tử cellulose các đơn vị β-glucose liên kết với nhau qua liên kết nào sau đây? ||| liên kết β-1,4-glycoside.
+Trong việc hội nhập kinh tế quốc tế, một trong những khó khăn mà quốc gia phải đối mặt là gì? ||| Cạnh tranh khốc liệt từ các sản phẩm ngoại nhập
 Trong điều kiện thích hợp glucose lên men tạo thành khí CO2 và ||| C2H5OH.
 Trí tuệ nhân tạo còn nhiều hạn chế ở khả năng nào sau đây? ||| Cảm nhận cảm xúc.
 Trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh bằng cách nào sau đây? ||| Nhận diện các bệnh lí qua hình ảnh y khoa.
+Tăng trưởng kinh tế cung cấp nguồn lực cho lĩnh vực nào? ||| An ninh quốc phòng và củng cố chính trị
+Tăng trưởng kinh tế giúp giảm nghèo bằng cách nào? ||| Tạo ra nhiều cơ hội việc làm và thu nhập
+Tại sao bảo hiểm lại quan trọng đối với xã hội? ||| Giảm thiểu gánh nặng cho hệ thống an sinh xã hội
+Tại sao chỉ số HDI (chỉ số phát triển con người) lại là một chỉ tiêu quan trọng của phát triển kinh tế? ||| Vì nó phản ánh mức độ phát triển tổng thể về giáo dục, y tế, và thu nhập
+Tại sao hội nhập kinh tế quốc tế là một yêu cầu tất yếu trong bối cảnh toàn cầu hóa? ||| Tạo cơ hội mở rộng thị trường và thu hút vốn đầu tư
 Tại thiết bị gửi, giao thức mạng nào sau đây cần thực hiện ngay trước khi truyền gói dữ liệu? ||| Xác định đường đi tối ưu cho gói dữ liệu.
 Tại thiết bị gửi, ngay sau khi đóng gói dữ liệu, xác định địa chỉ IP và địa chỉ MAC, giao thức mạng nào sau đây sẽ được thực hiện? ||| Xác định đường đi tối ưu cho gói dữ liệu.
 Tại thiết bị nhận, giao thức mạng nào sau đây cần thực hiện ngay trước khi giải nén dữ liệu nhận được? ||| Kiểm tra lỗi và đảm bảo độ tin cậy.
+Tổng thu nhập quốc dân (GNI) là gì? ||| Tổng thu nhập mà công dân quốc gia kiếm được từ cả trong và ngoài nước
 Vai trò chính của Router là gì? ||| Kết nối các mạng LAN với nhau và chuyển tiếp dữ liệu giữa chúng
+Vai trò của bảo hiểm thương mại đối với nền kinh tế là gì? ||| Góp phần ổn định tài chính và thúc đẩy đầu tư
+Việc làm nào dưới đây góp phần thúc đẩy sự tăng trưởng và phát triển kinh tế của đất nước? ||| Ứng dụng công nghệ 4.0 vào sản xuất
+Việc làm nào sau đây của người sử dụng lao động là phù hợp đối với người lao động trong việc tham gia bảo hiểm? ||| Đóng bảo hiểm xã hội và bảo hiểm y tế, bảo hiểm thất nghiệp đầy đủ và đúng quy định pháp luật
 Ví dụ nào sau đây là một ứng dụng của AI yếu? ||| MYCIN – hệ chuyên gia trong lĩnh vực y tế.
 Xà phòng là muối sodium hoặc potassium của ||| acid béo.
 Youtube được trang bị hệ thống trí tuệ nhân tạo để gợi ý cho người dùng. Hãy cho biết hệ thống này làm nhiệm vụ gì dưới đây? ||| Đề xuất các video dựa trên sở thích của người dùng.
+Yếu tố nào dưới đây không ảnh hưởng trực tiếp đến GDP? ||| Lạm phát
 Điều gì sau đây đảm bảo cho máy tính và thiết bị mạng có thể giao tiếp được với nhau đúng cách? ||| Giao thức mạng (Network protocol).
 Điểm nào sau đây là sai khi nói về giao thức TCP? ||| Không có cơ chế kiểm tra lỗi
 Đun nóng tinh bột trong dung dịch acid vô cơ loãng sẽ thu được ||| glucose.
+Đầu tư quốc tế là gì? ||| Hình thức đầu tư của các doanh nghiệp nước ngoài vào quốc gia khác
 Đặc tính nào sau đây là một trong các nhược điểm của giao thức TCP/IP? ||| Không hỗ trợ đa phương tiện.
 Đặc tính nào sau đây là một trong các ưu điểm của giao thức TCP/IP? ||| Khả năng kiểm soát luồng.
 Để loại bỏ dầu mỡ khỏi quần áo, không thể dùng ||| nước cất.
