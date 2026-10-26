@@ -186,6 +186,8 @@ Carbohydrate là gì? ||| Carbohydrate là những hợp chất hữu cơ tạp 
 Cellulose thuộc loại polysaccharide, là thành phần chính tạo nên màng tế bào thực vật, có nhiều trong gỗ, bông gòn. Công thức của cellulose là ||| (C6H10O5)n.
 Cho các chất: triolein, cellulose, saccharose, tinh bột. Số chất bị thuỷ phân trong môi trường acid là ||| 4.
 Cho các phát biểu sau: (a) Chất béo được gọi chung là triglyceride. (b) Chất béo nhẹ hơn nước, không tan trong nước nhưng tan nhiều trong dung môi hữu cơ. (c) Phản ứng thủy phân chất béo trong môi trường acid là phản ứng thuận nghịch. (d) Ở nhiệt độ thường, chất béo chứa nhiều gốc acid béo không no thường ở thể rắn. Số phát biểu đúng là ||| 3.
+Cho câu lệnh HTML: <p style = "color: blue"> <u> This is a <em> paragraph. </em></u> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt là gì? ||| This is a paragraph.
+Cho câu lệnh HTML: <p> <strong> This is a <i> paragraph. </i></strong> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt? ||| This is a paragraph.
 Cho dãy các chất: ethanol, acetic acid, methyl fomate, propionic acid. Chất nào có nhiệt độ sôi thấp nhất? ||| methyl fomate.
 Cho sơ đồ: Tinh bột → A1 → A2 → A3 (A1, A2 và A3 là các chất có ứng dụng trong chế biến thực phẩm, đồ uống,.). Các chất A1, A2, A3 có công thức lần lượt là ||| C6H12O6, C2H5OH, CH3COOH.
 Chuyển dịch cơ cấu kinh tế theo hướng tích cực là gì? ||| Tăng tỉ trọng ngành công nghiệp và dịch vụ, giảm tỉ trọng ngành nông nghiệp
@@ -209,13 +211,17 @@ Commercial soflware còn được gọi là: ||| Phần mềm thương mại
 Các bộ phận chính trong cấu trúc chung của máy tính bao gồm: ||| Bộ xử lí trung tâm, bộ nhớ trong, bộ nhớ ngoài, thiết bị vào/ra
 Các lệnh và dữ liệu trong khi các chương trình đang thực hiện được lưu trên thiết bị: ||| RAM
 Các trợ lý ảo như Google Assistant, Siri có thể làm gì? ||| Giao tiếp với người dùng bằng văn bản hoặc tiếng nói.
+Câu lệnh nào dưới đây cho kết quả hiển thị như hình sau? This is a paragraph. ||| <span style = "background-color:yellow"> This is a paragraph. </span>
+Câu lệnh nào dưới đây cho kết quả hiển thị trên trình duyệt như hình sau? This is a paragraph. ||| <p><b>This is a <sub>paragraph.</sub></b></p>
 Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên internet.
 Công thức của ester tạo bởi acid no, đơn chức mạch hở và alcohol no đơn chức mạch hở là ||| CnH2nO2 (n ≥ 2).
 Công thức của ethyl acetate là ||| CH3COOC2H5.
+Cú pháp nào sau đây dùng để khai báo thuộc tính cho một phần tử HTML? ||| <tên_thẻ thuộc_tính = "giá_trị";> Nội dung </tên_thẻ>
 Cơ chế nào dưới đây giúp các quốc gia có thể giải quyết tranh chấp trong quá trình hội nhập kinh tế? ||| Trọng tài quốc tế
 Cặp chất nào sau đây có thể phân biệt bằng thuốc thử Tollens? ||| Saccharose và glucose.
 DeepMind của Google trong y tế và chăm sóc sức khỏe có thể làm gì? ||| Chẩn đoán bệnh và lập phác đồ điều trị.
 Dung dịch chất nào sau đây hòa tan Cu(OH)2, thu được dung dịch có màu xanh lam? ||| Saccharose.
+Dùng cặp thẻ nào dưới đây để khai báo danh sách có thứ tự? ||| Thẻ <ol></ol> để tạo danh sách có thứ tự và <li></li> để đánh dấu từng mục trong danh sách.
 Dịch vụ thu ngoại tệ mang lại gì cho quốc gia? ||| Góp phần vào thu nhập quốc gia thông qua kiều hối và du lịch
 Ester nào sau đây tác dụng với NaOH thu được ethyl alcohol? ||| CH3COOC2H5.
 Ester X được tạo bởi methyl alcohol và acetic acid. Công thức của X là ||| CH3COOCH3.
@@ -229,6 +235,7 @@ Giao thức TCP đảm bảo điều gì trong quá trình truyền dữ liệu?
 Glucide (carbohydrate) là những hợp chất hữu cơ tạp chức có công thức chung là ||| Cn(H2O)m.
 Hiệp định Thương mại Tự do (FTA) chủ yếu nhằm mục đích gì? ||| Giảm thiểu thuế quan và các rào cản thương mại giữa hai hoặc nhiều quốc gia
 Hoạt động dịch vụ tài chính, trong đó người tham gia bảo hiểm đóng một khoản phí cho tổ chức bảo hiểm để nhận bồi thường hoặc chi trả bảo hiểm khi xảy ra sự kiện bảo hiểm, được gọi là gì? ||| Bảo hiểm
+HTML là viết tắt của cụm từ nào sau đây? ||| HyperText Markup Language.
 Hành vi nào dưới đây thể hiện đúng trách nhiệm của công dân về hội nhập kinh tế quốc tế? ||| Doanh nghiệp thủy sản X tuân thủ đúng quy định về dán nhãn, giấy tờ chứng minh nguồn gốc và các giấy chứng thư vệ sinh cần thiết khi xuất khẩu hàng hóa vào EU
 Hành vi nào sau đây KHÔNG phải là lạm dụng dữ liệu cá nhân bởi mô hình AI? ||| Phân tích dữ liệu y tế cá nhân để đưa ra chẩn đoán bệnh.
 Hệ số Gini phản ánh điều gì trong nền kinh tế? ||| Mức độ phân phối thu nhập bình đẳng trong xã hội
@@ -238,9 +245,11 @@ Hội nhập song phương là gì? ||| Hợp tác giữa hai quốc gia
 Hội nhập đa phương đặc trưng bởi điều gì? ||| Hợp tác giữa ba quốc gia trở lên
 Khi nào người tham gia bảo hiểm sẽ nhận được quyền lợi bồi thường? ||| Khi xảy ra sự kiện rủi ro theo hợp đồng bảo hiểm
 Khái niệm "AI mạnh" là gì? ||| AI có thể giải quyết bất kỳ loại vấn đề phức tạp nào như con người.
+Không thể tạo liên kết từ trang web đến tài nguyên nào dưới đây? ||| Vị trí được đánh dấu bằng tên lớp (.class) trên trang web hiện thời.
 Khả năng nào sau đây ít phổ biến trong các hệ thống AI? ||| Khả năng tự phục hồi sau khi hỏng.
 Kết quả thí nghiệm của các dung dịch X, Y, Z với thuốc thử được ghi ở bảng sau: Mẫu thử Thuốc thử Hiện tượng X Dung dịch I2 Có màu xanh tím Y Cu(OH)2 Có màu xanh lam Z Dung dịch AgNO3 trong NH3 Tạo kết tủa Ag Các dung dịch X, Y, Z lần lượt là ||| Hồ tinh bột, saccharose, glucose.
 License còn có nghĩa là: ||| Giấy phép
+Liên kết nào dưới đây KHÔNG dẫn tới tài nguyên? ||| <a href="/laptrinhweb/google.com">Liên kết đến trang google.com</a><br>
 Loại hình bảo hiểm nào đảm bảo thay thế hoặc bù đắp một phần thu nhập của người lao động khi họ bị giảm hoặc mất thu nhập do ốm đau, thai sản, tai nạn lao động, hết tuổi lao động,... trên cơ sở đóng vào quỹ bảo hiểm xã hội? ||| Bảo hiểm xã hội
 Maltose là một loại disaccharide có nhiều trong mạch nha. Công thức phân tử của maltose là ||| C12H22O11.
 Modem là thiết bị có khả năng nào sau đây? ||| Chuyển đổi từ tín hiệu tương tự sang dữ liệu số và ngược lại.
@@ -274,16 +283,22 @@ Phát triển kinh tế là gì? ||| Sự tăng trưởng về mọi mặt của
 Phương thức nào sau đây KHÔNG dùng để kết nối máy tính với điện thoại di động? ||| Cáp VGA.
 Phương án nào dưới đây KHÔNG phù hợp để minh hoạ cho hệ thống Trí tuệ nhân tạo có tri thức? ||| Robot hút bụi tự động làm sạch sàn nhà theo lịch trình định sẵn.
 Phương án nào dưới đây KHÔNG phù hợp để minh họa cho hệ thống trí tuệ nhân tạo có tri thức? ||| Robot hút bụi tự động làm sạch sàn nhà theo lịch trình định sẵn.
+Phương án nào dưới đây KHÔNG đúng về thuộc tính target của thẻ <a>? ||| Nếu giá trị thuộc tính target là "_blank" thì tài liệu được mở trên cửa sổ trình duyệt hiện tại.
 Phương án nào dưới đây liệt kê hai phân loại chính của Trí tuệ nhân tạo (AI)? ||| AI Hẹp (ANI) và AI Tổng quát (AGI).
 Phương án nào dưới đây liệt kê hai phân loại chính của trí tuệ nhân tạo? ||| AI Hẹp (ANI) và AI Tổng quát (AGI).
+Phương án nào dưới đây mô tả đúng kết quả câu lệnh <ol type = "a">...</ol>? ||| Danh sách có thứ tự, bắt đầu từ mục a.
+Phương án nào dưới đây nêu đúng kết quả lệnh tạo danh sách có thứ tự nhưng không khai báo thuộc tính type và start? ||| Tạo danh sách có thứ tự, bắt đầu từ mục 1.
+Phương án nào dưới đây nêu đúng nội dung cần điền vào phần còn thiếu trong câu lệnh để có kết quả hiển thị như hình sau? <p style = "..."> This is a <i> paragraph. </i> </p> This is a paragraph. ||| color, b, b
 Phương án nào dưới đây nêu đúng về khả năng học của AI? ||| Trích xuất thông tin từ dữ liệu để học và tích lũy tri thức.
 Phương án nào dưới đây nêu đúng về khả năng nhận thức của AI? ||| Cảm nhận và hiểu biết môi trường thông qua các cảm biến và thiết bị đầu vào.
 Phương án nào dưới đây nêu đúng về khả năng suy luận của AI? ||| Vận dụng logic và tri thức để đưa ra quyết định hoặc kết luận.
 Phương án nào sau đây KHÔNG phải là một nhiệm vụ của giao thức TCP? ||| Quản lý việc định địa chỉ và định tuyến của các gói dữ liệu trong mạng
+Phương án nào sau đây mô tả đúng về HTML? ||| Là bộ quy tắc dùng để trình bày cấu trúc, nội dung và hình thức trang web.
 Phương án nào sau đây nêu đúng về Trí tuệ nhân tạo (AI)? ||| Một lĩnh vực khoa học và kĩ thuật nhằm chế tạo các máy móc thông minh.
 Phương án nào sau đây nêu đúng về trí tuệ nhân tạo? ||| Một lĩnh vực khoa học và kỹ thuật nhằm chế tạo các máy móc thông minh.
 Phương án nào sau đây đúng khi nói về tác động của AI đối với việc làm của con người? ||| AI tạo ra những việc làm mới và thay thế một số công việc hiện có.
 Phản ứng điều chế xà phòng từ chất béo được gọi là phản ứng ||| xà phòng hóa.
+Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < >
 PHẦN I. TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Tăng trưởng kinh tế được đo lường bằng chỉ tiêu nào dưới đây? ||| Tổng sản phẩm quốc nội (GDP)
 Phần mềm cho phép người dùng sử dụng qua Internet mà không cần phải cài đặt vào máy tính, còn được gọi với tên là gì? ||| Phần mềm trực tuyến
 Phần mềm nào dưới đây là trợ lí ảo của công ty Amazon? ||| Alexa.
@@ -293,6 +308,9 @@ Phần mềm nào dưới đây là trợ lý ảo của công ty Amazon? ||| Al
 Phần mềm nào dưới đây là trợ lý ảo của công ty Apple? ||| Siri.
 Phần mềm nào dưới đây là trợ lý ảo của công ty SamSung? ||| Bixby.
 Phần mềm nào sau đây không phải là phần mềm mã nguồn mở ||| Microsoft Word 2019
+Phần tử <title> nằm trong phần tử nào sau đây? ||| <head>
+Phần tử HTML có kí hiệu <!-- ... --> có nghĩa là nào sau đây? ||| Là phần từ chú thích, nội dung không hiển thị khi duyệt web.
+Phần tử nào dưới đây được gọi là phần tử khối (block), bắt đầu từ đầu hàng và kéo dài suốt chiều rộng của trang web? ||| <div>
 ROM (Read Only Memory) là bộ nhớ dùng để: ||| Lưu các dữ liệu hệ thống cố định và các chương trình kiểm tra hay khởi động máy tính
 Sodium dodecylbenzenesulfonate (SDBS), hay còn gọi là dodecylbenzene sulfonic acid, sodium salt hoặc linear alkylbenzene sulfonate (LAS), là một loại chất hoạt động bề mặt đa năng có nhiều ứng dụng trong chất tẩy rửa, sản phẩm làm sạch và nhiều quy trình công nghiệp khác nhau. (a) Công thức của sodium dodecylbenzenesulfonate là C12H25C6H4SO3Na. (b) Đầu ưa nước của sodium dodecylbenzenesulfonate là Na+. (c) Sodium dodecylbenzenesulfonate là chất tẩy rửa vì có tính oxi hóa mạnh. (d) Sodium dodecylbenzenesulfonate không thể dùng trong nước có hàm lượng Ca(HCO3)2 cao vì tạo kết tủa với Ca2+ tương tự như sodium oleate. Số phát biểu đúng là ||| 1.
 Sodium dodecylbenzenesulfonate (SDBS), hay còn gọi là dodecylbenzene sulfonic acid, sodium salt hoặc linear alkylbenzene sulfonate (LAS), là một loại chất hoạt động bề mặt đa năng có nhiều ứng dụng trong chất tẩy rửa, sản phẩm làm sạch và nhiều quy trình công nghiệp khác nhau. ⟦img:e649c0f887377a3cc4de1b22f57fab21.png⟧ (a) Công thức của sodium dodecylbenzenesulfonate là C 12 H 25 C 6 H 4 SO 3 Na. (b) Đầu ưa nước của sodium dodecylbenzenesulfonate là Na + . (c) Sodium dodecylbenzenesulfonate là chất tẩy rửa vì có tính oxi hóa mạnh. (d) Sodium dodecylbenzenesulfonate không thể dùng trong nước có hàm lượng Ca(HCO 3 ) 2 cao vì tạo kết tủa với Ca 2+ tương tự như sodium oleate. Số phát biểu đúng là ||| 1.
@@ -313,10 +331,19 @@ Thiết bị nào sau đây KHÔNG sử dụng trí tuệ nhân tạo để đi�
 Thiết bị nào sau đây thường có chức năng phát sóng Wi-Fi và kết nối có dây? ||| Access Point
 Thiết bị Switch KHÔNG có khả năng nào sau đây? ||| Kết nối trực tiếp các máy tính với đường truyền của nhà cung cấp dịch vụ.
 Thuật ngữ "AI" bắt đầu được sử dụng vào năm nào? ||| 1956
+Thuộc tính của phần tử HTML KHÔNG có đặc điểm nào sau đây? ||| Mỗi phần tử bắt buộc phải có 1 thuộc tính.
 Thành phần của xà phòng bao gồm muối của acid béo với kim loại X và các chất phụ gia. Kim loại X có thể là ||| sodium hoặc potassium.
+Thẻ <head></head> KHÔNG có đặc điểm nào sau đây? ||| Nằm trong thẻ <body></body>.
+Thẻ <strong> có ý nghĩa nào sau đây? ||| Định dạng văn bản in đậm.
+Thẻ nào dưới đây để tạo liên kết trong trang web? ||| <a>
+Thẻ nào sau đây dùng để định dạng chữ in nghiêng cho nội dung văn bản? ||| <em> và <i>.
+Thẻ nào sau đây dùng để định dạng chữ in đậm cho nội dung văn bản? ||| <b> và <strong>.
+Thẻ nào sau đây KHÔNG cùng loại với các thẻ khác? ||| <b>
 Thị giác máy tính là gì? ||| Lĩnh vực nghiên cứu xử lý hình ảnh kỹ thuật số.
 Tiến hành thí nghiệm điều chế ethyl acetate theo các bước sau đây: Bước 1: Cho 1 mL C2H5OH, 1 mL CH3COOH và vài giọt dung dịch H2SO4 đặc vào ống nghiệm. Bước 2: Lắc đều ống nghiệm, đun cách thủy (trong nồi nước nóng) khoảng 5 - 6 phút ở 65 - 70oC. Bước 3: Làm lạnh, sau đó rót 2 mL dung dịch NaCl bão hòa vào ống nghiệm. Phát biểu nào sau đây là sai ? ||| Mục đích chính của việc thêm dung dịch NaCl bão hòa là để tránh phân hủy sản phẩm.
 Trong các hợp chất cho dưới đây, hợp chất nào chứa đơn vị fructose trong phân tử? ||| Saccharose.
+Trong các thẻ dưới đây, sử dụng thẻ nào để định dạng cho tiêu đề của cửa trang web có cỡ chữ nhỏ nhất? ||| <h6>
+Trong câu lệnh HTML: <title><b> Đây là tiêu đề trang web </b></title>, thẻ <b></b> có ý nghĩa định dạng nào sau đây? ||| Chữ có bóng đỏ cho văn bản "Đây là tiêu đề trang web".
 Trong công nghiệp sản xuất đường saccharose, người ta đã sử dụng phương pháp nào để tách saccharose ra khỏi dung dịch nước mía? ||| Kết tinh.
 Trong công nghiệp thực phẩm, saccharose được sử dụng phổ biến làm nguyên liệu để sản xuất bánh kẹo, nước giải khát,... Phát biểu nào sau đây là sai? ||| Thuỷ phân saccharose chỉ thu được glucose.
 Trong mạng LAN, thiết bị nào được sử dụng để kết nối và chuyển tiếp dữ liệu giữa các thiết bị? ||| Switch
@@ -325,12 +352,15 @@ Trong những tính năng sau tính năng nào KHÔNG phải là của Trợ lý
 Trong những tính năng sau, tính năng nào KHÔNG phải là của Trợ lí ảo? ||| Tự động cải thiện hiệu suất máy tính.
 Trong phòng thực hành Tin học có 30 máy tính, muốn kết nối các máy tính đó thành mạng LAN, ta nên dùng thiết bị nào sau đây? ||| Switch.
 Trong thành phần của quả bông có 90% cellulose về khối lượng. Trong phân tử cellulose các đơn vị β-glucose liên kết với nhau qua liên kết nào sau đây? ||| liên kết β-1,4-glycoside.
+Trong tệp index.html có cụm từ "Liên kết tới trang info.html", muốn tạo liên kết khi nháy chuột vào cụm từ "Liên kết tới trang info.html" sẽ dẫn tới tệp info.html, biết hai tệp này nằm trong cùng thư mục thiết kế web, cần sử dụng liên kết nào sau đây? ||| <a href = "info.html" > Liên kết tới trang info.html </a>
+Trong tệp index.html muốn tạo liên kết từ cụm từ "Liên kết tới trang info.html" tới tệp info.html nằm trong thư mục thiết kế web, biết tệp index.html và thư mục thiết kế web nằm trong cùng thư mục web cần sử dụng liên kết nào sau đây? ||| <a href = "thiet ke web/info.html" > Liên kết tới trang info.html </a>
 Trong việc hội nhập kinh tế quốc tế, một trong những khó khăn mà quốc gia phải đối mặt là gì? ||| Cạnh tranh khốc liệt từ các sản phẩm ngoại nhập
 Trong điều kiện thích hợp glucose lên men tạo thành khí CO2 và ||| C2H5OH.
 Trí tuệ nhân tạo còn nhiều hạn chế ở khả năng nào sau đây? ||| Cảm nhận cảm xúc.
 Trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh bằng cách nào sau đây? ||| Nhận diện các bệnh lí qua hình ảnh y khoa.
 Tăng trưởng kinh tế cung cấp nguồn lực cho lĩnh vực nào? ||| An ninh quốc phòng và củng cố chính trị
 Tăng trưởng kinh tế giúp giảm nghèo bằng cách nào? ||| Tạo ra nhiều cơ hội việc làm và thu nhập
+Tăng trưởng kinh tế được đo lường bằng chỉ tiêu nào dưới đây? ||| Tổng sản phẩm quốc nội (GDP)
 Tại sao bảo hiểm lại quan trọng đối với xã hội? ||| Giảm thiểu gánh nặng cho hệ thống an sinh xã hội
 Tại sao chỉ số HDI (chỉ số phát triển con người) lại là một chỉ tiêu quan trọng của phát triển kinh tế? ||| Vì nó phản ánh mức độ phát triển tổng thể về giáo dục, y tế, và thu nhập
 Tại sao hội nhập kinh tế quốc tế là một yêu cầu tất yếu trong bối cảnh toàn cầu hóa? ||| Tạo cơ hội mở rộng thị trường và thu hút vốn đầu tư
