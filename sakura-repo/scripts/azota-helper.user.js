@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      6.7
+// @version      6.8
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -500,7 +500,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   const panel = document.createElement('div');
   panel.id = 'azh';
   panel.setAttribute('data-mood', 'idle');
-  panel.innerHTML = `<div class="azh-card">${fxHtml}${headHtml('v6.7')}<button id="azh-mrun" class="azh-mrun" type="button" aria-label="Tạm dừng" title="Chạy / Tạm dừng"><svg class="azh-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a.8.8 0 001.2.7l10.6-6.8a.8.8 0 000-1.4L9.2 4.5A.8.8 0 008 5.2z"/></svg><svg class="azh-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4.5" width="4.6" height="15" rx="1.4"/><rect x="13.9" y="4.5" width="4.6" height="15" rx="1.4"/></svg></button>
+  panel.innerHTML = `<div class="azh-card">${fxHtml}${headHtml('v6.8')}<button id="azh-mrun" class="azh-mrun" type="button" aria-label="Tạm dừng" title="Chạy / Tạm dừng"><svg class="azh-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a.8.8 0 001.2.7l10.6-6.8a.8.8 0 000-1.4L9.2 4.5A.8.8 0 008 5.2z"/></svg><svg class="azh-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4.5" width="4.6" height="15" rx="1.4"/><rect x="13.9" y="4.5" width="4.6" height="15" rx="1.4"/></svg></button>
     <div id="azh-body">
       <div class="azh-main" id="azh-mainv">
         <div class="azh-stats">
@@ -1010,9 +1010,17 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     if (!qEl) return null;
     for (let card = qEl.el.parentElement, i = 0; card && i < 8; card = card.parentElement, i++) {
       if (((card.innerText || '').match(/(^|\n)\s*Câu\s*\d+/gi) || []).length > 1) return { qEl, why: 'thẻ gộp nhiều câu' };   // leo quá cao
-      const hits = deepest(all.filter(a => same(a, as) && card.contains(a.el) && !a.el.contains(qEl.el) && a.el !== qEl.el));
+      let hits = deepest(all.filter(a => same(a, as) && card.contains(a.el) && !a.el.contains(qEl.el) && a.el !== qEl.el));
       if (!hits.length) continue;
-      if (hits.length > 1) return { qEl, why: hits.length + ' ô trùng nhau' };           // hai phương án trùng chữ: không đoán bừa
+      if (hits.length > 1) {
+        // v6.8: so khớp bỏ dấu câu làm các phương án chỉ khác nhau ở dấu (vd "info.html" và "/info.html") bị coi là một.
+        // Thử lại: khớp chính xác (giữ dấu câu), rồi khớp bỏ khoảng trắng.
+        const want = norm(cleanAns(rec.correct)), want2 = want.replace(/\s+/g, '');
+        let ex = hits.filter(h => norm(h.t) === want);
+        if (ex.length !== 1) ex = hits.filter(h => norm(h.t).replace(/\s+/g, '') === want2);
+        if (ex.length === 1) hits = ex;
+      }
+      if (hits.length > 1) return { qEl, why: hits.length + ' phương án giống hệt nhau' };   // thật sự trùng chữ: không đoán bừa
       return { qEl, card, target: hits[0].el };
     }
     return { qEl, why: 'không thấy ảnh đáp án' };
@@ -1062,7 +1070,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       const loc = isDS ? locateDS(rec, all) : locate(rec, all);
       if (!loc) continue;
       if (isDS) dsFound++; else found++;
-      if (!loc.target) { if (!isDS && /^⟦img:/.test(rec.correct)) { dbgImg(rec, loc); imgFail.push('Câu ' + numOf(loc.qEl) + ' (' + (loc.why || '?') + ')'); } continue; }
+      if (!loc.target) { if (!isDS) { if (/^⟦img:/.test(rec.correct)) dbgImg(rec, loc); imgFail.push('Câu ' + numOf(loc.qEl) + ' (' + (loc.why || '?') + ')'); } continue; }
       const key = norm(rec.q);
       if (clickedQ.has(key)) continue;               // mỗi câu chỉ chọn 1 lần, không đè lên lựa chọn của bạn
       if (!active) {                                 // chỉ gợi ý: tô viền đáp án đã nhớ
