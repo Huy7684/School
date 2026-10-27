@@ -260,6 +260,7 @@ Mạch logic thực hiện phép toán logic XOR có kí hiệu là : ||| ⟦img
 Mạng máy tính là gì? ||| Một hệ thống các thiết bị số được kết nối với nhau để truyền dữ liệu và trao đổi thông tin.
 Mạng WLAN còn được gọi là gì? ||| Mạng cục bộ không dây
 Mỗi đơn vị glucose trong cellulose liên kết với nhau bởi liên kết ||| β-1,4-glycoside.
+Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < >
 Mục đích chính của bảo hiểm là gì? ||| Bảo vệ tài chính cho người tham gia khi gặp rủi ro
 Mục đích của hệ thống tên miền DNS là gì? ||| Để định danh các máy tính trong mạng bằng những chữ gợi nhớ
 Ngoài chức năng kết nối không dây, Access point còn có thêm chức năng: ||| định tuyến trong mạng không dây.
@@ -298,6 +299,7 @@ Phương án nào sau đây nêu đúng về Trí tuệ nhân tạo (AI)? ||| M�
 Phương án nào sau đây nêu đúng về trí tuệ nhân tạo? ||| Một lĩnh vực khoa học và kỹ thuật nhằm chế tạo các máy móc thông minh.
 Phương án nào sau đây đúng khi nói về tác động của AI đối với việc làm của con người? ||| AI tạo ra những việc làm mới và thay thế một số công việc hiện có.
 Phản ứng điều chế xà phòng từ chất béo được gọi là phản ứng ||| xà phòng hóa.
+Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Câu lệnh nào dưới đây cho kết quả hiển thị trên trình duyệt như hình sau? This is a paragraph. ||| <div style = "background-color: yellow"> <b> This is a <em> paragraph. </em></b></div>
 Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < >
 PHẦN I. TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Tăng trưởng kinh tế được đo lường bằng chỉ tiêu nào dưới đây? ||| Tổng sản phẩm quốc nội (GDP)
 Phần mềm cho phép người dùng sử dụng qua Internet mà không cần phải cài đặt vào máy tính, còn được gọi với tên là gì? ||| Phần mềm trực tuyến
