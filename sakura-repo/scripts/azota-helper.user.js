@@ -84,8 +84,10 @@
   const OPT_RE = /\s*⟦opt:([A-F])⟧\s*$/;
   const stripOpt = s => String(s || '').replace(OPT_RE, '');
   const optLetter = s => { const m = OPT_RE.exec(String(s || '')); return m ? m[1] : ''; };
-  const putRec = (q, c, code) => {
-    const k = norm(q), o = bank[k], same = !!o && norm(stripOpt(o.correct)) === norm(stripOpt(c));
+  const putRec = (q, c, code, batch) => {
+    let k = norm(q);
+    if (batch) { const ck = norm(stripOpt(c)); if (batch[k] === undefined) batch[k] = ck; else if (batch[k] !== ck) k = k + ' ¦' + ck; }   // v6.10: 2 dòng cùng câu hỏi khác đáp án thì giữ cả hai
+    const o = bank[k], same = !!o && norm(stripOpt(o.correct)) === norm(stripOpt(c));
     if (same && optLetter(o.correct) && !optLetter(c)) c = o.correct;   // bản tải từ GitHub không có chữ cái thì giữ bản đã học
     bank[k] = { q, correct: c, t: same ? (code ? addT(o.t, code) : o.t) : (code || undefined) };
   };
@@ -921,9 +923,14 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     if (!/Đáp án đúng/i.test(document.body.textContent || '')) return { n: 0, seen: 0, total: 0, missing: [] };
     let n = 0, seen = 0, tagged = 0;
     const code = examCode(), okNums = new Set(), okCards = [];
+    const passSeen = {};
     const store = (q, correct, noSeen) => {
       if (!noSeen) seen++;
-      const k = norm(q);
+      let k = norm(q);
+      const ck = norm(stripOpt(correct));
+      // v6.10: cùng chữ câu hỏi nhưng đáp án khác (câu hỏi là ảnh) -> lưu 2 bản ghi riêng, trước đây ghi đè qua lại mỗi lượt quét nên cứ ~10s lại "học thêm" 2 câu
+      if (passSeen[k] === undefined) passSeen[k] = ck;
+      else if (passSeen[k] !== ck) k = k + ' ¦' + ck;
       if (bank[k] && norm(bank[k].correct) === norm(correct)) { if (code && !hasT(bank[k], code)) { bank[k].t = addT(bank[k].t, code); tagged++; } return; }
       bank[k] = { q, correct, t: code || undefined };
       n++;
@@ -1015,9 +1022,15 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   // Trả về { qEl } nếu thấy câu hỏi, kèm { card, target } nếu xác định được ô đáp án đúng
   function locate(rec, all) {
     const qs = prepStr(rec.q), as = prepStr(stripOpt(cleanAns(rec.correct))), optL = optLetter(rec.correct);
-    let qEl = deepest(all.filter(a => same(a, qs)))[0];
-    if (!qEl) { const q2 = stripPart(rec.q); if (q2 !== flat(rec.q)) { const s2 = prepStr(q2); qEl = deepest(all.filter(a => same(a, s2)))[0]; } }
-    if (!qEl) return null;
+    let qEls = deepest(all.filter(a => same(a, qs)));
+    if (!qEls.length) { const q2 = stripPart(rec.q); if (q2 !== flat(rec.q)) { const s2 = prepStr(q2); qEls = deepest(all.filter(a => same(a, s2))); } }
+    if (!qEls.length) return null;
+    // v6.10: nhiều câu cùng chữ câu hỏi (khác ảnh/phương án) -> thử từng câu, lấy câu có ô đáp án khớp
+    let first = null;
+    for (const qEl of qEls) { const r = locateOne(rec, all, qEl, as, optL); if (r.target) return r; if (!first) first = r; }
+    return first;
+  }
+  function locateOne(rec, all, qEl, as, optL) {
     for (let card = qEl.el.parentElement, i = 0; card && i < 8; card = card.parentElement, i++) {
       if (((card.innerText || '').match(/(^|\n)\s*Câu\s*\d+/gi) || []).length > 1) return { qEl, why: 'thẻ gộp nhiều câu' };   // leo quá cao
       let hits = deepest(all.filter(a => same(a, as) && card.contains(a.el) && !a.el.contains(qEl.el) && a.el !== qEl.el));
@@ -1092,7 +1105,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       if (!loc) continue;
       if (isDS) dsFound++; else found++;
       if (!loc.target) { if (!isDS) { if (/^⟦img:/.test(rec.correct)) dbgImg(rec, loc); imgFail.push('Câu ' + numOf(loc.qEl) + ' (' + (loc.why || '?') + ')'); } continue; }
-      const key = norm(rec.q);
+      const key = norm(rec.q) + ' ¦' + norm(stripOpt(rec.correct));
       if (clickedQ.has(key)) continue;               // mỗi câu chỉ chọn 1 lần, không đè lên lựa chọn của bạn
       if (!active) {                                 // chỉ gợi ý: tô viền đáp án đã nhớ
         loc.target.style.outline = '3px solid #ff6fb0'; loc.target.style.outlineOffset = '2px'; hl.add(loc.target);
@@ -1312,7 +1325,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     if (code !== examCode()) return;                 // đã sang link khác, bỏ kết quả cũ
     if (r.s === 200 && r.j && r.j.content) {
       const items = ghParse(ghDec(r.j.content)).filter(([q, c]) => !labelOnly(c));
-      items.forEach(([q, c]) => putRec(q, cleanAns(c), code));
+      const bt = {}; items.forEach(([q, c]) => putRec(q, cleanAns(c), code, bt));
       saveBank();
       ghNote = `đề ${code}: đã tải ${items.length} câu từ GitHub`;
     } else if (r.s === 404) ghNote = `đề ${code} không có trên GitHub`;
@@ -1353,7 +1366,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const f = e.target.files[0]; if (!f) return;
     const rd = new FileReader();
     rd.onload = () => {
-      let add = 0, bad = 0;
+      let add = 0, bad = 0; const bt = {};
       String(rd.result).replace(/^\uFEFF/, '').split(/\r?\n/).forEach(line => {
         line = line.trim();
         if (!line || line.startsWith('#')) return;
@@ -1361,7 +1374,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
         const q = i < 0 ? '' : flat(line.slice(0, i)), c = i < 0 ? '' : flat(line.slice(i + 3));
         if (!q || !c) { bad++; return; }
         if (!bank[norm(q)]) add++;
-        putRec(q, cleanAns(c), examCode());
+        putRec(q, cleanAns(c), examCode(), bt);
       });
       saveBank(); stat(`nhập +${add} câu mới` + (bad ? `, bỏ ${bad} dòng lỗi` : ''));
     };
