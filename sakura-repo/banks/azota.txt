@@ -186,8 +186,8 @@ Carbohydrate là gì? ||| Carbohydrate là những hợp chất hữu cơ tạp 
 Cellulose thuộc loại polysaccharide, là thành phần chính tạo nên màng tế bào thực vật, có nhiều trong gỗ, bông gòn. Công thức của cellulose là ||| (C6H10O5)n.
 Cho các chất: triolein, cellulose, saccharose, tinh bột. Số chất bị thuỷ phân trong môi trường acid là ||| 4.
 Cho các phát biểu sau: (a) Chất béo được gọi chung là triglyceride. (b) Chất béo nhẹ hơn nước, không tan trong nước nhưng tan nhiều trong dung môi hữu cơ. (c) Phản ứng thủy phân chất béo trong môi trường acid là phản ứng thuận nghịch. (d) Ở nhiệt độ thường, chất béo chứa nhiều gốc acid béo không no thường ở thể rắn. Số phát biểu đúng là ||| 3.
-Cho câu lệnh HTML: <p style = "color: blue"> <u> This is a <em> paragraph. </em></u> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt là gì? ||| This is a paragraph. ⟦opt:A⟧
-Cho câu lệnh HTML: <p> <strong> This is a <i> paragraph. </i></strong> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt? ||| This is a paragraph. ⟦opt:D⟧
+Cho câu lệnh HTML: <p style = "color: blue"> <u> This is a <em> paragraph. </em></u> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt là gì? ||| This is a paragraph. ⟦fmt:-⟧ ⟦opt:C⟧
+Cho câu lệnh HTML: <p> <strong> This is a <i> paragraph. </i></strong> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt? ||| This is a paragraph. ⟦fmt:-⟧ ⟦opt:A⟧
 Cho dãy các chất: ethanol, acetic acid, methyl fomate, propionic acid. Chất nào có nhiệt độ sôi thấp nhất? ||| methyl fomate.
 Cho sơ đồ: Tinh bột → A1 → A2 → A3 (A1, A2 và A3 là các chất có ứng dụng trong chế biến thực phẩm, đồ uống,.). Các chất A1, A2, A3 có công thức lần lượt là ||| C6H12O6, C2H5OH, CH3COOH.
 Chuyển dịch cơ cấu kinh tế theo hướng tích cực là gì? ||| Tăng tỉ trọng ngành công nghiệp và dịch vụ, giảm tỉ trọng ngành nông nghiệp
@@ -211,12 +211,12 @@ Commercial soflware còn được gọi là: ||| Phần mềm thương mại
 Các bộ phận chính trong cấu trúc chung của máy tính bao gồm: ||| Bộ xử lí trung tâm, bộ nhớ trong, bộ nhớ ngoài, thiết bị vào/ra
 Các lệnh và dữ liệu trong khi các chương trình đang thực hiện được lưu trên thiết bị: ||| RAM
 Các trợ lý ảo như Google Assistant, Siri có thể làm gì? ||| Giao tiếp với người dùng bằng văn bản hoặc tiếng nói.
-Câu lệnh nào dưới đây cho kết quả hiển thị như hình sau? This is a paragraph. ||| <span style = "background-color:yellow"> This is a paragraph. </span> ⟦opt:A⟧
-Câu lệnh nào dưới đây cho kết quả hiển thị trên trình duyệt như hình sau? This is a paragraph. ||| <p><b>This is a <sub>paragraph.</sub></b></p>
+Câu lệnh nào dưới đây cho kết quả hiển thị như hình sau? This is a paragraph. ||| <span style = "background-color:yellow"> This is a paragraph. </span> ⟦fmt:-⟧ ⟦opt:D⟧
+Câu lệnh nào dưới đây cho kết quả hiển thị trên trình duyệt như hình sau? This is a paragraph. ||| <div style = "background-color: yellow"> <b> This is a <em> paragraph. </em></b></div>
 Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên internet.
 Công thức của ester tạo bởi acid no, đơn chức mạch hở và alcohol no đơn chức mạch hở là ||| CnH2nO2 (n ≥ 2).
 Công thức của ethyl acetate là ||| CH3COOC2H5.
-Cú pháp nào sau đây dùng để khai báo thuộc tính cho một phần tử HTML? ||| <tên_thẻ thuộc_tính = "giá_trị";> Nội dung </tên_thẻ> ⟦opt:B⟧
+Cú pháp nào sau đây dùng để khai báo thuộc tính cho một phần tử HTML? ||| <tên_thẻ thuộc_tính = "giá_trị";> Nội dung </tên_thẻ> ⟦fmt:-⟧ ⟦opt:B⟧
 Cơ chế nào dưới đây giúp các quốc gia có thể giải quyết tranh chấp trong quá trình hội nhập kinh tế? ||| Trọng tài quốc tế
 Cặp chất nào sau đây có thể phân biệt bằng thuốc thử Tollens? ||| Saccharose và glucose.
 DeepMind của Google trong y tế và chăm sóc sức khỏe có thể làm gì? ||| Chẩn đoán bệnh và lập phác đồ điều trị.
@@ -260,7 +260,7 @@ Mạch logic thực hiện phép toán logic XOR có kí hiệu là : ||| ⟦img
 Mạng máy tính là gì? ||| Một hệ thống các thiết bị số được kết nối với nhau để truyền dữ liệu và trao đổi thông tin.
 Mạng WLAN còn được gọi là gì? ||| Mạng cục bộ không dây
 Mỗi đơn vị glucose trong cellulose liên kết với nhau bởi liên kết ||| β-1,4-glycoside.
-Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < > ⟦opt:C⟧
+Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < > ⟦fmt:-⟧ ⟦opt:B⟧
 Mục đích chính của bảo hiểm là gì? ||| Bảo vệ tài chính cho người tham gia khi gặp rủi ro
 Mục đích của hệ thống tên miền DNS là gì? ||| Để định danh các máy tính trong mạng bằng những chữ gợi nhớ
 Ngoài chức năng kết nối không dây, Access point còn có thêm chức năng: ||| định tuyến trong mạng không dây.
@@ -356,8 +356,8 @@ Trong những tính năng sau tính năng nào KHÔNG phải là của Trợ lý
 Trong những tính năng sau, tính năng nào KHÔNG phải là của Trợ lí ảo? ||| Tự động cải thiện hiệu suất máy tính.
 Trong phòng thực hành Tin học có 30 máy tính, muốn kết nối các máy tính đó thành mạng LAN, ta nên dùng thiết bị nào sau đây? ||| Switch.
 Trong thành phần của quả bông có 90% cellulose về khối lượng. Trong phân tử cellulose các đơn vị β-glucose liên kết với nhau qua liên kết nào sau đây? ||| liên kết β-1,4-glycoside.
-Trong tệp index.html có cụm từ "Liên kết tới trang info.html", muốn tạo liên kết khi nháy chuột vào cụm từ "Liên kết tới trang info.html" sẽ dẫn tới tệp info.html, biết hai tệp này nằm trong cùng thư mục thiết kế web, cần sử dụng liên kết nào sau đây? ||| <a href = "info.html" > Liên kết tới trang info.html </a> ⟦opt:D⟧
-Trong tệp index.html muốn tạo liên kết từ cụm từ "Liên kết tới trang info.html" tới tệp info.html nằm trong thư mục thiết kế web, biết tệp index.html và thư mục thiết kế web nằm trong cùng thư mục web cần sử dụng liên kết nào sau đây? ||| <a href = "thiet ke web/info.html" > Liên kết tới trang info.html </a> ⟦opt:B⟧
+Trong tệp index.html có cụm từ "Liên kết tới trang info.html", muốn tạo liên kết khi nháy chuột vào cụm từ "Liên kết tới trang info.html" sẽ dẫn tới tệp info.html, biết hai tệp này nằm trong cùng thư mục thiết kế web, cần sử dụng liên kết nào sau đây? ||| <a href = "info.html" > Liên kết tới trang info.html </a> ⟦fmt:-⟧ ⟦opt:B⟧
+Trong tệp index.html muốn tạo liên kết từ cụm từ "Liên kết tới trang info.html" tới tệp info.html nằm trong thư mục thiết kế web, biết tệp index.html và thư mục thiết kế web nằm trong cùng thư mục web cần sử dụng liên kết nào sau đây? ||| <a href = "thiet ke web/info.html" > Liên kết tới trang info.html </a> ⟦fmt:-⟧ ⟦opt:A⟧
 Trong việc hội nhập kinh tế quốc tế, một trong những khó khăn mà quốc gia phải đối mặt là gì? ||| Cạnh tranh khốc liệt từ các sản phẩm ngoại nhập
 Trong điều kiện thích hợp glucose lên men tạo thành khí CO2 và ||| C2H5OH.
 Trí tuệ nhân tạo còn nhiều hạn chế ở khả năng nào sau đây? ||| Cảm nhận cảm xúc.
