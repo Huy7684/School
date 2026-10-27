@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      6.12
+// @version      6.13
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -948,6 +948,35 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     }
     return segs.filter((x, i) => x !== segs[i - 1]).join('/') || '-';
   }
+  // v6.13: ID riêng của từng ô (thuộc tính HTML hoặc props React): dãy số >= 5 chữ số.
+  // Ô giống hệt chữ + định dạng vẫn có ID khác nhau, ID đi theo nội dung ô nên đề đảo A-B-C-D không ảnh hưởng.
+  const NUM_RE = /\d{5,}/g;
+  function scanVal(v, out, d) {
+    if (v == null || d > 3) return;
+    if (typeof v === 'string' || typeof v === 'number') { String(v).replace(NUM_RE, m => { out.add(m); return m; }); return; }
+    if (typeof v !== 'object' || v.nodeType || v.$$typeof) return;
+    let n = 0;
+    for (const k in v) { if (++n > 25) break; try { if (k === 'children' || k === 'ref' || k === '_owner') continue; scanVal(v[k], out, d + 1); } catch (e) {} }
+  }
+  function nodeIds(el, out) {
+    for (const a of el.attributes) { if (/^(class|style)$/i.test(a.name)) continue; String(a.value).replace(NUM_RE, m => { out.add(m); return m; }); }
+    for (const k of Object.keys(el)) {
+      try {
+        if (k.indexOf('__reactProps') === 0) scanVal(el[k], out, 0);
+        else if (k.indexOf('__reactFiber') === 0) {
+          for (let f = el[k], i = 0; f && i < 4; f = f.return, i++) { if (f.key) scanVal(f.key, out, 0); scanVal(f.memoizedProps, out, 1); }
+        }
+      } catch (e) {}
+    }
+  }
+  function idsOf(el, hits) {
+    const out = new Set();
+    let row = el;
+    for (let p = el.parentElement; p && p.tagName !== 'BODY' && !hits.some(o => o.el !== el && p.contains(o.el)); p = p.parentElement) row = p;
+    for (let p = el; p; p = p.parentElement) { nodeIds(p, out); if (p === row) break; }
+    row.querySelectorAll('*').forEach(c => nodeIds(c, out));
+    return out;
+  }
   let fmtAll = null;
   // thẻ có các ô giống hệt chữ: gắn thêm dấu vân tay định dạng của ô đúng (nhận ra ô đúng nhờ chữ cái ở trang xem đáp án)
   function addFmt(card, r) {
@@ -960,7 +989,10 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       if (hits.length < 2) return;
       const h = hits.find(x => letterBefore(x, card, fmtAll) === L) || hits.find(x => letterByPos(x, hits) === L);
       if (!h) return;
-      r.correct = stripOpt(r.correct) + ' ⟦fmt:' + fmtSig(h.el) + '⟧ ⟦opt:' + L + '⟧';
+      const mine = idsOf(h.el, hits), others = new Set();
+      hits.forEach(o => { if (o !== h) idsOf(o.el, hits).forEach(x => others.add(x)); });
+      const ids = [...mine].filter(x => !others.has(x)).slice(0, 6).join(',');
+      r.correct = stripOpt(r.correct) + ' ⟦fmt:' + fmtSig(h.el) + (ids ? '~' + ids : '') + '⟧ ⟦opt:' + L + '⟧';
     } catch (e) {}
   }
   const warnedFail = new Set();
@@ -1116,8 +1148,12 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       }
       if (hits.length > 1 && fmtOf(rec.correct)) {
         // v6.12: các ô giống hệt chữ -> lọc theo định dạng (đậm/nghiêng/gạch chân) của ô đúng, không phụ thuộc thứ tự A-B-C-D
-        const fm = fmtOf(rec.correct), byF = hits.filter(h => fmtSig(h.el) === fm);
-        if (byF.length >= 1) hits = byF;
+        const parts = fmtOf(rec.correct).split('~'), fm = parts[0], want = parts[1] ? parts[1].split(',') : [];
+        if (want.length) {   // v6.13: lọc theo ID riêng của ô trước (chắc nhất)
+          const byI = hits.filter(h => { const ids = idsOf(h.el, hits); return want.some(x => ids.has(x)); });
+          if (byI.length >= 1) hits = byI;
+        }
+        if (hits.length > 1) { const byF = hits.filter(h => fmtSig(h.el) === fm); if (byF.length >= 1) hits = byF; }
       }
       if (LETTER_FALLBACK && hits.length > 1 && optL) {
         // v6.9: các ô giống hệt chữ -> chọn ô có vòng tròn chữ cái đúng (A/B/C/D) đã lưu lúc học
@@ -1143,7 +1179,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       if (hits.length > 1 && !LETTER_FALLBACK) {
         // v6.12: không phân biệt được ô nào đúng -> KHÔNG đoán bừa (đoán dễ chọn sai khi đề đảo), chỉ báo + in HTML các ô ra console để chẩn đoán
         const wk = 'amb|' + norm(rec.q);
-        if (!warnedFail.has(wk)) { warnedFail.add(wk); console.warn('[Azota Helper] ô giống hệt nhau, bỏ qua: ' + rec.q.slice(0, 60) + '\n' + hits.map(h => h.el.outerHTML.slice(0, 300) + '  ⇒ fmt=' + fmtSig(h.el)).join('\n')); }
+        if (!warnedFail.has(wk)) { warnedFail.add(wk); console.warn('[Azota Helper] ô giống hệt nhau, bỏ qua: ' + rec.q.slice(0, 60) + '\n' + hits.map(h => h.el.outerHTML.slice(0, 300) + '  ⇒ fmt=' + fmtSig(h.el) + ' ids=' + [...idsOf(h.el, hits)].join(',')).join('\n')); }
         return { qEl, card, why: 'các ô giống hệt, không phân biệt được' };
       }
       if (hits.length > 1) {
