@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      6.11
+// @version      6.12
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -81,9 +81,14 @@
   const hasT = (r, c) => !!r && !!r.t && ('' + r.t).split(',').indexOf(c) >= 0;
   const addT = (t, c) => !c ? t : (!t ? c : (hasT({ t }, c) ? t : t + ',' + c));
   // v6.9: khi các phương án giống hệt nhau (chỉ khác định dạng), đáp án lưu kèm chữ cái: "chữ ⟦opt:B⟧"
-  const OPT_RE = /\s*⟦opt:([A-F])⟧\s*$/;
+  // v6.12: thêm dấu vân tay ĐỊNH DẠNG của ô đúng "⟦fmt:u+i/b⟧" (đậm/nghiêng/gạch chân...). Đề đảo A-B-C-D thì chữ cái vô nghĩa,
+  // còn định dạng đi theo nội dung ô nên vẫn chọn đúng khi 4 ô cùng chữ.
+  const OPT_RE = /\s*(?:⟦fmt:([^⟧]*)⟧)?\s*(?:⟦opt:([A-F])⟧)?\s*$/;
   const stripOpt = s => String(s || '').replace(OPT_RE, '');
-  const optLetter = s => { const m = OPT_RE.exec(String(s || '')); return m ? m[1] : ''; };
+  const optLetter = s => { const m = OPT_RE.exec(String(s || '')); return m && m[2] ? m[2] : ''; };
+  const fmtOf = s => { const m = OPT_RE.exec(String(s || '')); return m && m[1] ? m[1] : ''; };
+  // Chữ cái chỉ đáng tin khi đề KHÔNG đảo. Mặc định tắt để không chọn nhầm khi đề đảo ô.
+  const LETTER_FALLBACK = false;
   const putRec = (q, c, code, batch) => {
     let k = norm(q);
     if (batch) { const ck = norm(stripOpt(c)); if (batch[k] === undefined) batch[k] = ck; else if (batch[k] !== ck) k = k + ' ¦' + ck; }   // v6.10: 2 dòng cùng câu hỏi khác đáp án thì giữ cả hai
@@ -914,12 +919,53 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       if (!lm) return { why: 'không thấy chữ cái đáp án', sample: seg };
       const L = lm[1].toUpperCase();
       const r = readTexts(texts, L);
+      if (r && c === 1) r.card = card;
       return r || { why: 'thiếu phương án ' + L, sample: seg };
     }
     return { why: 'không tìm thấy thẻ câu', sample: '' };
   }
+  const FMT_TAG = { B: 'b', STRONG: 'b', I: 'i', EM: 'i', U: 'u', INS: 'u', S: 's', STRIKE: 's', DEL: 's', SUB: 'sub', SUP: 'sup', MARK: 'm', CODE: 'c' };
+  // dấu vân tay định dạng của 1 ô phương án: theo từng đoạn chữ, gồm thẻ <b><i><u>... và style inline (không dùng style tính toán vì nó đổi theo trạng thái đã chọn / đúng / sai)
+  function fmtSig(el) {
+    const base = norm(el.textContent), segs = [];
+    let top = el;
+    for (let p = el.parentElement, i = 0; p && i < 4 && p.tagName !== 'BODY' && norm(p.textContent) === base; p = p.parentElement, i++) top = p;
+    const tw = document.createTreeWalker(top, NodeFilter.SHOW_TEXT);
+    for (let nd; (nd = tw.nextNode());) {
+      if (!flat(nd.nodeValue)) continue;
+      const fl = new Set();
+      for (let p = nd.parentElement; p; p = p.parentElement) {
+        if (FMT_TAG[p.tagName]) fl.add(FMT_TAG[p.tagName]);
+        const st = (p.getAttribute('style') || '').toLowerCase();
+        if (/font-weight\s*:\s*(bold|[6-9]00)/.test(st)) fl.add('b');
+        if (/font-style\s*:\s*italic/.test(st)) fl.add('i');
+        if (/text-decoration[^;]*underline/.test(st)) fl.add('u');
+        if (/vertical-align\s*:\s*sub/.test(st)) fl.add('sub');
+        if (/vertical-align\s*:\s*super/.test(st)) fl.add('sup');
+        if (p === top) break;
+      }
+      segs.push([...fl].sort().join('+') || '-');
+    }
+    return segs.filter((x, i) => x !== segs[i - 1]).join('/') || '-';
+  }
+  let fmtAll = null;
+  // thẻ có các ô giống hệt chữ: gắn thêm dấu vân tay định dạng của ô đúng (nhận ra ô đúng nhờ chữ cái ở trang xem đáp án)
+  function addFmt(card, r) {
+    const L = optLetter(r.correct);
+    if (!L || !card) return;
+    try {
+      fmtAll = fmtAll || pageEls();
+      const as = prepStr(stripOpt(r.correct));
+      const hits = deepest(fmtAll.filter(a => same(a, as) && card.contains(a.el)));
+      if (hits.length < 2) return;
+      const h = hits.find(x => letterBefore(x, card, fmtAll) === L) || hits.find(x => letterByPos(x, hits) === L);
+      if (!h) return;
+      r.correct = stripOpt(r.correct) + ' ⟦fmt:' + fmtSig(h.el) + '⟧ ⟦opt:' + L + '⟧';
+    } catch (e) {}
+  }
   const warnedFail = new Set();
   function learnNow() {
+    fmtAll = null;
     // thoát sớm nếu trang không có chữ "Đáp án đúng" (đỡ tốn máy, nhất là trên điện thoại)
     if (!/Đáp án đúng/i.test(document.body.textContent || '')) return { n: 0, seen: 0, total: 0, missing: [] };
     let n = 0, seen = 0, tagged = 0;
@@ -961,6 +1007,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       if (!card || (text.match(/Đáp án đúng\s*:/gi) || []).length !== 1) return;   // thẻ gộp nhiều câu: để bước 2 xử lý
       const r = readTexts(cardTexts(card, text), letter);
       if (!r) return;
+      addFmt(card, r);
       const num = (text.match(/Câu\s*(\d+)/i) || [])[1];
       if (num) okNums.add(num);
       okCards.push(card);
@@ -984,7 +1031,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
         why[i] = r.why;
         const wk = lb.num + '|' + r.why;
         if (!warnedFail.has(wk)) { warnedFail.add(wk); console.warn('[Azota Helper] Câu ' + lb.num + ': ' + r.why, JSON.stringify(String(r.sample || '').slice(0, 500))); }
-      } else { okIdx.add(i); store(r.q, r.correct); }
+      } else { okIdx.add(i); if (r.card) addFmt(r.card, r); store(r.q, r.correct); }
     });
     if (n || tagged) saveBank();
     const missing = labelEls.map((lb, i) => ({ lb, i })).filter(x => !okIdx.has(x.i) && !skip.has(x.i)).sort((a, b) => a.lb.num - b.lb.num).map(x => x.lb.num + (why[x.i] ? ' (' + why[x.i] + ')' : ''));
@@ -1067,7 +1114,12 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
         if (ex.length !== 1) ex = hits.filter(h => norm(h.t).replace(/\s+/g, '') === want2);
         if (ex.length >= 1) hits = ex;
       }
-      if (hits.length > 1 && optL) {
+      if (hits.length > 1 && fmtOf(rec.correct)) {
+        // v6.12: các ô giống hệt chữ -> lọc theo định dạng (đậm/nghiêng/gạch chân) của ô đúng, không phụ thuộc thứ tự A-B-C-D
+        const fm = fmtOf(rec.correct), byF = hits.filter(h => fmtSig(h.el) === fm);
+        if (byF.length >= 1) hits = byF;
+      }
+      if (LETTER_FALLBACK && hits.length > 1 && optL) {
         // v6.9: các ô giống hệt chữ -> chọn ô có vòng tròn chữ cái đúng (A/B/C/D) đã lưu lúc học
         const byL = hits.filter(h => {
           for (let pe = h.el.parentElement, i = 0; pe && i < 5; pe = pe.parentElement, i++) {
@@ -1078,18 +1130,24 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
         });
         if (byL.length === 1) hits = byL;
       }
-      if (hits.length > 1 && optL) {
+      if (LETTER_FALLBACK && hits.length > 1 && optL) {
         // v6.11 cách 2: vòng tròn chữ cái gần nhất đứng TRƯỚC ô đó trong trang (không phụ thuộc cấu trúc lồng nhau)
         const byPrev = hits.filter(h => letterBefore(h, card, all) === optL);
         if (byPrev.length === 1) hits = byPrev;
       }
-      if (hits.length > 1 && optL) {
+      if (LETTER_FALLBACK && hits.length > 1 && optL) {
         // v6.11 cách 3: vị trí của hàng phương án trong khối chứa chúng (hàng thứ 1 = A, thứ 2 = B...)
         const byPos = hits.filter(h => letterByPos(h, hits) === optL);
         if (byPos.length === 1) hits = byPos;
       }
+      if (hits.length > 1 && !LETTER_FALLBACK) {
+        // v6.12: không phân biệt được ô nào đúng -> KHÔNG đoán bừa (đoán dễ chọn sai khi đề đảo), chỉ báo + in HTML các ô ra console để chẩn đoán
+        const wk = 'amb|' + norm(rec.q);
+        if (!warnedFail.has(wk)) { warnedFail.add(wk); console.warn('[Azota Helper] ô giống hệt nhau, bỏ qua: ' + rec.q.slice(0, 60) + '\n' + hits.map(h => h.el.outerHTML.slice(0, 300) + '  ⇒ fmt=' + fmtSig(h.el)).join('\n')); }
+        return { qEl, card, why: 'các ô giống hệt, không phân biệt được' };
+      }
       if (hits.length > 1) {
-        // v6.11: các ô thật sự giống hệt mà chưa biết ô nào đúng -> không bỏ trống nữa, chọn tạm 1 ô và báo là đoán
+        // v6.11: các ô thật sự giống hệt mà chưa biết ô nào đúng -> chọn tạm 1 ô và báo là đoán
         const g = hits[0];
         return { qEl, card, target: g.el, guess: hits.length, guessL: letterBefore(g, card, all) || letterByPos(g, hits) };
       }
