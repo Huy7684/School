@@ -301,6 +301,7 @@ Phương án nào sau đây đúng khi nói về tác động của AI đối v�
 Phản ứng điều chế xà phòng từ chất béo được gọi là phản ứng ||| xà phòng hóa.
 Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Câu lệnh nào dưới đây cho kết quả hiển thị trên trình duyệt như hình sau? This is a paragraph. ||| <div style = "background-color: yellow"> <b> This is a <em> paragraph. </em></b></div>
 Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < >
+Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Phương án nào dưới đây nêu đúng nội dung cần điền vào phần còn thiếu trong câu lệnh để có kết quả hiển thị như hình sau? <p style = "..."> This is a <i> paragraph. </i> </p> This is a paragraph. ||| color, b, b
 PHẦN I. TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN Tăng trưởng kinh tế được đo lường bằng chỉ tiêu nào dưới đây? ||| Tổng sản phẩm quốc nội (GDP)
 Phần mềm cho phép người dùng sử dụng qua Internet mà không cần phải cài đặt vào máy tính, còn được gọi với tên là gì? ||| Phần mềm trực tuyến
 Phần mềm nào dưới đây là trợ lí ảo của công ty Amazon? ||| Alexa.
