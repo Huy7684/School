@@ -16,6 +16,7 @@ Phương án nào dưới đây nêu đúng nội dung cần điền vào phần
 Phương án nào sau đây mô tả đúng về HTML? ||| Là bộ quy tắc dùng để trình bày cấu trúc, nội dung và hình thức trang web.
 Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Câu lệnh nào dưới đây cho kết quả hiển thị trên trình duyệt như hình sau? This is a paragraph. ||| <div style = "background-color: yellow"> <b> This is a <em> paragraph. </em></b></div>
 Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < >
+Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Phương án nào dưới đây nêu đúng nội dung cần điền vào phần còn thiếu trong câu lệnh để có kết quả hiển thị như hình sau? <p style = "..."> This is a <i> paragraph. </i> </p> This is a paragraph. ||| color, b, b
 Phần tử <title> nằm trong phần tử nào sau đây? ||| <head>
 Phần tử HTML có kí hiệu <!-- ... --> có nghĩa là nào sau đây? ||| Là phần từ chú thích, nội dung không hiển thị khi duyệt web.
 Phần tử nào dưới đây được gọi là phần tử khối (block), bắt đầu từ đầu hàng và kéo dài suốt chiều rộng của trang web? ||| <div>
