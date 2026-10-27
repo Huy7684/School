@@ -1,5 +1,5 @@
 # Mỗi dòng: câu hỏi ||| đáp án đúng
-Cho câu lệnh HTML: <p style = "color: blue"> <u> This is a <em> paragraph. </em></u> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt là gì? ||| This is a paragraph.
+Cho câu lệnh HTML: <p style = "color: blue"> <u> This is a <em> paragraph. </em></u> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt là gì? ||| This is a paragraph. ⟦opt:A⟧
 Cho câu lệnh HTML: <p> <strong> This is a <i> paragraph. </i></strong> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt? ||| This is a paragraph. ⟦opt:D⟧
 Câu lệnh nào dưới đây cho kết quả hiển thị như hình sau? This is a paragraph. ||| <span style = "background-color:yellow"> This is a paragraph. </span> ⟦opt:A⟧
 Câu lệnh nào dưới đây cho kết quả hiển thị trên trình duyệt như hình sau? This is a paragraph. ||| <p><b>This is a <sub>paragraph.</sub></b></p>
