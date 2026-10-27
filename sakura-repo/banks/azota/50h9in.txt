@@ -1,0 +1,34 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+Cho câu lệnh HTML: <p style = "color: blue"> <u> This is a <em> paragraph. </em></u> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt là gì? ||| This is a paragraph.
+Cho câu lệnh HTML: <p> <strong> This is a <i> paragraph. </i></strong> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt? ||| This is a paragraph. ⟦opt:D⟧
+Câu lệnh nào dưới đây cho kết quả hiển thị như hình sau? This is a paragraph. ||| <span style = "background-color:yellow"> This is a paragraph. </span> ⟦opt:A⟧
+Câu lệnh nào dưới đây cho kết quả hiển thị trên trình duyệt như hình sau? This is a paragraph. ||| <p><b>This is a <sub>paragraph.</sub></b></p>
+Cú pháp nào sau đây dùng để khai báo thuộc tính cho một phần tử HTML? ||| <tên_thẻ thuộc_tính = "giá_trị";> Nội dung </tên_thẻ>
+Dùng cặp thẻ nào dưới đây để khai báo danh sách có thứ tự? ||| Thẻ <ol></ol> để tạo danh sách có thứ tự và <li></li> để đánh dấu từng mục trong danh sách.
+HTML là viết tắt của cụm từ nào sau đây? ||| HyperText Markup Language.
+Không thể tạo liên kết từ trang web đến tài nguyên nào dưới đây? ||| Vị trí được đánh dấu bằng tên lớp (.class) trên trang web hiện thời.
+Liên kết nào dưới đây KHÔNG dẫn tới tài nguyên? ||| <a href="/laptrinhweb/google.com">Liên kết đến trang google.com</a><br>
+Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < >
+Phương án nào dưới đây KHÔNG đúng về thuộc tính target của thẻ <a>? ||| Nếu giá trị thuộc tính target là "_blank" thì tài liệu được mở trên cửa sổ trình duyệt hiện tại.
+Phương án nào dưới đây mô tả đúng kết quả câu lệnh <ol type = "a">...</ol>? ||| Danh sách có thứ tự, bắt đầu từ mục a. ⟦opt:C⟧
+Phương án nào dưới đây nêu đúng kết quả lệnh tạo danh sách có thứ tự nhưng không khai báo thuộc tính type và start? ||| Tạo danh sách có thứ tự, bắt đầu từ mục 1.
+Phương án nào dưới đây nêu đúng nội dung cần điền vào phần còn thiếu trong câu lệnh để có kết quả hiển thị như hình sau? <p style = "..."> This is a <i> paragraph. </i> </p> This is a paragraph. ||| color, b, b
+Phương án nào sau đây mô tả đúng về HTML? ||| Là bộ quy tắc dùng để trình bày cấu trúc, nội dung và hình thức trang web.
+Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Cho câu lệnh HTML: <p style = "color: blue"> <u> This is a <em> paragraph. </em></u> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt là gì? ||| This is a paragraph. ⟦opt:A⟧
+Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Câu lệnh nào dưới đây cho kết quả hiển thị trên trình duyệt như hình sau? This is a paragraph. ||| <div style = "background-color: yellow"> <b> This is a <em> paragraph. </em></b></div>
+Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < >
+Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn Phương án nào dưới đây nêu đúng nội dung cần điền vào phần còn thiếu trong câu lệnh để có kết quả hiển thị như hình sau? <p style = "..."> This is a <i> paragraph. </i> </p> This is a paragraph. ||| color, b, b
+Phần tử <title> nằm trong phần tử nào sau đây? ||| <head>
+Phần tử HTML có kí hiệu <!-- ... --> có nghĩa là nào sau đây? ||| Là phần từ chú thích, nội dung không hiển thị khi duyệt web.
+Phần tử nào dưới đây được gọi là phần tử khối (block), bắt đầu từ đầu hàng và kéo dài suốt chiều rộng của trang web? ||| <div>
+Thuộc tính của phần tử HTML KHÔNG có đặc điểm nào sau đây? ||| Mỗi phần tử bắt buộc phải có 1 thuộc tính.
+Thẻ <head></head> KHÔNG có đặc điểm nào sau đây? ||| Nằm trong thẻ <body></body>.
+Thẻ <strong> có ý nghĩa nào sau đây? ||| Định dạng văn bản in đậm.
+Thẻ nào dưới đây để tạo liên kết trong trang web? ||| <a>
+Thẻ nào sau đây dùng để định dạng chữ in nghiêng cho nội dung văn bản? ||| <em> và <i>.
+Thẻ nào sau đây dùng để định dạng chữ in đậm cho nội dung văn bản? ||| <b> và <strong>.
+Thẻ nào sau đây KHÔNG cùng loại với các thẻ khác? ||| <b>
+Trong các thẻ dưới đây, sử dụng thẻ nào để định dạng cho tiêu đề của cửa trang web có cỡ chữ nhỏ nhất? ||| <h6>
+Trong câu lệnh HTML: <title><b> Đây là tiêu đề trang web </b></title>, thẻ <b></b> có ý nghĩa định dạng nào sau đây? ||| Chữ có bóng đỏ cho văn bản "Đây là tiêu đề trang web".
+Trong tệp index.html có cụm từ "Liên kết tới trang info.html", muốn tạo liên kết khi nháy chuột vào cụm từ "Liên kết tới trang info.html" sẽ dẫn tới tệp info.html, biết hai tệp này nằm trong cùng thư mục thiết kế web, cần sử dụng liên kết nào sau đây? ||| <a href = "info.html" > Liên kết tới trang info.html </a>
+Trong tệp index.html muốn tạo liên kết từ cụm từ "Liên kết tới trang info.html" tới tệp info.html nằm trong thư mục thiết kế web, biết tệp index.html và thư mục thiết kế web nằm trong cùng thư mục web cần sử dụng liên kết nào sau đây? ||| <a href = "thiet ke web/info.html" > Liên kết tới trang info.html </a>
