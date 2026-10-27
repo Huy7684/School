@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      6.8
+// @version      6.9
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -78,8 +78,13 @@
   // Trước đây r.t chỉ giữ 1 mã nên câu trùng giữa 2 đề cứ bị gắn lại qua lại, đề này lấy mất của đề kia.
   const hasT = (r, c) => !!r && !!r.t && ('' + r.t).split(',').indexOf(c) >= 0;
   const addT = (t, c) => !c ? t : (!t ? c : (hasT({ t }, c) ? t : t + ',' + c));
+  // v6.9: khi các phương án giống hệt nhau (chỉ khác định dạng), đáp án lưu kèm chữ cái: "chữ ⟦opt:B⟧"
+  const OPT_RE = /\s*⟦opt:([A-F])⟧\s*$/;
+  const stripOpt = s => String(s || '').replace(OPT_RE, '');
+  const optLetter = s => { const m = OPT_RE.exec(String(s || '')); return m ? m[1] : ''; };
   const putRec = (q, c, code) => {
-    const k = norm(q), o = bank[k], same = !!o && norm(o.correct) === norm(c);
+    const k = norm(q), o = bank[k], same = !!o && norm(stripOpt(o.correct)) === norm(stripOpt(c));
+    if (same && optLetter(o.correct) && !optLetter(c)) c = o.correct;   // bản tải từ GitHub không có chữ cái thì giữ bản đã học
     bank[k] = { q, correct: c, t: same ? (code ? addT(o.t, code) : o.t) : (code || undefined) };
   };
   let scKey = '', scVal = '', ueKey = '', ueVal = [], urSrc = null, urVal = [];
@@ -500,7 +505,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   const panel = document.createElement('div');
   panel.id = 'azh';
   panel.setAttribute('data-mood', 'idle');
-  panel.innerHTML = `<div class="azh-card">${fxHtml}${headHtml('v6.8')}<button id="azh-mrun" class="azh-mrun" type="button" aria-label="Tạm dừng" title="Chạy / Tạm dừng"><svg class="azh-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a.8.8 0 001.2.7l10.6-6.8a.8.8 0 000-1.4L9.2 4.5A.8.8 0 008 5.2z"/></svg><svg class="azh-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4.5" width="4.6" height="15" rx="1.4"/><rect x="13.9" y="4.5" width="4.6" height="15" rx="1.4"/></svg></button>
+  panel.innerHTML = `<div class="azh-card">${fxHtml}${headHtml('v6.9')}<button id="azh-mrun" class="azh-mrun" type="button" aria-label="Tạm dừng" title="Chạy / Tạm dừng"><svg class="azh-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a.8.8 0 001.2.7l10.6-6.8a.8.8 0 000-1.4L9.2 4.5A.8.8 0 008 5.2z"/></svg><svg class="azh-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4.5" width="4.6" height="15" rx="1.4"/><rect x="13.9" y="4.5" width="4.6" height="15" rx="1.4"/></svg></button>
     <div id="azh-body">
       <div class="azh-main" id="azh-mainv">
         <div class="azh-stats">
@@ -842,7 +847,10 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       if (at < 0) continue;
       const q = stripPart(tx.slice(0, at).replace(/Câu\s*\d+/i, '').replace(/ID\s*:\s*\d+/gi, ''));
       const opts = parseOpts(tx.slice(at).replace(/Đáp án đúng[\s\S]*$/i, ''));
-      if (q.length >= 3 && opts[letter]) return { q, correct: cleanAns(opts[letter]) };
+      if (q.length >= 3 && opts[letter]) {
+        const dup = Object.keys(opts).some(k => k !== letter && norm(opts[k]) === norm(opts[letter]));
+        return { q, correct: cleanAns(opts[letter]) + (dup ? ' ⟦opt:' + letter + '⟧' : '') };
+      }
     }
     return null;
   }
@@ -1004,7 +1012,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   // Trả về { qEl } nếu thấy câu hỏi, kèm { card, target } nếu xác định được ô đáp án đúng
   function locate(rec, all) {
-    const qs = prepStr(rec.q), as = prepStr(cleanAns(rec.correct));
+    const qs = prepStr(rec.q), as = prepStr(stripOpt(cleanAns(rec.correct))), optL = optLetter(rec.correct);
     let qEl = deepest(all.filter(a => same(a, qs)))[0];
     if (!qEl) { const q2 = stripPart(rec.q); if (q2 !== flat(rec.q)) { const s2 = prepStr(q2); qEl = deepest(all.filter(a => same(a, s2)))[0]; } }
     if (!qEl) return null;
@@ -1015,10 +1023,21 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       if (hits.length > 1) {
         // v6.8: so khớp bỏ dấu câu làm các phương án chỉ khác nhau ở dấu (vd "info.html" và "/info.html") bị coi là một.
         // Thử lại: khớp chính xác (giữ dấu câu), rồi khớp bỏ khoảng trắng.
-        const want = norm(cleanAns(rec.correct)), want2 = want.replace(/\s+/g, '');
+        const want = norm(stripOpt(cleanAns(rec.correct))), want2 = want.replace(/\s+/g, '');
         let ex = hits.filter(h => norm(h.t) === want);
         if (ex.length !== 1) ex = hits.filter(h => norm(h.t).replace(/\s+/g, '') === want2);
-        if (ex.length === 1) hits = ex;
+        if (ex.length >= 1) hits = ex;
+      }
+      if (hits.length > 1 && optL) {
+        // v6.9: các ô giống hệt chữ -> chọn ô có vòng tròn chữ cái đúng (A/B/C/D) đã lưu lúc học
+        const byL = hits.filter(h => {
+          for (let pe = h.el.parentElement, i = 0; pe && i < 5; pe = pe.parentElement, i++) {
+            if (hits.some(o => o !== h && pe.contains(o.el))) return false;
+            if (all.some(a => a.t === optL && pe.contains(a.el) && a.el !== h.el && !a.el.contains(h.el))) return true;
+          }
+          return false;
+        });
+        if (byL.length === 1) hits = byL;
       }
       if (hits.length > 1) return { qEl, why: hits.length + ' phương án giống hệt nhau' };   // thật sự trùng chữ: không đoán bừa
       return { qEl, card, target: hits[0].el };
