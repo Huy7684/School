@@ -22,7 +22,9 @@
   const norm = s => flat(s).toLowerCase();
   // v6.6: bỏ tiêu đề phần (vd "PHẦN I. TRẮC NGHIỆM ... LỰA CHỌN") dính vào đầu câu hỏi đầu tiên của mỗi phần
   const PART_RE = /^\s*PHẦN\s+[IVXLC\d]+\s*[.:\-–]?\s*[^\p{Ll}]+?(?=\s*\p{Lu}\p{Ll})/u;
-  const stripPart = t => { const f = flat(t), r = f.replace(PART_RE, '').trim(); return r.length >= 3 ? r : f; };
+  // v6.10: tiêu đề phần dạng "Phần 1. Câu hỏi trắc nghiệm nhiều phương án lựa chọn" có chữ thường nên PART_RE không bắt được -> câu bị lưu/so khớp kèm tiêu đề, lệch khoá với câu trên trang
+  const PART2_RE = /^\s*PHẦN\s+[IVXLC\d]+\s*[.:\-–]?\s*Câu hỏi\s+(?:trắc nghiệm|đúng\s*sai|trả lời ngắn)[^?:.]*?(?:lựa chọn|đúng\s*sai|trả lời ngắn)\s*/iu;
+  const stripPart = t => { const f = flat(t), r = f.replace(PART_RE, '').replace(PART2_RE, '').trim(); return r.length >= 3 ? r : f; };
   const norm2 = s => String(s || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
   const load = k => { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } };
   const panelId = 'azh';
