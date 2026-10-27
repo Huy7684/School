@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      6.10
+// @version      6.11
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -509,7 +509,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   const panel = document.createElement('div');
   panel.id = 'azh';
   panel.setAttribute('data-mood', 'idle');
-  panel.innerHTML = `<div class="azh-card">${fxHtml}${headHtml('v6.10')}<button id="azh-mrun" class="azh-mrun" type="button" aria-label="Tạm dừng" title="Chạy / Tạm dừng"><svg class="azh-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a.8.8 0 001.2.7l10.6-6.8a.8.8 0 000-1.4L9.2 4.5A.8.8 0 008 5.2z"/></svg><svg class="azh-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4.5" width="4.6" height="15" rx="1.4"/><rect x="13.9" y="4.5" width="4.6" height="15" rx="1.4"/></svg></button>
+  panel.innerHTML = `<div class="azh-card">${fxHtml}${headHtml('v6.11')}<button id="azh-mrun" class="azh-mrun" type="button" aria-label="Tạm dừng" title="Chạy / Tạm dừng"><svg class="azh-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a.8.8 0 001.2.7l10.6-6.8a.8.8 0 000-1.4L9.2 4.5A.8.8 0 008 5.2z"/></svg><svg class="azh-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4.5" width="4.6" height="15" rx="1.4"/><rect x="13.9" y="4.5" width="4.6" height="15" rx="1.4"/></svg></button>
     <div id="azh-body">
       <div class="azh-main" id="azh-mainv">
         <div class="azh-stats">
@@ -852,7 +852,8 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       const q = stripPart(tx.slice(0, at).replace(/Câu\s*\d+/i, '').replace(/ID\s*:\s*\d+/gi, ''));
       const opts = parseOpts(tx.slice(at).replace(/Đáp án đúng[\s\S]*$/i, ''));
       if (q.length >= 3 && opts[letter]) {
-        const dup = Object.keys(opts).some(k => k !== letter && norm(opts[k]) === norm(opts[letter]));
+        // v6.11: coi là trùng cả khi chỉ khác dấu câu / khoảng trắng (locate cũng so khớp kiểu đó), để luôn lưu kèm chữ cái
+        const dup = Object.keys(opts).some(k => k !== letter && (norm(opts[k]) === norm(opts[letter]) || norm2(opts[k]) === norm2(opts[letter])));
         return { q, correct: cleanAns(opts[letter]) + (dup ? ' ⟦opt:' + letter + '⟧' : '') };
       }
     }
@@ -931,8 +932,12 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       // v6.10: cùng chữ câu hỏi nhưng đáp án khác (câu hỏi là ảnh) -> lưu 2 bản ghi riêng, trước đây ghi đè qua lại mỗi lượt quét nên cứ ~10s lại "học thêm" 2 câu
       if (passSeen[k] === undefined) passSeen[k] = ck;
       else if (passSeen[k] !== ck) k = k + ' ¦' + ck;
-      if (bank[k] && norm(bank[k].correct) === norm(correct)) { if (code && !hasT(bank[k], code)) { bank[k].t = addT(bank[k].t, code); tagged++; } return; }
-      bank[k] = { q, correct, t: code || undefined };
+      const old = bank[k], sameTxt = !!old && norm(stripOpt(old.correct)) === norm(stripOpt(correct));
+      // v6.11: trang này không nhận ra trùng mà bản cũ đã có chữ cái -> giữ bản cũ
+      if (sameTxt && optLetter(old.correct) && !optLetter(correct)) correct = old.correct;
+      if (old && norm(old.correct) === norm(correct)) { if (code && !hasT(old, code)) { old.t = addT(old.t, code); tagged++; } return; }
+      // v6.11: cùng chữ đáp án mà chỉ thêm chữ cái (nâng cấp) -> giữ nguyên các mã đề đã gắn, không làm rơi mã đề cũ
+      bank[k] = { q, correct, t: sameTxt ? (code ? addT(old.t, code) : old.t) : (code || undefined) };
       n++;
     };
     // 1) theo chữ "Đáp án đúng: X" (qua text node)
@@ -1030,6 +1035,25 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     for (const qEl of qEls) { const r = locateOne(rec, all, qEl, as, optL); if (r.target) return r; if (!first) first = r; }
     return first;
   }
+  // v6.11: chữ cái (A-F) của vòng tròn đứng ngay trước ô phương án trong cùng thẻ câu
+  function letterBefore(h, card, all) {
+    let best = '';
+    for (const a of all) {
+      if (!/^[A-F]$/i.test(a.t) || !card.contains(a.el) || a.el === h.el || a.el.contains(h.el) || h.el.contains(a.el)) continue;
+      if (a.el.compareDocumentPosition(h.el) & 4) best = a.t.toUpperCase();   // 4 = h đứng sau a
+      else break;
+    }
+    return best;
+  }
+  // v6.11: suy chữ cái từ vị trí hàng phương án trong khối chứa các ô trùng nhau
+  function letterByPos(h, hits) {
+    let box = h.el.parentElement;
+    while (box && !hits.every(o => box.contains(o.el))) box = box.parentElement;
+    if (!box || box.children.length < 2 || box.children.length > 6) return '';
+    const row = [...box.children].find(c => c.contains(h.el));
+    const i = row ? [...box.children].indexOf(row) : -1;
+    return i >= 0 ? 'ABCDEF'[i] : '';
+  }
   function locateOne(rec, all, qEl, as, optL) {
     for (let card = qEl.el.parentElement, i = 0; card && i < 8; card = card.parentElement, i++) {
       if (((card.innerText || '').match(/(^|\n)\s*Câu\s*\d+/gi) || []).length > 1) return { qEl, why: 'thẻ gộp nhiều câu' };   // leo quá cao
@@ -1054,7 +1078,21 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
         });
         if (byL.length === 1) hits = byL;
       }
-      if (hits.length > 1) return { qEl, why: hits.length + ' phương án giống hệt nhau' };   // thật sự trùng chữ: không đoán bừa
+      if (hits.length > 1 && optL) {
+        // v6.11 cách 2: vòng tròn chữ cái gần nhất đứng TRƯỚC ô đó trong trang (không phụ thuộc cấu trúc lồng nhau)
+        const byPrev = hits.filter(h => letterBefore(h, card, all) === optL);
+        if (byPrev.length === 1) hits = byPrev;
+      }
+      if (hits.length > 1 && optL) {
+        // v6.11 cách 3: vị trí của hàng phương án trong khối chứa chúng (hàng thứ 1 = A, thứ 2 = B...)
+        const byPos = hits.filter(h => letterByPos(h, hits) === optL);
+        if (byPos.length === 1) hits = byPos;
+      }
+      if (hits.length > 1) {
+        // v6.11: các ô thật sự giống hệt mà chưa biết ô nào đúng -> không bỏ trống nữa, chọn tạm 1 ô và báo là đoán
+        const g = hits[0];
+        return { qEl, card, target: g.el, guess: hits.length, guessL: letterBefore(g, card, all) || letterByPos(g, hits) };
+      }
       return { qEl, card, target: hits[0].el };
     }
     return { qEl, why: 'không thấy ảnh đáp án' };
@@ -1098,12 +1136,13 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const active = cfg.run && cfg.select;
     if (active) clearHl();
     let found = 0, dsFound = 0, pend = false;   // pend: còn câu đang chờ chọn (để vòng quét biết khi nào được nghỉ)
-    const imgFail = [];
+    const imgFail = [], guessed = [];
     for (const rec of recs) {
       const isDS = rec.q.startsWith(DS);
       const loc = isDS ? locateDS(rec, all) : locate(rec, all);
       if (!loc) continue;
       if (isDS) dsFound++; else found++;
+      if (loc.guess && loc.target) guessed.push('Câu ' + numOf(loc.qEl) + ' (' + loc.guess + ' ô giống hệt nhau, chọn tạm' + (loc.guessL ? ' ô ' + loc.guessL : '') + ' — hãy kiểm tra lại)');
       if (!loc.target) { if (!isDS) { if (/^⟦img:/.test(rec.correct)) dbgImg(rec, loc); imgFail.push('Câu ' + numOf(loc.qEl) + ' (' + (loc.why || '?') + ')'); } continue; }
       const key = norm(rec.q) + ' ¦' + norm(stripOpt(rec.correct));
       if (clickedQ.has(key)) continue;               // mỗi câu chỉ chọn 1 lần, không đè lên lựa chọn của bạn
@@ -1133,7 +1172,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     }
     const fnd = found + Math.floor(dsFound / 4);
     if (!wideMode && !pend && strictCode() && pageQ.size && fnd < pageQ.size && recs.length < usableRecs().length) wideMode = true;   // còn câu chưa khớp: thử thêm các câu cũ chưa gắn mã đề
-    return { imgFail, pend, found: fnd, ds: dsFound, done: clickedQ.size, page: pageQ.size, bankN: recs.length };
+    return { imgFail, guessed, pend, found: fnd, ds: dsFound, done: clickedQ.size, page: pageQ.size, bankN: recs.length };
   }
 
   // ---------- Giao diện: trạng thái ----------
@@ -1318,19 +1357,30 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const headers = { Accept: 'application/vnd.github+json' };
     return fetch(url, { headers, cache: 'no-store' }).then(async r => ({ s: r.status, j: await r.json().catch(() => null) })).catch(() => ghViaLoader('GET', url, headers));
   }
+  async function ghGetRaw(file) {
+    const url = `https://raw.githubusercontent.com/${GHC.user}/${GHC.repo}/${GHC.branch}/${GHC.dir}${file}`;
+    try { const r = await fetch(url, { cache: 'no-store' }); return r.ok ? { s: 200, text: await r.text() } : { s: r.status }; }
+    catch (e) { return { s: 0 }; }
+  }
   async function pullExam(code) {
     if (!code) { ghNote = ''; return stat(); }
     ghNote = 'đang tải đề ' + code + ' từ GitHub…'; stat();
-    const r = await ghGetPublic(`banks/${GHC.site}/${code}.txt`);
+    const file = `banks/${GHC.site}/${code}.txt`;
+    let r = await ghGetPublic(file), rawTxt = null;
+    // v6.11: API bị giới hạn lượt (403/429) hoặc không kết nối được -> thử đọc thẳng file raw (không tính lượt API)
+    if (r.s === 403 || r.s === 429 || r.s === 0) {
+      const w = await ghGetRaw(file);
+      if (w.s === 200) { rawTxt = w.text; r = { s: 200, j: null }; } else if (w.s === 404) r = { s: 404, j: null };
+    }
     if (code !== examCode()) return;                 // đã sang link khác, bỏ kết quả cũ
-    if (r.s === 200 && r.j && r.j.content) {
-      const items = ghParse(ghDec(r.j.content)).filter(([q, c]) => !labelOnly(c));
+    if (r.s === 200 && (rawTxt !== null || (r.j && r.j.content))) {
+      const items = ghParse(rawTxt !== null ? rawTxt : ghDec(r.j.content)).filter(([q, c]) => !labelOnly(c));
       const bt = {}; items.forEach(([q, c]) => putRec(q, cleanAns(c), code, bt));
       saveBank();
       ghNote = `đề ${code}: đã tải ${items.length} câu từ GitHub`;
     } else if (r.s === 404) ghNote = `đề ${code} không có trên GitHub`;
     else if (r.s === 0) ghNote = 'không kết nối được GitHub';
-    else if (r.s === 403) ghNote = 'GitHub đang giới hạn lượt gọi, thử lại sau';
+    else if (r.s === 403 || r.s === 429) ghNote = 'GitHub đang giới hạn lượt gọi, thử lại sau ít phút';
     else ghNote = 'lỗi GitHub HTTP ' + r.s;
     stat();
   }
@@ -1410,7 +1460,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       if (!r.bankN) return ts('chưa có đáp án cho đề này');
       if (!cfg.run) return ts('đã tạm dừng' + (r.found ? `, tô viền ${r.found} câu đã nhớ` : ''));
       if (!cfg.select) return ts(`tự chọn đang tắt, tô viền gợi ý ${r.found} câu`);
-      return ts(`khớp ${r.found}/${r.page || r.bankN} câu` + (r.ds ? ` (${r.ds} ý đúng/sai)` : '') + `, đã chọn ${r.done}` + (r.imgFail && r.imgFail.length ? ' — chưa chọn được: ' + r.imgFail.join('; ') : ''));
+      return ts(`khớp ${r.found}/${r.page || r.bankN} câu` + (r.ds ? ` (${r.ds} ý đúng/sai)` : '') + `, đã chọn ${r.done}` + (r.imgFail && r.imgFail.length ? ' — chưa chọn được: ' + r.imgFail.join('; ') : '') + (r.guessed && r.guessed.length ? ' — đoán: ' + r.guessed.join('; ') : ''));
     }
     prog(0, 0);
     if (!cfg.run) return ts('đã tạm dừng, không quét đáp án');
