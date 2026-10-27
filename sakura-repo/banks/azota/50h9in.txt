@@ -3,12 +3,12 @@ Cho câu lệnh HTML: <p style = "color: blue"> <u> This is a <em> paragraph. </
 Cho câu lệnh HTML: <p> <strong> This is a <i> paragraph. </i></strong> </p> Phương án nào dưới đây nêu đúng kết quả hiển thị của câu lệnh trên trình duyệt? ||| This is a paragraph. ⟦opt:D⟧
 Câu lệnh nào dưới đây cho kết quả hiển thị như hình sau? This is a paragraph. ||| <span style = "background-color:yellow"> This is a paragraph. </span> ⟦opt:A⟧
 Câu lệnh nào dưới đây cho kết quả hiển thị trên trình duyệt như hình sau? This is a paragraph. ||| <p><b>This is a <sub>paragraph.</sub></b></p>
-Cú pháp nào sau đây dùng để khai báo thuộc tính cho một phần tử HTML? ||| <tên_thẻ thuộc_tính = "giá_trị";> Nội dung </tên_thẻ>
+Cú pháp nào sau đây dùng để khai báo thuộc tính cho một phần tử HTML? ||| <tên_thẻ thuộc_tính = "giá_trị";> Nội dung </tên_thẻ> ⟦opt:B⟧
 Dùng cặp thẻ nào dưới đây để khai báo danh sách có thứ tự? ||| Thẻ <ol></ol> để tạo danh sách có thứ tự và <li></li> để đánh dấu từng mục trong danh sách.
 HTML là viết tắt của cụm từ nào sau đây? ||| HyperText Markup Language.
 Không thể tạo liên kết từ trang web đến tài nguyên nào dưới đây? ||| Vị trí được đánh dấu bằng tên lớp (.class) trên trang web hiện thời.
 Liên kết nào dưới đây KHÔNG dẫn tới tài nguyên? ||| <a href="/laptrinhweb/google.com">Liên kết đến trang google.com</a><br>
-Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < >
+Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < > ⟦opt:C⟧
 Phương án nào dưới đây KHÔNG đúng về thuộc tính target của thẻ <a>? ||| Nếu giá trị thuộc tính target là "_blank" thì tài liệu được mở trên cửa sổ trình duyệt hiện tại.
 Phương án nào dưới đây mô tả đúng kết quả câu lệnh <ol type = "a">...</ol>? ||| Danh sách có thứ tự, bắt đầu từ mục a. ⟦opt:C⟧
 Phương án nào dưới đây nêu đúng kết quả lệnh tạo danh sách có thứ tự nhưng không khai báo thuộc tính type và start? ||| Tạo danh sách có thứ tự, bắt đầu từ mục 1.
@@ -30,5 +30,5 @@ Thẻ nào sau đây dùng để định dạng chữ in đậm cho nội dung v
 Thẻ nào sau đây KHÔNG cùng loại với các thẻ khác? ||| <b>
 Trong các thẻ dưới đây, sử dụng thẻ nào để định dạng cho tiêu đề của cửa trang web có cỡ chữ nhỏ nhất? ||| <h6>
 Trong câu lệnh HTML: <title><b> Đây là tiêu đề trang web </b></title>, thẻ <b></b> có ý nghĩa định dạng nào sau đây? ||| Chữ có bóng đỏ cho văn bản "Đây là tiêu đề trang web".
-Trong tệp index.html có cụm từ "Liên kết tới trang info.html", muốn tạo liên kết khi nháy chuột vào cụm từ "Liên kết tới trang info.html" sẽ dẫn tới tệp info.html, biết hai tệp này nằm trong cùng thư mục thiết kế web, cần sử dụng liên kết nào sau đây? ||| <a href = "info.html" > Liên kết tới trang info.html </a>
-Trong tệp index.html muốn tạo liên kết từ cụm từ "Liên kết tới trang info.html" tới tệp info.html nằm trong thư mục thiết kế web, biết tệp index.html và thư mục thiết kế web nằm trong cùng thư mục web cần sử dụng liên kết nào sau đây? ||| <a href = "thiet ke web/info.html" > Liên kết tới trang info.html </a>
+Trong tệp index.html có cụm từ "Liên kết tới trang info.html", muốn tạo liên kết khi nháy chuột vào cụm từ "Liên kết tới trang info.html" sẽ dẫn tới tệp info.html, biết hai tệp này nằm trong cùng thư mục thiết kế web, cần sử dụng liên kết nào sau đây? ||| <a href = "info.html" > Liên kết tới trang info.html </a> ⟦opt:D⟧
+Trong tệp index.html muốn tạo liên kết từ cụm từ "Liên kết tới trang info.html" tới tệp info.html nằm trong thư mục thiết kế web, biết tệp index.html và thư mục thiết kế web nằm trong cùng thư mục web cần sử dụng liên kết nào sau đây? ||| <a href = "thiet ke web/info.html" > Liên kết tới trang info.html </a> ⟦opt:B⟧
