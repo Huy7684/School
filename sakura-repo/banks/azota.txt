@@ -216,7 +216,7 @@ Câu lệnh nào dưới đây cho kết quả hiển thị trên trình duyệt
 Công nghệ nhận dạng khuôn mặt KHÔNG dùng trong công việc nào sau đây? ||| Tìm kiếm ảnh khuôn mặt trên internet.
 Công thức của ester tạo bởi acid no, đơn chức mạch hở và alcohol no đơn chức mạch hở là ||| CnH2nO2 (n ≥ 2).
 Công thức của ethyl acetate là ||| CH3COOC2H5.
-Cú pháp nào sau đây dùng để khai báo thuộc tính cho một phần tử HTML? ||| <tên_thẻ thuộc_tính = "giá_trị";> Nội dung </tên_thẻ>
+Cú pháp nào sau đây dùng để khai báo thuộc tính cho một phần tử HTML? ||| <tên_thẻ thuộc_tính = "giá_trị";> Nội dung </tên_thẻ> ⟦opt:B⟧
 Cơ chế nào dưới đây giúp các quốc gia có thể giải quyết tranh chấp trong quá trình hội nhập kinh tế? ||| Trọng tài quốc tế
 Cặp chất nào sau đây có thể phân biệt bằng thuốc thử Tollens? ||| Saccharose và glucose.
 DeepMind của Google trong y tế và chăm sóc sức khỏe có thể làm gì? ||| Chẩn đoán bệnh và lập phác đồ điều trị.
@@ -260,7 +260,7 @@ Mạch logic thực hiện phép toán logic XOR có kí hiệu là : ||| ⟦img
 Mạng máy tính là gì? ||| Một hệ thống các thiết bị số được kết nối với nhau để truyền dữ liệu và trao đổi thông tin.
 Mạng WLAN còn được gọi là gì? ||| Mạng cục bộ không dây
 Mỗi đơn vị glucose trong cellulose liên kết với nhau bởi liên kết ||| β-1,4-glycoside.
-Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < >
+Một thẻ HTML thường được viết trong cặp kí hiệu nào sau đây? ||| < > ⟦opt:C⟧
 Mục đích chính của bảo hiểm là gì? ||| Bảo vệ tài chính cho người tham gia khi gặp rủi ro
 Mục đích của hệ thống tên miền DNS là gì? ||| Để định danh các máy tính trong mạng bằng những chữ gợi nhớ
 Ngoài chức năng kết nối không dây, Access point còn có thêm chức năng: ||| định tuyến trong mạng không dây.
@@ -356,8 +356,8 @@ Trong những tính năng sau tính năng nào KHÔNG phải là của Trợ lý
 Trong những tính năng sau, tính năng nào KHÔNG phải là của Trợ lí ảo? ||| Tự động cải thiện hiệu suất máy tính.
 Trong phòng thực hành Tin học có 30 máy tính, muốn kết nối các máy tính đó thành mạng LAN, ta nên dùng thiết bị nào sau đây? ||| Switch.
 Trong thành phần của quả bông có 90% cellulose về khối lượng. Trong phân tử cellulose các đơn vị β-glucose liên kết với nhau qua liên kết nào sau đây? ||| liên kết β-1,4-glycoside.
-Trong tệp index.html có cụm từ "Liên kết tới trang info.html", muốn tạo liên kết khi nháy chuột vào cụm từ "Liên kết tới trang info.html" sẽ dẫn tới tệp info.html, biết hai tệp này nằm trong cùng thư mục thiết kế web, cần sử dụng liên kết nào sau đây? ||| <a href = "info.html" > Liên kết tới trang info.html </a>
-Trong tệp index.html muốn tạo liên kết từ cụm từ "Liên kết tới trang info.html" tới tệp info.html nằm trong thư mục thiết kế web, biết tệp index.html và thư mục thiết kế web nằm trong cùng thư mục web cần sử dụng liên kết nào sau đây? ||| <a href = "thiet ke web/info.html" > Liên kết tới trang info.html </a>
+Trong tệp index.html có cụm từ "Liên kết tới trang info.html", muốn tạo liên kết khi nháy chuột vào cụm từ "Liên kết tới trang info.html" sẽ dẫn tới tệp info.html, biết hai tệp này nằm trong cùng thư mục thiết kế web, cần sử dụng liên kết nào sau đây? ||| <a href = "info.html" > Liên kết tới trang info.html </a> ⟦opt:D⟧
+Trong tệp index.html muốn tạo liên kết từ cụm từ "Liên kết tới trang info.html" tới tệp info.html nằm trong thư mục thiết kế web, biết tệp index.html và thư mục thiết kế web nằm trong cùng thư mục web cần sử dụng liên kết nào sau đây? ||| <a href = "thiet ke web/info.html" > Liên kết tới trang info.html </a> ⟦opt:B⟧
 Trong việc hội nhập kinh tế quốc tế, một trong những khó khăn mà quốc gia phải đối mặt là gì? ||| Cạnh tranh khốc liệt từ các sản phẩm ngoại nhập
 Trong điều kiện thích hợp glucose lên men tạo thành khí CO2 và ||| C2H5OH.
 Trí tuệ nhân tạo còn nhiều hạn chế ở khả năng nào sau đây? ||| Cảm nhận cảm xúc.
