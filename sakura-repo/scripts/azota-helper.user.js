@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Azota Helper - Sakura Edition
 // @namespace    https://azota.vn/
-// @version      6.6
+// @version      6.7
 // @description  桜 Sakura Edition (điện thoại + máy tính): quét "Đáp án đúng" (trắc nghiệm, đáp án ảnh, đúng/sai) ở trang xem đáp án rồi lưu, tự chọn lại ở lần làm sau, sổ đáp án có tìm kiếm, xuất/nhập .txt. Không tự nộp bài.
 // @match        https://azota.vn/*
 // @match        https://*.azota.vn/*
@@ -500,7 +500,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   const panel = document.createElement('div');
   panel.id = 'azh';
   panel.setAttribute('data-mood', 'idle');
-  panel.innerHTML = `<div class="azh-card">${fxHtml}${headHtml('v6')}<button id="azh-mrun" class="azh-mrun" type="button" aria-label="Tạm dừng" title="Chạy / Tạm dừng"><svg class="azh-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a.8.8 0 001.2.7l10.6-6.8a.8.8 0 000-1.4L9.2 4.5A.8.8 0 008 5.2z"/></svg><svg class="azh-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4.5" width="4.6" height="15" rx="1.4"/><rect x="13.9" y="4.5" width="4.6" height="15" rx="1.4"/></svg></button>
+  panel.innerHTML = `<div class="azh-card">${fxHtml}${headHtml('v6.7')}<button id="azh-mrun" class="azh-mrun" type="button" aria-label="Tạm dừng" title="Chạy / Tạm dừng"><svg class="azh-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a.8.8 0 001.2.7l10.6-6.8a.8.8 0 000-1.4L9.2 4.5A.8.8 0 008 5.2z"/></svg><svg class="azh-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4.5" width="4.6" height="15" rx="1.4"/><rect x="13.9" y="4.5" width="4.6" height="15" rx="1.4"/></svg></button>
     <div id="azh-body">
       <div class="azh-main" id="azh-mainv">
         <div class="azh-stats">
@@ -809,7 +809,9 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   // Phương án / câu hỏi là ẢNH: dùng tên file ảnh làm "chữ" định danh, dạng ⟦img:ten-file.png⟧
   const hashStr = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36); };
   function imgKey(im) {
-    const raw = im.getAttribute('data-src') || im.getAttribute('data-original') || im.currentSrc || im.getAttribute('src') || '';
+    // v6.7: bỏ ảnh giữ chỗ data: nhỏ của lazy-load, lấy nguồn thật
+    const cands = [im.getAttribute('data-src'), im.getAttribute('data-original'), im.currentSrc, im.getAttribute('src')];
+    const raw = cands.find(x => x && !(/^data:/i.test(x) && x.length < 400)) || '';
     if (!raw) return '';
     if (/^data:/i.test(raw)) return 'd' + hashStr(raw);
     try { const segs = new URL(raw, location.href).pathname.split('/').filter(Boolean); return decodeURIComponent(segs[segs.length - 1] || '').toLowerCase(); }
@@ -817,7 +819,7 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   function imgTok(im) {
     const r = im.getBoundingClientRect();
-    if (!im.getClientRects().length) return '';                       // ảnh ẩn
+    if (!im.getClientRects().length && im.complete && im.naturalWidth > 0) return '';   // v6.7: chỉ bỏ ảnh ẩn khi đã tải xong; ảnh chưa tải vẫn giữ token
     if (im.complete && im.naturalWidth > 0 && (r.width < 20 || (r.height > 0 && r.height < 20))) return '';   // chỉ bỏ icon nhỏ đã tải xong; ảnh chưa tải vẫn giữ token (khoá theo tên file) để câu không đổi khoá theo tốc độ tải     // bỏ icon nhỏ; giữ ảnh chưa có chiều cao (cao 0)
     const k = imgKey(im);
     return k ? '⟦img:' + k + '⟧' : '';
@@ -1346,6 +1348,17 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
 
   // ---------- Vòng lặp (trang là SPA nên quét định kỳ) ----------
   let selPending = true;
+  // v6.7: chỉ quét lại khi trang thật sự đổi, quét đủ câu thì nghỉ (đỡ nóng + không nhảy số trên điện thoại)
+  let domDirty = true, lastLearn = 0, learnDone = false;
+  try {
+    new MutationObserver(ms => {
+      for (const m of ms) {
+        const el = m.target.nodeType === 1 ? m.target : m.target.parentElement;
+        if (el && el.closest && el.closest('#' + panelId)) continue;
+        domDirty = true; learnDone = false; return;
+      }
+    }).observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['src', 'data-src'] });
+  } catch (e) {}
   const ts = m => { if (Date.now() >= holdUntil) stat(m, true); };
   function tick() {
     if (inTake()) {
@@ -1360,7 +1373,11 @@ select.azh-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     prog(0, 0);
     if (!cfg.run) return ts('đã tạm dừng, không quét đáp án');
     if (!cfg.learn) return ts('tự học đang tắt, không quét đáp án');
+    if (learnDone && !domDirty && Date.now() - lastLearn < 8000) return;
+    document.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = 'eager'; });   // ép ảnh lazy tải hết
+    domDirty = false; lastLearn = Date.now();
     const r = learnNow();
+    learnDone = r.total > 0 && !r.missing.length;
     learnedNow += r.n;
     if (r.seen) ts(`đã quét ${r.seen}${r.total ? '/' + r.total : ''} câu, học thêm ${learnedNow} câu mới` + (r.missing.length ? ` — chưa đọc được: Câu ${r.missing.join('; Câu ')}` : ''));
     else ts('chờ trang xem đáp án để quét…');
