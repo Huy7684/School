@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.9
+// @version      14.10
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1372,6 +1372,117 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     }
   }
 
+  // ---------- Câu tự luận (ô gõ chữ + khung "Đáp án đúng: ...") ----------
+  // Đáp án lưu dạng: "[TL] nội dung đáp án"; khoá câu = đề bài + " ¦ tự luận" để không lẫn với câu trắc nghiệm trùng đề.
+  const ES_TAG = '[TL] ';
+  const ES_ANS = /^Đáp án(?: đúng)?\s*:/i;
+  const esRest = t => flat(t).replace(ES_ANS, '').trim();
+  function essayBox() {
+    return [...document.querySelectorAll('textarea')].find(t => !panel.contains(t) && t.getClientRects().length > 0) || null;
+  }
+  // điền vào ô React/Vue: dùng setter gốc rồi bắn sự kiện input để framework nhận giá trị
+  function setTA(ta, text) {
+    try { ta.focus(); } catch (e) {}
+    const d = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value');
+    if (d && d.set) d.set.call(ta, text); else ta.value = text;
+    ta.dispatchEvent(new Event('input', { bubbles: true }));
+    ta.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+  // phần tử CHỨA chữ "Đáp án đúng: ..." (lấy phần tử sâu nhất mà vẫn còn nội dung đáp án)
+  function essayAnswerEl() {
+    let found = null;
+    document.querySelectorAll('div, p, span, section, li').forEach(el => {
+      if (found || panel.contains(el) || !el.getClientRects().length) return;
+      if (!ES_ANS.test(flat(el.textContent)) || !esRest(el.textContent)) return;
+      if (el.querySelector('textarea')) return;
+      if ([...el.children].some(c => ES_ANS.test(flat(c.textContent)) && esRest(c.textContent))) return;
+      found = el;
+    });
+    return found;
+  }
+  function essayCommon() {
+    const ta = essayBox();
+    if (!ta) return null;
+    let card = null;
+    for (let p = ta.parentElement, i = 0; p && i < 8; p = p.parentElement, i++) {
+      if (/^\s*Câu\s*\d+/.test(p.innerText || '')) { card = p; break; }
+    }
+    if (!card) return null;
+    // đề bài = mọi chữ nằm TRƯỚC ô gõ trong thẻ câu hỏi
+    const parts = [];
+    const w = document.createTreeWalker(card, NodeFilter.SHOW_TEXT);
+    for (let n; (n = w.nextNode());) {
+      if (ta.contains(n) || panel.contains(n)) continue;
+      if (!(ta.compareDocumentPosition(n) & Node.DOCUMENT_POSITION_PRECEDING)) break;
+      parts.push(n.nodeValue);
+    }
+    const raw = flat(parts.join(' '));
+    const mq = raw.match(/^Câu\s*(\d+)/);
+    const qText = raw.replace(/^Câu\s*\d+\s*\/\s*\d+\s*/, '');
+    if (!qText) return null;
+    const qImgs = realImgs(card, [ta]);
+    const q = qText + imgTag(qImgs) + ' ¦ tự luận';
+    return { essay: true, q, qText, qno: mq ? mq[1] : '', ta, card, ready: imgsReady(qImgs) };
+  }
+  function essayInfo(c) {
+    const el = essayAnswerEl();
+    const cont = flat(c.card.innerText || '');
+    let ans = el ? esRest(el.textContent) : '';
+    // làm đúng hết thì trang có thể không hiện khung đáp án: lấy luôn chữ người làm đã gõ
+    if (!ans && /Đúng rồi/i.test(cont) && c.ta.value.trim()) ans = flat(c.ta.value);
+    return { txt: ans ? ES_TAG + ans : '', matched: !!ans && !!lastSnap && !!lastSnap.essay && lastSnap.q === c.q, sig: (c.qno || '?') + '|' + hashStr(c.q), cont };
+  }
+  // Câu tự luận CHƯA kiểm tra: điền đáp án đã nhớ → bấm Kiểm tra
+  function stepEssay(c) {
+    lastSnap = c;
+    const key = 'es|' + c.qno + '|' + norm(c.q);
+    if (st.key !== key) st = { key, fills: 0, selAt: 0, chkTries: 0, chkAt: 0 };
+    const rec = findRec(c.q);
+    let text = rec && rec.correct && rec.correct.indexOf(ES_TAG) === 0 ? rec.correct.slice(ES_TAG.length) : '';
+    let guess = false;
+    if (!text) {
+      const willGuess = cfg.run && cfg.unk === 'guess';
+      stt(willGuess ? 'câu tự luận mới → gõ tạm để học' : 'câu tự luận mới — tự gõ rồi bấm Kiểm tra để học');
+      if (!willGuess) return;
+      text = 'Chưa biết'; guess = true;
+    }
+    if (!cfg.run || (!guess && !cfg.sel)) {
+      c.ta.style.outline = '3px solid #10B981';
+      stt('đã nhớ đáp án tự luận (bật "Tự chọn đáp án" để tự điền)');
+      return;
+    }
+    if (st.stuck) return;
+    const t = now();
+    if (!st.fills) {
+      if (!gapOk()) return;
+      c.ta.style.outline = '';
+      setTA(c.ta, text);
+      st.fills = 1; st.selAt = t; lastAct = t;
+      stt(guess ? 'đã gõ tạm để học' : 'đã điền đáp án tự luận');
+      return;
+    }
+    if (flat(c.ta.value) !== flat(text) && st.fills < 3) {   // trang xoá mất chữ thì điền lại (tối đa 3 lần)
+      if (!gapOk()) return;
+      setTA(c.ta, text); st.fills++; st.selAt = t; lastAct = t;
+      return;
+    }
+    if (!cfg.chk && !guess) return;
+    const btn = findBtn(/^Kiểm tra$/);
+    if (st.chkTries === 0) {
+      const ready = btnEnabled(btn) || t - st.selAt > Math.max(700, cfg.delay * 2);
+      if (!ready || !btn || !gapOk()) return;
+      tap(btn);
+      st.chkTries = 1; st.chkAt = t; lastAct = t;
+      stt('đã bấm Kiểm tra');
+      return;
+    }
+    if (t - st.chkAt > chkRetry() && btnEnabled(btn) && gapOk()) {
+      if (st.chkTries >= 2) { st.stuck = true; stt('⚠️ Kẹt ở nút Kiểm tra — hãy bấm tay'); return; }
+      tap(btn);
+      st.chkTries++; st.chkAt = t; lastAct = t;
+    }
+  }
+
   // ---------- Nút ----------
   const visible = el => el.getClientRects().length > 0;
   const findBtn = re => [...document.querySelectorAll('button, a, [role="button"]')]
@@ -1514,6 +1625,16 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   const onTake = () => /\/take(\/|$)/.test(location.pathname);
   function tick() {
     if (!onTake()) { lastSnap = null; stt('chờ vào trang làm bài…'); return; }
+    const es = essayCommon();
+    if (es) {
+      if (!es.ready) return;
+      if (essayAnswerEl()) {   // đã kiểm tra: khung "Đáp án đúng" hiện ra
+        if (!lastSnap || lastSnap.q !== es.q) lastSnap = es;
+        return stepChecked(essayInfo(es));
+      }
+      if (findBtn(/^Kiểm tra$/)) return stepEssay(es);
+      return;
+    }
     const tf = tfCommon();
     if (tf) {
       if (!tf.ready) return;   // hình chưa tải xong thì chờ
