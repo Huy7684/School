@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.11
+// @version      14.12
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1469,22 +1469,36 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     }
     if (!cfg.chk && !guess) return;
     const btn = findBtn(/^Kiểm tra$/);
+    if (!btn) return;
+    // nhả ô gõ (blur) + chờ trang ghi nhận chữ rồi mới bấm, bấm bằng chuột đầy đủ toạ độ
+    const settle = Math.max(600, cfg.delay * 2);
     if (st.chkTries === 0) {
-      const ready = btnEnabled(btn) || t - st.selAt > Math.max(700, cfg.delay * 2);
-      if (!ready || !btn || !gapOk()) return;
-      tap(btn);
+      if (t - st.selAt < settle || !btnEnabled(btn) || !gapOk()) return;
+      essayClick(c, btn);
       st.chkTries = 1; st.chkAt = t; lastAct = t;
       stt('đã bấm Kiểm tra');
       return;
     }
-    if (t - st.chkAt > chkRetry() && btnEnabled(btn) && gapOk()) {
-      if (st.chkTries >= 2) { st.stuck = true; stt('⚠️ Kẹt ở nút Kiểm tra — hãy bấm tay'); return; }
-      tap(btn);
+    if (t - st.chkAt > Math.max(2500, cfg.delay * 5) && btnEnabled(btn) && gapOk()) {
+      if (st.chkTries >= 6) { st.stuck = true; stt('⚠️ Kẹt ở nút Kiểm tra — hãy bấm tay'); return; }
+      if (flat(c.ta.value) !== flat(text)) { setTA(c.ta, text); st.selAt = t; st.chkAt = t; return; }
+      essayClick(c, btn);
       st.chkTries++; st.chkAt = t; lastAct = t;
     }
   }
+  function essayClick(c, btn) {
+    try { c.ta.dispatchEvent(new Event('blur')); c.ta.dispatchEvent(new FocusEvent('focusout', { bubbles: true })); c.ta.blur(); } catch (e) {}
+    try {
+      const r = btn.getBoundingClientRect(), o = { bubbles: true, cancelable: true, view: window, clientX: r.left + r.width / 2, clientY: r.top + r.height / 2, button: 0 };
+      ['pointerover', 'pointerenter', 'mouseover', 'pointerdown', 'mousedown', 'pointerup', 'mouseup'].forEach(n => {
+        const Ev = n.startsWith('pointer') && window.PointerEvent ? PointerEvent : MouseEvent;
+        btn.dispatchEvent(new Ev(n, o));
+      });
+    } catch (e) {}
+    btn.click();
+  }
 
-  // ---------- Nút ----------
+// ---------- Nút ----------
   const visible = el => el.getClientRects().length > 0;
   const findBtn = re => [...document.querySelectorAll('button, a, [role="button"]')]
     .find(b => !panel.contains(b) && visible(b) && re.test(flat(b.textContent)));
