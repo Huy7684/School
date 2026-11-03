@@ -1,14 +1,26 @@
 # Mỗi dòng: câu hỏi ||| đáp án đúng
+AI có ảnh hưởng như thế nào đối với lĩnh vực khoa học xã hội và nhân văn? ||| Được sử dụng để mô hình hóa và mô phỏng nhiều hiện tượng xã hội, nhân văn phức tạp
+AI đang cải thiện ngành tài chính ngân hàng bằng cách tăng cường an ninh giao dịch dự đoán rủi ro tài chính và cung cấp dịch vụ khách hàng tự động thông qua Chatbots. Hãy đánh giá các phát biểu sau: ¦ A) AI hỗ trợ tự động hóa các quy trình thủ công để nâng cao trải nghiệm khách hàng ¦ B) AI hỗ trợ phân tích và dự báo xu thế thị trường để tối ưu hóa hoạt động kinh doanh ¦ C) AI không có khả năng phát hiện gian lận trong các giao dịch tài chính ¦ D) AI thay thế hoàn toàn con người trong việc ra quyết định giao dịch ||| [ĐS] A=Đ B=Đ C=S D=S
 An toàn điện là những quy định, quy tắc và kĩ năng cần thiết được đặt ra nhằm đảm bảo an toàn cho người, thiết bị và hệ thống lưới điện trong ||| thiết kế, sử dụng, bảo dưỡng và sửa chữa điện
 An toàn điện là những quy định, quy tắc và kĩ năng cần thiết được đặt ra trong thiết kế, sử dụng, bảo dưỡng và sửa chữa điện nhằm đảm bảo an toàn cho ||| người, thiết bị và hệ thống lưới điện
 Biểu thức dòng điện xoay chiều một pha có dạng ||| i = Im sin(ωt+φ)
+Biểu tượng nào sau đây cho phép thiết lập kết nối không dây giữa Modem Access point với máy tính? ||| ⤢Phóng to ảnh [hình:uy1brw]
+Bộ định tuyến là thiết bị nào sau đây? ||| Router
+Cho các phát biểu sau về Giao thức TCP. Các phát biểu sau đây đúng hay sai? ¦ A) Giao thức TCP đảm bảo dữ liệu được truyền đến đích một cách tin cậy và đúng thứ tự ban đầu ¦ B) Giao thức TCP cung cấp cơ chế xác nhận nhận dữ liệu và yêu cầu không gửi lại khi xảy ra mất gói tin ¦ C) Trước khi truyền, giao thức TCP chia dữ liệu thành các đoạn nhỏ để thuận tiện cho việc gửi qua mạng ¦ D) Giao thức TCP phân biệt các ứng dụng khác nhau trên cùng một thiết bị dựa vào số hiệu Port ||| [ĐS] A=Đ B=S C=Đ D=Đ
+Cho các phát biểu sau về địa chỉ IP, địa chỉ MAC và thiết bị mạng. Các phát biểu sau đây đúng hay sai? ¦ A) Giao thức IP chịu trách nhiệm chuyển dữ liệu đến đúng ứng dụng cụ thể đang chạy trên máy tính ¦ B) Địa chỉ IP hiện nay được chia thành hai phiên bản chính là IPv4 và IPv6 ¦ C) Địa chỉ IP và địa chỉ MAC là hai tên gọi khác nhau của cùng một loại địa chỉ mạng ¦ D) Thiết bị Router đóng vai trò chuyển tiếp các gói dữ liệu giữa các mạng khác nhau giống như các bưu cục chuyển tiếp bưu phẩm ||| [ĐS] A=S B=Đ C=S D=Đ
 Cho mạch điện đối xứng như hình vẽ bên, biết tổng trở pha của tải Zp= 5Ω, Ud =220V. Dòng điện pha và dòng điện dây của mạch có giá trị là: ⤢ Phóng to ảnh ||| Ip = 44A, Id =443\displaystyle \sqrt{3}3​A
 Cho mạch điện đối xứng như hình vẽ bên, biết tổng trở pha của tải Zp= 5Ω, Ud =220V. Dòng điện pha và dòng điện dây của mạch có giá trị là: ⤢ Phóng to ảnh [hình:q02hgw] ||| Ip = 44A, Id =443\displaystyle \sqrt{3}3​A
+Cho nhận định: “AI giúp nâng cao hiệu suất công việc nhưng cũng mang lại những thách thức về an sinh xã hội và an toàn thông tin.” Các phát biểu sau đây đúng hay sai? a) ¦ A) Việc phát triển AI có thể thay thế con người trong một số vị trí công việc, dẫn đến nguy cơ thất nghiệp. ¦ B) AI trong tuyển dụng luôn hoạt động khách quan và không bị ảnh hưởng bởi định kiến dữ liệu. ¦ C) Công nghệ AI không thể tạo ra các sản phẩm giả mạo khuôn mặt hay giọng nói giống như thật. ¦ D) Các ứng dụng AI có khả năng thu thập và phân tích dữ liệu cá nhân, gây ra mối lo ngại về quyền riêng tư. ||| [ĐS] A=Đ B=S C=S D=Đ
 Các bước để vẽ sơ đồ nguyên lí mạch điện là: ||| Xác định các thành phần trong mạch điện -> Phân tích mối liên hệ của các thành phần của mạch điện -> vẽ sơ đồ mạch điện
 Các thông số kĩ thuật ghi trên aptomat có trong hình bên bao gồm: ⤢ Phóng to ảnh [hình:18e4clb] ||| Điện áp định mức 240V/415V, dòng điện định mức 100A, dòng cắt ngắn mạch 10kA
 Có bao nhiêu cách để nối tài ba pha trong mạch điện xoay chiều ba pha ||| 2 cách
 Cấu trúc gồm các thành phần tủ đóng cắt và đo lường, tủ điện tổng, tủ điện nhánh, tải điện là của hệ thống điện: ||| Trong gia đình
+Cổng kết nối nào sau đây thường được sử dụng để kết nối thiết bị hiển thị với máy tính? ||| HDMI
 Dòng điện xoay chiều một pha là dòng điện biến thiên tuần hoàn theo dạng hình ||| Sin
+Em hãy nhận xét về các nhận định về hệ thống mạng máy tính của trường trung học phổ thông sau đây: ⤢ Phóng to ảnh [hình:1j4i1wv] ¦ A) Phải thay Switch bằng một Modem khác, giúp vừa kết nối tất cả các máy tính trong phòng thực hành bằng cáp nối, vừa kết nối các thiết bị di động ¦ B) Các máy tính để bàn không thể kết nối vào Modem và Access point vì các thiết bị này không có cổng để cấm cáp mạng ¦ C) Có thể bổ sung thêm máy tính vào phòng thực hành do vẫn còn cổng trên Switch chưa sử dụng ¦ D) Sử dụng thêm thiết bị Access point để mở rộng mạng không dây, cho phép các thiết bị không dây truy cập vào tài nguyên mạng ||| [ĐS] A=S B=S C=Đ D=Đ
+Em hãy phân tích tính nhân văn trong ứng xử trên không gian mạng được thể hiện qua các khía cạnh: Tôn trọng, Lịch sự, Thấu hiểu và Hỗ trợ. ¦ tự luận ||| [TL] Phân tích các khía cạnh nhân văn: ­ Tôn trọng: quyền riêng tư, quan điểm khác biệt, không làm tổn thương người khác. ­ Lịch sự: sử dụng ngôn từ đúng mực, chia sẻ thông tin chính xác, tránh lan truyền tin rác. ­ Thấu hiểu: đặt mình vào hoàn cảnh, khó khăn của người khác để chia sẻ. ­ Hỗ trợ: động viên, giúp đỡ, an ủi kịp thời
+Hành vi nào sau đây KHÔNG phải là lạm dụng dữ liệu cá nhân bởi mô hình AI? ||| Phân tích dữ liệu y tế cá nhân để đưa ra chẩn đoán bệnh
+Hãy phân tích những tác động tích cực và tiêu cực của AI đối với thị trường lao động và việc làm trong đời sống xã hội hiện nay. ¦ tự luận ||| [TL] ­Tác động tích cực: o Tự động hóa các công việc lặp đi lặp lại, nguy hiểm hoặc nhàm chán o Giải phóng sức lao động cho con người o Tạo ra các ngành nghề mới liên quan đến công nghệ o Tăng năng suất lao động và hiệu quả vận hành của doanh nghiệp. ­ Tác động tiêu cực: o Gây nguy cơ mất việc làm đối với lao động trong các ngành nghề như dịch vụ khách hàng, nhập liệu, dịch thuật cơ bản, công nhân dây chuyền lắp ráp… o Gia tăng khoảng cách giàu nghèo. o Gia tăng bất bình đẳng xã hội giữa nhóm lao động có kỹ năng công nghệ cao và nhóm lao động phổ thông.
 Hình bên dưới mô tả cách nối nguồn và nối tải ba pha theo kiểu ⤢ Phóng to ảnh ||| Nguồn nối hình sao, tải nối hình tam giác
 Hình bên dưới mô tả cách nối nguồn và nối tải ba pha theo kiểu ⤢ Phóng to ảnh [hình:1igsw7p] ||| Nguồn nối hình sao, tải nối hình tam giác
 Hình bên dưới mô tả cách nối nguồn và nối tải ba theo kiểu: ⤢ Phóng to ảnh ||| Nguồn nối hình sao có dây trung tính, tải nối hình sao có dây trung tính
@@ -16,17 +28,27 @@ Hình bên dưới mô tả cách nối nguồn và nối tải ba theo kiểu: 
 Hình ảnh sau đây thể hiện phương pháp sản xuất điện nǎng bằng nǎng lượng nào bên dưới đây: ⤢ Phóng to ảnh ||| Gió
 Hình ảnh sau đây thể hiện phương pháp sản xuất điện nǎng bằng nǎng lượng nào bên dưới đây: ⤢ Phóng to ảnh [hình:ixre84] ||| Gió
 Hệ thống điện quốc gia gồm: ||| Nguồn điện, các lưới điện và các hộ tiêu thụ điện trên toàn quốc
+Khi kết nối hai máy tính cách xa hàng nghìn kilômét qua Internet, người ta sử dụng thiết bị nào để kết nối các LAN với nhau? ||| Router
 Khi lắp đặt và sử dụng các thiết bị điện có vỏ bằng kim loại cần thực hiện các biện pháp an toàn như: ||| thực hiện nối đất với vỏ của thiết bị; thường xuyên kiểm tra nguy cơ rò rỉ điện
 Khi máy phát điện xoay chiều ba pha hoạt động, sức điện động xuất hiện trên các pha sẽ lệch góc: ||| 2π/3
+Khi nào bạn nên sử dụng chế độ "Duplicate" trên màn hình mở rộng? ||| Khi trình bày nội dung cho nhiều người bằng cách sao chép màn hình máy tính lên màn hình mở rộng
 Khi sử dụng bình nước nóng phục vụ việc tắm rửa, để đảm bảo an toàn cho người cần thực hiện các biện pháp như: ||| sử dụng aptomat chống rò điện để đóng cắt nguồn, khi tắm phải tắt nguồn điện và không được để máy hoạt động 2424\displaystyle \frac{24}{24}2424​ giờ
+Khi tạo mật khẩu, một trong các nguyên tắc an toàn là gì? ||| Dùng mật khẩu gồm chữ cái, số và ký tự đặc biệt
+Khi ứng xử trong không gian mạng, nguyên tắc nào sau đây mà người tham gia cần thực hiện? ||| Lịch sự, tôn trọng người khác và tuân thủ pháp luật
 Khả nǎng chịu dòng điện tối đa của tiếp điểm aptomat trong một khoảng thời gian nhất định của aptomat trong hình bên là: ⤢ Phóng to ảnh [hình:1gab7nq] ||| 6000 A
 Kí hiệu trong hình bên thể hiện thiết bị điện nào trên sơ đồ hệ thống điện: ⤢ Phóng to ảnh [hình:1el7ddz] ||| Cầu chì
 Kí hiệu trong hình bên thể hiện thiết bị điện nào trên sơ đồ hệ thống điện: ⤢ Phóng to ảnh [hình:1g5r46s] ||| Ổ cắm điện
+Loại dây nào sau đây cho phép kết nối máy tính với Switch? ||| Dây cáp mạng đã gắn 2 đầu RJ45. ⤢Phóng to ảnh [hình:114otd8]
+Loại modem nào dùng cáp điện thoại nhưng sử dụng riêng cho thuê bao số, không dùng chung tần số với đường thoại? ||| Modem ADSL
+Lựa chọn cho phép người dùng bật tính năng chia sẻ thư mục và tệp tin là: ||| Turn on file and printer sharing
+Lựa chọn cho phép người dùng tắt tính năng chia sẻ bằng mật khẩu? ||| Turn off password protected sharing
+Lựa chọn nào sau đây cho phép mở cài đặt để thiết lập chia sẻ máy in dùng chung trong mạng nội bộ? ||| Network and Sharing Center
 Mach điện gồm một tải ba pha đối xúng với ba điện trở R = 10Ω nối hình tam giác đấu vào nguồn điện ba pha có điện áp pha bằng 220V. Dòng điện pha và dòng điện dây có giá trị là: ||| Ip = 22A, Id =38A
 Mach điện xoay chiều ba pha ba dây gồm một tải ba pha đối xứng với ba điện trở 10Ω nối hình tam giác đấu vào nguồn điện ba pha có điện áp dây bằng 380V. Dòng điện pha và dòng điện dây có giá trị là: ||| Ip = 38A, Id =65.8A
 Máy giặt có công suất 2200W (hệ số cosႴ = 0,8) và điện áp 220V thì cường độ dòng điện chạy trong dây dẫn điện được tính là: ||| 12,5A
 Máy phát điện xoay chiều ba pha có cấu tạo gồm ||| Stator và rotor
 Máy phát điện xoay chiều là máy điện biến đổi ||| Cơ nǎng thành điện nǎng
+Máy tính điều khiển xe tự lái như thế nào? ||| Sử dụng cảm biến radar, lidar và camera để phát hiện và nhận biết xe xung quanh, các chướng ngại vật, biển báo giao thông và người đi bộ trên đường
 Mạch điện xoay chiều ba pha ba dây có điện áp dây và dòng điện dây lần lượt là 380V, 80A và tải ba điện trở R có giá trị bằng nhau, được nối tam giác. Điện trở tải R có giá trị gần nhất là: ||| 8.21 Ω
 Mạng điện có nhiệm vụ truyền tải năng lượng điện từ trạm biến áp phân phối đến công tơ điện của người dùng là các hộ gia đình là: ||| Mạng điện hạ áp dùng trong sinh hoạt
 Mạng điện hạ áp dùng trong sinh hoạt của Việt Nam có tần số là: ||| 50 Hz
@@ -34,14 +56,32 @@ Mạng điện hạ áp dùng trong sinh hoạt của Việt Nam có điện áp
 Mạng điện hạ áp dùng trong sinh hoạt thuộc lưới điện: ||| Phân phối
 Mạng điện sản xuất quy mô nhỏ là mạng điện có công suất tiêu thụ ||| Từ vài chục kW đến vài trǎm kW
 Một dòng điện xoay chiều được mô tả bởi phương trình i = 4cos(100πt) A Tính bằng giây. Cường độ cực đại của dòng điện là ||| 4 A
+Một dấu hiệu của trang web không an toàn là gì? ||| Địa chỉ URL có tiền tố "http"
 Một máy phát điện xoay chiều ba pha có điện áp mỗi dây quấn pha là 110V, nếu nối sao thì điện áp pha và điện áp dây có giá trị lần lượt là: ||| Ud = 110V, Up = 190,5V
 Một nguồn điện xoay chiều ba pha bốn dây có ghi các điện áp 220V/ 380V Khi đó thông số 380V là điện áp pha giữa ||| Hai dây pha
 Một trong những nhuợc điểm của nhà máy thuỷ điện là ||| Công suất phát của nhà máy thuỷ điện phụ thuộc vào lưu lượng nước tích trữ trong hồ chứa nước
 Một tải ba pha gồm ba điện trở R=20 Ω nối hình sao đấu vào nguồn điện ba pha có điện áp dây là 380V. Dòng điện pha và dòng điện dây có giá trị là: ||| Ip = 11A, Id =11A
 Nguyên lí hoạt động của máy phát điện xoay chiều ba pha dựa trên hiện tượng ||| Cảm ứng điện từ
 Nguồn điện ba pha đối xứng có điện áp dây 220 V, tải nối hình sao là các điện trở có giá trị RA = RB =12.5Ω, RC = 25Ω. Dòng điện trong các pha có giá trị gần nhất lần lượt là: ||| IA = 10A, IB = 10A, IC = 5A
+Nhà thông minh Smart Home có thể điều khiển các thiết bị qua: ||| Bluetooth và Wifi
 Những thiết bị điện có chức năng đóng- cắt mạch điện là: ||| Cầu dao điện, aptomat, công tắc điện
+Nội dung nào sau đây không phải là giao thức mạng hoạt động trên thiết bị gửi? ||| Giải nén dữ liệu
+Nội dung nào sau đây KHÔNG phải là giao thức mạng hoạt động trên thiết bị nhận? ||| Đóng gói dữ liệu
+Phát biểu nào dưới đây là thách thức lớn nhất liên quan đến việc sử dụng AI? ||| Thiếu quy định và luật lệ về việc sử dụng AI trong xã hội ngày nay
+Phát biểu nào sau đây KHÔNG đúng về địa chỉ IP? ||| Có thể tạo được 28\displaystyle 2^{8}28 địa chỉ IPv4
+Phát biểu nào sau đây ĐÚNG? ||| Các robot thông minh được coi là ứng dụng điển hình của AI trong lĩnh vực điều khiển
+Phòng văn thư muốn chia sẻ máy in, nhưng khi mở cửa sổ Properties của máy in thì không tích chọn được Share this printer. Hãy đánh giá các nhận định sau: ¦ A) Máy tính cài đặt máy in này không có tính năng chia sẻ máy in dùng chung ¦ B) Máy tính cài đặt máy in này chưa bật chế độ cho phép chia sẻ máy in ¦ C) Cần vào Network and Sharing center, chọn Turn on file and printer sharing để bật tính năng chia sẻ máy in ¦ D) Cần vào Network and Sharing center, chọn Turn on Network discovery để bật tính năng chia sẻ máy in ||| [ĐS] A=S B=Đ C=Đ D=S
+Phương án nào dưới đây KHÔNG phải là nhược điểm của giao tiếp trong không gian mạng? ||| Tạo cơ hội kết nối nhiều người có chung sở thích
+Phương án nào dưới đây liệt kê hai phân loại chính của trí tuệ nhân tạo? ||| AI Hẹp (ANI) và AI Tổng quát (AGI)
+Phương án nào dưới đây là nhược điểm của giao tiếp trong không gian mạng? ||| Trao đổi trong không gian mạng có độ trễ nhất định do về đường truyền và nền tảng công nghệ
+Phương án nào dưới đây mô tả đúng về giao tiếp trong không gian mạng? ||| Là hình thức giao tiếp sử dụng các phương tiện kỹ thuật số để liên lạc với nhau thông qua nền tảng số
+Phương án nào dưới đây nêu đúng về khả năng nhận thức của AI? ||| Cảm nhận và hiểu biết môi trường thông qua các cảm biến và thiết bị đầu vào
+Phương án nào dưới đây nêu đúng về khả năng suy luận của AI? ||| Vận dụng logic và tri thức để đưa ra quyết định hoặc kết luận
+Phương án nào sau đây KHÔNG phải là một nhiệm vụ của giao thức TCP? ||| Quản lý việc định địa chỉ và định tuyến của các gói dữ liệu trong mạng
+Phương án nào sau đây nêu đúng về trí tuệ nhân tạo? ||| Một lĩnh vực khoa học và kỹ thuật nhằm chế tạo các máy móc thông minh
+Sau khi bật tính năng chia sẻ máy in (Turn on file and printer sharing), lựa chọn nào sau đây cho phép người dùng thiết lập chia sẻ máy in để dùng chung? ||| ⤢Phóng to ảnh Devices and Printers [hình:177miq4]
 Sau khi tính được tiết diện dây dẫn S = 1,6 𝑚 𝑚 2 mm 2 cho một đồ dùng điện trong gia đình nên chọn dây dẫn có tiết diện hợp lí nhất là: ||| 2,5 mm2\displaystyle mm^{2}mm2
+So sánh sự khác nhau cơ bản giữa việc "Chia sẻ tài nguyên trong mạng cục bộ (LAN)" và "Chia sẻ tài nguyên qua các dịch vụ lưu trữ đám mây (Google Drive, OneDrive)". trả lời: Tiêu chí Chia sẻ trong mạng LAN Chia sẻ qua Đám mây (Cloud) Phạm vi truy cập Chỉ các máy trong cùng tòa nhà, cùng kết nối vào một bộ định tuyến/mạng nội bộ. Truy cập được từ bất kỳ đâu trên thế giới, chỉ cần có kết nối Internet. Tốc độ truyền tải Nhanh phụ thuộc vào băng thông dây cáp hoặc wifi nội bộ. Phụ thuộc vào tốc độ đường truyền Internet của nhà mạng. Thiết bị phần cứng Máy chủ share dữ liệu bắt buộc phải bật liên tục để máy khác truy cập. Dữ liệu nằm trên máy chủ của nhà cung cấp, không phụ thuộc máy cá nhân. ¦ tự luận ||| [TL] "Chia sẻ tài nguyên trong mạng cục bộ (LAN)" và "Chia sẻ tài nguyên qua các dịch vụ lưu trữ đám mây (Google Drive, OneDrive)"
 Sơ đồ cấu trúc mạng điện như hình bên dưới là sơ đồ thể hiện cấu trúc của ⤢ Phóng to ảnh ||| Mạng điện hạ áp dùng trong sinh hoạt
 Sơ đồ cấu trúc mạng điện như hình bên dưới là sơ đồ thể hiện cấu trúc của ⤢ Phóng to ảnh [hình:19ny3sw] ||| Mạng điện hạ áp dùng trong sinh hoạt
 Sơ đồ cấu trúc mạng điện như hình sau là sơ đồ thể hiện cấu trúc của: ⤢ Phóng to ảnh ||| Mạng điện sản xuất quy mô nhỏ
@@ -49,11 +89,17 @@ Sơ đồ cấu trúc mạng điện như hình sau là sơ đồ thể hiện c
 Sơ đồ mạch điện trong hình bên thể hiện có: ⤢ Phóng to ảnh [hình:kc3men] ||| 2 cầu chì, 2 công tắc, 2 bóng đèn
 Sơ đồ mạch điện trong hình bên thể hiện: ⤢ Phóng to ảnh [hình:1ptu15s] ||| 2 cầu chì, 2 công tắc, 1 ổ cắm, 2 bóng đèn
 Sơ đồ trong hình bên thể hiện cấu trúc chung của hệ thống điện: ⤢ Phóng to ảnh [hình:1vmsgzm] ||| Trong gia đình
+Sản phẩm nào dưới đây không được phát triển nhờ AI? ||| Điều hoà không khí tự động
 Sản xuất điện nǎng là quá trình chuyển đổi ||| Các dạng nǎng lượng khác thành nǎng lượng điện
 Sắp xếp các hoạt động sau theo thứ tự phù hợp để tiến hành lắp đặt một mạch điện đơn giản trong gia đình: ⤢ Phóng to ảnh [hình:1whvqbq] ||| (2) ->(5) ->(4) ->(3) ->(1)
 Theo các nhà sản xuất máy điều hoà (máy lạnh), với công suất 600 BTU thì có khả năng làm mát tốt cho 1 m 2 2 diện tích. Do đó, để tiết kiệm chi phí và tiết kiệm điện, khi chọn máy điều hoà (máy lạnh) cho phòng có diện tích 20 m 2 2 nên chọn loại có công suất ||| 1,5 HP (~ 12000 BTU)
 Theo các nhà sản xuất máy điều hoà, với công suất 600 BTU thì có khả năng làm mát tốt cho 1 m 2 2 diện tích. Do đó, máy điều hoà (máy lạnh) có công suất 2,5 HP (~ 24000 BTU) được chọn phù hợp lắp đặt cho phòng có diện tích ||| từ 30 m2\displaystyle ^{2}2 đến 40 m2\displaystyle ^{2}2
+Theo em điểm khác biệt cơ bản giữa bộ chuyển mạch Switch và bộ định tuyến Router trong hệ thống mạng máy tình là gì? ¦ tự luận ||| [TL] Switch: Dùng để kết nối các máy tính, thiết bị với nhau trong cùng một mạng cục bộ Switch chuyển tiếp dữ liệu dựa trên địa chỉ MAC. Router: Dùng để kết nối nhiều mạng khác nhau với nhau. Router chuyển tiếp các gói dữ liệu dựa trên địa chỉ IP và tìm đường đi tối ưu nhất cho các gói tin giữa các mạng khác nhau
+Theo quyết định số 874/QĐ-BTTTT ngày 17 tháng 6 năm 2021, Văn bản nào dưới đây được Bộ thông tin và truyền thông đã ban hành có liên quan đến trao đổi thông tin trong không gian mạng? ||| Bộ quy tắc ứng xử trên mạng xã hội
 Thiết bi nào sau đây không thuộc cấu trúc mang điện hạ áp dùng sinh hoạt: ||| Tủ điện chiếu sáng
+Thiết bị nào sau đây có chức năng biến đổi dữ liệu số từ các thiết bị kết nối mạng thành tín hiệu tương tự để truyền đi qua mạng và ngược lại? ||| Modem
+Thiết bị nào sau đây không phải là thiết bị hiển thị? ||| Tai nghe headphone
+Thiết bị Switch KHÔNG có khả năng nào sau đây? ||| Kết nối trực tiếp các máy tính với đường truyền của nhà cung cấp dịch vụ
 Thiết bị điện có chức năng đo điện năng tiêu thụ của các thiết bị và đồ dùng điện trong gia đình: ||| Công tơ điện
 Thiết bị điện có chức năng đóng - cắt mạch điện và tự động cắt mạch điện khi có sự cố về điện: ||| Aptomat
 Thiết bị điện như hình bên là: ⤢ Phóng to ảnh [hình:1r4s78y] ||| Công tơ điện
@@ -99,6 +145,8 @@ Trong mạng điện sản xuất quy mô nhỏ, thiết bị có vai trò nhậ
 Trong mạng điện sản xuất quy mô nhỏ, thiết bị có vai trò nhận điện năng từ tủ điện phân phối tổng để phân phối tiếp cho các tủ phân phối động lực và tủ điện chiếu sáng trong phân xưởng là: ||| Tủ điện phân phối nhánh
 Trong mạng điện sản xuất quy mô nhỏ, thiết bị có vai trò nhận điện năng từ đường dây hạ áp của máy biến áp để cung cấp cho tủ điện phân phối nhánh là: ||| Tủ điện phân phối tổng
 Trong mạng điện sản xuất quy mô nhỏ, trạm biến áp có vai trò biến đổi từ lưới điện phân phối xuống điện áp: ||| Hạ áp
+Trong những tính năng sau tính năng nào KHÔNG phải là của Trợ lý ảo. ||| Tự động cải thiện hiệu suất máy tính
+Trong phòng thực hành Tin học có 30 máy tính, muốn kết nối các máy tính đó thành mạng LAN, ta nên dùng thiết bị nào sau đây? ||| Switch
 Trong sinh hoạt, tải tiêu thụ của mạng điện thường là tải: ||| Một pha
 Trong sơ đồ mạng điện hạ áp dùng sinh hoạt, kí hiệu ở vị trí số (2) trong hình bên dưới là: ⤢ Phóng to ảnh ||| Tủ điện phân phối tổng
 Trong sơ đồ mạng điện hạ áp dùng sinh hoạt, kí hiệu ở vị trí số (2) trong hình bên dưới là: ⤢ Phóng to ảnh [hình:1yg3uoe] ||| Tủ điện phân phối tổng
@@ -111,9 +159,27 @@ Trong thiết kế, lắp đặt điện, cần tính toán lựa chọn dây d�
 Trong thiết kế, xây dựng nhà ở, để tiết kiệm điện nên ||| tận dụng tối đa nguồn ánh sáng và nguồn gió tự nhiên, sử dụng vật liệu cách nhiệt tốt
 Trong tủ điện phân phối tổng của mạng điện sản xuất quy mô nhỏ, để bảo vệ mạng điện khi xảy ra quá tải, ngắn mạch thường sử dụng thiết bị bảo vệ là: ||| Aptomat
 Trong tủ điện động lực của mạng điện sản xuất quy mô nhỏ, để bảo vệ mạng điện khi xảy ra quá tải, ngắn mạch thường sử dụng thiết bị bảo vệ là: ||| Aptomat hoặc cầu dao điện
+Trình bày sự khác biệt cơ bản giữa một hệ thống tự động hóa thông thường và một hệ thống có ứng dụng Trí tuệ nhân tạo. Hãy nêu 1 ví dụ cụ thể về ứng dụng AI trong y học và giáo dục mà em biết. ¦ tự luận ||| [TL] Điểm khác biệt cơ bản: oHệ thống tự động hóa thông thường: thực hiện lặp đi lặp lại một vài thao tác cố định theo kịch bản đã thiết lặp sẵn, không có khả năng học hay tự thích nghi với dữ liệu mới o Hệ thống có sử dụng AI: sở hữu các đặc trưng như: khả năng học, suy luận, nhận thức, hiểu ngôn ngữ và giải quyết vấn đề linh hoạt dựa trên tri thức ­ Ví dụ về AI trong: o Y học: hệ chuyên gia MYCIN chẩn đoán nhiễm trùng máu  Lấy ví dụ cụ thể o Giáo dục: các nền tảng học trực tuyến thông minh tự động  Lấy ví dụ cụ thể
+Trí tuệ nhân tạo hỗ trợ chẩn đoán bệnh bằng cách nào sau đây? ||| Nhận diện các bệnh lý qua hình ảnh y khoa
+Tính nhân văn thể hiện trong các tình huống giao tiếp trong không gian mạng sau là đúng hay sai? ¦ A) Khi tham gia học online bạn A luôn nghiêm túc, ăn mặc lịch sự, tích cực xây dựng bài ¦ B) Trào lưu “khoe mặt mộc đề cao vẻ đẹp tự nhiên” đã thu hút nhiều người tham gia trên mạng xã hội ¦ C) Bạn A tham gia các cuộc thảo luận trên mạng xã hội, bạn luôn đọc kỹ các bài viết khác trước khi đưa ra ý kiến của mình, nếu có ý kiến trái ngược bạn sẽ hồi đáp lịch sự trên tinh thần tôn trọng quan điểm của họ ¦ D) Bạn B tham gia diễn đàn bảo vệ môi trường để chia sẻ các quan điểm của bản thân về tình trạng ô nhiễm môi trường và các hoạt động bảo vệ môi trường của bản thân. Nếu có ai đó chia sẻ cách làm khác hay quan điểm khác trên các bài viết của bạn, bạn rất bức xúc, sẽ phản hồi gay gắt để phủ nhận người đó và bảo vệ quan điểm của mình tới cùng ||| [ĐS] A=Đ B=Đ C=Đ D=S
+Tại sao khi truyền dữ liệu giữa hai máy tính nằm ở hai mạng cục bộ xa nhau trên Internet, người ta bắt buộc phải sử dụng địa chỉ IP và thiết bị Router? ¦ tự luận ||| [TL] Vì: ­ Địa chỉ IP cho phép xác định chính xác mạng LAN nào trên Internet chứa máy nhận  đóng vai trò như một địa chỉ định vị toàn cầu. ­ Vai trò của thiết bị Router: o Là thiết bị có nhiệm vụ kết nối các mạng LAN khác nhau và thực hiện chức năng định tuyến. o Router đọc địa chỉ IP đích trong gói tin, tra cứu bảng định tuyến để quyết định chặng tiếp theo mà gói tin cần truyền qua.
+Tại sao trong một mạng gia đình có ít thiết bị kết nối, ta có thể không cần dùng đến Switch nhưng với hệ thống mạng của văn phòng công ty lớn thì bắt buộc phải dùng Switch? ¦ tự luận ||| [TL] Vì: ­Mạng gia đình ít thiết bị: Các thiết bị như Smart TV, điện thoại, laptop… thường kết nối trực tiếp qua sóng Wi-Fi hoặc cắm trực tiếp vào số cổng hạn chế sẵn có trên Modem hoặc Router ­ Văn phòng công ty lớn: o Số lượng máy tính và thiết bị mạng rất lớn, vượt quá số cổng của Router. o Tần suất trao đổi dữ liệu cao đòi hỏi phải phân chia lưu lượng hiệu quả, giảm nghẽn mạng  Trong văn phòng công ty dùng Switch sẽ mở rộng cổng kết nối và tối ưu hóa đường truyền
+Tại thiết bị gửi, ngay sau khi đóng gói dữ liệu, xác định địa chỉ IP và địa chỉ MAC, giao thức mạng nào sau đây sẽ được thực hiện? ||| Xác định đường đi tối ưu cho gói dữ liệu
+Vì sao lại nói sự phát triển của AI kéo theo rủi ro về an ninh, an toàn? ||| AI triển khai trực tuyến có rủi ro bị tấn công mạng nhằm thay đổi dữ liệu và mô hình, dẫn đến việc đưa ra các quyết định sai lệch
+Wireless Access Point (WAP) có chức năng gì? ||| Dùng để kết nối các thiết bị đầu cuối qua sóng Wi-Fi giúp giảm chi phí thiết lập LAN hoặc kết nối với một LAN để mở rộng phạm vi làm việc
+Youtube được trang bị hệ thống trí tuệ nhân tạo để gợi ý cho người dùng. Hãy cho biết hệ thống này làm nhiệm vụ gì dưới đây? ||| Đề xuất các video dựa trên sở thích của người dùng
+Điều gì sau đây đảm bảo cho máy tính và thiết bị mạng có thể giao tiếp được với nhau đúng cách? ||| Giao thức mạng (Network protocol)
+Điểm khác nhau của switch và hub là gì? ||| Cách thức hoạt động
+Đánh giá về các trường hợp giao tiếp trong không gian mạng sau đây có thể hiện tính nhân văn hay không? ¦ A) Người tham gia giao tiếp có ý thức và kiểm soát các thông tin cá nhân trong không gian mạng. Sử dụng các biện pháp bảo mật thông tin cá nhân, thiết lập chế độ người xem phù hợp cho các nội dung mình đăng tải ¦ B) Chỉ thể hiện yêu thích và chia sẻ các thông tin đã được kiểm chứng, các thông tin được cho phép và không vi phạm pháp luật ¦ C) Chia sẻ thông tin trên kênh youtube cá nhân về các vụ việc giật gân, các vụ tai nạn nghiêm trọng, dự đoán của các nhà tiên tri về các thảm họa thế giới sắp xảy ra giúp cảnh báo cho mọi người ¦ D) Thực hành các quy tắc ứng xử trên mạng xã hội theo quy định của Bộ quy tắc ứng xử được Bộ thông tin và truyền thông ban hành tháng 6/2021 ||| [ĐS] A=Đ B=Đ C=S D=Đ
+Đặc tính nào sau đây là một trong các nhược điểm của giao thức TCP/IP? ||| Không hỗ trợ đa phương tiện
+Đặc tính nào sau đây là một trong các ưu điểm của giao thức TCP/IP? ||| Khả năng kiểm soát luồng
 Đặc điểm của mạng điện sản xuất quy mô nhỏ là ||| Có một máy biến áp riêng cấp chung cho cả mạng động lực và chiếu sáng
+Đặc điểm “thiếu bảo mật” khi giao tiếp trong không gian mạng đề cập đến nội dung nào dưới đây? ||| Người tham gia giao tiếp có nguy cơ bị đánh cắp thông tin, xâm nhập dữ liệu trái phép và lộ thông tin cá nhân
 Để cung cấp điện cho ổ cắm của máy giặt dùng trong gia đình có công suất 2200W (hệ số cosႴ =0,8) và điện áp là 220V cần lựa chọn dây dẫn đồng (mật độ dòng là J = 6 A/ 𝑚 𝑚 2 mm 2 ) có tiết diện phù hợp là: ||| 2,5 mm2\displaystyle mm^{2}mm2
 Để cấp điện cho nồi cơm điện cao tần có công suất 1445 W (hệ số cosႴ =1) và điện áp 220V chọn aptomat có dòng điện định mức phù hợp là: ||| 10A
+Để kết nối máy tính với điện thoại qua Bluetooth, bạn cần làm gì đầu tiên? ||| Bật Bluetooth trên cả hai thiết bị
+Để nâng cấp, tối ưu hóa hệ thống mạng LAN hiện có, nhà trường đưa ra các ý kiến sau: ¦ A) Mở rộng vùng phủ sóng Wi-Fi tại các khu vực tập trung đông thiết bị di động bằng cách lắp đặt thêm Access Point ¦ B) Mở rộng quy mô kết nối mạng bằng cách lắp đặt thêm một Modem nối tiếp vào Modem hiện tại của nhà trường ¦ C) Tháo bỏ hoàn toàn Modem hiện có để thay thế bằng một thiết bị Router chuyên dụng có cấu hình cao ¦ D) Đăng ký nâng cấp gói cước đường truyền Internet với nhà cung cấp dịch vụ (ISP) để đáp ứng nhu cầu tăng thêm thiết bị truy cập ||| [ĐS] A=Đ B=S C=S D=Đ
+Để thiết lập chế độ hẹn giờ cho công tắc đèn và van nước trong hệ thống nhà thông minh, bạn cần: ||| Cài đặt phần mềm điều khiển
 Để tiết kiệm điện khi sử dụng bình nước nóng, cần điều chỉnh nhiệt độ ||| phù hợp với nhu cầu, tắt nguồn điện trước khi tắm và vệ sinh, bảo trì định kì
 Để tiết kiệm điện khi sử dụng máy giặt cần ||| giặt đúng theo khối lượng ghi trên máy, chọn chương trình và chế độ vắt phù hợp, vệ sinh máy giặt định kì
 Để tiết kiệm điện khi sử dụng tivi nên ||| điều chỉnh độ sáng màn hình phù hợp với điều kiện ánh sáng xung quanh, rút phích nguồn khi không sử dụng, vệ sinh tivi thường xuyên
@@ -122,3 +188,4 @@ Trong tủ điện động lực của mạng điện sản xuất quy mô nhỏ
 Để đun nóng nước tạo ra hơi nuớc có áp suất cao làm quay turbine, nhà máy điện hạt nhân đã sử dụng năng lượng từ: ||| Phản ứng phân hạch
 Để đăm bảo an toàn, sau khi tính tiết diện dây dẫn diện theo công thức S = I / J thì nên chọn dây dẫn điện có tiết diện: ||| Ở cấp lớn hơn
 Để đảm bảo an toàn, tránh lāng phí khi sử dụng các thiết bị và đồ dùng điện, cần lựa chọn tiết diện dây dẫn điện phù hợp với: ||| Công suất tiêu thụ của đồ dùng điện
+⤢ Phóng to ảnh Dựa vào sơ đồ kết nối mạng LAN của nhà trường, hãy cho biết các phát biểu sau đây là đúng hay sai [hình:l2an4y] ¦ A) Thay thế thiết bị Switch bằng một Modem để vừa kết nối dây cho toàn bộ máy tính phòng thực hành, vừa phát Wi-Fi cho thiết bị di động ¦ B) Các máy tính để bàn có thể cắm dây mạng trực tiếp vào Modem hoặc Access Point vì các thiết bị này có cổng LAN ¦ C) Phòng thực hành vẫn không thể lắp thêm máy tính mới dù Switch trung tâm vẫn còn các cổng chưa sử dụng ¦ D) Việc lắp đặt thêm thiết bị Access Point giúp mở rộng vùng phủ sóng không dây, cho phép các thiết bị di động kết nối vào mạng ||| [ĐS] A=S B=Đ C=S D=Đ
