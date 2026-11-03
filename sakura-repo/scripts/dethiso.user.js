@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.7
+// @version      14.8
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1208,6 +1208,150 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     return g ? infoFor(g, (flat(g.textContent) + imgTag(realImgs(g))).trim(), false) : null;
   }
 
+  // ---------- Câu Đúng/Sai (mỗi ý A-D có 2 nút "Đúng" / "Sai") ----------
+  // Đáp án lưu dạng: "[ĐS] A=Đ B=Đ C=Đ D=S"; khoá câu gồm cả đề bài lẫn nội dung các ý để không nhầm câu cùng đề bài.
+  const TF_TXT = /^(Đúng|Sai)$/i;
+  function tfButtons() {
+    let out = [...document.querySelectorAll('button, [role="button"], [role="radio"], label')].filter(el => TF_TXT.test(flat(el.textContent)));
+    if (!out.length) {
+      out = [...document.querySelectorAll('div, span, a')].filter(el => {
+        const t = el.textContent;
+        return t && t.length <= 8 && TF_TXT.test(flat(t)) && (!el.parentElement || !TF_TXT.test(flat(el.parentElement.textContent)));
+      });
+    }
+    return out.filter(el => !panel.contains(el) && el.getClientRects().length > 0);
+  }
+  // màu của nút sau khi kiểm tra: xanh = đáp án đúng, đỏ = chọn sai
+  function tfKind(b) {
+    for (const n of [b, b.children[0]]) {
+      if (!n) continue;
+      const cs = getComputedStyle(n);
+      for (const c of [cs.backgroundColor, cs.borderTopColor]) {
+        const v = toRgb(c);
+        if (greenRgb(v)) return 'good';
+        if (redRgb(v)) return 'bad';
+      }
+    }
+    return null;
+  }
+  function tfRows() {
+    const B = tfButtons();
+    if (B.length < 4 || B.length % 2) return null;
+    const cnt = a => B.filter(b => a.contains(b)).length;
+    const rows = [];
+    for (const d of B.filter(b => /^Đúng$/i.test(flat(b.textContent)))) {
+      let a = d.parentElement;
+      while (a && cnt(a) < 2) a = a.parentElement;
+      if (!a || cnt(a) !== 2) return null;
+      const s = B.find(b => b !== d && a.contains(b));
+      if (!s || !/^Sai$/i.test(flat(s.textContent))) return null;
+      let row = a;
+      while (row.parentElement && cnt(row.parentElement) === 2) row = row.parentElement;
+      const full = flat(row.textContent);
+      const c0 = row.children[0] ? flat(row.children[0].textContent) : '';
+      let l = '', body = '';
+      const m0 = c0.match(/^([A-D])\s*[).:]?$/i);
+      if (m0) { l = m0[1]; body = full.slice(c0.length); }
+      else {
+        const m1 = full.match(/^([A-D])(?:\s*[).:]|\s+)/i);
+        if (m1) { l = m1[1]; body = full.slice(m1[0].length); }
+      }
+      if (!l) return null;
+      const imgs = realImgs(row);
+      body = body.replace(/\s*(Đúng|Sai)\s*(Đúng|Sai)\s*$/i, '').trim();
+      rows.push({ l: l.toUpperCase(), el: row, d, s, imgs, text: (body + imgTag(imgs)).trim() });
+    }
+    rows.sort((x, y) => x.l < y.l ? -1 : 1);
+    if (rows.length < 2 || rows.some((r, i) => r.l !== 'ABCDEF'[i])) return null;
+    let card = null;
+    for (let p = rows[0].el.parentElement, i = 0; p && i < 6; p = p.parentElement, i++) {
+      if (/^\s*Câu\s*\d+/.test(p.innerText || '')) { card = p; break; }
+    }
+    if (!card) card = rows[0].el.parentElement.parentElement || rows[0].el.parentElement;
+    return { rows, card };
+  }
+  function tfCommon() {
+    const t = tfRows();
+    if (!t) return null;
+    const raw = t.card.innerText || '';
+    const mq = raw.match(/^\s*Câu\s*(\d+)/);
+    const first = t.rows[0].text.slice(0, 24);
+    const idx = first ? raw.indexOf(first) : -1;
+    const head = idx > 0 ? raw.slice(0, idx) : raw.split(/\nA\s*[).]?\s*\n/)[0];
+    const qText = flat(head).replace(/^Câu\s*\d+\s*\/\s*\d+\s*/, '').replace(/\s+A\s*[).:]?$/, '');
+    const qImgs = realImgs(t.card, t.rows.map(r => r.el));
+    const ready = imgsReady(qImgs) && t.rows.every(r => imgsReady(r.imgs));
+    const q = qText + imgTag(qImgs) + ' ¦ ' + t.rows.map(r => r.l + ') ' + r.text).join(' ¦ ');
+    return { tf: true, q, qText, qno: mq ? mq[1] : '', rows: t.rows, card: t.card, ready };
+  }
+  function tfInfo(c) {
+    const ans = c.rows.map(r => {
+      const a = tfKind(r.d), b = tfKind(r.s);
+      return a === 'good' && b !== 'good' ? 'Đ' : (b === 'good' && a !== 'good' ? 'S' : null);
+    });
+    const ok = ans.every(Boolean);
+    const cont = flat(c.card.innerText || '');
+    return {
+      txt: ok ? '[ĐS] ' + c.rows.map((r, i) => r.l + '=' + ans[i]).join(' ') : '',
+      matched: ok && !!lastSnap && !!lastSnap.tf && lastSnap.q === c.q && cont.includes(c.qText),
+      sig: (c.qno || '?') + '|' + hashStr(c.q), cont
+    };
+  }
+  function parseTF(correct, rows) {
+    if (!/^\[ĐS\]/.test(correct || '')) return null;
+    const m = {};
+    String(correct).replace(/([A-F])=([ĐS])/g, (x, l, v) => { m[l] = v; return x; });
+    return rows.every(r => m[r.l]) ? m : null;
+  }
+  // Câu Đúng/Sai CHƯA kiểm tra: chọn từng ý → bấm Kiểm tra
+  function stepTF(snap) {
+    lastSnap = snap;
+    const key = 'tf|' + snap.qno + '|' + norm(snap.q);
+    if (st.key !== key) st = { key, done: {}, selAt: 0, chkTries: 0, chkAt: 0 };
+    const rec = findRec(snap.q);
+    let ans = rec ? parseTF(rec.correct, snap.rows) : null;
+    let guess = false;
+    if (!ans) {
+      const willGuess = cfg.run && cfg.unk === 'guess';
+      stt(willGuess ? 'câu mới (Đúng/Sai) → chọn "Đúng" hết để học' : 'câu mới (Đúng/Sai) — tự chọn rồi bấm Kiểm tra để học');
+      if (!willGuess) return;
+      ans = {}; snap.rows.forEach(r => { ans[r.l] = 'Đ'; }); guess = true;
+    }
+    const target = r => ans[r.l] === 'Đ' ? r.d : r.s;
+    if (!cfg.run || (!guess && !cfg.sel)) {
+      snap.rows.forEach(r => { r.d.style.outline = ''; r.s.style.outline = ''; });
+      snap.rows.forEach(r => { target(r).style.outline = '3px solid #10B981'; });
+      stt('đáp án nhớ: ' + snap.rows.map(r => r.l + '=' + (ans[r.l] === 'Đ' ? 'Đúng' : 'Sai')).join(' '));
+      return;
+    }
+    if (st.stuck) return;
+    const t = now();
+    const pending = snap.rows.find(r => !st.done[r.l]);
+    if (pending) {
+      if (!gapOk()) return;
+      snap.rows.forEach(r => { r.d.style.outline = ''; r.s.style.outline = ''; });
+      tap(target(pending));
+      st.done[pending.l] = 1; st.selAt = t; lastAct = t;
+      stt(guess ? `đoán ${pending.l}` : `đã chọn ${pending.l}`);
+      return;
+    }
+    if (!cfg.chk && !guess) return;
+    const btn = findBtn(/^Kiểm tra$/);
+    if (st.chkTries === 0) {
+      const ready = btnEnabled(btn) || t - st.selAt > Math.max(700, cfg.delay * 2);
+      if (!ready || !btn || !gapOk()) return;
+      tap(btn);
+      st.chkTries = 1; st.chkAt = t; lastAct = t;
+      stt('đã bấm Kiểm tra');
+      return;
+    }
+    if (t - st.chkAt > chkRetry() && btnEnabled(btn) && gapOk()) {
+      if (st.chkTries >= 2) { st.stuck = true; stt('⚠️ Kẹt ở nút Kiểm tra — hãy bấm tay'); return; }
+      tap(btn);
+      st.chkTries++; st.chkAt = t; lastAct = t;
+    }
+  }
+
   // ---------- Nút ----------
   const visible = el => el.getClientRects().length > 0;
   const findBtn = re => [...document.querySelectorAll('button, a, [role="button"]')]
@@ -1327,7 +1471,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     if (stN.sig !== info.sig) stN = { sig: info.sig, tries: 0, at: 0 };
     learnFrom(info);
     if (!cfg.run || !cfg.next || stN.stuck) return;
-    const nb = findBtn(/^Tiếp/);
+    const nb = findBtn(/^Tiếp/) || findBtn(/^Bỏ qua/);   // trả lời sai: trang hiện "Thử lại / Bỏ qua" thay cho "Tiếp"
     if (!nb) { autoSubmit(); return; }
     noNextSince = 0;
     if (!btnEnabled(nb)) return;
@@ -1350,6 +1494,12 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   const onTake = () => /\/take(\/|$)/.test(location.pathname);
   function tick() {
     if (!onTake()) { lastSnap = null; stt('chờ vào trang làm bài…'); return; }
+    const tf = tfCommon();
+    if (tf) {
+      if (!tf.ready) return;   // hình chưa tải xong thì chờ
+      if (findBtn(/^Kiểm tra$/)) return stepTF(tf);
+      return stepChecked(tfInfo(tf));
+    }
     const snap = snapshot();
     if (snap) return stepUnchecked(snap);
     const info = checkedInfo();
