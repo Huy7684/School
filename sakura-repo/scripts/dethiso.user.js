@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.10
+// @version      14.11
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1430,6 +1430,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     let ans = el ? esRest(el.textContent) : '';
     // làm đúng hết thì trang có thể không hiện khung đáp án: lấy luôn chữ người làm đã gõ
     if (!ans && /Đúng rồi/i.test(cont) && c.ta.value.trim()) ans = flat(c.ta.value);
+    ans = ans.replace(ES_ANS, '').trim();
     return { txt: ans ? ES_TAG + ans : '', matched: !!ans && !!lastSnap && !!lastSnap.essay && lastSnap.q === c.q, sig: (c.qno || '?') + '|' + hashStr(c.q), cont };
   }
   // Câu tự luận CHƯA kiểm tra: điền đáp án đã nhớ → bấm Kiểm tra
@@ -1438,7 +1439,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const key = 'es|' + c.qno + '|' + norm(c.q);
     if (st.key !== key) st = { key, fills: 0, selAt: 0, chkTries: 0, chkAt: 0 };
     const rec = findRec(c.q);
-    let text = rec && rec.correct && rec.correct.indexOf(ES_TAG) === 0 ? rec.correct.slice(ES_TAG.length) : '';
+    let text = rec && rec.correct && rec.correct.indexOf(ES_TAG) === 0 ? rec.correct.slice(ES_TAG.length).replace(ES_ANS, '').trim() : '';
     let guess = false;
     if (!text) {
       const willGuess = cfg.run && cfg.unk === 'guess';
