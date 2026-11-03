@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.5
+// @version      14.7
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -59,7 +59,8 @@
   } catch (e) {}
 
   // ---------- Cấu hình (lưu lại) ----------
-  const cfg = Object.assign({ run: true, sel: true, chk: true, next: true, delay: 300, unk: 'wait', min: null, x: null, y: null }, loadKey(CFG_KEY) || {});
+  const cfg = Object.assign({ run: true, sel: true, chk: true, next: true, submit: false, delay: 0, unk: 'wait', min: null, x: null, y: null }, loadKey(CFG_KEY) || {});
+  if (!cfg.v145) { cfg.delay = 0; cfg.v145 = 1; }   // v14.5: mặc định chạy nhanh nhất
   delete cfg.code;                       // không nhớ mã đề giữa các link
   const saveCfg = () => { try { localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); } catch (e) {} };
   let manualCode = '';                   // mã gõ tay: chỉ sống trong 1 link
@@ -520,6 +521,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
         <label class="dts11-sw"><input type="checkbox" id="dts11-sel"><i></i><span>Tự chọn đáp án đã nhớ</span></label>
         <label class="dts11-sw"><input type="checkbox" id="dts11-chk"><i></i><span>Tự bấm "Kiểm tra"</span></label>
         <label class="dts11-sw"><input type="checkbox" id="dts11-next"><i></i><span>Tự bấm "Tiếp"</span></label>
+        <label class="dts11-sw"><input type="checkbox" id="dts11-submit"><i></i><span>Tự nộp bài khi làm xong</span></label>
 
         <div class="dts11-box">
           Độ trễ mỗi bước: <b id="dts11-ms"></b> ms <small>(0 = nhanh nhất)</small>
@@ -850,6 +852,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   $('sel').checked = cfg.sel;   $('sel').onchange = e => { cfg.sel = e.target.checked; saveCfg(); };
   $('chk').checked = cfg.chk;   $('chk').onchange = e => { cfg.chk = e.target.checked; saveCfg(); };
   $('next').checked = cfg.next; $('next').onchange = e => { cfg.next = e.target.checked; saveCfg(); };
+  $('submit').checked = !!cfg.submit; $('submit').onchange = e => { cfg.submit = e.target.checked; saveCfg(); };
   $('unk').value = cfg.unk;     $('unk').onchange = e => { cfg.unk = e.target.value; saveCfg(); };
   $('spd').value = cfg.delay;   $('ms').textContent = cfg.delay; fillSpd();
   $('spd').oninput = e => { cfg.delay = +e.target.value; $('ms').textContent = cfg.delay; fillSpd(); saveCfg(); };
@@ -1288,13 +1291,45 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     }
   }
 
+  // Hết bài (câu cuối đã kiểm tra, không còn nút Tiếp): tự bấm Nộp bài → Nộp bài ngay
+  // Nút ở THANH DƯỚI (chỗ chữ "Kiểm tra" đổi thành "Nộp bài"/"Hoàn thành"...), không phải nút Nộp bài trên góc phải
+  function bottomSubmitBtn() {
+    const H = innerHeight, W = innerWidth;
+    const c = [...document.querySelectorAll('button, a, [role="button"]')].filter(b => {
+      if (panel.contains(b) || !visible(b)) return false;
+      const r = b.getBoundingClientRect(), tx = flat(b.textContent);
+      if (r.top < H - 130 || r.left < W * 0.4) return false;       // chỉ thanh dưới, nửa phải
+      return tx && !/^(Trước|Kiểm tra|Tiếp|Phóng)/.test(tx) && !/Bản đồ/.test(tx);
+    });
+    return c.find(b => /nộp|hoàn thành|kết thúc|finish|submit/i.test(flat(b.textContent)))
+        || c.sort((a, b) => b.getBoundingClientRect().right - a.getBoundingClientRect().right)[0] || null;
+  }
+  let noNextSince = 0, subOpenAt = 0, subOpenTries = 0, subConfTries = 0, subConfAt = 0;
+  function autoSubmit() {
+    if (!cfg.submit) { stt('không thấy nút Tiếp (cuối bài?) — dừng'); return; }
+    const t = now();
+    if (!noNextSince) noNextSince = t;
+    if (t - noNextSince < 700) { stt('hết bài, chuẩn bị nộp…'); return; }   // chờ chắc là cuối bài, không phải đang chuyển câu
+    const conf = findBtn(/^Nộp bài ngay/);
+    if (conf) {
+      if (subConfTries >= 3 && t - subConfAt < 4000) return;
+      if (t - subConfAt > 1500) { tap(conf); subConfTries++; subConfAt = t; stt('đang nộp bài…'); }
+      return;
+    }
+    const ob = bottomSubmitBtn();
+    if (!ob) { stt('không thấy nút Nộp bài — hãy bấm tay'); return; }
+    if (subOpenTries >= 3) { stt('⚠️ Kẹt ở nút Nộp bài — hãy bấm tay'); return; }
+    if (t - subOpenAt > 2500) { tap(ob); subOpenTries++; subOpenAt = t; stt('đang mở hộp nộp bài…'); }
+  }
+
   // Câu ĐÃ kiểm tra: học đáp án → bấm Tiếp
   function stepChecked(info) {
     if (stN.sig !== info.sig) stN = { sig: info.sig, tries: 0, at: 0 };
     learnFrom(info);
     if (!cfg.run || !cfg.next || stN.stuck) return;
     const nb = findBtn(/^Tiếp/);
-    if (!nb) { stt('không thấy nút Tiếp (cuối bài?) — dừng'); return; }
+    if (!nb) { autoSubmit(); return; }
+    noNextSince = 0;
     if (!btnEnabled(nb)) return;
     const t = now();
     if (stN.tries === 0) {
@@ -1321,7 +1356,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     if (info) return stepChecked(info);
   }
   // điện thoại quét thưa hơn một chút cho đỡ nóng máy
-  const FAST = COARSE ? 160 : 80;
+  const FAST = COARSE ? 100 : 40;
   function loop() {
     try { if (!document.hidden) tick(); } catch (e) { console.error('DTS tick lỗi:', e); }
     setTimeout(loop, document.hidden ? 1500 : (onTake() && cfg.run ? (cfg.delay <= 150 ? FAST : 150) : 600));
