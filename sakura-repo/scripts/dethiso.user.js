@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.8
+// @version      14.9
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1228,11 +1228,21 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       const cs = getComputedStyle(n);
       for (const c of [cs.backgroundColor, cs.borderTopColor]) {
         const v = toRgb(c);
-        if (greenRgb(v)) return 'good';
-        if (redRgb(v)) return 'bad';
+        // ngưỡng chặt hơn: nút "đã chọn" màu nâu đỏ sẫm không bị nhầm thành đỏ
+        if (v && greenRgb(v) && v[1] >= 100) return 'good';
+        if (v && redRgb(v) && v[0] >= 150) return 'bad';
       }
     }
     return null;
+  }
+  // nút đang được chọn (màu tối hơn hẳn nút còn lại trong cùng ý)
+  function tfDark(b) {
+    for (const n of [b, b.children[0]]) {
+      if (!n) continue;
+      const v = toRgb(getComputedStyle(n).backgroundColor);
+      if (v) return 0.299 * v[0] + 0.587 * v[1] + 0.114 * v[2];
+    }
+    return 255;
   }
   function tfRows() {
     const B = tfButtons();
@@ -1285,12 +1295,22 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     return { tf: true, q, qText, qno: mq ? mq[1] : '', rows: t.rows, card: t.card, ready };
   }
   function tfInfo(c) {
+    const cont = flat(c.card.innerText || '');
+    const allRight = /Đúng rồi/i.test(cont);   // làm đúng hết: trang không tô xanh/đỏ, chỉ nút đã chọn đậm lên
     const ans = c.rows.map(r => {
       const a = tfKind(r.d), b = tfKind(r.s);
-      return a === 'good' && b !== 'good' ? 'Đ' : (b === 'good' && a !== 'good' ? 'S' : null);
+      if (a === 'good' && b !== 'good') return 'Đ';
+      if (b === 'good' && a !== 'good') return 'S';
+      if (a === 'bad' && b !== 'bad') return 'S';
+      if (b === 'bad' && a !== 'bad') return 'Đ';
+      if (allRight) {
+        const x = tfDark(r.d), y = tfDark(r.s);
+        if (y - x > 50) return 'Đ';
+        if (x - y > 50) return 'S';
+      }
+      return null;
     });
     const ok = ans.every(Boolean);
-    const cont = flat(c.card.innerText || '');
     return {
       txt: ok ? '[ĐS] ' + c.rows.map((r, i) => r.l + '=' + ans[i]).join(' ') : '',
       matched: ok && !!lastSnap && !!lastSnap.tf && lastSnap.q === c.q && cont.includes(c.qText),
