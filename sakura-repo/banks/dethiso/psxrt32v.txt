@@ -1,0 +1,27 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+Bộ phận còn thiếu trong sơ đồ hệ thống cơ khí động lực hình bên dưới là [ NGUỒN ĐỘNG LỰC → (?) → MÁY CÔNG TÁC ] ||| hệ thống truyền động
+Cho các bước: (1) Đọc bản vẽ chi tiết; (2) Gia công các chi tiết; (3) Chuẩn bị phôi; (4) Lắp ráp; (5) Kiểm tra chất lượng sản phẩm. Quy trình đúng trong chế tạo cơ khí là: ||| (1) → (3) → (2) → (4) → (5)
+Các vật liệu được sử dụng trong sản xuất cơ khí để chế tạo ra các sản phẩm phục vụ cho sản xuất và đời sống được gọi là ||| vật liệu cơ khí
+Công việc nghiên cứu, tìm hiểu, xác định rõ các thông tin cần thiết về chi tiết như: vật liệu, yêu cầu kĩ thuật, kích thước, tính công nghệ khi chế tạo,... thuộc về bước nào trong quy trình chế tạo cơ khí? ||| Đọc bản vẽ chi tiết
+Hình bên dưới là cấu tạo bộ chế hoà khí đơn giản. ⤢ Phóng to ảnh [hình:n9nf79] ¦ A) Hoà khí được tạo ra ở họng khuếch tán ¦ B) Bướm gió luôn mở để không khí vào nhiều nhất ¦ C) Xe máy sử dụng bộ chế hoà khí sẽ có giá thành cao hơn sử dụng hệ thống phun xăng điện tử ¦ D) Với những dòng xe máy sử dụng bộ chế hoà khí, vặn tay ga là điều chỉnh độ mở của bướm ga ||| [ĐS] A=Đ B=Đ C=S D=Đ
+Hình bên dưới là sơ đồ khối của hệ thống bôi trơn cưỡng bức: ⤢ Phóng to ảnh [hình:nrh7l8] ¦ A) Chi tiết số 1 là van an toàn nhằm làm giảm áp suất của dầu khi áp suất dầu trong đường ống trước bơm dầu vượt quá áp suất giới hạn cho phép ¦ B) Đường đi của dầu trong trường hợp làm việc bình thường là: các te → bơm dầu → bầu lọc dầu → két làm mát dầu → bề mặt ma sát ¦ C) Quan sát sơ đồ khối cho thấy: Hệ thống bôi trơn cưỡng bức là hệ thống khép kín nên các thiết bị sử dụng hệ thống này không cần phải thay dầu bôi trơn thường xuyên ¦ D) Hệ thống bôi trơn này chỉ được dùng trên các phương tiện giao thông có công suất nhỏ ||| [ĐS] A=Đ B=S C=S D=S
+Hình bên là cơ cấu truyền và biến đổi chuyển động: ⤢ Phóng to ảnh [hình:19q76rj] ¦ A) Cơ cấu gồm: bánh răng và trục vít ¦ B) Phôi của trục vít có dạng hình trụ, vật liệu thép ¦ C) Cơ cấu này truyền và biến đổi chuyển động giữa hai trục vuông góc ¦ D) Cơ cấu này được dùng trong hệ thống cổng trượt tự động ||| [ĐS] A=Đ B=Đ C=S D=Đ
+Khi tìm hiểu về “sản phẩm vòng bi” ở hình bên, một bạn đã có những nhận định sau: ⤢ Phóng to ảnh [hình:fw7f75] ¦ A) Vòng bi được tạo bởi 5 chi tiết ¦ B) Vòng bi là sản phẩm của ngành cơ khí chế tạo ¦ C) Trong quá trình hoạt động, viên bi không chạm vào nhau nhờ chi tiết 2 và 4 ¦ D) Các viên bi được chế tạo bằng đồng ||| [ĐS] A=S B=Đ C=Đ D=S
+Kích thước phôi của chi tiết “chốt” ở hình bên có thể là: ⤢ Phóng to ảnh [hình:199wns4] ||| dài 80 mm; đường kính 27 mm
+Loại động cơ nào sau đây mà quá trình đốt cháy nhiên liệu sinh nhiệt và quá trình biến đổi nhiệt năng thành công cơ học diễn ra ngay trong xi lanh của động cơ? ||| Động cơ đốt trong
+Một nhóm học sinh đã có những nhận định về các hình sau (Hình a và Hình b): ⤢ Phóng to ảnh [hình:1ajc9dc] ¦ A) Hình dạng phôi ở hình a giống với hình dạng phôi được sử dụng để gia công sản phẩm ở hình b ¦ B) Để gia công được một sản phẩm của hình b cần một thanh kim loại ở hình a có khối lượng và kích thước lớn hơn hình b ¦ C) Phương pháp gia công tạo ra sản phẩm như hình b là phương pháp gia công cắt gọt ¦ D) Cần ít nhất 5 nguyên công để gia công được hai sản phẩm ở giữa ||| [ĐS] A=Đ B=Đ C=Đ D=S
+Ngoài hệ thống lái, bộ phận giúp xe ô tô chuyển động quay vòng là ||| bộ vi sai
+Nguyên nhân động cơ xăng 2 kì làm việc thường hay bám muội than là ||| hoà khí trộn không đều
+Nhãn hiệu xe máy ở hình bên ghi 110 có nghĩa nào sau đây? ⤢ Phóng to ảnh [hình:1sxgmls] ||| Thể tích công tác 110 cm3\displaystyle ^{3}3
+Phân loại theo chu trình công tác, động cơ đốt trong gồm: ||| động cơ 4 kì, động cơ 2 kì
+Phương pháp gia công tạo ra sản phẩm bằng cách sử dụng sức lao động, máy móc, công cụ, công nghệ tác động làm thay đổi hình dạng, kích thước, trạng thái hoặc tính chất của vật liệu ban đầu là ||| phương pháp gia công cơ khí
+Quan sát hình ảnh sản phẩm ở hình bên cho biết sản phẩm được gia công bằng phương pháp nào sau đây. ⤢ Phóng to ảnh [hình:4vha3u] ||| Phương pháp gia công đúc
+Quan sát sơ đồ cho biết li hợp, hộp số, hệ trục thuộc bộ phận nào trong hệ thống cơ khí động lực của tàu thuỷ [ Động cơ → Li hợp → Hộp số → Hệ trục → Chân vịt ] ||| Hệ thống truyền động
+Sắp xếp nào bên dưới đúng trình tự chu trình làm việc của động cơ xăng 4 kì? (1) Nạp; (2) Nổ (cháy – giãn nở); (3) Nén; (4) Xả (thải) ||| (1) → (3) → (2) → (4)
+Trong hệ thống cơ khí động lực, bộ phận có vai trò truyền và biến đổi chuyển động là ||| hệ thống truyền động
+Trong quá trình sản xuất cơ khí, giai đoạn (hoặc bước) sử dụng các phương pháp nhiệt luyện, hoá nhiệt luyện, phun phủ,... lên chi tiết trước khi mang đi lắp ráp chi tiết hoặc đóng gói được gọi là ||| xử lí bề mặt
+Trong quá trình sản xuất cơ khí, hoạt động nào dưới đây được thực hiện đầu tiên? ||| Đọc bản vẽ
+Trong động cơ đốt trong, dầu bôi trơn phải thay định kì vì ||| dầu bôi trơn bị bẩn, độ nhớt giảm
+Trạng thái của xupap và piston ở kì Nổ (cháy – giãn nở) là: ||| Xupap nạp đóng, xupap thải đóng, piston đi từ điểm chết trên xuống điểm chết dưới
+Trống đồng Đông Sơn – một loại trống đồng tiêu biểu cho Văn hoá Đông Sơn của người Việt cổ được gia công bằng phương pháp nào sau đây? ||| Phương pháp gia công đúc
+Đặc điểm nào sau đây là của ngành cơ khí chế tạo? ||| Sử dụng bản vẽ kĩ thuật, máy công cụ
