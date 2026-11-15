@@ -1,0 +1,28 @@
+# Mỗi dòng: câu hỏi ||| đáp án đúng
+Cho các hình chiếu trục đo của vật thể như sau: (1) đến (7). Các cặp hình biểu diễn của cùng một vật thể là: ⤢ Phóng to ảnh [hình:1ou6jhk] ||| (1)-(6); (3)-(5); (4)-(7)
+Cho hình biểu diễn của vật thể như hình vẽ dưới đây. ⤢ Phóng to ảnh Có các nhận định như sau: [hình:1uqylvb] ¦ A) Hình vẽ thể hiện hai loại hình biểu diễn: hình chiếu vuông góc và hình chiếu trục đo của vật thể ¦ B) Hình chiếu cạnh chưa biểu diễn đúng vật thể ¦ C) Vật thể có một mặt nghiêng dài 9 mm, cao 15 mm ¦ D) Vật thể có chiều dài là 40 mm, chiều rộng là 65 mm, chiều cao là 30 mm ||| [ĐS] A=S B=Đ C=Đ D=S
+Cho hình biểu diễn của vật thể như hình vẽ sau. ⤢ Phóng to ảnh Có các nhận định như sau: [hình:1f6nbu9] ¦ A) Hình biểu diễn thể hiện hình chiếu vuông góc và hình chiếu phối cảnh của vật thể ¦ B) Đường kính của khối trụ xuyên qua vật thể là 16 mm ¦ C) Để thể hiện rõ hơn kết cấu bên trong của vật thể, có thể bổ sung hình cắt trên hình chiếu đứng ¦ D) Để thể hiện rõ hơn kết cấu bên trong của vật thể, có thể bổ sung hình cắt trên hình chiếu bằng ||| [ĐS] A=S B=Đ C=Đ D=S
+Cho một vật thể đối xứng như hình vẽ bên, để thể hiện rõ phần trụ rỗng bên trong và hình dạng bên ngoài vật thể trên cùng 1 hình biểu diễn nên sử dụng loại hình biểu diễn là ⤢ Phóng to ảnh [hình:5o0puy] ||| hình cắt bán phần
+Cho vật thể và các hình biểu diễn như hình dưới đây. ⤢ Phóng to ảnh ⤢ Phóng to ảnh Một học sinh đã quan sát và đưa ra một số nhận định: [hình:32y149,1q3tzbv] ¦ A) Vật thể được tạo bởi khối hình trụ và hình hộp chữ nhật ¦ B) Hình chiếu bằng của vật thể là hình A ¦ C) Hình chiếu đứng của vật thể là hình D ¦ D) Vật thể có chiều cao là 350 mm ||| [ĐS] A=Đ B=S C=S D=S
+Công nghệ chế tạo sản phẩm bằng phương pháp nấu kim loại thành dạng lỏng, sau đó rót vào khuôn là ||| công nghệ đúc
+Công nghệ nối các chi tiết kim loại với nhau bằng cách nung nóng chỗ nối đến trạng thái chảy hoặc dẻo là ||| công nghệ hàn
+Công nghệ phù hợp nhất được sử dụng để tạo ra sản phẩm bánh răng bằng thép như hình bên là ⤢ Phóng to ảnh [hình:1k4igxx] ||| công nghệ gia công cắt gọt
+Công nghệ phù hợp nhất để tạo ra mô hình xương cá bằng chất dẻo như hình bên là ⤢ Phóng to ảnh [hình:1xeew9u] ||| công nghệ in 3D
+Công nghệ phù hợp nhất để tạo ra nắp máy như hình bên là ⤢ Phóng to ảnh [hình:t6gpoo] ||| công nghệ đúc
+Công nghệ sử dụng ngoại lực làm cho vật liệu kim loại biến dạng theo hình dạng yêu cầu dựa vào tính dẻo của kim loại là ||| công nghệ gia công áp lực
+Hình chiếu cạnh của vật thể trong hình dưới đây là ⤢ Phóng to ảnh [hình:qhwvv8] ||| hình a
+Hình chiếu đứng, hình chiếu bằng, hình chiếu cạnh của vật thể trong hình theo phương pháp chiếu góc thứ nhất lần lượt là ⤢ Phóng to ảnh [hình:nvqgz3] ||| hình 2, hình 3, hình 5
+Khi đánh giá công nghệ, tiêu chí xác định mức độ ảnh hưởng của công nghệ mới đến môi trường sống là tiêu chí ||| môi trường
+Khi đánh giá công nghệ, tiêu chí đánh giá năng suất của công nghệ, chất lượng sản phẩm do công nghệ đó tạo ra là tiêu chí ||| hiệu quả
+Khi đánh giá công nghệ, tiêu chí đánh giá độ chính xác, khả năng ổn định của công nghệ là tiêu chí ||| độ tin cậy
+Lựa chọn phương án ghép nối đúng là: ||| (1)-(b); (2)-(c); (3)-(a); (4)-(e)
+Một cái bàn có kích thước chiều dài 1 m. Khi biểu diễn chiếc bàn trên bản vẽ bằng hình chiếu vuông góc, kích thước chiều dài được vẽ là 50 mm. Hình biểu diễn đã được vẽ với tỉ lệ là ||| 1:20
+Phần mềm được thiết kế có khả năng tương tác với người dùng thông qua hội thoại bằng ngôn ngữ tự nhiên là sản phẩm thuộc ||| công nghệ trí tuệ nhân tạo
+Trong các hình chiếu vuông góc của vật thể, hình biểu diễn thể hiện kích thước chiều dài, chiều cao của vật thể là ||| hình chiếu đứng
+Trong các hình chiếu vuông góc của vật thể, hình biểu diễn thể hiện kích thước chiều dài, chiều rộng của vật thể là ||| hình chiếu bằng
+Trong các hình chiếu vuông góc của vật thể, hình biểu diễn thể hiện kích thước chiều rộng, chiều cao của vật thể là ||| hình chiếu cạnh
+Trong hình biểu diễn bên, kích thước ghi không đúng quy định là ⤢ Phóng to ảnh [hình:wz99le] ||| 32
+Trong hình vẽ dưới đây, các hình biểu diễn a, b, c của vật thể lần lượt là ⤢ Phóng to ảnh [hình:zukdyq] ||| hình cắt toàn phần trên hình chiếu đứng, hình chiếu bằng, hình chiếu cạnh
+Trí tuệ nhân tạo, in 3D, internet vạn vật, điện toán đám mây, dữ liệu lớn là công nghệ nền tảng của ||| cuộc Cách mạng công nghiệp lần thứ tư
+Việc lấy đi lớp vật liệu trên bề mặt của phôi để tạo ra chi tiết có hình dạng, kích thước theo yêu cầu là hoạt động thuộc ||| công nghệ gia công cắt gọt
+Đánh giá công nghệ thường dựa trên các tiêu chí nào sau đây? ||| Hiệu quả, độ tin cậy, môi trường, kinh tế
