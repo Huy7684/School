@@ -28,12 +28,16 @@ Công nghệ phù hợp nhất được sử dụng để tạo ra sản phẩm 
 Công nghệ phù hợp nhất để tạo ra mô hình xương cá bằng chất dẻo như hình bên là ⤢ Phóng to ảnh [hình:1xeew9u] ||| công nghệ in 3D
 Công nghệ phù hợp nhất để tạo ra nắp máy như hình bên là ⤢ Phóng to ảnh [hình:t6gpoo] ||| công nghệ đúc
 Công nghệ sử dụng ngoại lực làm cho vật liệu kim loại biến dạng theo hình dạng yêu cầu dựa vào tính dẻo của kim loại là ||| công nghệ gia công áp lực
+Công việc kiểm tra, chuẩn đoán trạng thái kĩ thuật, theo dōi thường xuyên, ngǎn ngừa các sự cố và khắc phục những sai hỏng đảm bảo sự hoạt động ổn định và an toàn của thiết bị điện tử là những hoạt động ||| Bảo dưỡng và sửa chữa thiết bị điện tử
+Công việc kết nối và kiểm tra hoạt động của thiết bị điện tử theo tiêu chuẩn kī thuật và an toàn là các hoạt động ||| Lắp ráp thiết bị điện tử
 Công việc nghiên cứu, tìm hiểu, xác định rõ các thông tin cần thiết về chi tiết như: vật liệu, yêu cầu kĩ thuật, kích thước, tính công nghệ khi chế tạo,... thuộc về bước nào trong quy trình chế tạo cơ khí? ||| Đọc bản vẽ chi tiết
 Cấu trúc gồm các thành phần tủ đóng cắt và đo lường, tủ điện tổng, tủ điện nhánh, tải điện là của hệ thống điện: ||| Trong gia đình
 Cổng kết nối nào sau đây thường được sử dụng để kết nối thiết bị hiển thị với máy tính? ||| HDMI
 Dòng điện xoay chiều một pha là dòng điện biến thiên tuần hoàn theo dạng hình ||| Sin
 Em hãy nhận xét về các nhận định về hệ thống mạng máy tính của trường trung học phổ thông sau đây: ⤢ Phóng to ảnh [hình:1j4i1wv] ¦ A) Phải thay Switch bằng một Modem khác, giúp vừa kết nối tất cả các máy tính trong phòng thực hành bằng cáp nối, vừa kết nối các thiết bị di động ¦ B) Các máy tính để bàn không thể kết nối vào Modem và Access point vì các thiết bị này không có cổng để cấm cáp mạng ¦ C) Có thể bổ sung thêm máy tính vào phòng thực hành do vẫn còn cổng trên Switch chưa sử dụng ¦ D) Sử dụng thêm thiết bị Access point để mở rộng mạng không dây, cho phép các thiết bị không dây truy cập vào tài nguyên mạng ||| [ĐS] A=S B=S C=Đ D=Đ
 Em hãy phân tích tính nhân văn trong ứng xử trên không gian mạng được thể hiện qua các khía cạnh: Tôn trọng, Lịch sự, Thấu hiểu và Hỗ trợ. ¦ tự luận ||| [TL] Phân tích các khía cạnh nhân văn: ­ Tôn trọng: quyền riêng tư, quan điểm khác biệt, không làm tổn thương người khác. ­ Lịch sự: sử dụng ngôn từ đúng mực, chia sẻ thông tin chính xác, tránh lan truyền tin rác. ­ Thấu hiểu: đặt mình vào hoàn cảnh, khó khăn của người khác để chia sẻ. ­ Hỗ trợ: động viên, giúp đỡ, an ủi kịp thời
+Hiện nay, cơ quan cảnh sát giao thông thực hiện xử phạt qua hình ảnh bằng hệ thống camera giám sát đường bộ, đó là ứng dụng của kĩ thuật điện tử vào ||| dịch vụ trong giao thông
+Hoạt động nhằm duy trì chế độ làm việc bình thường của thiết bị điện đáp ứng các yêu cầu chất lượng, độ tin cậy và kinh tế là công việc thuộc lĩnh vực ||| Vận hành thiết bị điện tử
 Hành vi nào sau đây KHÔNG phải là lạm dụng dữ liệu cá nhân bởi mô hình AI? ||| Phân tích dữ liệu y tế cá nhân để đưa ra chẩn đoán bệnh
 Hãy phân tích những tác động tích cực và tiêu cực của AI đối với thị trường lao động và việc làm trong đời sống xã hội hiện nay. ¦ tự luận ||| [TL] ­Tác động tích cực: o Tự động hóa các công việc lặp đi lặp lại, nguy hiểm hoặc nhàm chán o Giải phóng sức lao động cho con người o Tạo ra các ngành nghề mới liên quan đến công nghệ o Tăng năng suất lao động và hiệu quả vận hành của doanh nghiệp. ­ Tác động tiêu cực: o Gây nguy cơ mất việc làm đối với lao động trong các ngành nghề như dịch vụ khách hàng, nhập liệu, dịch thuật cơ bản, công nhân dây chuyền lắp ráp… o Gia tăng khoảng cách giàu nghèo. o Gia tăng bất bình đẳng xã hội giữa nhóm lao động có kỹ năng công nghệ cao và nhóm lao động phổ thông.
 Hình bên dưới là cấu tạo bộ chế hoà khí đơn giản. ⤢ Phóng to ảnh [hình:n9nf79] ¦ A) Hoà khí được tạo ra ở họng khuếch tán ¦ B) Bướm gió luôn mở để không khí vào nhiều nhất ¦ C) Xe máy sử dụng bộ chế hoà khí sẽ có giá thành cao hơn sử dụng hệ thống phun xăng điện tử ¦ D) Với những dòng xe máy sử dụng bộ chế hoà khí, vặn tay ga là điều chỉnh độ mở của bướm ga ||| [ĐS] A=Đ B=Đ C=S D=Đ
@@ -47,6 +51,7 @@ Hình chiếu cạnh của vật thể trong hình dưới đây là ⤢ Phóng 
 Hình chiếu đứng, hình chiếu bằng, hình chiếu cạnh của vật thể trong hình theo phương pháp chiếu góc thứ nhất lần lượt là ⤢ Phóng to ảnh [hình:nvqgz3] ||| hình 2, hình 3, hình 5
 Hình ảnh sau đây thể hiện phương pháp sản xuất điện nǎng bằng nǎng lượng nào bên dưới đây: ⤢ Phóng to ảnh ||| Gió
 Hình ảnh sau đây thể hiện phương pháp sản xuất điện nǎng bằng nǎng lượng nào bên dưới đây: ⤢ Phóng to ảnh [hình:ixre84] ||| Gió
+Hệ thống bật tắt đèn tự động theo ánh sáng tự nhiên là một trong những ứng dụng của lĩnh vực ||| kĩ thuật điện tử
 Hệ thống điện quốc gia gồm: ||| Nguồn điện, các lưới điện và các hộ tiêu thụ điện trên toàn quốc
 Khi kết nối hai máy tính cách xa hàng nghìn kilômét qua Internet, người ta sử dụng thiết bị nào để kết nối các LAN với nhau? ||| Router
 Khi lắp đặt và sử dụng các thiết bị điện có vỏ bằng kim loại cần thực hiện các biện pháp an toàn như: ||| thực hiện nối đất với vỏ của thiết bị; thường xuyên kiểm tra nguy cơ rò rỉ điện
@@ -66,6 +71,7 @@ Kích thước phôi của chi tiết “chốt” ở hình bên có thể là:
 Loại dây nào sau đây cho phép kết nối máy tính với Switch? ||| Dây cáp mạng đã gắn 2 đầu RJ45. ⤢Phóng to ảnh [hình:114otd8]
 Loại modem nào dùng cáp điện thoại nhưng sử dụng riêng cho thuê bao số, không dùng chung tần số với đường thoại? ||| Modem ADSL
 Loại động cơ nào sau đây mà quá trình đốt cháy nhiên liệu sinh nhiệt và quá trình biến đổi nhiệt năng thành công cơ học diễn ra ngay trong xi lanh của động cơ? ||| Động cơ đốt trong
+Lĩnh vực kĩ thuật liên quan đến nghiên cứu và ứng dụng linh kiện điện tử, vi điều khiển... để chế tạo ra sản phẩm phục vụ đời sống và sản xuất là ||| kĩ thuật điện tử
 Lựa chọn cho phép người dùng bật tính năng chia sẻ thư mục và tệp tin là: ||| Turn on file and printer sharing
 Lựa chọn cho phép người dùng tắt tính năng chia sẻ bằng mật khẩu? ||| Turn off password protected sharing
 Lựa chọn nào sau đây cho phép mở cài đặt để thiết lập chia sẻ máy in dùng chung trong mạng nội bộ? ||| Network and Sharing Center
@@ -94,6 +100,7 @@ Ngoài hệ thống lái, bộ phận giúp xe ô tô chuyển động quay vòn
 Nguyên lí hoạt động của máy phát điện xoay chiều ba pha dựa trên hiện tượng ||| Cảm ứng điện từ
 Nguyên nhân động cơ xăng 2 kì làm việc thường hay bám muội than là ||| hoà khí trộn không đều
 Nguồn điện ba pha đối xứng có điện áp dây 220 V, tải nối hình sao là các điện trở có giá trị RA = RB =12.5Ω, RC = 25Ω. Dòng điện trong các pha có giá trị gần nhất lần lượt là: ||| IA = 10A, IB = 10A, IC = 5A
+Nguời thường làm việc tại các phòng kĩ thuật của các cơ quan, tổ chức, nhà máy, xí nghiệp có sử dụng thiết bị điện tử là ngưòi đang làm công việc ||| Vận hành thiết bị điện tử
 Nhà thông minh Smart Home có thể điều khiển các thiết bị qua: ||| Bluetooth và Wifi
 Nhãn hiệu xe máy ở hình bên ghi 110 có nghĩa nào sau đây? ⤢ Phóng to ảnh [hình:1sxgmls] ||| Thể tích công tác 110 cm3\displaystyle ^{3}3
 Những thiết bị điện có chức năng đóng- cắt mạch điện là: ||| Cầu dao điện, aptomat, công tắc điện
@@ -148,6 +155,7 @@ Thiết bị điện trong hình bên có chức nǎng: ⤢ Phóng to ảnh [hì
 Thiết bị điện trong hình bên có chức nǎng: ⤢ Phóng to ảnh [hình:kputs4] ||| Đo điện nǎng tiêu thụ của các thiết bị, đồ dùng điện trong gia đình
 Thành phần có vai trò bảo vệ chống quá tải và đóng cắt nguồn điện mạch nhánh trong hệ thống điện trong gia đình là: ||| Tủ điện nhánh
 Tiết kiệm điện năng cần thực hiện ngay từ giai đoạn ||| thiết kế cho đến lựa chọn, lắp đặt, sử dụng, vận hành hệ thống và thiết bị điện
+Triển vọng phát triển của kī thuật điện tử trong triển khai và ứng dụng rộng rāi công nghệ số trong đời sống là ||| nền tảng thành phố thông minh
 Trong các hình chiếu vuông góc của vật thể, hình biểu diễn thể hiện kích thước chiều dài, chiều cao của vật thể là ||| hình chiếu đứng
 Trong các hình chiếu vuông góc của vật thể, hình biểu diễn thể hiện kích thước chiều dài, chiều rộng của vật thể là ||| hình chiếu bằng
 Trong các hình chiếu vuông góc của vật thể, hình biểu diễn thể hiện kích thước chiều rộng, chiều cao của vật thể là ||| hình chiếu cạnh
@@ -174,6 +182,8 @@ Trong hệ thống điện quốc gia, lưới điện phân phối thực hiệ
 Trong hệ thống điện quốc gia, lưới điện truyền tải thực hiện nhiệm vụ truyền tải điện năng từ trạm điện nguồn đến trạm điện phân phối chính có điện áp ||| Lớn hơn 110 kV
 Trong hệ thống điện quốc gia, tải tiêu thụ (tải điện) là các thiết bị ||| Tiêu thu điện và biến điện năng thành các dạng năng luợng khác
 Trong hệ thống điện quốc gia, đưòng dây truyền tải là các đường dây ||| Cao áp
+Trong lĩnh vực kĩ thuật điện tử, công việc lắp đặt các thiết bị điện tử được thực hiện bởi ||| kĩ sư kī thuật điện tử
+Trong līnh vực kĩ thuật điện tử, nhóm công việc thực hiện tạo ra bản thiết kế mạch nguyên lí, bản mạch in và các thành phần cần thiết khác của thiết bị nhằm đáp ứng được yêu cầu đặt ra là nhiệm vụ của nghề ||| thiết kế thiết bị điện tử
 Trong mang điện sản xuất quy mô nhỏ, thao tác cắt mạch điện theo thứ tự: ||| Tủ phân phối -> Tủ động lực -> Biến áp hạ áp -> Tủ chiếu sáng
 Trong máy phát điện xoay chiều ba pha, rotor đuợc cấu tạo là ||| Một nam châm điện
 Trong mạch điện ba pha đối xúng, nếu tài nối hình tam giác thì các thông số hiệu dụng của dòng điện dây và điện áp dây được xác định bằng công thức ||| Id = 3\displaystyle \sqrt{3}3​Ip ; Ud = Up
@@ -203,6 +213,7 @@ Trong sơ đồ mạng điện hạ áp dùng trong sinh hoạt, kí hiệu như
 Trong sản xuất điện năng, nhóm phương pháp tạo ra điện nǎng từ nguồn năng lượng tái tạo là: ||| Thủy triều, điện gió và điện mặt trời
 Trong thiết kế, lắp đặt điện, cần tính toán lựa chọn dây dẫn và cáp điện có thông số ||| điện áp phù hợp với điện áp của hệ thống và tiết diện lõi phù hợp với công suất tiêu thụ của thiết bị
 Trong thiết kế, xây dựng nhà ở, để tiết kiệm điện nên ||| tận dụng tối đa nguồn ánh sáng và nguồn gió tự nhiên, sử dụng vật liệu cách nhiệt tốt
+Trong thời gian dịch bệnh Covid-19 diễn ra phức tạp, những thiết bị điện tử đuợc sử dụng trong dạy và học trực tuyến là ||| Điện thoại thông minh, laptop
 Trong tủ điện phân phối tổng của mạng điện sản xuất quy mô nhỏ, để bảo vệ mạng điện khi xảy ra quá tải, ngắn mạch thường sử dụng thiết bị bảo vệ là: ||| Aptomat
 Trong tủ điện động lực của mạng điện sản xuất quy mô nhỏ, để bảo vệ mạng điện khi xảy ra quá tải, ngắn mạch thường sử dụng thiết bị bảo vệ là: ||| Aptomat hoặc cầu dao điện
 Trong động cơ đốt trong, dầu bôi trơn phải thay định kì vì ||| dầu bôi trơn bị bẩn, độ nhớt giảm
@@ -216,6 +227,7 @@ Tại sao khi truyền dữ liệu giữa hai máy tính nằm ở hai mạng c�
 Tại sao trong một mạng gia đình có ít thiết bị kết nối, ta có thể không cần dùng đến Switch nhưng với hệ thống mạng của văn phòng công ty lớn thì bắt buộc phải dùng Switch? ¦ tự luận ||| [TL] Vì: ­Mạng gia đình ít thiết bị: Các thiết bị như Smart TV, điện thoại, laptop… thường kết nối trực tiếp qua sóng Wi-Fi hoặc cắm trực tiếp vào số cổng hạn chế sẵn có trên Modem hoặc Router ­ Văn phòng công ty lớn: o Số lượng máy tính và thiết bị mạng rất lớn, vượt quá số cổng của Router. o Tần suất trao đổi dữ liệu cao đòi hỏi phải phân chia lưu lượng hiệu quả, giảm nghẽn mạng  Trong văn phòng công ty dùng Switch sẽ mở rộng cổng kết nối và tối ưu hóa đường truyền
 Tại thiết bị gửi, ngay sau khi đóng gói dữ liệu, xác định địa chỉ IP và địa chỉ MAC, giao thức mạng nào sau đây sẽ được thực hiện? ||| Xác định đường đi tối ưu cho gói dữ liệu
 Việc lấy đi lớp vật liệu trên bề mặt của phôi để tạo ra chi tiết có hình dạng, kích thước theo yêu cầu là hoạt động thuộc ||| công nghệ gia công cắt gọt
+Việc sử dụng các dây chuyền công nghệ hoặc máy và công cụ hỗ trợ để tạo ra thiết bị điện tử từ vật liệu, linh kiện theo bản thiết kế ban đầu và quy trình kiểm soát chất luợng là công việc thuộc lĩnh vực ||| Sản xuất, chế tạo thiết bi điện tử
 Vì sao lại nói sự phát triển của AI kéo theo rủi ro về an ninh, an toàn? ||| AI triển khai trực tuyến có rủi ro bị tấn công mạng nhằm thay đổi dữ liệu và mô hình, dẫn đến việc đưa ra các quyết định sai lệch
 Wireless Access Point (WAP) có chức năng gì? ||| Dùng để kết nối các thiết bị đầu cuối qua sóng Wi-Fi giúp giảm chi phí thiết lập LAN hoặc kết nối với một LAN để mở rộng phạm vi làm việc
 Youtube được trang bị hệ thống trí tuệ nhân tạo để gợi ý cho người dùng. Hãy cho biết hệ thống này làm nhiệm vụ gì dưới đây? ||| Đề xuất các video dựa trên sở thích của người dùng
