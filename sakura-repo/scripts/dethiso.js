@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.16
+// @version      14.17
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được. v14.13: hỗ trợ thêm Bomb Game (/bomb/)
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1688,8 +1688,10 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       // ô sau khi cắt có thể thêm nhãn "Đáp án đúng" ở cuối nên cho phép dư ~20 ký tự
       const hits = want.filter(([l, w]) => t.includes(w) && t.length <= w.length + 20).sort((a, b) => b[1].length - a[1].length);
       if (!hits.length) return;
-      const l = hits[0][0], a = r.width * r.height;
-      if (!out[l] || a < out[l].a) out[l] = { a, kind: /đáp án đúng/.test(t) ? 'good' : rowKind(el) };
+      const l = hits[0][0];
+      const k = /đáp án đúng/.test(t) ? 'good' : rowKind(el);
+      const rank = x => x === 'good' ? 2 : x === 'bad' ? 1 : 0;
+      if (!out[l] || rank(k) > rank(out[l].kind)) out[l] = { kind: k };
     });
     return out;
   }
@@ -1759,12 +1761,14 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const ks = bombKinds(bpend);
     goodL = Object.keys(ks).find(l => ks[l].kind === 'good') || null;
     badLs = Object.keys(ks).filter(l => ks[l].kind === 'bad');
-    if (goodL) { verdict = 'good'; src = 'màu ô đáp án'; }
+    if (goodL) { verdict = 'good'; src = 'ô "Đáp án đúng"'; }
     else if (badLs.length) { verdict = 'bad'; src = 'màu ô đáp án'; }
     if (!verdict) {
       if (addedTxt.some(x => GOOD_TXT.test(x))) { verdict = 'good'; src = 'thông báo trên trang'; }
       else if (addedTxt.some(x => BAD_TXT.test(x))) { verdict = 'bad'; src = 'thông báo trên trang'; }
     }
+    // sai: trang hiện ô xanh "Đáp án đúng" chậm hơn thông báo SAI một chút -> chờ để học được đáp án đúng
+    if (verdict === 'bad' && t - bpend.at < 1800) return;
     if (!verdict) {
       if (t - bpend.at > 3500) {
         bpend.done = true;
@@ -1904,5 +1908,5 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   loop();
 
-  console.log('✅ DeThiSo Helper v14.16 sẵn sàng (có Bomb Game).');
+  console.log('✅ DeThiSo Helper v14.17 sẵn sàng (có Bomb Game).');
 })();
