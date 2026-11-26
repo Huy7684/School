@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.14
+// @version      14.15
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được. v14.13: hỗ trợ thêm Bomb Game (/bomb/)
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1693,29 +1693,108 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     return out;
   }
 
-  function bombResult() {
-    if (!lastSnap || bs.done || !bs.key) return;
-    const t = now();
-    if (t - bombChkAt < 200) return;
-    bombChkAt = t;
-    const ks = bombKinds(lastSnap);
-    const good = Object.keys(ks).find(l => ks[l].kind === 'good');
-    const bad = Object.keys(ks).filter(l => ks[l].kind === 'bad');
-    if (good) {
-      const txt = lastSnap.texts[good];
-      if (txt) { putRec(lastSnap.q, txt, examCode()); saveBank(); stt('vừa học 1 câu (bomb)'); console.log('🧠 [bomb] nhớ:', lastSnap.q.slice(0, 60), '→', txt); }
-      bs.done = true; return;
+  // ---- Theo dõi kết quả sau khi bấm "Cắt dây!" (dù bạn tự bấm hay script bấm) ----
+  // Trang chuyển dây rất nhanh nên không thể đợi tick: bắt sự kiện click + quan sát thay đổi trang.
+  let bpend = null;   // lượt cắt đang chờ kết quả
+  const hueClass = rgb => {
+    if (!rgb) return null;
+    const [r, g, b] = rgb, mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+    if (mx === 0 || (mx - mn) / mx < 0.25) return 'gray';
+    let h;
+    if (mx === r) h = 60 * (((g - b) / (mx - mn)) % 6);
+    else if (mx === g) h = 60 * ((b - r) / (mx - mn) + 2);
+    else h = 60 * ((r - g) / (mx - mn) + 4);
+    if (h < 0) h += 360;
+    if (h <= 15 || h >= 335) return 'bad';
+    if (h >= 85 && h <= 260) return 'good';
+    return 'cur';      // cam/vàng = dây đang làm
+  };
+  function segList() {
+    for (const el of document.querySelectorAll('div, ul, ol, nav')) {
+      if (panel.contains(el) || el.children.length < 8 || el.children.length > 80) continue;
+      const r = el.getBoundingClientRect();
+      if (r.top > 300 || r.width < 200 || r.height > 30) continue;
+      const c = el.children[0].getBoundingClientRect();
+      if (c.height > 16 || c.height < 1) continue;
+      return [...el.children];
     }
-    if (bad.length) {
-      const k = norm(lastSnap.q);
-      const set = new Set(bombWrong[k] || []);
-      bad.forEach(l => set.add(norm(lastSnap.texts[l])));
-      bombWrong[k] = [...set]; saveWrong();
-      bs.done = true; bs.wrongSeen = true;
-      stt('chọn sai — đã nhớ loại đáp án này');
+    return [];
+  }
+  const segClasses = () => segList().map(e => hueClass(toRgb(getComputedStyle(e).backgroundColor)));
+  const addedTxt = [];
+  try {
+    new MutationObserver(ms => {
+      if (!bpend || bpend.done) return;
+      ms.forEach(m => {
+        const nodes = m.type === 'characterData' ? [m.target] : [...m.addedNodes];
+        nodes.forEach(n => {
+          const el = n.nodeType === 1 ? n : n.parentElement;
+          if (!el || panel.contains(el)) return;
+          const tx = flat(el.textContent);
+          if (tx && tx.length <= 40 && addedTxt.length < 200) addedTxt.push(tx);
+        });
+      });
+    }).observe(document.body, { childList: true, subtree: true, characterData: true });
+  } catch (e) {}
+  const GOOD_TXT = /^\W*(đúng rồi|đúng|chính xác|tuyệt vời|xuất sắc|correct|chuẩn)\W*$/i;
+  const BAD_TXT = /^\W*(sai rồi|sai|không đúng|không chính xác|chưa đúng|incorrect|wrong|nổ|boom)\W*$/i;
+  document.addEventListener('click', e => {
+    if (!isBomb() || !lastSnap || !lastSnap.els) return;
+    const t = e.target;
+    for (const l of Object.keys(lastSnap.els)) if (lastSnap.els[l].contains(t)) { bs.picked = l; return; }
+    const b = t.closest && t.closest('button, [role="button"], a');
+    if (b && !panel.contains(b) && /^Cắt dây/.test(flat(b.textContent)) && (!bpend || bpend.done || bpend.key !== lastSnap.key)) {
+      addedTxt.length = 0;
+      bpend = { key: lastSnap.key, q: lastSnap.q, texts: Object.assign({}, lastSnap.texts), picked: bs.picked || null,
+                wire: parseInt(lastSnap.qno, 10) || 0, at: now(), seg: segClasses(), done: false };
+      console.log('[bomb] đã cắt dây', { dây: bpend.wire, chọn: bpend.picked });
+    }
+  }, true);
+
+  function bombResult() {
+    if (!bpend || bpend.done) return;
+    const t = now();
+    let verdict = null, src = '', goodL = null, badLs = [];
+    const ks = bombKinds(bpend);
+    goodL = Object.keys(ks).find(l => ks[l].kind === 'good') || null;
+    badLs = Object.keys(ks).filter(l => ks[l].kind === 'bad');
+    if (goodL) { verdict = 'good'; src = 'màu ô đáp án'; }
+    else if (badLs.length) { verdict = 'bad'; src = 'màu ô đáp án'; }
+    if (!verdict) {
+      if (addedTxt.some(x => GOOD_TXT.test(x))) { verdict = 'good'; src = 'thông báo trên trang'; }
+      else if (addedTxt.some(x => BAD_TXT.test(x))) { verdict = 'bad'; src = 'thông báo trên trang'; }
+    }
+    if (!verdict) {
+      const now2 = segClasses();
+      for (let i = 0; i < now2.length; i++) {
+        if (now2[i] !== bpend.seg[i] && (now2[i] === 'good' || now2[i] === 'bad')) { verdict = now2[i]; src = 'thanh tiến trình (dây ' + (i + 1) + ')'; break; }
+      }
+    }
+    if (!verdict) {
+      if (t - bpend.at > 3500) {
+        bpend.done = true;
+        console.log('[bomb] KHÔNG nhận ra kết quả', { chữ_mới_hiện: addedTxt.slice(0, 40), thanh_trước: bpend.seg, thanh_sau: segClasses(), chọn: bpend.picked });
+        stt('⚠️ cắt xong nhưng không nhận ra kết quả — xem Console (F12)');
+      }
       return;
     }
-    if (bs.cutAt && t - bs.cutAt > 2500) bs.done = true;   // không thấy màu gì: thôi, khỏi chờ
+    bpend.done = true;
+    if (bs.key === bpend.key) bs.done = true;
+    console.log('[bomb] kết quả:', verdict, '·', src, { chọn: bpend.picked, xanh: goodL, đỏ: badLs });
+    if (verdict === 'good') {
+      const L = goodL || bpend.picked, txt = L && bpend.texts[L];
+      if (txt) { putRec(bpend.q, txt, examCode()); saveBank(); stt('vừa học 1 câu (bomb, ' + src + ')'); }
+      else stt('đúng — nhưng không biết bạn chọn ô nào để học');
+    } else {
+      const L = badLs.length ? badLs : (bpend.picked ? [bpend.picked] : []);
+      if (L.length) {
+        const k = norm(bpend.q), set = new Set(bombWrong[k] || []);
+        L.forEach(l => bpend.texts[l] && set.add(norm(bpend.texts[l])));
+        bombWrong[k] = [...set]; saveWrong();
+        if (bs.key === bpend.key) bs.wrongSeen = true;
+        stt('chọn sai — đã nhớ loại đáp án này');
+      }
+    }
   }
 
   function bombPick(snap) {
@@ -1737,7 +1816,6 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const btn = findBtn(/^Cắt dây/);
     // đã chọn sai mà trang cho thử lại cùng câu: chọn lại phương án khác
     if (bs.wrongSeen && bs.cutTries && btn && btnEnabled(btn)) { bs.sel = 0; bs.cutTries = 0; bs.done = false; bs.wrongSeen = false; bs.stuck = false; }
-    if (bs.cutTries) { bombResult(); }
     if (bs.sel && bs.cutTries) {
       if (bs.stuck || !cfg.run) return;
       const t = now();
@@ -1775,7 +1853,6 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
 
   // Không còn thấy 4 ô A-D (đang xem kết quả / chuyển dây): học đáp án rồi bấm nút sang dây tiếp
   function bombIdle() {
-    bombResult();
     if (!cfg.run || !cfg.next) return;
     const nb = findBtn(/^(Tiếp|Dây\s*(tiếp|kế)|Câu\s*(tiếp|kế)|Chơi tiếp|Tiếp tục|Next)/i);
     if (!nb || !btnEnabled(nb)) return;
@@ -1790,6 +1867,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     if (t - bnx.at > nextRetry() && bnx.tries < 2 && gapOk()) { tap(nb); bnx.tries++; bnx.at = t; lastAct = t; }
   }
   function bombTick() {
+    bombResult();
     const snap = bombSnapshot();
     if (snap) return bombStep(snap);
     bombIdle();
@@ -1830,5 +1908,5 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   loop();
 
-  console.log('✅ DeThiSo Helper v14.14 sẵn sàng (có Bomb Game).');
+  console.log('✅ DeThiSo Helper v14.15 sẵn sàng (có Bomb Game).');
 })();
