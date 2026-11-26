@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.12
-// @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được
+// @version      14.13
+// @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được. v14.13: hỗ trợ thêm Bomb Game (/bomb/)
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
 // @noframes
@@ -1636,10 +1636,171 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     }
   }
 
+
+  // ================= BOMB GAME (dethiso.vn/bomb/<mã>) =================
+  // Dùng chung sổ đáp án với /exam/. Chọn đáp án đã nhớ -> bấm "Cắt dây!".
+  // Sau khi cắt: ô xanh = đáp án đúng (học vào sổ); ô đỏ = sai (nhớ riêng để lần sau loại ra).
+  const isBomb = () => /\/bomb(\/|$)/i.test(location.pathname);
+  const WRONG_KEY = 'dts14-bomb-wrong';
+  let bombWrong = loadKey(WRONG_KEY) || {};
+  const saveWrong = () => { try { localStorage.setItem(WRONG_KEY, JSON.stringify(bombWrong)); } catch (e) {} };
+  let bs = { key: null };       // trạng thái của dây (câu) hiện tại
+  let bnx = { sig: null };      // thao tác bấm nút sang dây tiếp theo
+  let bombChkAt = 0;
+  const BADGE = /^Dây\s*\d+\s*\/\s*\d+$/i;
+
+  function bombSnapshot() {
+    const snap = snapshot();            // tìm 4 ô A-D (ô có chữ cái ở con đầu tiên)
+    if (!snap) return null;
+    const opts = Object.values(snap.els);
+    // câu hỏi = khối chữ gần nhất nằm TRƯỚC cụm đáp án (bỏ nhãn "Dây x/y", đồng hồ)
+    let qEl = null, node = snap.els.A;
+    for (let up = 0; up < 5 && node && node !== document.body && !qEl; up++, node = node.parentElement) {
+      for (let p = node.previousElementSibling; p; p = p.previousElementSibling) {
+        if (panel.contains(p) || !visible(p) || opts.some(o => p.contains(o))) continue;
+        const tx = flat(p.textContent);
+        if (!tx || BADGE.test(tx) || /^\d{1,2}:\d{2}$/.test(tx)) continue;
+        qEl = p; break;
+      }
+    }
+    if (!qEl) return null;
+    const qImgs = realImgs(qEl, opts);
+    if (!imgsReady(qImgs)) return null;
+    const qText = flat(qEl.textContent).replace(/^Dây\s*\d+\s*\/\s*\d+\s*/i, '');
+    if (!qText && !qImgs.length) return null;
+    let qno = '';
+    for (let a = qEl.parentElement, i = 0; a && i < 3 && !qno; a = a.parentElement, i++) {
+      const m = (a.innerText || '').match(/Dây\s*(\d+)\s*\/\s*\d+/i);
+      if (m) qno = m[1];
+    }
+    return { q: qText + imgTag(qImgs), qText, qno, els: snap.els, texts: snap.texts };
+  }
+
+  // Đọc màu xanh/đỏ của 4 phương án sau khi cắt dây
+  function bombKinds(snap) {
+    const out = {};
+    const want = Object.keys(snap.texts).map(l => [l, norm(snap.texts[l])]).filter(x => x[1]);
+    document.querySelectorAll('div, button, li, label').forEach(el => {
+      if (panel.contains(el) || el.children.length < 1 || !el.getClientRects().length) return;
+      const r = el.getBoundingClientRect();
+      if (r.width < 120 || r.height < 30 || r.height > 800) return;
+      const t = norm((flat(el.textContent) + imgTag(realImgs(el))).trim());
+      const hit = want.find(([l, w]) => t.endsWith(w) && t.length <= w.length + 4);
+      if (!hit) return;
+      const a = r.width * r.height;
+      if (!out[hit[0]] || a < out[hit[0]].a) out[hit[0]] = { a, kind: rowKind(el) };
+    });
+    return out;
+  }
+
+  function bombResult() {
+    if (!lastSnap || bs.done || !bs.key) return;
+    const t = now();
+    if (t - bombChkAt < 200) return;
+    bombChkAt = t;
+    const ks = bombKinds(lastSnap);
+    const good = Object.keys(ks).find(l => ks[l].kind === 'good');
+    const bad = Object.keys(ks).filter(l => ks[l].kind === 'bad');
+    if (good) {
+      const txt = lastSnap.texts[good];
+      if (txt) { putRec(lastSnap.q, txt, ''); saveBank(); stt('vừa học 1 câu (bomb)'); console.log('🧠 [bomb] nhớ:', lastSnap.q.slice(0, 60), '→', txt); }
+      bs.done = true; return;
+    }
+    if (bad.length) {
+      const k = norm(lastSnap.q);
+      const set = new Set(bombWrong[k] || []);
+      bad.forEach(l => set.add(norm(lastSnap.texts[l])));
+      bombWrong[k] = [...set]; saveWrong();
+      bs.done = true; bs.wrongSeen = true;
+      stt('chọn sai — đã nhớ loại đáp án này');
+      return;
+    }
+    if (bs.cutAt && t - bs.cutAt > 2500) bs.done = true;   // không thấy màu gì: thôi, khỏi chờ
+  }
+
+  function bombPick(snap) {
+    const rec = findRec(snap.q);
+    const letter = rec ? matchLetter(snap.texts, rec.correct) : null;
+    if (letter) return { letter, guess: false };
+    const wr = new Set(bombWrong[norm(snap.q)] || []);
+    const left = Object.keys(snap.texts).filter(l => !wr.has(norm(snap.texts[l])));
+    if (left.length === 1 && wr.size >= 3) return { letter: left[0], guess: false };   // loại trừ
+    if (cfg.run && cfg.unk === 'guess' && left.length) return { letter: left[0], guess: true };
+    return null;
+  }
+
+  function bombStep(snap) {
+    lastSnap = snap;
+    const key = snap.qno + '|' + norm(snap.q);
+    if (bs.key !== key) bs = { key, sel: 0, selAt: 0, cutTries: 0, cutAt: 0, done: false };
+    snap.key = key;
+    const btn = findBtn(/^Cắt dây/);
+    // đã chọn sai mà trang cho thử lại cùng câu: chọn lại phương án khác
+    if (bs.wrongSeen && bs.cutTries && btn && btnEnabled(btn)) { bs.sel = 0; bs.cutTries = 0; bs.done = false; bs.wrongSeen = false; bs.stuck = false; }
+    if (bs.cutTries) { bombResult(); }
+    if (bs.sel && bs.cutTries) {
+      if (bs.stuck || !cfg.run) return;
+      const t = now();
+      if (t - bs.cutAt > 3000 && btn && btnEnabled(btn) && !bs.done && gapOk()) {
+        if (bs.cutTries >= 2) { bs.stuck = true; stt('⚠️ Kẹt ở nút Cắt dây — hãy bấm tay'); return; }
+        tap(btn); bs.cutTries++; bs.cutAt = t; lastAct = t;
+      }
+      return;
+    }
+    const pick = bombPick(snap);
+    if (!pick) { stt('câu mới — tự chọn rồi Cắt dây để học'); return; }
+    if (!cfg.run || (!pick.guess && !cfg.sel)) {
+      clearOutline(snap);
+      snap.els[pick.letter].style.outline = '4px solid #10B981';
+      stt(`đáp án nhớ: ${pick.letter}`);
+      return;
+    }
+    if (bs.stuck) return;
+    const t = now();
+    if (!bs.sel) {
+      if (!gapOk()) return;
+      clearOutline(snap);
+      tap(snap.els[pick.letter]);
+      bs.sel = 1; bs.selAt = t; lastAct = t;
+      stt(pick.guess ? `đoán ${pick.letter}` : `đã chọn ${pick.letter}`);
+      return;
+    }
+    if (!cfg.chk && !pick.guess) return;
+    const ready = btnEnabled(btn) || t - bs.selAt > Math.max(300, cfg.delay * 2);
+    if (!btn || !ready || !gapOk()) return;
+    tap(btn);
+    bs.cutTries = 1; bs.cutAt = t; lastAct = t;
+    stt('đã cắt dây');
+  }
+
+  // Không còn thấy 4 ô A-D (đang xem kết quả / chuyển dây): học đáp án rồi bấm nút sang dây tiếp
+  function bombIdle() {
+    bombResult();
+    if (!cfg.run || !cfg.next) return;
+    const nb = findBtn(/^(Tiếp|Dây\s*(tiếp|kế)|Câu\s*(tiếp|kế)|Chơi tiếp|Tiếp tục|Next)/i);
+    if (!nb || !btnEnabled(nb)) return;
+    const sig = bs.key || '?';
+    if (bnx.sig !== sig) bnx = { sig, tries: 0, at: 0 };
+    const t = now();
+    if (bnx.tries === 0) {
+      if (!gapOk()) return;
+      tap(nb); bnx.tries = 1; bnx.at = t; lastAct = t; stt('sang dây tiếp');
+      return;
+    }
+    if (t - bnx.at > nextRetry() && bnx.tries < 2 && gapOk()) { tap(nb); bnx.tries++; bnx.at = t; lastAct = t; }
+  }
+  function bombTick() {
+    const snap = bombSnapshot();
+    if (snap) return bombStep(snap);
+    bombIdle();
+  }
+  // ================= HẾT BOMB =================
+
   // Chỉ hoạt động ở trang làm bài (/exam/<mã>/take). Trang bắt đầu / xếp hạng: script không đọc, không bấm gì.
-  const onTake = () => /\/take(\/|$)/.test(location.pathname);
+  const onTake = () => /\/take(\/|$)/.test(location.pathname) || isBomb();
   function tick() {
     if (!onTake()) { lastSnap = null; stt('chờ vào trang làm bài…'); return; }
+    if (isBomb()) return bombTick();
     const es = essayCommon();
     if (es) {
       if (!es.ready) return;
@@ -1669,5 +1830,5 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   loop();
 
-  console.log('✅ DeThiSo Helper v14 sẵn sàng.');
+  console.log('✅ DeThiSo Helper v14.13 sẵn sàng (có Bomb Game).');
 })();
