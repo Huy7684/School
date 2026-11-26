@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.18
+// @version      14.19
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được. v14.13: hỗ trợ thêm Bomb Game (/bomb/)
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1645,6 +1645,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   let bombWrong = loadKey(WRONG_KEY) || {};
   const saveWrong = () => { try { localStorage.setItem(WRONG_KEY, JSON.stringify(bombWrong)); } catch (e) {} };
   let bs = { key: null };       // trạng thái của dây (câu) hiện tại
+  let bstat = { good: 0, bad: 0, total: 0 };   // số dây đã biết đúng/sai trong ván này
   let bnx = { sig: null };      // thao tác bấm nút sang dây tiếp theo
   let bombChkAt = 0;
   const BADGE = /^Dây\s*\d+\s*\/\s*\d+$/i;
@@ -1771,6 +1772,15 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       if (addedTxt.some(x => GOOD_TXT.test(x))) { verdict = 'good'; src = 'thông báo trên trang'; }
       else if (addedTxt.some(x => BAD_TXT.test(x))) { verdict = 'bad'; src = 'thông báo trên trang'; }
     }
+    // Dây cuối: cắt xong trang nhảy thẳng sang màn kết quả (không còn ô đáp án). Suy ra từ "Đúng X/Y".
+    if (!verdict && bpend.wire > 0 && bpend.picked && t - bpend.at > 250) {
+      const m = flat(document.body.innerText || '').match(/Đúng\s+(\d+)\s*\/\s*(\d+)/);
+      if (m && +m[2] === bpend.wire) {
+        const X = +m[1], Y = +m[2];
+        if (X === Y || (bstat.total === Y - 1 && X === bstat.good + 1)) { verdict = 'good'; src = 'màn kết quả (Đúng ' + X + '/' + Y + ')'; }
+        else if (bstat.total === Y - 1 && X === bstat.good) { verdict = 'bad'; src = 'màn kết quả (Đúng ' + X + '/' + Y + ')'; }
+      }
+    }
     // sai: trang hiện ô xanh "Đáp án đúng" chậm hơn thông báo SAI một chút -> chờ để học được đáp án đúng
     if (verdict === 'bad' && t - bpend.at < 1800) return;
     if (!verdict) {
@@ -1782,6 +1792,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       return;
     }
     bpend.done = true;
+    bstat.total++; if (verdict === 'good') bstat.good++; else bstat.bad++;
     if (bs.key === bpend.key) bs.done = true;
     console.log('[bomb] kết quả:', verdict, '·', src, { chọn: bpend.picked, xanh: goodL, đỏ: badLs });
     if (verdict === 'good') {
@@ -1814,7 +1825,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   function bombStep(snap) {
     lastSnap = snap;
     const key = snap.qno + '|' + norm(snap.q);
-    if (bs.key !== key) bs = { key, sel: 0, selAt: 0, cutTries: 0, cutAt: 0, done: false };
+    if (bs.key !== key) { if (snap.qno === '1') bstat = { good: 0, bad: 0, total: 0 }; bs = { key, sel: 0, selAt: 0, cutTries: 0, cutAt: 0, done: false }; }
     snap.key = key;
     const btn = findBtn(/^Cắt dây/);
     // đã chọn sai mà trang cho thử lại cùng câu: chọn lại phương án khác
@@ -1912,5 +1923,5 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   loop();
 
-  console.log('✅ DeThiSo Helper v14.18 sẵn sàng (có Bomb Game).');
+  console.log('✅ DeThiSo Helper v14.19 sẵn sàng (có Bomb Game).');
 })();
