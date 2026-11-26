@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.13
+// @version      14.14
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được. v14.13: hỗ trợ thêm Bomb Game (/bomb/)
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -76,7 +76,7 @@
     try { path = new URL(v).pathname; } catch (e) {}
     const segs = path.split('/').map(s => s.trim()).filter(Boolean);
     if (segs.length > 1 || /^https?:/i.test(v)) {
-      const skip = /^(vi|en|test|take|take-test|answer-test|exam|result|submit-test|do|view|de-thi|share)$/i;
+      const skip = /^(vi|en|bomb|test|take|take-test|answer-test|exam|result|submit-test|do|view|de-thi|share)$/i;
       const cand = segs.filter(s => !skip.test(s) && !/^\d+$/.test(s));
       if (cand.length) return clean(cand[0]);
       return segs.find(s => /^\d{5,}$/.test(s)) || '';
@@ -84,7 +84,8 @@
     return clean(v);
   }
   const isExam = () => /\/exam\//i.test(location.pathname);
-  const autoCode = () => isExam() ? extractCode(location.href) : '';
+  const isBomb = () => /\/bomb(\/|$)/i.test(location.pathname);
+  const autoCode = () => (isExam() || isBomb()) ? extractCode(location.href) : '';
   const examCode = () => extractCode(manualCode) || autoCode();
   // Chỉ lọc theo mã đề khi sổ đã có câu gắn đúng mã đề này (câu chưa gắn mã vẫn dùng được).
   // Nếu mã đề nhận sai / sổ chưa gắn mã nào thì dùng cả sổ, tránh "có đáp án mà không chọn".
@@ -102,8 +103,8 @@
   };
   let scKey = '', scVal = '', urKey = '', urVal = [];
   const strictCode = () => {
-    const c = examCode(), k = bankVer + '|' + c;
-    if (k !== scKey) { scKey = k; scVal = STRICT_EXAM && c && (!SHARED_FALLBACK || Object.values(bank).some(r => r && hasT(r, c))) ? c : ''; }
+    const c = examCode(), bombAuto = isBomb() && !extractCode(manualCode), k = bankVer + '|' + c + '|' + (bombAuto ? 1 : 0);
+    if (k !== scKey) { scKey = k; scVal = STRICT_EXAM && c && !bombAuto && (!SHARED_FALLBACK || Object.values(bank).some(r => r && hasT(r, c))) ? c : ''; }
     return scVal;
   };
   const usableWith = (r, sc) => !!(r && r.q && r.correct && (!sc || (!r.t && SHARED_FALLBACK) || hasT(r, sc)));
@@ -1640,7 +1641,6 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   // ================= BOMB GAME (dethiso.vn/bomb/<mã>) =================
   // Dùng chung sổ đáp án với /exam/. Chọn đáp án đã nhớ -> bấm "Cắt dây!".
   // Sau khi cắt: ô xanh = đáp án đúng (học vào sổ); ô đỏ = sai (nhớ riêng để lần sau loại ra).
-  const isBomb = () => /\/bomb(\/|$)/i.test(location.pathname);
   const WRONG_KEY = 'dts14-bomb-wrong';
   let bombWrong = loadKey(WRONG_KEY) || {};
   const saveWrong = () => { try { localStorage.setItem(WRONG_KEY, JSON.stringify(bombWrong)); } catch (e) {} };
@@ -1703,7 +1703,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const bad = Object.keys(ks).filter(l => ks[l].kind === 'bad');
     if (good) {
       const txt = lastSnap.texts[good];
-      if (txt) { putRec(lastSnap.q, txt, ''); saveBank(); stt('vừa học 1 câu (bomb)'); console.log('🧠 [bomb] nhớ:', lastSnap.q.slice(0, 60), '→', txt); }
+      if (txt) { putRec(lastSnap.q, txt, examCode()); saveBank(); stt('vừa học 1 câu (bomb)'); console.log('🧠 [bomb] nhớ:', lastSnap.q.slice(0, 60), '→', txt); }
       bs.done = true; return;
     }
     if (bad.length) {
@@ -1830,5 +1830,5 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   loop();
 
-  console.log('✅ DeThiSo Helper v14.13 sẵn sàng (có Bomb Game).');
+  console.log('✅ DeThiSo Helper v14.14 sẵn sàng (có Bomb Game).');
 })();
