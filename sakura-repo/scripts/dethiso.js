@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.17
+// @version      14.18
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được. v14.13: hỗ trợ thêm Bomb Game (/bomb/)
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1737,6 +1737,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
           if (tx && tx.length <= 40 && addedTxt.length < 200) addedTxt.push(tx);
         });
       });
+      bombResult();     // dây cuối: trang có thể đổi sang màn kết thúc rất nhanh, nên xét ngay lúc trang thay đổi
     }).observe(document.body, { childList: true, subtree: true, characterData: true });
   } catch (e) {}
   const GOOD_TXT = /^\W*(đúng|chính xác|tuyệt vời|xuất sắc|correct)\s*!/i;
@@ -1754,9 +1755,12 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     }
   }, true);
 
+  let bombEvalAt = 0;
   function bombResult() {
     if (!bpend || bpend.done) return;
     const t = now();
+    if (t - bombEvalAt < 40) return;
+    bombEvalAt = t;
     let verdict = null, src = '', goodL = null, badLs = [];
     const ks = bombKinds(bpend);
     goodL = Object.keys(ks).find(l => ks[l].kind === 'good') || null;
@@ -1772,7 +1776,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     if (!verdict) {
       if (t - bpend.at > 3500) {
         bpend.done = true;
-        console.log('[bomb] KHÔNG nhận ra kết quả', { chữ_mới_hiện: addedTxt.slice(0, 40), thanh_trước: bpend.seg, thanh_sau: segClasses(), chọn: bpend.picked });
+        console.log('[bomb] KHÔNG nhận ra kết quả', { url: location.pathname, chữ_trang: flat(document.body.innerText).slice(0, 400), chữ_mới_hiện: addedTxt.slice(0, 40), thanh_trước: bpend.seg, thanh_sau: segClasses(), chọn: bpend.picked });
         stt('⚠️ cắt xong nhưng không nhận ra kết quả — xem Console (F12)');
       }
       return;
@@ -1908,5 +1912,5 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   loop();
 
-  console.log('✅ DeThiSo Helper v14.17 sẵn sàng (có Bomb Game).');
+  console.log('✅ DeThiSo Helper v14.18 sẵn sàng (có Bomb Game).');
 })();
