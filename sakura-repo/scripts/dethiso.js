@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.20
+// @version      14.21
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được. v14.13: hỗ trợ thêm Bomb Game (/bomb/)
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1011,6 +1011,28 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       else ghNote = 'lỗi GitHub HTTP ' + r.s;
     } finally { sharedBusy = false; stat(); }
   }
+  // Bomb: thử file riêng của mã phòng trước (banks/dethiso/<mã>.txt); không có / lỗi thì mới dùng sổ chung
+  async function pullBomb() {
+    const code = autoCode();
+    if (!code) return pullShared();
+    if (sharedBusy) return;
+    ghNote = 'đang tải đề ' + code + ' từ GitHub…'; stat();
+    let r = { s: 0 };
+    try { r = await ghGetText(`banks/${GHC.site}/${code}.txt`); } catch (e) {}
+    if (code !== autoCode()) return;
+    if (r.s === 200) {
+      const items = ghParse(r.text).filter(([q, c]) => !labelOnly(c));
+      if (items.length) {
+        items.forEach(([q, c]) => putRec(q, c, code));
+        saveBank(); st = { key: null }; stN = { sig: null };
+        ghNote = `đề ${code}: đã tải ${items.length} câu từ GitHub`;
+        return stat();
+      }
+    }
+    await pullShared();     // file riêng không có / rỗng / lỗi -> sổ chung
+    if (r.s === 404 || r.s === 200) ghNote = `đề ${code} chưa có file riêng · ` + ghNote;
+    stat();
+  }
   async function pullExam(code) {
     if (!code) { ghNote = ''; return stat(); }
     ghNote = 'đang tải đề ' + code + ' từ GitHub…'; stat();
@@ -1027,7 +1049,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     else ghNote = 'lỗi GitHub HTTP ' + r.s;
     stat();
   }
-  const pullAuto = () => (isBomb() && !extractCode(manualCode)) ? pullShared() : pullExam(examCode());
+  const pullAuto = () => (isBomb() && !extractCode(manualCode)) ? pullBomb() : pullExam(examCode());
   $('gpull').onclick = () => { say('tải lại từ GitHub...'); pullAuto(); };
   codeEl.onchange = () => {
     manualCode = extractCode(codeEl.value); codeEl.value = manualCode;
@@ -1960,5 +1982,5 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   loop();
 
-  console.log('✅ DeThiSo Helper v14.20 sẵn sàng (có Bomb Game).');
+  console.log('✅ DeThiSo Helper v14.21 sẵn sàng (có Bomb Game).');
 })();
