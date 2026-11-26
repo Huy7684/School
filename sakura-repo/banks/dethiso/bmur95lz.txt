@@ -27,5 +27,6 @@ Trong công thức tính dòng điện I = PUcos⁡θ\displaystyle \frac{P}{U\co
 Trong công thức tính tiết diện dây dẫn điện S = I/J thì J là: ||| Mật độ dòng điện
 Trong hệ thống điện gia đình, thành phần có vai trò đóng-cắt toàn bộ nguồn điện cấp vào bảo vệ hệ thống điện khi gặp sự cố là: ||| Tủ điện tổng
 Để cung cấp điện cho ổ cắm của máy giặt dùng trong gia đình có công suất 2200W (hệ số cosႴ =0,8) và điện áp là 220V cần lựa chọn dây dẫn đồng (mật độ dòng là J = 6 A/mm2\displaystyle mm^{2}mm2) có tiết diện phù hợp là: ||| 2,5 mm2\displaystyle mm^{2}mm2
+Để cấp điện cho nồi cơm điện cao tần có công suất 1445 W (hệ số cosႴ =1) và điện áp 220V chọn aptomat có dòng điện định mức phù hợp là: ||| 10A
 Để đăm bảo an toàn, sau khi tính tiết diện dây dẫn diện theo công thức S = I / J thì nên chọn dây dẫn điện có tiết diện: ||| Ở cấp lớn hơn
 Để đảm bảo an toàn, tránh lāng phí khi sử dụng các thiết bị và đồ dùng điện, cần lựa chọn tiết diện dây dẫn điện phù hợp với: ||| Công suất tiêu thụ của đồ dùng điện
