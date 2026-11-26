@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.15
+// @version      14.16
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được. v14.13: hỗ trợ thêm Bomb Game (/bomb/)
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -1685,10 +1685,11 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       const r = el.getBoundingClientRect();
       if (r.width < 120 || r.height < 30 || r.height > 800) return;
       const t = norm((flat(el.textContent) + imgTag(realImgs(el))).trim());
-      const hit = want.find(([l, w]) => t.endsWith(w) && t.length <= w.length + 4);
-      if (!hit) return;
-      const a = r.width * r.height;
-      if (!out[hit[0]] || a < out[hit[0]].a) out[hit[0]] = { a, kind: rowKind(el) };
+      // ô sau khi cắt có thể thêm nhãn "Đáp án đúng" ở cuối nên cho phép dư ~20 ký tự
+      const hits = want.filter(([l, w]) => t.includes(w) && t.length <= w.length + 20).sort((a, b) => b[1].length - a[1].length);
+      if (!hits.length) return;
+      const l = hits[0][0], a = r.width * r.height;
+      if (!out[l] || a < out[l].a) out[l] = { a, kind: /đáp án đúng/.test(t) ? 'good' : rowKind(el) };
     });
     return out;
   }
@@ -1736,8 +1737,8 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
       });
     }).observe(document.body, { childList: true, subtree: true, characterData: true });
   } catch (e) {}
-  const GOOD_TXT = /^\W*(đúng rồi|đúng|chính xác|tuyệt vời|xuất sắc|correct|chuẩn)\W*$/i;
-  const BAD_TXT = /^\W*(sai rồi|sai|không đúng|không chính xác|chưa đúng|incorrect|wrong|nổ|boom)\W*$/i;
+  const GOOD_TXT = /^\W*(đúng|chính xác|tuyệt vời|xuất sắc|correct)\s*!/i;
+  const BAD_TXT = /^\W*(sai|không đúng|không chính xác|incorrect|wrong)\s*!/i;
   document.addEventListener('click', e => {
     if (!isBomb() || !lastSnap || !lastSnap.els) return;
     const t = e.target;
@@ -1763,12 +1764,6 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     if (!verdict) {
       if (addedTxt.some(x => GOOD_TXT.test(x))) { verdict = 'good'; src = 'thông báo trên trang'; }
       else if (addedTxt.some(x => BAD_TXT.test(x))) { verdict = 'bad'; src = 'thông báo trên trang'; }
-    }
-    if (!verdict) {
-      const now2 = segClasses();
-      for (let i = 0; i < now2.length; i++) {
-        if (now2[i] !== bpend.seg[i] && (now2[i] === 'good' || now2[i] === 'bad')) { verdict = now2[i]; src = 'thanh tiến trình (dây ' + (i + 1) + ')'; break; }
-      }
     }
     if (!verdict) {
       if (t - bpend.at > 3500) {
@@ -1816,6 +1811,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const btn = findBtn(/^Cắt dây/);
     // đã chọn sai mà trang cho thử lại cùng câu: chọn lại phương án khác
     if (bs.wrongSeen && bs.cutTries && btn && btnEnabled(btn)) { bs.sel = 0; bs.cutTries = 0; bs.done = false; bs.wrongSeen = false; bs.stuck = false; }
+    if (bs.done) return;
     if (bs.sel && bs.cutTries) {
       if (bs.stuck || !cfg.run) return;
       const t = now();
@@ -1908,5 +1904,5 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   loop();
 
-  console.log('✅ DeThiSo Helper v14.15 sẵn sàng (có Bomb Game).');
+  console.log('✅ DeThiSo Helper v14.16 sẵn sàng (có Bomb Game).');
 })();
