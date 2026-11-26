@@ -19,6 +19,7 @@ Cho một vật thể đối xứng như hình vẽ bên, để thể hiện rõ
 Cho nhận định: “AI giúp nâng cao hiệu suất công việc nhưng cũng mang lại những thách thức về an sinh xã hội và an toàn thông tin.” Các phát biểu sau đây đúng hay sai? a) ¦ A) Việc phát triển AI có thể thay thế con người trong một số vị trí công việc, dẫn đến nguy cơ thất nghiệp. ¦ B) AI trong tuyển dụng luôn hoạt động khách quan và không bị ảnh hưởng bởi định kiến dữ liệu. ¦ C) Công nghệ AI không thể tạo ra các sản phẩm giả mạo khuôn mặt hay giọng nói giống như thật. ¦ D) Các ứng dụng AI có khả năng thu thập và phân tích dữ liệu cá nhân, gây ra mối lo ngại về quyền riêng tư. ||| [ĐS] A=Đ B=S C=S D=Đ
 Cho vật thể và các hình biểu diễn như hình dưới đây. ⤢ Phóng to ảnh ⤢ Phóng to ảnh Một học sinh đã quan sát và đưa ra một số nhận định: [hình:32y149,1q3tzbv] ¦ A) Vật thể được tạo bởi khối hình trụ và hình hộp chữ nhật ¦ B) Hình chiếu bằng của vật thể là hình A ¦ C) Hình chiếu đứng của vật thể là hình D ¦ D) Vật thể có chiều cao là 350 mm ||| [ĐS] A=Đ B=S C=S D=S
 Các bước để vẽ sơ đồ nguyên lí mạch điện là: ||| Xác định các thành phần trong mạch điện -> Phân tích mối liên hệ của các thành phần của mạch điện -> vẽ sơ đồ mạch điện
+Các thông số kĩ thuật ghi trên aptomat có trong hình bên bao gồm: [hình:18e4clb] ||| Điện áp định mức 240V/415V, dòng điện định mức 100A, dòng cắt ngắn mạch 10kA
 Các thông số kĩ thuật ghi trên aptomat có trong hình bên bao gồm: ⤢ Phóng to ảnh [hình:18e4clb] ||| Điện áp định mức 240V/415V, dòng điện định mức 100A, dòng cắt ngắn mạch 10kA
 Các vật liệu được sử dụng trong sản xuất cơ khí để chế tạo ra các sản phẩm phục vụ cho sản xuất và đời sống được gọi là ||| vật liệu cơ khí
 Có bao nhiêu cách để nối tài ba pha trong mạch điện xoay chiều ba pha ||| 2 cách
@@ -64,7 +65,10 @@ Khi đánh giá công nghệ, tiêu chí xác định mức độ ảnh hưởng
 Khi đánh giá công nghệ, tiêu chí đánh giá năng suất của công nghệ, chất lượng sản phẩm do công nghệ đó tạo ra là tiêu chí ||| hiệu quả
 Khi đánh giá công nghệ, tiêu chí đánh giá độ chính xác, khả năng ổn định của công nghệ là tiêu chí ||| độ tin cậy
 Khi ứng xử trong không gian mạng, nguyên tắc nào sau đây mà người tham gia cần thực hiện? ||| Lịch sự, tôn trọng người khác và tuân thủ pháp luật
+Khả nǎng chịu dòng điện tối đa của tiếp điểm aptomat trong một khoảng thời gian nhất định của aptomat trong hình bên là: [hình:1gab7nq] ||| 6000 A
 Khả nǎng chịu dòng điện tối đa của tiếp điểm aptomat trong một khoảng thời gian nhất định của aptomat trong hình bên là: ⤢ Phóng to ảnh [hình:1gab7nq] ||| 6000 A
+Kí hiệu trong hình bên thể hiện thiết bị điện nào trên sơ đồ hệ thống điện: [hình:1el7ddz] ||| Cầu chì
+Kí hiệu trong hình bên thể hiện thiết bị điện nào trên sơ đồ hệ thống điện: [hình:1g5r46s] ||| Ổ cắm điện
 Kí hiệu trong hình bên thể hiện thiết bị điện nào trên sơ đồ hệ thống điện: ⤢ Phóng to ảnh [hình:1el7ddz] ||| Cầu chì
 Kí hiệu trong hình bên thể hiện thiết bị điện nào trên sơ đồ hệ thống điện: ⤢ Phóng to ảnh [hình:1g5r46s] ||| Ổ cắm điện
 Kích thước phôi của chi tiết “chốt” ở hình bên có thể là: ⤢ Phóng to ảnh [hình:199wns4] ||| dài 80 mm; đường kính 27 mm
@@ -124,17 +128,22 @@ Phần mềm được thiết kế có khả năng tương tác với người d
 Quan sát hình ảnh sản phẩm ở hình bên cho biết sản phẩm được gia công bằng phương pháp nào sau đây. ⤢ Phóng to ảnh [hình:4vha3u] ||| Phương pháp gia công đúc
 Quan sát sơ đồ cho biết li hợp, hộp số, hệ trục thuộc bộ phận nào trong hệ thống cơ khí động lực của tàu thuỷ [ Động cơ → Li hợp → Hộp số → Hệ trục → Chân vịt ] ||| Hệ thống truyền động
 Sau khi bật tính năng chia sẻ máy in (Turn on file and printer sharing), lựa chọn nào sau đây cho phép người dùng thiết lập chia sẻ máy in để dùng chung? ||| ⤢Phóng to ảnh Devices and Printers [hình:177miq4]
+Sau khi tính được tiết diện dây dẫn S = 1,6 mm2\displaystyle mm^{2}mm2 cho một đồ dùng điện trong gia đình nên chọn dây dẫn có tiết diện hợp lí nhất là: ||| 2,5 mm2\displaystyle mm^{2}mm2
 Sau khi tính được tiết diện dây dẫn S = 1,6 𝑚 𝑚 2 mm 2 cho một đồ dùng điện trong gia đình nên chọn dây dẫn có tiết diện hợp lí nhất là: ||| 2,5 mm2\displaystyle mm^{2}mm2
 So sánh sự khác nhau cơ bản giữa việc "Chia sẻ tài nguyên trong mạng cục bộ (LAN)" và "Chia sẻ tài nguyên qua các dịch vụ lưu trữ đám mây (Google Drive, OneDrive)". trả lời: Tiêu chí Chia sẻ trong mạng LAN Chia sẻ qua Đám mây (Cloud) Phạm vi truy cập Chỉ các máy trong cùng tòa nhà, cùng kết nối vào một bộ định tuyến/mạng nội bộ. Truy cập được từ bất kỳ đâu trên thế giới, chỉ cần có kết nối Internet. Tốc độ truyền tải Nhanh phụ thuộc vào băng thông dây cáp hoặc wifi nội bộ. Phụ thuộc vào tốc độ đường truyền Internet của nhà mạng. Thiết bị phần cứng Máy chủ share dữ liệu bắt buộc phải bật liên tục để máy khác truy cập. Dữ liệu nằm trên máy chủ của nhà cung cấp, không phụ thuộc máy cá nhân. ¦ tự luận ||| [TL] "Chia sẻ tài nguyên trong mạng cục bộ (LAN)" và "Chia sẻ tài nguyên qua các dịch vụ lưu trữ đám mây (Google Drive, OneDrive)"
 Sơ đồ cấu trúc mạng điện như hình bên dưới là sơ đồ thể hiện cấu trúc của ⤢ Phóng to ảnh ||| Mạng điện hạ áp dùng trong sinh hoạt
 Sơ đồ cấu trúc mạng điện như hình bên dưới là sơ đồ thể hiện cấu trúc của ⤢ Phóng to ảnh [hình:19ny3sw] ||| Mạng điện hạ áp dùng trong sinh hoạt
 Sơ đồ cấu trúc mạng điện như hình sau là sơ đồ thể hiện cấu trúc của: ⤢ Phóng to ảnh ||| Mạng điện sản xuất quy mô nhỏ
 Sơ đồ cấu trúc mạng điện như hình sau là sơ đồ thể hiện cấu trúc của: ⤢ Phóng to ảnh [hình:k5zh50] ||| Mạng điện sản xuất quy mô nhỏ
+Sơ đồ mạch điện trong hình bên thể hiện có: [hình:kc3men] ||| 2 cầu chì, 2 công tắc, 2 bóng đèn
 Sơ đồ mạch điện trong hình bên thể hiện có: ⤢ Phóng to ảnh [hình:kc3men] ||| 2 cầu chì, 2 công tắc, 2 bóng đèn
+Sơ đồ mạch điện trong hình bên thể hiện: [hình:1ptu15s] ||| 2 cầu chì, 2 công tắc, 1 ổ cắm, 2 bóng đèn
 Sơ đồ mạch điện trong hình bên thể hiện: ⤢ Phóng to ảnh [hình:1ptu15s] ||| 2 cầu chì, 2 công tắc, 1 ổ cắm, 2 bóng đèn
+Sơ đồ trong hình bên thể hiện cấu trúc chung của hệ thống điện: [hình:1vmsgzm] ||| Trong gia đình
 Sơ đồ trong hình bên thể hiện cấu trúc chung của hệ thống điện: ⤢ Phóng to ảnh [hình:1vmsgzm] ||| Trong gia đình
 Sản phẩm nào dưới đây không được phát triển nhờ AI? ||| Điều hoà không khí tự động
 Sản xuất điện nǎng là quá trình chuyển đổi ||| Các dạng nǎng lượng khác thành nǎng lượng điện
+Sắp xếp các hoạt động sau theo thứ tự phù hợp để tiến hành lắp đặt một mạch điện đơn giản trong gia đình: [hình:1whvqbq] ||| (2) ->(5) ->(4) ->(3) ->(1)
 Sắp xếp các hoạt động sau theo thứ tự phù hợp để tiến hành lắp đặt một mạch điện đơn giản trong gia đình: ⤢ Phóng to ảnh [hình:1whvqbq] ||| (2) ->(5) ->(4) ->(3) ->(1)
 Sắp xếp nào bên dưới đúng trình tự chu trình làm việc của động cơ xăng 4 kì? (1) Nạp; (2) Nổ (cháy – giãn nở); (3) Nén; (4) Xả (thải) ||| (1) → (3) → (2) → (4)
 Theo các nhà sản xuất máy điều hoà (máy lạnh), với công suất 600 BTU thì có khả năng làm mát tốt cho 1 m 2 2 diện tích. Do đó, để tiết kiệm chi phí và tiết kiệm điện, khi chọn máy điều hoà (máy lạnh) cho phòng có diện tích 20 m 2 2 nên chọn loại có công suất ||| 1,5 HP (~ 12000 BTU)
@@ -147,10 +156,16 @@ Thiết bị nào sau đây không phải là thiết bị hiển thị? ||| Tai
 Thiết bị Switch KHÔNG có khả năng nào sau đây? ||| Kết nối trực tiếp các máy tính với đường truyền của nhà cung cấp dịch vụ
 Thiết bị điện có chức năng đo điện năng tiêu thụ của các thiết bị và đồ dùng điện trong gia đình: ||| Công tơ điện
 Thiết bị điện có chức năng đóng - cắt mạch điện và tự động cắt mạch điện khi có sự cố về điện: ||| Aptomat
+Thiết bị điện như hình bên là: [hình:1r4s78y] ||| Công tơ điện
+Thiết bị điện như hình bên là: [hình:22eb3j] ||| Công tắc ba cực
+Thiết bị điện như hình bên là: [hình:hcils7] ||| Cầu dao điện
+Thiết bị điện như hình bên là: [hình:wmdwx9] ||| Ổ cắm điện
 Thiết bị điện như hình bên là: ⤢ Phóng to ảnh [hình:1r4s78y] ||| Công tơ điện
 Thiết bị điện như hình bên là: ⤢ Phóng to ảnh [hình:22eb3j] ||| Công tắc ba cực
 Thiết bị điện như hình bên là: ⤢ Phóng to ảnh [hình:hcils7] ||| Cầu dao điện
 Thiết bị điện như hình bên là: ⤢ Phóng to ảnh [hình:wmdwx9] ||| Ổ cắm điện
+Thiết bị điện trong hình bên có chức nǎng: [hình:2k9ze0] ||| Đóng cắt mạch điện và tự động đóng cắt khi có sự cố về điện
+Thiết bị điện trong hình bên có chức nǎng: [hình:kputs4] ||| Đo điện nǎng tiêu thụ của các thiết bị, đồ dùng điện trong gia đình
 Thiết bị điện trong hình bên có chức nǎng: ⤢ Phóng to ảnh [hình:2k9ze0] ||| Đóng cắt mạch điện và tự động đóng cắt khi có sự cố về điện
 Thiết bị điện trong hình bên có chức nǎng: ⤢ Phóng to ảnh [hình:kputs4] ||| Đo điện nǎng tiêu thụ của các thiết bị, đồ dùng điện trong gia đình
 Thành phần có vai trò bảo vệ chống quá tải và đóng cắt nguồn điện mạch nhánh trong hệ thống điện trong gia đình là: ||| Tủ điện nhánh
@@ -163,9 +178,12 @@ Trong các phương pháp sản xuất điện nǎng, phương pháp cần có b
 Trong các phương pháp sản xuất điện nǎng, phương pháp không có sự biến đổi cơ năng thành điện năng là: ||| Điện mặt trời
 Trong các phương pháp sản xuất điện nǎng, phương pháp làm ảnh hưởng đáng kể đến đa dạng sinh học là: ||| Thủy điện
 Trong các phương pháp sản xuất điện nǎng, phương pháp tạo ra chất thải có nguy cơ gây ảnh hưởng nghiêm trọng đến hệ sinh thái và con người là: ||| Điện hạt nhân
+Trong các sơ đồ dưới đây, sơ đồ thể hiện đúng nhất về cấu trúc chung của hệ thống điện trong gia đình là: [hình:1974utq] ||| Sơ đồ a
 Trong các sơ đồ dưới đây, sơ đồ thể hiện đúng nhất về cấu trúc chung của hệ thống điện trong gia đình là: ⤢ Phóng to ảnh [hình:1974utq] ||| Sơ đồ a
+Trong các sơ đồ lắp đặt dưới đây, sơ đồ tương ứng với sơ đồ nguyên lí đã cho là: [hình:1ngm5tt] ||| Sơ đồ c
 Trong các sơ đồ lắp đặt dưới đây, sơ đồ tương ứng với sơ đồ nguyên lí đã cho là: ⤢ Phóng to ảnh [hình:1ngm5tt] ||| Sơ đồ c
 Trong cách mắc mạch điện xoay chiều ba pha đối xứng theo hình sao, phát biểu nào sau đây không đúng: ||| Điện áp pha bằng 3\displaystyle \sqrt{3}3​ lần điện áp giữa hai dây
+Trong công thức tính dòng điện I = PUcos⁡θ\displaystyle \frac{P}{U\cos \theta }UcosθP​ thì cos⁡θ\displaystyle \cos \thetacosθ là hệ số ||| Công suất
 Trong công thức tính dòng điện I = 𝑃 𝑈 cos ⁡ 𝜃 Ucosθ P ​ thì cos ⁡ 𝜃 cosθ là hệ số ||| Công suất
 Trong công thức tính tiết diện dây dẫn điện S = I/J thì J là: ||| Mật độ dòng điện
 Trong hình biểu diễn bên, kích thước ghi không đúng quy định là ⤢ Phóng to ảnh [hình:wz99le] ||| 32
@@ -241,6 +259,7 @@ Youtube được trang bị hệ thống trí tuệ nhân tạo để gợi ý c
 Đặc điểm nào sau đây là của ngành cơ khí chế tạo? ||| Sử dụng bản vẽ kĩ thuật, máy công cụ
 Đặc điểm “thiếu bảo mật” khi giao tiếp trong không gian mạng đề cập đến nội dung nào dưới đây? ||| Người tham gia giao tiếp có nguy cơ bị đánh cắp thông tin, xâm nhập dữ liệu trái phép và lộ thông tin cá nhân
 Để cung cấp điện cho ổ cắm của máy giặt dùng trong gia đình có công suất 2200W (hệ số cosႴ =0,8) và điện áp là 220V cần lựa chọn dây dẫn đồng (mật độ dòng là J = 6 A/ 𝑚 𝑚 2 mm 2 ) có tiết diện phù hợp là: ||| 2,5 mm2\displaystyle mm^{2}mm2
+Để cung cấp điện cho ổ cắm của máy giặt dùng trong gia đình có công suất 2200W (hệ số cosႴ =0,8) và điện áp là 220V cần lựa chọn dây dẫn đồng (mật độ dòng là J = 6 A/mm2\displaystyle mm^{2}mm2) có tiết diện phù hợp là: ||| 2,5 mm2\displaystyle mm^{2}mm2
 Để cấp điện cho nồi cơm điện cao tần có công suất 1445 W (hệ số cosႴ =1) và điện áp 220V chọn aptomat có dòng điện định mức phù hợp là: ||| 10A
 Để kết nối máy tính với điện thoại qua Bluetooth, bạn cần làm gì đầu tiên? ||| Bật Bluetooth trên cả hai thiết bị
 Để nâng cấp, tối ưu hóa hệ thống mạng LAN hiện có, nhà trường đưa ra các ý kiến sau: ¦ A) Mở rộng vùng phủ sóng Wi-Fi tại các khu vực tập trung đông thiết bị di động bằng cách lắp đặt thêm Access Point ¦ B) Mở rộng quy mô kết nối mạng bằng cách lắp đặt thêm một Modem nối tiếp vào Modem hiện tại của nhà trường ¦ C) Tháo bỏ hoàn toàn Modem hiện có để thay thế bằng một thiết bị Router chuyên dụng có cấu hình cao ¦ D) Đăng ký nâng cấp gói cước đường truyền Internet với nhà cung cấp dịch vụ (ISP) để đáp ứng nhu cầu tăng thêm thiết bị truy cập ||| [ĐS] A=Đ B=S C=S D=Đ
