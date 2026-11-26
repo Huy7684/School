@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DeThiSo Helper
 // @namespace    https://dethiso.vn/
-// @version      14.19
+// @version      14.20
 // @description  Sakura Edition (điện thoại + máy tính): học đáp án đúng sau mỗi lần Kiểm tra, xuất/nhập .txt, tự chọn - kiểm tra - chuyển câu với tốc độ chỉnh được. v14.13: hỗ trợ thêm Bomb Game (/bomb/)
 // @match        https://dethiso.vn/*
 // @match        https://*.dethiso.vn/*
@@ -813,7 +813,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     if (k !== cntKey) {
       cntKey = k;
       const all = Object.values(bank).filter(r => r && r.q && r.correct);
-      cntVal = { tot: all.length, n: code ? all.filter(r => hasT(r, code)).length : all.length };
+      cntVal = { tot: all.length, n: (code && !(isBomb() && !extractCode(manualCode))) ? all.filter(r => hasT(r, code)).length : all.length };   // bomb: đếm cả sổ vì không lọc theo mã phòng
     }
     return cntVal;
   }
@@ -975,13 +975,49 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const headers = { Accept: 'application/vnd.github+json' };
     return fetch(url, { headers, cache: 'no-store' }).then(async r => ({ s: r.status, j: await r.json().catch(() => null) })).catch(() => ghViaLoader('GET', url, headers));
   }
+  // đọc file văn bản từ repo: raw.githubusercontent.com trước (không dính giới hạn 403 của API), lỗi mới dùng API
+  async function ghGetText(file) {
+    const raw = `https://raw.githubusercontent.com/${GHC.user}/${GHC.repo}/${GHC.branch}/${GHC.dir}${file}`;
+    try {
+      const r = await fetch(raw, { cache: 'no-store' });
+      if (r.status === 200) return { s: 200, text: await r.text() };
+      if (r.status === 404) return { s: 404 };
+    } catch (e) {
+      try {   // trang chặn fetch thẳng -> nhờ Sakura Loader
+        const v = await ghViaLoader('GET', raw, {});
+        if (v && v.s === 200 && typeof v.j === 'string') return { s: 200, text: v.j };
+      } catch (e2) {}
+    }
+    const r = await ghGetPublic(file);
+    if (r.s === 200 && r.j && r.j.content) return { s: 200, text: ghDec(r.j.content) };
+    return { s: r.s };
+  }
+  // Bomb: mã phòng bomb không phải mã đề nên không có file riêng -> tải sổ chung banks/dethiso.txt
+  let sharedBusy = false;
+  async function pullShared() {
+    if (sharedBusy) return;
+    sharedBusy = true;
+    ghNote = 'đang tải sổ chung từ GitHub…'; stat();
+    try {
+      const r = await ghGetText(`banks/${GHC.site}.txt`);
+      if (r.s === 200) {
+        const items = ghParse(r.text).filter(([q, c]) => !labelOnly(c));
+        items.forEach(([q, c]) => putRec(q, c, ''));
+        saveBank(); st = { key: null }; stN = { sig: null };
+        ghNote = `sổ chung: đã tải ${items.length} câu từ GitHub`;
+      } else if (r.s === 404) ghNote = 'GitHub chưa có sổ chung (banks/' + GHC.site + '.txt)';
+      else if (r.s === 0) ghNote = 'không kết nối được GitHub';
+      else if (r.s === 403) ghNote = 'GitHub đang giới hạn lượt gọi, thử lại sau';
+      else ghNote = 'lỗi GitHub HTTP ' + r.s;
+    } finally { sharedBusy = false; stat(); }
+  }
   async function pullExam(code) {
     if (!code) { ghNote = ''; return stat(); }
     ghNote = 'đang tải đề ' + code + ' từ GitHub…'; stat();
-    const r = await ghGetPublic(`banks/${GHC.site}/${code}.txt`);
+    const r = await ghGetText(`banks/${GHC.site}/${code}.txt`);
     if (code !== examCode()) return;                 // đã sang link khác, bỏ kết quả cũ
-    if (r.s === 200 && r.j && r.j.content) {
-      const items = ghParse(ghDec(r.j.content)).filter(([q, c]) => !labelOnly(c));
+    if (r.s === 200) {
+      const items = ghParse(r.text).filter(([q, c]) => !labelOnly(c));
       items.forEach(([q, c]) => putRec(q, c, code));
       saveBank(); st = { key: null }; stN = { sig: null };
       ghNote = `đề ${code}: đã tải ${items.length} câu từ GitHub`;
@@ -991,11 +1027,12 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     else ghNote = 'lỗi GitHub HTTP ' + r.s;
     stat();
   }
-  $('gpull').onclick = () => { say('tải lại từ GitHub...'); pullExam(examCode()); };
+  const pullAuto = () => (isBomb() && !extractCode(manualCode)) ? pullShared() : pullExam(examCode());
+  $('gpull').onclick = () => { say('tải lại từ GitHub...'); pullAuto(); };
   codeEl.onchange = () => {
     manualCode = extractCode(codeEl.value); codeEl.value = manualCode;
     say(manualCode ? 'mã đề: ' + manualCode : 'dùng mã tự nhận từ trang: ' + (autoCode() || 'không có'));
-    pullExam(examCode());
+    pullAuto();
   };
   setInterval(() => { const h = 'Link / mã đề (tự nhận: ' + (autoCode() || 'không có') + ')'; if (codeEl.placeholder !== h) codeEl.placeholder = h; }, 1500);
 
@@ -1005,7 +1042,7 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
     const c = autoCode();
     if (c === lastAuto) return;
     lastAuto = c; manualCode = ''; codeEl.value = ''; ghNote = '';
-    if (c) pullExam(c); else stat();
+    if (c) pullAuto(); else stat();
   }
   setInterval(watchUrl, 700); watchUrl();
 
@@ -1923,5 +1960,5 @@ select.dts11-inp{-webkit-appearance:none;appearance:none;padding-right:34px;
   }
   loop();
 
-  console.log('✅ DeThiSo Helper v14.19 sẵn sàng (có Bomb Game).');
+  console.log('✅ DeThiSo Helper v14.20 sẵn sàng (có Bomb Game).');
 })();
